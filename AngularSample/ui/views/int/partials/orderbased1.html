@@ -1,0 +1,79 @@
+<div ng-controller="eventNotificationCtrl">
+    <div id="HPDetail" >
+        <div class="HPOrderTxt" style="color:#4D4D4D;">HP Order Number:&nbsp;</div>
+        <input id="txtfiedl" name="" type="text" ng-model="hpOrderNo"/>
+        <div>&nbsp;&nbsp;<a class="slim button searchBTN primary btn_label"style="margin-top:18px;" href ng-click="searchOrderForNotify(hpOrderNo)">Search</a></div>
+    </div>
+   
+    <div style="padding: 37px 5px 5px 5px;"ng-show="noDataFlag">
+        <div ><span class="txtPadding" style="font-size: 15px; margin-left: -6px;color: #000;font-weight: bold;">Orders Available for Event Notification </span></div><br>
+        <hr>
+        <table id="tableTwo" width="100%" cellspacing="1" cellpadding="0" border="0" class="sistatus_history">
+          <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+          <tr id="autoFilter" class="font_black sitableautofillter" ></tr>
+          <tr ng-repeat="item in items | filter:query | orderBy:predicate:reverse" >
+            <td ng-show="item.watchOrderFlag"><img src="../../common/images/watchon.png"></td>
+            <td ng-hide="item.watchOrderFlag"><img src="../../common/images/watchoff.png"></td>
+            <td>{{item.orderno}}</td>
+            <td>{{item.custname}}</td>
+            <td>{{item.purchorderno}}</td>
+            <td>{{item.purchorderdate}}</td>
+            <td ng-show="item.watchOrderFlag"><a ng-model="item.legacyOrder" href id="eventOption"  ng-click="redirectToSaveSetUp('{{item.orderno}}','{{item.legacyorder}}','{{item.watchOrderFlag}}');">View/Modify</a></td>
+            <td ng-hide="item.watchOrderFlag"><a ng-model="item.legacyOrder" href id="eventOption"  ng-click="redirectToSaveSetUp('{{item.orderno}}','{{item.legacyorder}}','{{item.watchOrderFlag}}');">Notification Setup</a></td>
+          </tr>
+        </table>
+    </div>
+    <div class="twelve columns orderdetailerror" ng-show="msgFlag">{{errorMsg}}</div>
+</div>
+       
+<div style="padding: 55px 5px 5px 5px;" ng-controller="currentActiveOrderCtrl">
+    <div><span class="txtPadding" style="font-size: 15px; margin-left: -6px;color: #000;font-weight: bold;">Current Active Orders</span></div>
+    <hr>
+    
+    <div class="twelve columns orderdetailerror" style="margin-top: 8px;" ng-show="noDataFlag">{{error}}</div><br><br>
+    
+    <div ng-hide="noDataFlag">
+        <div class="row table_overflow">
+            <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                <tbody>
+                    <tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate:reverse">
+                        <td  ng-class="sortedTD_{{columnNames[0].id}}">
+                            <a href id="{{item.legacyorder}}" class="trigger" ng-click="getEventDetails('{{item.legacyorder}}')"><img src="../../common/images/watchon.png"></a>
+                            <a href id="eventOption"  ng-click="redirectToSaveSetUp('{{item.orderno}}','{{item.legacyorder}}','true');">View/Modify&nbsp;</a>
+                            <div height="100px;" class="table_details OrderStatusPopup">
+                                <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                <div style="line-height:25px" ng-show="events[0].optionSettings.Ack">Acknowledgement</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.orderChn">Order Change (watch order)</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.sddChn">Delivery Date Change</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statSubmit">Status Change: Submitted</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statAdmin">Status Change: Admin/Processing</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statAcked">Status Change: Admin/Acked</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statProd">Status Change: Production</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statPDone">Status Change: ProductionDone</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statRegis">Status Change: Registered</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statShip">Status Change: Shipped to Customer</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statShipF">Status Change: Shipped from Factory</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statDelv">Status Change: Delivered</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statCanc">Status Change: Canceled</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.statInv">Status Change: Invoiced</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.holdEntry">Hold Category: Order Entry</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.holdFulfill">Hold Category: Factory Fulfillment</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.holdShip">Hold Category: Shipping</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.holdBill">Hold Category: Billing</div>
+                                <div style="line-height:25px"ng-show="events[0].optionSettings.holdFallout">Hold Category: Fallout</div>
+                            </div>
+                        </td>
+                        <td  ng-class="sortedTD_{{columnNames[1].id}}">&nbsp;&nbsp;{{item.customerpono}}</td>
+                        <td  ng-class="sortedTD_{{columnNames[2].id}}"><a href id='{{item.orderno}}' ng-click="redirectToOrderDetails('{{item.orderno}}');">{{item.orderno}}</a></td>
+                        <td  ng-class="sortedTD_{{columnNames[3].id}}">{{item.customername}}</td>
+                        <td  ng-class="sortedTD_{{columnNames[4].id}}">{{item.lastupdate}}</td>
+                    </tr>
+                </tbody>     
+            </table>
+        </div>
+    </div>
+</div>
+    
+    
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

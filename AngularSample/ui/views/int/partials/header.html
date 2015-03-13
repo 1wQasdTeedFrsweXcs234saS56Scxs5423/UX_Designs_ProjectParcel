@@ -1,0 +1,35 @@
+<div ng-controller="PortalCtrl" >
+    <div ng-show="runningStandalone" id="Coming" onclick="closeTable('Coming')">
+      <div class="customer_row">
+          <div class="pic">
+                <img src="../../common/images/icon_coming.png">
+          </div>
+      <div class="txt">COMING SOON</div></div>
+    </div>
+    <ng-switch on="runningStandalone">
+            <div class="headerRow" ng-switch-when = "true">
+                <div class="headerRow">
+                    <div class="twelve columns heading" style="width:1350px !important">
+                        <div class="nine columns">
+                            <img src="../common/images/hpLogo.jpg" alt="hp" style="margin-left:20px;">
+                        </div>
+                        <div class="three columns" style="float: right; margin-top: -84px; margin-right: 1px;">
+                            <div class="login">{{data.user_id}}</div>        
+                        </div>
+                    </div>
+                </div>  
+                <div class="eight columns logo">
+                    <div class="eight columns" style="float:none !important;margin-top: 10px;">
+                        <nav class="nav-menu" menu-data="menu"></nav>
+                    </div>                  
+                </div>                
+            </div>
+            <div class="row standaloneheder" ng-switch-when = "false">
+                <div class="eight columns logo">
+                    <div class="eight columns" style="margin-top: 100px; margin-left: -170px;">
+                        <nav class="nav-menu" menu-data="menu"></nav>
+                    </div>
+                </div>
+            </div>
+    </ng-switch>
+</div>

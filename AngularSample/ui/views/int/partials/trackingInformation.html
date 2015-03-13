@@ -1,0 +1,33 @@
+<div class="shipmarginTopCls">
+    <div class="bg-color-white" ng-show="trackflag">
+        <table cellspacing=0 cellpadding=0 class="tbl-innerdetails-width100 tbl-innerdetails">
+            <tr>
+                <th>Tracking #</th>
+                <th>Carrier</th>
+                <th>Carrier #</th>
+                <th>Signature</th>
+                <th>Flight #</th>
+                <th>Master Bill #</th>
+                <th>House Bill #</th>
+                <th>Depart From</th>
+                <th>Arrival at</th>
+            </tr>
+            <tr ng-repeat="item in trackItems">
+                <td ng-show="{{item.taturlFlag}}"><a class="cursor" ng-click="redirectUrl('{{item.tat_url}}')">{{item.trackingno}}</a></td>
+                <td ng-hide="{{item.taturlFlag}}">{{item.trackingno}}</td>
+                <td ng-show="{{item.carrierurlFlag}}"><a class="cursor" ng-click="redirectUrl('{{item.carrier_website}}')">{{item.carriername}}</a></td>
+                <td ng-hide="{{item.carrierurlFlag}}">{{item.carriername}}</td>
+                <td>{{item.carrierdeliveryno}}</td>
+                <td>{{item.recipientname}}</td>
+                <td>{{item.transportflightno}}</td>
+                <td>{{item.masterbillno}}</td>
+                <td>{{item.housebillno}}</td>
+                <td>{{item.departlocation}}</td>
+                <td>{{item.arrivallocation}}</td>
+            </tr>
+        </table>
+        <div ng-hide="trackflag" class="div-norecord">
+            No Records Found
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div ng-controller="CustomerHierarchyCtrl">
+   <div class="twelve columns" ng-hide="noDatafoundFlage">
+       
+       
+      <div id="containers">
+           
+            <div id="HPDetails" >
+                <div class="HPOrderTxts">Look By Id:</div> 
+                <input id="txtfiedls" name="" type="text" ng-model="entryid"/>
+               
+
+                <div>&nbsp;&nbsp;<a class="slim button searchBTN primary btn_label"style="margin-top:4px;" href ng-click="searchById(entryid,hideBasicInfo)">Search</a>
+                
+       </div></br>
+       <div style= "float:left; margin-left:-1px">
+           <input id="statDelv" type="checkbox" ng-model="hideBasicInfo" >
+           <label for="statDelv" class="lableHeads" style="margin-top:-20px;font-size:14px;">Hide Level0 </label> </label>
+                       
+        </div>
+                
+               
+                
+        </div>
+           
+             
+                <div id="hidelabels">
+                    <div class="dd_borders"></div>
+                  
+                  <select name="selectedLevels"  id="selectedLevels" ng-hide="hideBasicInfo" ng-model="selectedLevels" ng-change="selectedLevelMethod(selectedLevels)" class="styled-select">
+                            <option value="">Show All Level0s</option>
+                            <option value="cbns">Only CBNs</option>
+                            <option value="crs">Only CRS</option>
+                            <option value="crsAndCbns">CRS and CBNS</option>
+                            <option value="others">Others</option>
+                        </select>
+                  
+                       
+      </div>
+                
+                </br></br>
+               
+                <div 
+
+      data-angular-treeview="true"
+
+      data-tree-model="roleList"
+
+      data-node-id="id"
+
+      data-node-label="str"
+
+      data-node-children="children" >
+          
+
+    </div>
+    
+</div>
+             
+    </div>
+        
+ <div class="twelve columns orderdetailerror"  ng-show="noDatafoundFlage">{{errormsg}}</div>       
+
+   
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

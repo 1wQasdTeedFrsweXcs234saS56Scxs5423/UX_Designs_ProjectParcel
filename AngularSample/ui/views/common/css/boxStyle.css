@@ -1,0 +1,110 @@
+body{
+	margin:0;
+	padding:0;
+	font-family:"HP Simplified", "HP Simplified Light", "HP Simplified W01 Bold";
+}
+#mainDiv{
+	width:100%;
+	height:100%;
+}
+#boxContainer{
+	width:964px;
+	height:auto;
+	margin:auto;
+}
+
+#boxSubheader{
+	width:100%;
+	height:46px;
+	margin:auto;
+	border-bottom:1px solid #cccccc;
+	clear:both;
+	margin-bottom:10px;
+}
+.boxSubheaderTxt{
+	width:auto;
+	height:46px;
+	font-size:18px;
+	line-height:46px;
+	color:black;
+	float:left;
+}
+.creatcopyBtn{
+	width:153px;
+	height:26px;
+	font-size:12px;
+	text-align:center;
+	float:right;
+	background:#767676;
+	color:white;
+	margin-top:10px;
+	border-radius:5px 0px 5px 0px;
+	line-height:26px;
+	
+}
+
+
+.textPaddingLeft{
+	padding-left:10px;
+}
+
+
+#boxDiv{
+	min-width:225px;
+	height:44px;
+	margin:0 15px 0 0;
+	font-size:15px;
+	line-height:33px;
+	color:black;
+	margin-bottom:50px;
+    float:left;
+}
+#boxDiv:nth-child(n+4){margin-right:0 !important;}
+.box{
+	min-width:224px;
+	height:78px;
+	background:#f2f2f2;
+	float:left;
+}
+.boxFirstCol{
+	width:29px;
+	height:78px;
+	float:left;
+}
+.circle{
+	width:15px;
+	height:15px;
+	border-radius:50px;
+	float:right;
+	margin:5px 4px 0px 0px;
+}
+.boxSecndCol{
+	min-width:195px;
+	height:78px;
+	float:left;
+}
+
+.txtheading{
+	font-size:14px;
+	font-weight:bold;
+	color:black;
+	line-height:38px;
+}
+.linkText{
+	font-size:14px;
+	color:#007dba;
+	line-height:25px;
+	text-decoration:none;
+}
+.marginlft{
+	margin-left:22px;
+}
+
+.marginTop{
+	margin-top:15px;
+}
+.divtop{
+	clear:both;
+	background:red;
+	margin-bottom:60px;
+}

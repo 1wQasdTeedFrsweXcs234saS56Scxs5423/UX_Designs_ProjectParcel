@@ -1,0 +1,71 @@
+/*REGULAR*/
+	@font-face{
+      font-family: 'HPSimplified';
+      src: url(../fonts/v1-1/hps-euro-regular-eot.eot); /* IE9 compat */	 
+	  src: url(../fonts/v1-1/hps-euro-regular-eot.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */	
+	   /* non-IE */ 
+	   url('../fonts/v1-1/hps-euro-regular-woff.woff') format('woff'), /*IE9 and some modern browsers*/ 
+	   url('../fonts/v1-1/hps-euro-regular-ttf.ttf') format('truetype'); /*iOS, Android, Safari*/
+	  	  
+	  font-weight: normal;
+	  font-style: normal;
+}
+	/*BOLD*/
+	@font-face{
+	   font-family: 'HPSimplified';
+       src: url(../fonts/v1-1/hps-euro-bold-eot.eot); /* IE9 compat */	 
+	   src: url(../fonts/v1-1/hps-euro-bold-eot.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */	
+	   /* non-IE */ 
+	   url('../fonts/v1-1/hps-euro-bold-woff.woff') format('woff'), /*IE9 and some modern browsers*/ 
+	   url('../fonts/v1-1/hps-euro-bold-ttf.ttf') format('truetype'); /*iOS, Android, Safari*/
+	  	  
+	  font-weight: bold;
+	  font-style: normal;
+}
+
+/*******************************
+HP Simplified
+********************************/
+
+
+ @font-face {
+    font-family: 'hp_simplified_w01_boldregular';
+    src: url('../fonts/v1-1/hpsimplifiedw01-bold-webfont.eot');
+    src: url('../fonts/v1-1/hpsimplifiedw01-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/v1-1/hpsimplifiedw01-bold-webfont.woff') format('woff'),
+         url('../fonts/v1-1/hpsimplifiedw01-bold-webfont.ttf') format('truetype'),
+         url('../fonts/v1-1/hpsimplifiedw01-bold-webfont.svg#hp_simplified_w01_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hp_simplified_w01_lightRg';
+    src: url('../fonts/v1-1/hpsimplifiedw01-light-webfont.eot');
+    src: url('../fonts/v1-1/hpsimplifiedw01-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/v1-1/hpsimplifiedw01-light-webfont.woff') format('woff'),
+         url('../fonts/v1-1/hpsimplifiedw01-light-webfont.ttf') format('truetype'),
+         url('../fonts/v1-1/hpsimplifiedw01-light-webfont.svg#hp_simplified_w01_lightRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hp_simplified_w01_regularRg';
+    src: url('../fonts/v1-1/hpsimplifiedw01-regular-webfont.eot');
+    src: url('../fonts/v1-1/hpsimplifiedw01-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/v1-1/hpsimplifiedw01-regular-webfont.woff') format('woff'),
+         url('../fonts/v1-1/hpsimplifiedw01-regular-webfont.ttf') format('truetype'),
+         url('../fonts/v1-1/hpsimplifiedw01-regular-webfont.svg#hp_simplified_w01_regularRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

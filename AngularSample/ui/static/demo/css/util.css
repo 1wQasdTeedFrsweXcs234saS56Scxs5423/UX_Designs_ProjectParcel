@@ -1,0 +1,8 @@
+#Coming{position:absolute;width:680px;left:50%;margin-left:-340px;z-index:10000;background:#57bae8;padding:8px;cursor:pointer;
+display:none;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;
+-webkit-box-shadow:#000 1px 2px 10px;-moz-box-shadow:#000 1px 2px 10px;box-shadow:#000 1px 2px 10px}
+#Coming .customer_row{width:680px;max-width:100%;min-width:300px;margin:0 auto}
+#Coming .pic{text-align:center;padding:30px 0 20px 0;clear:both}
+#Coming .txt{text-align:right;padding:20px 22px 20px 0;font-size:48px;color:#fff;font-family:"Arial Black",Gadget,sans-serif}
+#Coming .closesd{margin-top:20px;text-align:right}
+

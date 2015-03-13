@@ -1,0 +1,17 @@
+<select style="width: 100%; height:100%;" multiple="multiple" name="orderOrigin" id="orderOrigin" ng-model="orderOrigin" size="10">    
+   <!-- <option ng-repeat="obj in orderOriginPropList" value="{{obj.val}}">{{obj.name}}</option>-->
+    <option value="all">All</option>
+    <optgroup label="---Originating System---">
+        <option ng-repeat="obj in originSystemList" value="{{obj.val}}">{{obj.name}}</option>
+    </optgroup>
+    <optgroup label="---Submission Method---">
+        <option ng-repeat="obj in subMethodList" value="{{obj.val}}">{{obj.name}}</option>
+    </optgroup>
+    <optgroup label="---OE System---">
+        <option ng-repeat="obj in oeSystemList" value="{{obj.val}}">{{obj.name}}</option>
+    </optgroup>
+    <optgroup label="---OF System---">
+        <option ng-repeat="obj in ofSystemList" value="{{obj.val}}">{{obj.name}}</option>
+    </optgroup>
+</select>
+<div><a class="slim button secondary btn_label" ng-click="$modalSuccess();" style="margin-top: 5px;">Close</a></div>

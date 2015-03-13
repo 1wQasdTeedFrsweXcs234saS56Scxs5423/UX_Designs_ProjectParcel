@@ -1,0 +1,102 @@
+<div class="shipmarginTopCls">
+    <div class="ship-rpt-inner-content" style="float:left; border: 2px solid #fff"  ng-repeat="itemItems in itemItemsheader">
+        <div class="spacer">&nbsp;</div>
+        <div class="ship-item-inner-header"  ng-click="expandOrCollapseShipmentInner('showDetails{{itemItems.item_subitem}}','{{$parent.$index}}')">
+            <span id="showDetails{{itemItems.item_subitem}}{{$parent.$index}}" class="collapseImg expCloseImgDiv" style="margin-left:1%"></span> 
+            <div class="three columns columnsfloat shipinnerheader">
+                <div class="generals">
+                    <span>Item:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{itemItems.item_subitem}}</div>
+                </div>
+                <div class="generals">
+                    <span>Ship From:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding"> {{itemItems.ship_from}} </div>
+                </div>
+            </div>
+            <div class="three columns columnsfloat shipinnerheader">
+                <div class="generals">
+                    <span style="width:42%">HP Product #:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{itemItems.material_no}}</div>
+                </div>
+                <div class="generals">
+                    <span style="width:42%">Vendor Name:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{itemItems.lsp_name}}</div>
+                </div>
+            </div>
+            <div class="three columns columnsfloat" style="width: 24%;">
+                <div class="generals">
+                    <span style="width: 21%;">Description:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding" style="width: 76%;">{{itemItems.product_descr}}</div>
+                </div>
+                <div class="generals">
+                    <span style="width: 21%;">Partial Qty:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{itemItems.sched_line_qty}}</div>
+                </div>
+            </div>
+            <div class="three columns columnsfloat" style="width:22%">
+                <div class="generals">
+                    <span style="width:50%">Ordered Qty:</span>
+                    <div id="Delivery_Type" style="width:40%" class="div_input ng-binding">{{itemItems.so_line_item_qty}}</div>
+                </div>
+                <div class="generals">
+                    <span style="width:50%">Customer Product No.:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding" style="width: 45%;">{{itemItems.cust_product_no}}</div>
+                </div>
+            </div>
+            <div class="three columns columnsfloat" style="width:18%">
+                <div class="generals">
+                    <span>Logistics Codes:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{itemItems.logistics_codes}}</div>
+                </div>
+                <div class="generals">
+                    <span>&nbsp;</span>
+                </div>
+            </div>
+            <div class="spacer">&nbsp;</div>
+            <div>
+                <div class="generals">
+                    <span style="width: 8.8%;">Box #:</span>
+                    <div  id="Delivery_Type" ng-show="hideBox" style="width:70%" class="div_input ng-binding" style="width: 80%;">
+                        <!--<ul class="itemBoxDetails">
+                            <li ng-repeat="itemBox in itemItemBox4 | filter : {item_subitem : itemItems.item_subitem}">{{itemBox.box_no}},&nbsp;</li>
+                        </ul>
+                        <!--     <ul class="itemBoxDetails" ng-show="showParent"><li ng-repeat="itemBox in itemItemBox4 | filter : {'item_subitem': item.item_subitem}">{{itemBox.box_no}},&nbsp;</li></ul>
+                            <ul class="itemBoxDetails" ng-hide="showParent"><li ng-repeat="itemBox in itemItemBox4 | filter : {'item_subitem': item.item_subitem}">{{itemBox.parent_box_no}},&nbsp;</li></ul>-->
+                            <!--<div ng-show="hideMore" style="float:left">...<a class="cursor" ng-click="showItemBox()">more</a></div>-->
+                        <div ng-switch on ="showItemMore('{{itemItems.item_subitem}}')">    
+                            <div ng-switch-when="false" style="float:left" id="boxIDs">
+                                <div>{{itemItemBox4}}</div>
+                                <!--<ul class="itemBoxDetails">
+                                    <li ng-repeat="itemBox in itemItemBox4">{{itemBox}},&nbsp;</li>
+                                </ul>-->
+                            </div>    
+                            <div ng-switch-when="true" style="float:left">{{showFourItems}}...<a class="cursor" ng-click="showItemBox('{{itemItems.item_subitem}}')">more</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tbl-innerdetails-bg" ng-show="showDetails{{itemItems.item_subitem}}">
+            <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-width25">
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Asset Tag</th>
+                    <th>Ethernet Mac Address</th>
+                    <th>Box Number</th>
+                </tr>
+                <tr ng-show="itemItems.show_tech_info" ng-repeat="itemDetail in itemItems.techInfo">
+                    <td>{{itemDetail.serial_number}}</td>
+                    <td>{{itemDetail.asset_tag}}</td>
+                    <td>{{itemDetail.primary_mac_addr}}</td>
+                    <td>{{itemDetail.box_no}}</td>
+                </tr>
+                <tr ng-hide="itemItems.show_tech_info">
+                    <td colspan="4" class="div-norecord">No Records Found</td>
+                </tr>
+            </table>
+        </div>
+        <div class="spacer">&nbsp;</div>
+    </div>
+</div>
+<!--<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div>
+<div id="overlay"></div>-->

@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin:0;
+	padding:0;
+	background:white;
+	font-family:"HP Simplified", "HP Simplified Light", "HP Simplified W01 Bold";
+}
+#EPmainDiv{
+	width:100%;
+	height:100%;
+}
+#EPcontainer{
+	width:597px;
+	margin:auto;
+}
+#EPheader{
+	width:597px;
+	height:34px;
+	background:#0096d6;
+	color:white;
+	font-size:17px;
+	font-weight:bold;
+	line-height:34px;
+}
+.lftpadding{
+		padding-left:5px;
+}
+p{
+	padding:1px 5px 0px 10px;
+}
+#EPcontent{
+	width:595px;
+	height:auto;
+	font-size:14px;
+	line-height:16px;
+	border:1px solid #cccccc;
+
+}
+li{
+	line-height:20px;
+}
+.EPtxtlink{
+	color:#0096d6;
+	text-decoration:none;
+}
+.EPtxtlink:hover{
+	color:#0096d6;
+	text-decoration:underline;
+}

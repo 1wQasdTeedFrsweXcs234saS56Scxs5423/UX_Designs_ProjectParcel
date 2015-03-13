@@ -1,0 +1,135 @@
+<div ng-controller="productDetailsCtrl">
+    <div class="productHeader">
+        <div class="ossRow">
+            <div class="twelve columns"><span class="prodhead">Item details for <span class="productid">{{productitems.material_no}}</span> in order {{hpOrderNo}}
+            </div>
+        </div>
+        <div class="ossRow">
+            <div class="three columns">
+                <div>
+                    <div class="spancls">Item#:</div><div class="details">{{productitems.item_subitem}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Custormer Request Date:</div><div class="details">{{productitems.customer_req_date| date:'yyyy-MM-dd'}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Product#:</div><div class="details">{{productitems.material_no}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Material Type:</div><div class="details">{{productitems.material_type}}</div>
+                </div>
+                <div>
+                    <div class="spancls">HP Supplier Code:</div><div class="details">{{productitems.supplier}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Ordered/Open/Shipped Qty:</div><div class="details">{{productitems.so_line_item_qty}} / {{productitems.open_qty}} / {{productitems.shipped_qty}}</div>
+                </div>
+            </div>
+            <div class="three columns">
+                <div>
+                    <div class="spancls">Interal Item#:</div><div class="details">{{productitems.so_item_no}}  ( {{productitems.sapsystem}} )</div>
+                </div>
+                <div>
+                    <div class="spancls">Clean Item Date:</div><div class="details">{{productitems.clean_date| date:'yyyy-MM-dd:hh:mm'}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Customer Product#:</div><div class="details">{{productitems.cust_product_no}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Item Category:</div><div class="details">{{productitems.item_category}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Plant:</div><div class="details">{{productitems.plant_code}}</div>
+                </div>
+                <div>
+                    <div class="spancls">SAP Item User Status:</div><div class="details">{{productitems.credit_status}}</div>
+                </div>
+            </div>
+            <div class="three columns">
+                <div>
+                    <div class="spancls">Customer Item#:</div><div class="details">{{productitems.customer_item_no}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Item LAD Date:</div><div class="details">{{productitems.latest_arr_date}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Mfg. Product#:</div><div class="details">{{productitems.mfg_part_number}}</div>
+                </div>
+                <div>
+                    <div class="spancls">EPEAT Designation:</div><div class="details">{{productitems.epeat_designation}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Ship From:</div><div class="details">{{productitems.ship_from}}</div>
+                </div>
+            </div>
+            <div class="three columns">
+                <div>
+                    <div class="spancls">Heigher Level Item#:</div><div class="details">{{productitems.higher_level}}</div>
+                </div>
+                <div>
+                    <div class="spancls">SAP Routes:</div><div class="details">{{productitems.route}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Product Description:</div><div class="details">{{productitems.product_descr}}</div>
+                </div>
+                <div>
+                    <div class="spancls">UPC:</div><div class="details">{{productitems.upc_no}}</div>
+                </div>
+                <div>
+                    <div class="spancls">Vendor Name:</div><div class="details">{{productitems.lsp_name}}</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="ossRow">
+            <div class="six columns" style="padding:0 5px 0 5px;">
+                <div class="hierarchy">
+                    <div class="hierarchy heading">Product  line {{productitems.product_line}} hierarchy</div>
+                    <ul><li ng-repeat="item in productitems.ProductLines" style="font-size:14px;padding: 1px;margin: 0 0 1px {{15 * $index}}px;"><span class="icn_cnt"><span title="icon" class="icn icn_left">&nbsp;</span><span class="icn_description">{{item}}</span></span></li></ul>
+                </div>
+            </div>
+            <div class="six columns">
+                <div class="hierarchy">
+                    <div class="hierarchy heading">Product  hierarchy for {{productitems.material_no}} (Product type {{productitems.product_type}})</div>
+                    <ul><li ng-repeat="item in productitems.ProductHeirarchy" style="font-size:14px;padding: 1px;margin: 0 0 1px {{15 * $index}}px;"><span class="icn_cnt"><span title="icon" class="icn icn_left">&nbsp;</span><span class="icn_description">{{item}}</span></span></li></ul>
+                </div>
+            </div>
+        </div>
+        <div class="ossRow">
+            <div class="twelve columns">
+                <span class="prodhead">Partials Within Item:</span>
+            </div>
+        </div>
+        <div class="ossRow">
+            <div class="twelve columns">
+                <div partialswithinitemstable></div>
+            </div>
+        </div>
+        <div class="ossRow" ng-hide="showExportDetailsFlag">
+            <div class="twelve columns">
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="ossRow" ng-show="showExportDetailsFlag">
+            <div class="twelve columns"><span class="prodhead">Export / Import Classification Information for '{{productitems.cust_product_no}}'</span></div>
+        </div>
+        <div class="ossRow" ng-show="showExportDetailsFlag">
+            <div class="twelve columns">
+                <div exportimportclassificationtable></div>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="ossRow">
+            <div class="twelve columns">
+                <div>
+                    <a href="" onclick="window.close();"><button type="button" class="closeButton">Close</button></a>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <div id="loader"><img src="../../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+</div>

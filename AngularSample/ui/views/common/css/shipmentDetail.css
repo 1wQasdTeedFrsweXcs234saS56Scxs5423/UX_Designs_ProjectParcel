@@ -1,0 +1,42 @@
+.row.siheaderRow {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-top: 30px;
+  margin-left: 151px;
+  color: red;
+  background: none repeat scroll 0 0 #f7d7d7;
+  height: 40px;
+  padding: 10px; }
+
+.sitrackingInfo {
+  overflow: auto; }
+  
+  .sitableautofillter{
+border: 1px solid #999999;color: #000000; text-shadow: 2px 1px 2px #999;display:none;
+}
+.sistatusHistory{
+    overflow:auto;
+}
+
+.sitracking_table {
+  border: 1px solid #999999;
+  color: black;
+  text-shadow: 2px 1px 2px #999999;
+  display: none; }
+
+.sitrack_info {
+  border: 1px solid #999999;
+  color: black; }
+  
+.siboxinfo{
+overflow:auto;
+}
+
+.sitablebox_info{
+border: 1px solid #999999;color: #000000; text-shadow: 2px 1px 2px #999;display:none;
+}
+
+.sistatus_history{
+border: 1px solid #999999; color: #000000;
+}

@@ -1,0 +1,83 @@
+<div ng-controller="homeCtrl" class="homePage">
+	<div class="row paneltop">
+		<div class="four columns homeorder">
+			<div class="grid_3 active_table alpha">
+				<h1>Orders</h1>
+				<form name="myForm" >
+                    <div class="styled-select" style="width: 286px;overflow:hidden;">
+                        <div class="dd_border"></div>
+                        <select name="RecentOrders" style="width:308px;background: transparent;" id="RecentOrders" ng-model="order.recentOrders" ng-change="disableFields(true)">
+                            <option value="">
+                                View Recent Orders
+                            </option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="3">Last 3 Days</option>
+                            <option value="2">Last 2 Days</option>
+                            <option value="1">Last 1 Day</option>
+                        </select>
+                    </div>
+                    <h2>Search</h2>
+                    <div class="alert error">Please enter some additional search criteria.</div>
+                    <label for="IDNumber">ID# <span id="orderNoForId" class="homeid"></span></label>
+                    <input type="text" placeholder="Enter Value.." id="orderNo" ng-model="order.orderNo" ng-disabled="isDisabled" ng-enter="isFormValid(order)" />
+                    <input type="hidden" id="orderNoFor" readonly="true">
+                    <input type="hidden" id="orderNoForVal" ng-model="order.orderNoFor">
+                    <label for"customer">Customer <span id="customerForId" class="homecustomer"></span></label>
+                    <input type="text" placeholder="Enter Id/Name.." id="customer" ng-model="order.customer" ng-disabled="isDisabled" ng-enter="isFormValid(order)" >
+                    <input type="hidden" id="customerNameNoFor" readonly="true">
+                    <input type="hidden" id="customerNameNoVal" ng-model="order.customerNameNoFor">
+                    <label>Status</label>
+                    <div class="styled-select" style="width: 286px;overflow:hidden;" ng-class="addClassDisabled">
+                        <div class="dd_border"></div>
+                        <select style="width:308px;background: transparent;" id='status' ng-model='order.status' ng-disabled="isDisabled">
+                            <option value="">Select...</option>
+                            <option value="submit">Submitted</option>
+                            <option value="admin">Admin</option>
+                            <option value="prod">Production</option>
+                            <option value="proddone">ProductionDone</option>
+                            <option value="cons">Consolidation</option>
+                            <option value="ship">Shipped</option>
+                            <option value="delv">Delivered</option>
+                            <option value="canc">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="w_40 left relPos dpDiv" ng-class="addClassDisabled">
+                        <label>Order Date(From)</label>
+                        <input type="text"  id="orderFromDp" ng-model="order.orderFromDp" ng-enter="isFormValid(order)"  my-datepicker-date-range>
+                    </div>
+                    <div class="w_40 right relPos dpDiv" ng-class="addClassDisabled">
+                        <label>Order Date(To)</label>
+                        <input type="text"  id="orderToDp" ng-model="order.orderToDp" ng-enter="isFormValid(order)"  my-datepicker-date-range>
+                    </div>
+                    <div>
+                        <a href ng-click="isFormValid(order)"><button type="button" class="primary">Search</button></a>
+                    </div>
+                </form>
+			</div>
+		</div>
+		<div class="four columns homeorder">
+			<div class="grid_3">
+				<div class="row_2 active_table myReportbox">
+					<form>
+                        <h1>My Reports
+						 <a href ng-click="searchUser()"><button type="button" class="primary" style="margin-top: 7px;">Go</button></a>
+                        </h1>
+					</form>
+				</div>
+				<div class="row_2 intro_table">
+					<h1>Track Your Order</h1>
+					<p>Welcome to HP Customer Transaction Viewer</p>
+					<p>View Recent Orders</p>
+					<p>Complete simple search</p>
+					<p>Search for specific search criteria and generate reports.</p>
+				</div>
+			</div>
+		</div>
+		<div class="four columns">
+			<div class="grid_3 omega">
+				<img src="../../common/images/Landing_312.jpg" />
+			</div>
+		</div>
+	</div>
+</div>
+

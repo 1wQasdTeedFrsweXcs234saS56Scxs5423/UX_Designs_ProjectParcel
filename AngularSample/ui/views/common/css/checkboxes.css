@@ -1,0 +1,48 @@
+/* start checkboxes */
+.chkbox, .rdbut {white-space: nowrap; font-size: 14px;}
+*html .chkbox, *html .chkbox label, *html .rdbut, *html .rdbut label {font-size: 1em}
+.chkbox label, .rdbut label{cursor: pointer;}
+.chkbox .chbx, .rdbut .rbtn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 0 0 22px;
+}
+.chkbox a, .rdbut a{height: 18px;}
+.chkbox a label {line-height: 16px;}
+.chkbox a.unchkd, .rdbut a.unchkd{color: #000}
+.chkbox a.dis, .rdbut a.dis{color: #ccc; cursor: default;}
+.chkbox a.error, .rdbut a.error{color: #000}
+.chkbox a.chkd, .rdbut a.chkd{color: #000}
+
+.chkbox .chbx, .rdbut .rbtn{
+    background-image: url("../../common/images/s-21px-hpe.png");
+    _background-image: url("../../common/images/s-21px-ie6-hpe.gif");
+    background-repeat: no-repeat;
+    background-position: left 3px;
+}
+
+.chkbox .unchkd {background-position: left 0;}
+.chkbox .unchkd:hover{background-position: left -45px;}
+.chkbox .unchkd.dis,
+.chkbox .unchkd_dis,
+.chkbox .unchkd_dis:hover {background-position: left -135px;}
+.chkbox .chkd{background-position: left -90px;}
+.chkbox .chkd.error, .chkbox .chkd.error:hover {background-position: left -90px;}
+.chkbox .error, .chkbox .error_unchkd{background-position: left -180px;}
+.chkbox .error:hover, .chkbox .error_unchkd:hover{background-position: left -45px;}
+.chkbox .error_chkd, .chkbox .error_chkd:hover {background-position: left -90px;}
+/* end checkboxes */
+
+
+/* start radiobuttons */
+.rdbut .unchkd{background-position: left -225px;}
+.rdbut .unchkd:hover{background-position: left -271px;}
+.rdbut .chkd {background-position: left -317px;}
+.rdbut .unchkd.dis,
+.rdbut .unchkd_dis,
+.rdbut .unchkd_dis:hover {background-position: left -363px;}
+.rdbut .chkd.error, .rdbut .chkd.error:hover {background-position: left -317px;}
+.rdbut .error {background-position: left -409px;}
+.rdbut .error:hover, .rdbut .error_unchkd:hover{background-position: left -271px;}
+.rdbut .error_chkd, .rdbut .error_chkd:hover {background-position: left -317px;}
+/* end radiobuttons */

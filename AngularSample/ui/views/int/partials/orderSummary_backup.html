@@ -1,0 +1,290 @@
+<div ng-init = "expandOrCollapsePanelNames=['refineSearch', 'searchResult']"></div>
+<div ng-controller="collapseExpandCtrl">
+    <div class="row collapseexpand">
+    </div>
+<div class="row">
+<div ng-controller="refineSearchCtrl">
+	<div ng-click="expandOrCollapse('refineSearch')">
+        <div class="twelve columns row_title">
+            <div class="{{expandOrCollapseImg['refineSearch']}} expCloseImgDiv" ></div>
+            <span><b>Refine Search</b></span>                
+        </div>
+	</div>
+    <div class="tableTopBTNs">
+        <a href ng-click="redirectToAdvSearch()" class="slim button secondary btn_label" style="margin-top: 15px;">Advanced Search</a>
+    </div>
+    <hr>
+    <div ng-init = "expandOrCollapse('refineSearch','c')"></div>
+        <div ng-show="refineSearch">
+            <div ng-init = "expandOrCollapse('refineSearch','c')"></div>
+                <form id="refSearchFrom">
+                    <div class="alert error"></div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">Purchase Order#:</span>
+                            <input type="text"  id="poNo" class="form-input js_color_change" ng-model="poNo">
+                        </div>
+                        <div class="generals">
+                            <span class="refinesearchorders">Shipment#:</span>
+                            <input type="text"  id="shipmentNo" class="form-input js_color_change" ng-model="shipmentNo">
+                        </div>
+                    </div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">HP Order#:</span>
+                            <input type="text"  id="hpOrderNo" class="form-input js_color_change" ng-model="hpOrderNo">
+                        </div>
+                        <div class="generals">
+                            <span class="refinesearchorders">Invoice#:</span>
+                            <input type="text"  id="invoiceNo" class="form-input js_color_change" ng-model="invoiceNo">
+                        </div>
+                    </div>    
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">Date From:</span>
+                            <input type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" my-datepicker-date-range>
+                        </div>
+                         <div class="generals">
+                            <span class="refinesearchorders">Customer #:</span>
+                            <input type="text"  id="customer" class="form-input js_color_change" ng-model="customer">
+                        </div>
+                     </div>
+                     <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">Date To:</span>
+                            <input type="text"  id="orderToDp" class="form-input js_color_change" ng-model="orderToDp" my-datepicker-date-range>
+                        </div>
+                        <div class="generals">
+                            <span class="refinesearchorders">Customer Name:</span>
+                            <input type="text"  id="customerName" class="form-input js_color_change" ng-model="customerName">
+                        </div>
+                        <div class="tableTopBTNs">
+                            <a class="slim button secondary btn_label" href ng-click="reSet();">Clear</a>
+                            <a href ng-click="isRSFormValid()" class="slim button searchBTN primary btn_label">Search</a>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    <ng-switch on = "dataflag">
+        <div ng-show="expandOrCollapse('refineSearch','e')" class="refineSearchMain" ng-switch-when="true">
+            <form id="refSearchFrom">
+                <div class="alert error">Please enter atleast one search criteria.</div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span>Purchase Order#:</span>
+                            <input type="text"  id="poNo" class="form-input js_color_change" ng-model="poNo">
+                        </div>
+                        <div class="generals">
+                            <span>Shipment#:</span>
+                            <input type="text"  id="shipmentNo" class="form-input js_color_change" ng-model="shipmentNo">
+                        </div>
+                    </div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span>HP Order#:</span>
+                            <input type="text"  id="hpOrderNo" class="form-input js_color_change" ng-model="hpOrderNo">
+                        </div>
+                        <div class="generals">
+                            <span>Invoice#:</span>
+                            <input type="text"  id="invoiceNo" class="form-input js_color_change" ng-model="invoiceNo">
+                        </div>
+                    </div>    
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span>Date From:</span>
+                            <input type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" my-datepicker-date-range>
+                        </div>
+                         <div class="generals">
+                            <span>Customer #:</span>
+                            <input type="text"  id="customer" class="form-input js_color_change" ng-model="customer">
+                        </div>
+                    </div>
+                    <div class="three columns">
+                        <div class="generals">
+                            <span>Date To:</span>
+                            <input type="text"  id="orderToDp" class="form-input js_color_change" ng-model="orderToDp" my-datepicker-date-range>
+                        </div>
+                        <div class="generals">
+                            <span>Customer Name:</span>
+                            <input type="text"  id="customerName" class="form-input js_color_change" ng-model="customerName">
+                        </div>
+                    <div class="tableTopBTNs">
+                        <a class="slim button secondary btn_label" href="javascript:$('#refSearchFrom')[0].reset()">Clear</a>
+                        <a href ng-click="isRSFormValid()" class="slim button searchBTN primary btn_label">Search</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-switch>
+    </div>
+</div><br>
+<div class="row">
+    <div ng-controller="orderListCtrl" id="orderListCtrlDiv" >
+        <div ng-show="showhide">
+            <div class="nine columns row_title">
+            <div class="{{expandOrCollapseImg['searchResult']}} expCloseImgDiv" ></div>
+            <span><b>Search Result</b></span>
+        </div>
+        </div>
+        <div ng-click="expandOrCollapse('searchResult')" ng-hide="showhide">
+            <div class="nine columns row_title">
+                <div class="{{expandOrCollapseImg['searchResult']}} expCloseImgDiv" ></div>
+                <span><b>Search Result</b></span>
+            </div>
+        </div>
+        <hr>
+        <div class="row ossearchrow" ng-show="showhide" id="nodatafound"></div>
+            <div ng-show="searchResult" ng-hide="showhide">
+                <ng-switch on="refineFlag">
+                <div ng-switch-when="true" class="ossearchBy">{{refineSearchMsg}}</div>
+                <div ng-switch-when="false" class="ossearchmsgBy">{{refineSearchMsg}}</div>
+                </ng-switch>
+            <div class="tableTopBTNs mTop20">
+                <span ossautofilter></span>    
+                <span ossexportexcel id="OrderSummary"></span>
+            </div>
+            <div class="showResultsOptBtns">
+                <div class="row switchtablepanel" ossswitchtablepanel></div>
+                <div class="ossDisplayResultOpt"></div>    
+            </div>
+            <div ng-show="refineFlag" class="ossAddRemoveClm osrefineflagshow" id="viewByAllWithRefine"></div>
+            <div ng-hide="refineFlag" class="ossAddRemoveClm" id="viewByAllWithoutRefine"></div>
+            <div class="clrboth"></div>
+            <div class="datalist" id="panelDIV" ng-show="false;" osspanel>
+		</div>
+	<br>
+	<div class="tableDIV" ng-show="true;" style="min-height:0%;">
+		<div class="ostablediv" ng-show="moreItems" style="min-height:0%;">
+            <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                    <tr ng-show="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                    <tr id="autoFilter" ng-hide="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                        <tbody>
+                            <tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate:reverse | startFrom:(currentPage-pageIndex)*itemsPerPage | limitTo:itemsPerPage">
+                                <td ng-show="{{columnNames[0].id}}" ng-class="sortedTD_{{columnNames[0].id}}"><div ng-show="{{item.showItem}}">{{item.purchaseOrderNo}}</div></td>
+                                <td ng-show="{{columnNames[1].id}}" ng-class="sortedTD_{{columnNames[1].id}}"><div ng-show="{{item.showItem}}">{{item.quoteNo}}</div></td>
+                                <td ng-show="{{columnNames[2].id}}" ng-class="sortedTD_{{columnNames[2].id}}">{{item.shipToAddr1}}</td>
+                                <td ng-show="{{columnNames[3].id}}" ng-class="sortedTD_{{columnNames[3].id}}"><a class="orderNoLink" ng-click="redirectToOrderDetails('{{item.orderNo}}');" href id='{{item.orderNo}}'><div ng-show="{{item.showItem}}">{{item.orderNo}}</div></a></td>
+                                <td ng-show="{{columnNames[4].id}}" ng-class="sortedTD_{{columnNames[4].id}}"><a class="trigger" id="{{item.status}}">{{item.status}}</a>
+                                    <div height="100px;" class="table_details OrderStatusPopup">
+                                        <!--<div class="generals">
+                                            <span class="margin_left10">Quote Creation Date:</span>
+                                            <div class="div_input margin_left10" id="item_subitem">{{item.quote_creation_date| date:'yyyy-MM-dd'}}</div>
+                                        </div>
+                                        <!--<div class="generals">
+                                            <span class="margin_left10">Purchase Order Date:</span>
+                                            <div class="div_input margin_left10" id="Product" >{{item.purch_order_date| date:'yyyy-MM-dd'}}</div>
+                                        </div>-->
+                                        <!--<div class="generals">
+                                            <span class="margin_left10">HP Receive Date:</span>
+                                            <div class="div_input margin_left10" id="product_descr">{{item.hp_receive_date| date:'yyyy-MM-dd'}}</div>
+                                        </div>
+                                        <div class="generals">
+                                            <span class="margin_left10">Order Load Date:</span>
+                                            <div class="div_input margin_left10" id="requested_date">{{item.order_load_date| date:'yyyy-MM-dd'}}</div>
+                                        </div>
+                                        <div class="generals">
+                                            <span class="margin_left10">Clean Order Date:</span>
+                                            <div class="div_input margin_left10" id="plant">{{item.clean_order_date| date:'yyyy-MM-dd'}}</div>
+                                        </div>
+                                        <div class="generals">
+                                            <span class="margin_left10">Order Close Date:</span>
+                                            <div class="div_input margin_left10" id="ship_from">{{item.order_close_date| date:'yyyy-MM-dd'}}</div>
+                                        </div>-->
+                                        <ul class="prodpopunorlist">
+                                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                            <li class="prodstatuslist"><span>Quote Creation Date :</span>{{item.quoteCreationDate| date:'yyyy-MM-dd'}}</li>
+                                            <li class="prodstatuslist"><span>HP Receive Date :</span>{{item.hpReceiveDate| date:'yyyy-MM-dd'}}</li>
+                                            <li class="prodstatuslist"><span>Order Load Date :</span>{{item.orderLoadDate| date:'yyyy-MM-dd'}}</li>
+                                            <li class="prodstatuslist"><span>Clean Order Date :</span>{{item.cleanOrderDate| date:'yyyy-MM-dd'}}</li>
+                                            <li class="prodstatuslist"><span>Order Close Date :</span>{{item.orderCloseDate| date:'yyyy-MM-dd'}}</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td ng-show="{{columnNames[5].id}}" ng-class="sortedTD_{{columnNames[5].id}}">{{item.schedShipDate| date:'yyyy-MM-dd'}}</td>
+                                <td ng-show="{{columnNames[6].id}}" ng-class="sortedTD_{{columnNames[6].id}}">{{item.shippedAt| date:'yyyy-MM-dd'}}</td>
+                                <td ng-show="{{columnNames[7].id}}" ng-class="sortedTD_{{columnNames[7].id}}">{{item.schedDelvDate| date:'yyyy-MM-dd'}}</td>
+                                <td ng-show="{{columnNames[8].id}}" ng-class="sortedTD_{{columnNames[8].id}}">{{item.podAt| date:'yyyy-MM-dd'}}</td>
+                                <td ng-show="{{columnNames[9].id}}" ng-class="sortedTD_{{columnNames[9].id}}">
+                                    <a class="shipmentNoLink" ng-click="redirectToShipmentDetails('{{item.hpdeliveryno}}')" href id='{{item.hpdeliveryno}}' id='{{item.hpdeliveryno}}'>{{item.shipmentNo}}</a>
+                                </td>
+                                <td ng-show="{{columnNames[10].id}}" ng-class="sortedTD_{{columnNames[10].id}}"><div ng-show="{{item.showItem}}">{{item.orderTypeDescr}}</div></td>
+                                <td ng-show="{{columnNames[11].id}}" ng-class="sortedTD_{{columnNames[11].id}}"><div ng-show="{{item.showItem}}">{{item.purchOrderDate| date:'yyyy-MM-dd'}}</div></td>
+                                <td ng-show="{{columnNames[12].id}}" ng-class="sortedTD_{{columnNames[12].id}}">{{item.lastUpdate| date:'yyyy-MM-dd'}}</td>
+                            </tr>
+                        </tbody>
+            </table>
+        </div>
+    <div class="table_overflow" ng-hide="moreItems" style="min-height:0%;">
+		<table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+			<thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                <tr ng-show="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                <tr id="autoFilter" ng-hide="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                <tbody>
+                <tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate:reverse | startFrom:(currentPage-pageIndex)*itemsPerPage | limitTo:itemsPerPage">
+                    <td ng-show="{{columnNames[0].id}}" ng-class="sortedTD_{{columnNames[0].id}}"><div ng-show="{{item.showItem}}">{{item.purchaseOrderNo}}</div></td>
+                    <td ng-show="{{columnNames[1].id}}" ng-class="sortedTD_{{columnNames[1].id}}"><div ng-show="{{item.showItem}}">{{item.quoteNo}}</div></td>
+                    <td ng-show="{{columnNames[2].id}}" ng-class="sortedTD_{{columnNames[2].id}}">{{item.shipToAddr1}}</td>
+                    <td ng-show="{{columnNames[3].id}}" ng-class="sortedTD_{{columnNames[3].id}}"><a class="orderNoLink" ng-click="redirectToOrderDetails('{{item.orderNo}}');" href id='{{item.orderNo}}'><div ng-show="{{item.showItem}}">{{item.orderNo}}</div></a></td>
+                    <td ng-show="{{columnNames[4].id}}" ng-class="sortedTD_{{columnNames[4].id}}">
+                            <a href class="trigger" id="{{item.status}}">{{item.status}}</a>
+                        <div height="100px;" class="table_details OrderStatusPopup">
+                            <!--<div class="generals">
+                                <span class="margin_left10">Quote Creation Date:</span>
+                                <div class="div_input margin_left10" id="item_subitem">{{item.quote_creation_date| date:'yyyy-MM-dd'}}</div>
+                            </div>
+                            <!--<div class="generals">
+                                <span class="margin_left10">Purchase Order Date:</span>
+                                <div class="div_input margin_left10" id="Product" >{{item.purch_order_date| date:'yyyy-MM-dd'}}</div>
+                            </div>-->
+                            <!--<div class="generals">
+                                <span class="margin_left10">HP Receive Date:</span>
+                                <div class="div_input margin_left10" id="product_descr">{{item.hp_receive_date| date:'yyyy-MM-dd'}}</div>
+                            </div>
+                            <div class="generals">
+                                <span class="margin_left10">Order Load Date:</span>
+                                <div class="div_input margin_left10" id="requested_date">{{item.order_load_date| date:'yyyy-MM-dd'}}</div>
+                            </div>
+                            <div class="generals">
+                                <span class="margin_left10">Clean Order Date:</span>
+                                <div class="div_input margin_left10" id="plant">{{item.clean_order_date| date:'yyyy-MM-dd'}}</div>
+                            </div>
+                            <div class="generals">
+                                <span class="margin_left10">Order Close Date:</span>
+                                <div class="div_input margin_left10" id="ship_from">{{item.order_close_date| date:'yyyy-MM-dd'}}</div>
+                            </div>-->
+                            <ul class="prodpopunorlist">
+                                <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                <li class="prodstatuslist"><span>Quote Creation Date :</span>{{item.quoteCreationDate| date:'yyyy-MM-dd'}}</li>
+                                <li class="prodstatuslist"><span>HP Receive Date :</span>{{item.hpReceiveDate| date:'yyyy-MM-dd'}}</li>
+                                <li class="prodstatuslist"><span>Order Load Date :</span>{{item.orderLoadDate| date:'yyyy-MM-dd'}}</li>
+                                <li class="prodstatuslist"><span>Clean Order Date :</span>{{item.cleanOrderDate| date:'yyyy-MM-dd'}}</li>
+                                <li class="prodstatuslist"><span>Order Close Date :</span>{{item.orderCloseDate| date:'yyyy-MM-dd'}}</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td ng-show="{{columnNames[5].id}}" ng-class="sortedTD_{{columnNames[5].id}}">{{item.schedShipDate| date:'yyyy-MM-dd'}}</td>
+                    <td ng-show="{{columnNames[6].id}}" ng-class="sortedTD_{{columnNames[6].id}}">{{item.shippedAt| date:'yyyy-MM-dd'}}</td>
+                    <td ng-show="{{columnNames[7].id}}" ng-class="sortedTD_{{columnNames[7].id}}">{{item.schedDelvDate| date:'yyyy-MM-dd'}}</td>
+                    <td ng-show="{{columnNames[8].id}}" ng-class="sortedTD_{{columnNames[8].id}}">{{item.podAt| date:'yyyy-MM-dd'}}</td>
+                    <td ng-show="{{columnNames[9].id}}" ng-class="sortedTD_{{columnNames[9].id}}">
+                        <a class="shipmentNoLink" ng-click="redirectToShipmentDetails('{{item.hpdeliveryno}}')" href id='{{item.hpdeliveryno}}' id='{{item.hpdeliveryno}}'>{{item.shipmentNo}}</a>
+                    </td>
+                    <td ng-show="{{columnNames[10].id}}" ng-class="sortedTD_{{columnNames[10].id}}"><div ng-show="{{item.showItem}}">{{item.orderTypeDescr}}</div></td>
+                    <td ng-show="{{columnNames[11].id}}" ng-class="sortedTD_{{columnNames[11].id}}"><div ng-show="{{item.showItem}}">{{item.purchOrderDate| date:'yyyy-MM-dd'}}</div></td>
+                    <td ng-show="{{columnNames[12].id}}" ng-class="sortedTD_{{columnNames[12].id}}">{{item.lastUpdate| date:'yyyy-MM-dd'}}</td>
+                </tr>
+            </tbody>
+		</table>
+    </div>
+</div>
+<span id="dynamicExportTable"></span>
+<br>
+<div class="row">
+    <div class="pagination ossPagination"></div>
+</div>
+<!--<div class="row" style="font-size:12px; font-weight:bold; float:right;" ng-show="showMessage()">{{message}}</div>-->
+</div></div>
+</div>
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

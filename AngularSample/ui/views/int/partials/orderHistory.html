@@ -1,0 +1,38 @@
+<div ng-init = "expandOrCollapsePanelNames=['orderHistory']"></div>
+<div class="ossRow collapseexpand"></div>
+<div ng-controller="orderHistoryCtrl">
+    <div class="ossRow" >
+        <div ng-click="expandOrCollapse('orderHistory')">
+            <div class="row_title order_history">
+                    <div class="{{expandOrCollapseImg['orderHistory']}} expCloseImgDiv" ></div>
+                    <span>
+                        <b>Order History : {{orderNo}}</b>
+                    </span>
+                    <div  class="histbutalign" style="margin-left:88% !important;">
+                        <a href class="button slim primary btn_label_slim histbutwidth" ng-click="redirectToOrderDetails();">&laquo;&laquo; Back to OrderDetail</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="ossRow" ng-show="orderHistory">
+        <div class="twelve columns orderdetailerror" ng-show="noDataFlag">{{error}}</div>
+    </div>
+    <div ng-hide="noDataFlag">
+        <div ng-show="orderHistory">
+            <div class="ossRow table_overflow">
+                <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                    <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td>{{item.date}}</td>
+                            <td><div ng-repeat="statusCode in item.statusCode">{{statusCode}}</div></td>
+                            <td><div ng-repeat="description in item.description">{{description}}</div></td>
+                       </tr>
+                    </tbody>     
+                </table>
+            </div>
+        </div>    
+        <br>
+    </div>
+    <div id="loader"><img src="../../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+</div>

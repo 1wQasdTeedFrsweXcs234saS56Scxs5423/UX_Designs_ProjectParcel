@@ -1,0 +1,25 @@
+<div class="boxHeaderCls">Box Details#</div>
+    <div>
+        <div ng-switch on = "displayFlag">
+            <div ng-switch-when="box">
+                <ul>
+                    <li ng-repeat="box in itemItemBoxComplete">{{box}}</li>
+                </ul>
+            </div>
+            <div ng-switch-when="parentBox">
+                <div ng-repeat="(box,boxs) in itemItemBoxComplete" class="boxHeadingsCls">
+                    <div class="boxHeaderItemCls" ng-click="boxItemColpseExpand('showData{{$index}}',e)">
+                        <span class="collapseImg expCloseImgDiv" id="showData{{$index}}" style="margin: 0px 1px 1px 1px !important;"></span>
+                            &nbsp;&nbsp;
+                        <span>{{box}}</span>
+                        <div ng-show="showData{{$index}}">
+                            <ul class="boxItemsCls">
+                                <li ng-repeat="box in boxs">{{box}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div><a class="slim button secondary btn_label" ng-click="$modalSuccess();" style="margin-top: 5px;">Close</a></div>

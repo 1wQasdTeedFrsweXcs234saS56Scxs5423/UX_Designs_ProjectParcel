@@ -1,0 +1,49 @@
+
+<style type="text/css">
+    table{
+        border-radius:2px;
+        border-radius: 10px
+    }
+    #showid h2{
+        color:white !important;
+        font-size:14px;
+    }
+</style>
+<div id="showidbody">
+<div class="modal-header">
+      <a href="" class="closeBtn" ng-click="$modalCancel()"><img src="../common/images/closeBtn.png"></a>
+      <div id="showid" style="background-color:#767676;font-size:14px;"><h2 style="color:white:">Site/Locator IDs for pmHP customer base number</h2></div>
+</div>
+
+<div class="modal-body"  ng-controller="CustomerHierarchyCtrl" id="modelbody"> 
+<h2>CBN :{{cnId}}</h2>
+<table id="tableOne" width="90%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+<thead>
+<tr class="tableHeader font_black table_details" style="white-space:nowrap;border: 1px solid #999999;color: #000000;">
+ <th>Address type</th>
+ <th>Site/locator Id</th>
+ <th>Source Systems</th>
+ </tr>
+ </thead>
+<tr ng-repeat="item in showids[0]">
+<td>SoldTo</td>
+<td><a href="" ng-click="fetchBySiteLocaterId(item.soldto)">{{item.soldto}}</a></td>
+<td>CRS</td>
+</tr>
+<tr>
+<tr ng-repeat="item in showids[0]">
+<td>Ship to</td>
+<td>{{item.shipto}}</td>
+<td>CRS</td>
+</tr>
+<tr ng-repeat="item in showids[0]">
+<td>Invoice To</td>
+<td>{{item.invto}}</td>
+<td>CRS</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+
+

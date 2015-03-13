@@ -1,0 +1,87 @@
+<div class="producDetailstHeader" ng-controller="productDetailsCtrl">
+	<div class="ossRow">
+		<div class="twelve columns"><span class="headings">Product Information</span>
+		<hr>
+		</div>
+	</div>
+	<div class="ossRow">
+		<div class="three columns">
+			<div>
+				<div class="spancls">Item#:</div><div class="details">{{productitems.item_subitem}}</div>
+			</div>
+			<div>
+				<div class="spancls">Product Description:</div><div class="details">{{productitems.product_descr}}</div>
+			</div>
+			<div>
+				<div class="spancls">Requested Date#:</div><div class="details">{{productitems.customer_req_date| date:'yyyy-MM-dd'}}</div>
+			</div>
+		</div>
+		<div class="three columns">
+				<div>
+					<div class="spancls">Product#:</div><div class="details">{{productitems.material_no}}</div>
+				</div>
+				<div>
+					<div class="spancls">EPEAT Designation:</div><div class="details">{{productitems.epeat_designation}}</div>
+				</div>
+				<div>
+					<div class="spancls">Plant#:</div><div class="details">{{productitems.plant_code}}</div>
+				</div>
+		</div>
+		<div class="three columns">
+				<div>
+					<div class="spancls">Customer Product#:</div><div class="details">{{productitems.cust_product_no}}</div>
+				</div>
+				<div>
+					<div class="spancls">Deal ID:</div><div class="details">{{productitems.config_id}}</div>
+				</div>
+				<div>
+					<div class="spancls">Ship From:</div><div class="details">{{productitems.ship_from}}</div>
+				</div>
+		</div>
+		<div class="three columns">
+				<div>
+					<div class="spancls">Mfg. Product#:</div><div class="details">{{productitems.mfg_part_number}}</div>
+				</div>
+				<div>
+					<div class="spancls">Bundle:</div><div class="details">{{productitems.bundle_id}}</div>
+				</div>
+		</div>
+	</div>
+	<div class="ossRow">
+		<div class="twelve columns">
+		<span class="producDetailsDiscription">
+			This HS/HTS tariff classification and ECCN code is Hewlett-Packard's opinion of the proper classification today. Classifications are subject to change. The importer and exporter of record is the responsible party for determining the correct classification of any item at the time of import and export. 
+		</span>
+		<br>
+		<br>
+		<br>
+		</div>
+		<hr>
+	</div>
+	<div class="ossRow" ng-hide="showExportDetailsFlag">
+            <div class="twelve columns">
+                <br>
+                <br>
+                <br>
+            </div>
+    </div>
+	<div class="ossRow" ng-show="showExportDetailsFlag">
+		<div class="twelve columns"><span class="headings">Export / Import Classification</span></div>
+	</div>
+    <div class="ossRow" ng-show="showExportDetailsFlag">
+        <div class="twelve columns">
+            <div exportimportclassificationtable></div>   
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="ossRow">
+        <div class="twelve columns">
+            <div>
+                <a href="" onclick="window.close();"><button type="button" class="closeButton">Close</button></a>
+            </div>
+        </div>    
+    </div>
+    <div id="loader"><img src="../../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+</div>

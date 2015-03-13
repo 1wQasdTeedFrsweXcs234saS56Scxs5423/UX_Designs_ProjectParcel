@@ -1,0 +1,956 @@
+<div ng-init = "expandOrCollapsePanelNames=['refineSearch', 'orderSummary','shipping','orderNotes','lineItemList','orderstatus','customerdetails','paymentdetails','adressdetails','attentiondetails']"></div>
+<div class="ossRow collapseexpand"></div>
+<br>
+<div ng-init = "expandOrCollapse('refineSearch','c')"></div>
+<div ng-controller="orderHeaderCtrl" class="orderHeader">
+    <div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+    <div ng-switch on="errMsgFlag">
+        <div ng-switch-when="false" style="font-size: 14px;font-weight: bold;float: left;margin-top: 15px;color: #F00;background: none repeat scroll 0 0 #F7D7D7;padding: 10px;margin-left: 450px;margin-bottom: 10px;">{{errMsg}}</div><br><br><br><br><br><br>
+        <div ng-switch-when="true">
+            <div class="ossRow" style="margin-top:-50px;">
+                <div class="ten columns columnsfloat">
+                    <div class="detail_number" style="margin-left:5px;width: 120px;">
+                        <dl><dt>Related Quotes</dt>
+                            <dd>
+                                <!--<a href ng-click="openQuoteDetails()" style="width:40%;" ng-show="quoteLink">{{orderHeader.quote_no}}</a>-->
+                                <span ng-show="quoteLink" style="color: #000;">{{orderHeader.quote_no}}</span>
+                                <span ng-hide="quoteLink" style="color: #000;">{{orderHeader.quote_no}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="ossRow">
+                <div class="status">
+                    <div class="twelve columns columnsfloat">
+                        <ng-switch on="canceledFlag">
+                            <div class="ossRow" ng-switch-when="false">
+                                <div class="prgressStsMain" ng-class="{progCompled: orderStatuses['Submitted'] <= currentStatus}">
+                                    <div class="progIcon">1</div>
+                                    <span>Submitted</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-class="{progCompled: orderStatuses['Processing'] <= currentStatus}">
+                                    <div class="progIcon">2</div>
+                                    <span>Processing</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-class="{progCompled: orderStatuses['Acked'] <= currentStatus}">
+                                    <div class="progIcon">3</div>
+                                    <span>Acked</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-class="{progCompled:orderStatuses['Production'] <= currentStatus}">
+                                    <div class="progIcon">4</div>
+                                    <span>Production</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-class="{progCompled:orderStatuses['ProductionDone'] <= currentStatus}">
+                                    <div class="progIcon">5</div>
+                                    <span>Production Done</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-show="cdCodeFlag" ng-class="{progCompled:orderStatuses['FactShipped'] <= currentStatus}">
+                                    <div class="progIcon">6</div>
+                                    <span>Shipped from Factory</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-show="cdCodeFlag" ng-class="{progCompled:orderStatuses['Registered'] <= currentStatus}">
+                                    <div class="progIcon">7</div>
+                                    <span>Registered</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-show="cdCodeFlag" ng-class="{progCompled:orderStatuses['Shipped'] <= currentStatus}">
+                                    <div class="progIcon">8</div>
+                                    <span>Shipped to Customer</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-show="cdCodeFlag" ng-class="{progCompled:orderStatuses['Delivered'] <= currentStatus}">
+                                    <div class="progIcon">9</div>
+                                    <span>Delivered</span>
+                                    <div class="lastbgLineEnd"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-hide="cdCodeFlag" ng-class="{progCompled:orderStatuses['Shipped'] <= currentStatus}">
+                                    <div class="progIcon">6</div>
+                                    <span>Shipped to Customer</span>
+                                    <div class="bgLine"></div>
+                                </div>
+                                <div class="prgressStsMain" ng-hide="cdCodeFlag" ng-class="{progCompled:orderStatuses['Delivered'] <= currentStatus}">
+                                    <div class="progIcon">7</div>
+                                    <span>Delivered</span>
+                                    <div class="lastbgLineEnd"></div>
+                                </div>
+                            </div>
+                            <div class="ossRow" ng-switch-when="true">
+                                <div class="prgressStsMain" ng-class="{progCompled:orderStatuses['CANCELED'] <= currentStatus}">
+                                    <div class="progCanceledIcon">1</div>
+                                    <span>Canceled</span>
+                                </div>
+                            </div>
+                        </ng-switch>
+                    </div>
+                </div>
+            </div>
+            <div ng-init = "expandOrCollapse('orderSummary','e')"></div>
+            <div class="ossRow" style="width: 95%; margin-left:22px;">
+                <div class="three columns columnsfloat row_title">
+                    <div class="{{expandOrCollapseImg['orderSummary']}} expCloseImgDiv" ng-click="expandOrCollapse('orderSummary')"></div>
+                    <span ng-click="expandOrCollapse('orderSummary')"><b>HP Order Number&nbsp;:&nbsp;{{orderHeader.hp_order_no}}</b></span><span id="nhover"><img src="../../common/images/greenflag.jpg" ng-show="setGereenFlage"></span>
+                    <a href   ng-show="showmoreDetailFalge" class="delveryCodesinfo" ><span><b style=" font-weight: bold; font-size: 14px; margin-top: 15px; color:steelblue;">&nbsp;More&nbsp;</b></span></a>
+                    <a href  ng-show="accountdetails" class="accountDetails" ><span><b style=" font-weight: bold; font-size: 14px; margin-top: 15px; color:steelblue;">&nbsp;Account&nbsp;</b></span></a>
+                    <div class="moreButtonpopup table_details" >
+                        <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                        <div ng-repeat="(name,value) in showMoreDetails" class="generalsmorepopup">
+                            <div id="delveryCodes">
+                                <span style="color:#999;text-align:right">{{name}}:&nbsp;&nbsp;</span>
+                                <div class="div_inputs txtAlignCls" >
+                                    <b style="margin-left: -26px;">{{value}}</b></span>
+                                </div>
+                        </div>
+                    </div>
+                    <div  style=" width: 64%;margin: -26px;">
+                    <span style="margin-left: 31px;color: #999;display: inline-block;margin-bottom: -17px;" ng-show="endcustflage"> End Customer Address:</span>
+                    <div ng-repeat="names in showMoreDetailsAdress" class="generalsmorepopup" style="margin-left: -10px;">
+                         <!--<span style="margin-top:-12px;" ng-show="{{$index == 0}}"><b style="font-weight: normal;color: black;margin-left: 126px;float: left;">{{names}}</b></span>-->
+                         <!--<span ng-show="{{$index!= 0}}"><b style="font-weight: normal;color: black;margin-left: 126px;float: left;">{{names}}</b></span>-->
+                         <b style="font-weight: normal;color: black;margin-left: 188px;float: left;">{{names}}</b>
+                    </div>
+                    </div>
+                    <br/><br/>
+                    <span style="margin-left:-130px;color: #999;display: inline-block;margin-bottom: -17px;margin-top: 27px;" ng-show="reselleraddflage">Reseller Address:</span>
+                    <div ng-repeat="names in showMoreReseleradress" class="generalsmorepopup" style="margin-left: 64px;">
+                        <b style="font-weight: normal;color: black;margin-left: 127px;margin-right: 40px">{{names}}</b>
+                    </div>
+                    <br/><br/>
+                    <span style="margin-left:-142px;color: #999;display: inline-block;margin-bottom: -17px;margin-top: 21px;" ng-show="forwarderaddflage">Forwarder Address:</span>
+                    <div ng-repeat="names in showMoreForwarderAdress" class="generalsmorepopup" style="margin-left: 64px;">
+                        <b style="font-weight: normal;color: black;margin-left: 122px;margin-right: 40px;">{{names}}</b>
+                    </div>
+                </div>
+                <div class="accountButton table_details">
+                    <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                    <div class="generals">
+                        <span>Account:</span>
+                        <div class="div_input" id="account">{{orderHeader.accountDetails[0].account}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Om Region:</span>
+                        <div class="div_input" id="om_region">{{orderHeader.om_region}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Business Type:</span>
+                        <div class="div_input" id="businessType">{{orderHeader.businessType}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Rtm:</span>
+                        <div class="div_input" id="rtm">{{orderHeader.rtm}}</div>
+                    </div>
+                    <hr>
+                    <div class="generals">
+                        <span>Customer Segment:</span>
+                        <div class="div_input" id="customer_segment">{{orderHeader.customer_segment}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>FO Name:</span>
+                        <div class="div_input" id="fo_name">{{orderHeader.accountDetails[0].fo_name}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>FO Team:</span>
+                        <div class="div_input" id="fo_team">{{orderHeader.accountDetails[0].fo_team}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>fo Manager</span>
+                        <div class="div_input" id="fo_manager">{{orderHeader.accountDetails[0].fo_manager}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>fo Email</span>
+                        <div class="div_input" id="fo_email">{{orderHeader.accountDetails[0].fo_email}}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Account:</span>
+                        <div class="div_input" id="account">{{orderHeader.accountDetails[0].account}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Account Manager:</span>
+                        <div class="div_input" id="account_manager">{{orderHeader.accountDetails[0].account_manager}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Account Group Names:</span>
+                        <div class="div_input" id="account_group_name">{{orderHeader.accountDetails[0].account_group_name}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Account Country:</span>
+                        <div class="div_input" id="account_country">{{orderHeader.accountDetails[0].account_country}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Account Service Level:</span>
+                        <div class="div_input" id="account_service_level">{{orderHeader.accountDetails[0].account_service_level}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Sales Support Name</span>
+                        <div class="div_input" id="sales_support_name">{{orderHeader.accountDetails[0].sales_support_name}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Sales Support Email:</span>
+                        <div class="div_input" id="sales_support_email">{{orderHeader.accountDetails[0].sales_support_email}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Sales Contact Name:</span>
+                        <div class="div_input" id="sales_contact_name"> {{orderHeader.accountDetails[0].sales_contact_name}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Sales Contact Email:</span>
+                        <div class="div_input" id="sales_contact_email"> {{orderHeader.accountDetails[0].sales_contact_email}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Bo name:</span>
+                        <div class="div_input" id="bo_name"> {{orderHeader.accountDetails[0].bo_name}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Bo Email::</span>
+                        <div class="div_input" id="bo_email"> {{orderHeader.accountDetails[0].bo_email}}</div>
+                    </div>
+                    <hr>
+                    <div class="generals">
+                        <span>Creation Date:</span>
+                        <div class="div_input" id="creation_date">{{orderHeader.accountDetails[0].creation_date}}</div>
+                    </div>
+                </div>
+                <ng-switch on="bBloodBuildCodeFlag">
+                <!--<div ng-switch-when="true">
+                    <img src="../common/images/hold-flag.png" class="bludbuildflag" >
+                        <div class="bludbuildflag_tip table_details">
+                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                            <div class="generals">
+                                <span style="color:#000000; height:20px;width:100%;text-align:left;"><b>block/hold info</b></span>
+                            </div><hr>
+                            <div ng-repeat="(name,value) in bloodBuildDelCodes" class="generals">
+                                <div class="div_input" id="HoldCode" style="width:100%;">
+                                    <span>{{value}}&nbsp;:&nbsp;<b style="color:black;">{{name}}</b></span>
+                                </div>
+                            </div>
+                        </div>
+                </div>-->
+                </ng-switch>
+                <ng-switch on="billingCodesFlag">
+                <ng-switch on="billCodesFlag">
+                    <div ng-switch-when="true">
+                        <img src="../common/images/hold-flag.png" class="bludbuildflag" ng-show="accountdetails">
+                        <img src="../common/images/hold-flag.png" class="bludbuildflagNoAccnt" ng-hide="accountdetails">
+                        <div class="bludbuildflag_tip table_details">
+                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                            <div class="generals">
+                                <span style="color:#000000; height:20px;width:100%;text-align:left;"><b>block/hold info</b></span>
+                            </div><hr>
+                            <div ng-repeat="(name,value) in billCodes" class="generals">
+                                <div class="div_input" id="HoldCode" style="width:100%;">
+                                    <span>{{value}}&nbsp;:&nbsp;<b style="color:red;">{{name}}</b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-switch>
+            </ng-switch>
+                <ng-switch on="delveryCodesFlag">
+                    <ng-switch on="delveryCodeFlag">
+                        <div ng-switch-when="true"><img src="../common/images/hold-flag.png" class="bludbuildflag">
+                                <div class="bludbuildflag_tip table_details">
+                                    <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                    <div class="generals">
+                                        <span style="color:#000000; height:20px;width:100%;text-align:left;"><b>block/hold info</b></span>
+                                    </div><hr>
+                                    <div ng-repeat="(name,value) in delveryCode" class="generals">
+                                        <div class="div_input" id="delveryCode" style="width:100%;">
+                                            <span>{{value}}&nbsp;:&nbsp;<b style="color:black;">{{name}}</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </ng-switch>
+                </ng-switch>
+            </div>
+            <div class="nine columns columnsfloat row_title" style="text-align: right;">
+                    <div class="btnOrderHistoryCls">
+                        <a href id="{{orderHeader.hp_order_no}}" class="slim  button secondary btn_label_slim" ng-click="backToSummary()">&laquo;&laquo; Back to Summary</a>
+                        <a href id="{{orderHeader.hp_order_no}}" class="slim  button secondary btn_label_slim" ng-click="redirectToOrderHistoryDetails()">Order History</a>
+                    </div>
+            </div>
+            <hr>
+            <div ng-show="orderSummary">
+                <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                     <div class="generals">
+                        <span>Purchase Order#:</span>
+                        <div class="div_input" id="PO_No">{{orderHeader.po_no}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>System Handle:</span>
+                        <div class="div_input" id="system_handle">{{orderHeader.system_handle}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Ship To MDCP ID:</span>
+                        <div class="div_input" id="ship_to_org_id">{{orderHeader.ship_to_org_id}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Support Agreement Identification (SAID):</span>
+                        <div class="div_input" id="said">{{orderHeader.said}}</div>
+                    </div>
+                </div>
+                <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                    <div class="generals">
+                        <span>Quote Number:</span>
+                        <div class="div_input" id="quote_no">{{orderHeader.quote_no}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Payer MDCP ID:</span>
+                        <div class="div_input" id="payer_org_id">{{orderHeader.payer_org_id}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>End Customer MDCP ID:</span>
+                        <div class="div_input" id="end_cust_org_id">{{orderHeader.end_cust_org_id}}</div>
+                    </div>
+                </div>
+                <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                    <div class="generals">
+                        <span>SAP Order #:</span>
+                        <div class="div_input" id="so_no">{{orderHeader.so_no}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Invoice To MDCP ID:</span>
+                        <div class="div_input" id="inv_to_org_id">{{orderHeader.inv_to_org_id}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Ship To HPRegion:</span>
+                        <div class="div_input" id="hpRegion">{{orderHeader.hpRegion}}</div>
+                    </div>
+                </div>
+                <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                    <div class="generals">
+                        <span>Customer Name:</span>
+                        <div class="div_input" id="customer_name">{{orderHeader.customer_name}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Sold To MDCP ID:</span>
+                        <div class="div_input" id="sold_to_org_id">{{orderHeader.sold_to_org_id}}</div>
+                    </div>
+                    <div class="generals">
+                        <span>Ship To HP SubRegion:</span>
+                        <div class="div_input" id="hpsubRegion">{{orderHeader.hpsubRegion}}</div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <!--Initiation of  order Status!-->
+            <div ng-init = "expandOrCollapse('orderstatus','e')"></div>
+            <div class="ossRow" style="margin-left:-1px;margin-top:-29px;width:100%;">
+            <div ng-click="expandOrCollapse('orderstatus')">
+                <div class="twelve columns columnsfloat row_title">
+                    <div class="{{expandOrCollapseImg['orderstatus']}} expCloseImgDiv" ></div>
+                        <span><b>Order Status</b></span>
+                    </div>
+                    <hr>
+                </div>
+                <div ng-show="orderstatus" id="orderstatus" style="">
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Summarized Status:</span>
+                            <div class="div_input ng-binding" id="summerisedStatus">{{summerisedStatus}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Credit Approval Date:</span>
+                            <div class="div_input ng-binding" id="credit_approval_date">{{orderHeader.credit_approval_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Shipment Status:</span>
+                            <div class="div_input ng-binding" id="ship_status">{{orderHeader.ship_status}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Team Id:</span>
+                            <div class="div_input ng-binding" id="team_id">{{orderHeader.team_id}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Clean Order Date:</span>
+                            <div class="div_input ng-binding" id="clean_order_date">{{orderHeader.clean_order_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                         <div class="generals">
+                            <span>Order State:</span>
+                            <div class="div_input ng-binding" id="order_state">{{orderHeader.order_state}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Credit Status:</span>
+                            <div class="div_input ng-binding" id="credit_status">{{orderHeader.credit_status}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Invoice Status:</span>
+                            <div class="div_input ng-binding" id="invoice_status">{{orderHeader.invoice_status}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Purchase  Order Type:</span>
+                            <div class="div_input ng-binding" id="purch_order_type">{{orderHeader.purch_order_type }}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Last Order Check:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.last_check | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Hp Receive Date:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.hp_receive_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Load Date:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.order_load_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                        <div class="generals">
+                            <span style="width: 42%;">Order Management System:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.om_system}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Order Type:</span>
+                            <div class="div_input" id="Order_Type">{{orderHeader.order_type}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Om Region:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.om_region}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Opportunity Id:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.opportunity_id}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Purchase  Order Date:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.purch_order_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Contract  Start Date:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.contract_start_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Contract  End Date:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.contract_end_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End order Status!-->
+             <!--Start of Customer Detials!-->
+             <div ng-init = "expandOrCollapse('customerdetails','c')"></div>
+            <div class="ossRow" style="margin-left:-1px;margin-top:-7px;width:100%;">
+                <div ng-click="expandOrCollapse('customerdetails')">
+                    <div class="twelve columns columnsfloat row_title">
+                        <div class="{{expandOrCollapseImg['customerdetails']}} expCloseImgDiv" ></div>
+                        <span><b>Customer Details</b></span>
+                    </div>
+                    <hr>
+                </div>
+                <div ng-show="customerdetails" id="customerdetails" style="">
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Business Type:</span>
+                            <div class="div_input ng-binding" id="businessType">{{orderHeader.businessType}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Customer Number:</span>
+                            <div class="div_input ng-binding" id="customer_no">{{orderHeader.customer_no}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Customer Order:</span>
+                            <div class="div_input ng-binding" id="customer_order">{{orderHeader.customer_order}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>GTM:</span>
+                            <div class="div_input ng-binding" id="rtm">{{orderHeader.rtm}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Purchase Agreement:</span>
+                            <div class="div_input ng-binding" id="purch_agree">{{orderHeader.purch_agree}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Special Codes:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.special_codes}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                         <div class="generals">
+                            <span>Sales Office/Group/Force:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.sales_office}}/{{orderHeader.sales_group}}/{{orderHeader.sales_force}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Customer Segment:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.customer_segment}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Customer Sub Segment:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.customer_sub_segment}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Deliver-to-code:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.dc_code}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Customer Requested Date:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.customer_req_date | date:'yyyy-MM-dd'}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Customer Intent Number:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.customer_intent_no}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Delivery Type:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.delivery_type}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Distribution Channel:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.distrib_channel}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Sales Org:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.sales_org}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>coord. Delivery (cd):</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.cd_code}}</div>
+                        </div>
+                    </div>
+                     <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Engagement ID (EID):</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.eid}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Sales Rep:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.sales_rep}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Originating System:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{originatingsystem}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Sales Admin:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.sales_coord}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Marketing & Sales Motion:</span>
+                            <div class="div_input ng-binding" id="Sold_To_Address_0">{{orderHeader.msm}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!--End of Customer Detials!-->
+              <!--Start of Payment Detials!-->
+              <div ng-init = "expandOrCollapse('paymentdetails','c')"></div>
+            <div class="ossRow" style="margin-left:-1px;margin-top:-7px;width:100%;">
+                <div ng-click="expandOrCollapse('paymentdetails')">
+                    <div class="twelve columns columnsfloat row_title">
+                        <div class="{{expandOrCollapseImg['paymentdetails']}} expCloseImgDiv" ></div>
+                        <span><b>Payment Details</b></span>
+                    </div>
+                    <hr>
+                </div>
+                <div ng-show="paymentdetails" id="paymentdetails" style="">
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>List Price: </span>
+                            <div class="div_input ng-binding" id="totalNetPrice">{{orderHeader.totalNetPrice}}&nbsp;{{orderHeader.currency}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>List Price USD: </span>
+                            <div class="div_input ng-binding" id="totalDlrlNetPrice">${{orderHeader.totalDlrlNetPrice }}</div>
+                        </div>
+                        <div class="generals">
+                             <span>Net Invoice Price:</span>
+                            <div class="div_input ng-binding" id="netInvoicePrice">{{orderHeader.netInvoicePrice}}&nbsp;{{orderHeader.currency}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Total Price/Total Price USD:</span>
+                            <div class="div_input ng-binding" id="totalPrice">{{orderHeader.totalPrice}}&nbsp;{{orderHeader.currency}}&nbsp;/&nbsp;${{orderHeader.totalDlrPrice}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Deal/Price ID:</span>
+                            <div class="div_input ng-binding" id="dealpriceId">{{dealpriceId}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Tax Status:</span>
+                            <div class="div_input ng-binding" id="tax_status">{{taxstatus}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Net Invoice Dollar Price:  </span>
+                            <div class="div_input ng-binding" id="netInvoicePrice">${{orderHeader.netInvoicePrice }}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Payment Terms:</span>
+                            <div class="div_input ng-binding" id="payment_terms">{{orderHeader.paymentTerms}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                       <div class="generals">
+                            <span>Ship to tax ID:</span>
+                            <div class="div_input ng-binding" id="ship_to_tax_id">{{orderHeader.ship_to_tax_id}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Shipping/Handling Charges:</span>
+                            <div class="div_input ng-binding" id="shippingCharges">{{orderHeader.shippingCharges}}&nbsp;{{orderHeader.currency}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Sold to tax ID: </span>
+                            <div class="div_input ng-binding" id="sold_to_tax_id">{{orderHeader.sold_to_tax_id}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Ship Via/Conditions: </span>
+                            <div class="div_input ng-binding" id="ship_via_code">{{orderHeader.ship_via_code}} / {{orderHeader.ship_conditions}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Payment Method:</span>
+                            <div class="div_input ng-binding" id="payment_method">{{orderHeader.payment_method}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-right: -70px;">
+                        <div class="generals">
+                            <span>Tax:/Est Tax:</span>
+                            <div class="div_input ng-binding" id="taxValue">{{taxEstTax}}</div>
+                        </div>
+                         <div class="generals">
+                            <span>Invoice To Code:</span>
+                            <div class="div_input ng-binding" id="invoice_to_party">{{orderHeader.invoice_to_party}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Invoice To tax ID:</span>
+                            <div class="div_input ng-binding" id="inv_to_tax_id">{{orderHeader.inv_to_tax_id}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Discount Percentage:</span>
+                            <div class="div_input ng-binding" id="discountPercentage">{{orderHeader.discountPercentage}}&nbsp;%</div>
+                        </div>
+                         <div class="generals">
+                            <span>Discount Amount:</span>
+                            <div class="div_input ng-binding" id="discountAmount">{{orderHeader.discountAmount}}&nbsp;{{orderHeader.currency}}</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+             <!--End of Payment Detials!-->
+             <div ng-init = "expandOrCollapse('adressdetails','c')"></div>
+            <div class="ossRow" style="margin-left:-1px;margin-top:-7px;width:100%;">
+                <div ng-click="expandOrCollapse('adressdetails')">
+                    <div class="twelve columns columnsfloat row_title">
+                        <div class="{{expandOrCollapseImg['adressdetails']}} expCloseImgDiv" ></div>
+                        <span><b>Address Details</b></span>
+                    </div>
+                    <hr>
+                </div>
+                <div ng-show="adressdetails" id="adressdetails" style="">
+                    <div class="three columns columnsfloat orderheaderClsaddress" style="margin-left: -0px;width:25%">
+                        <div style="margin-left: 26px;">
+                            <span style="font-size: 14px;font-weight: bold;"><b> Ship to Address:</b>&nbsp;<span style="font-size:14px;">{{orderHeader.ship_to}}</span></span>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.ship_To_Address[0].ship_to_addr_0}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_1}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_2}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_3}}</div>
+                            </div>
+                            <div class="generals">
+                               <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_4}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_5}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_6}}</div>
+                            </div>
+                             <div class="generals">
+                                <div class="div_inputsaddress ng-binding" id="">{{orderHeader.ship_To_Address[0].ship_to_addr_7}}</div>
+                            </div>
+                        </div>
+                         <div style="display:inline-block;margin-top:56px;margin-left:18px; ">
+                            <span style="font-size: 14px;font-weight: bold;margin-left: 8px;"><b>Payer Address</b></span>
+                            <div class="generals">
+                                <div style="margin-left: 8px;" class="div_inputsaddress ng-binding">{{orderHeader.payerAddress[0].payerAddr_0}}</div>
+                            </div>
+                            <div class="generals">
+                                <div style="margin-left: 8px;" class="div_inputsaddress ng-binding">{{orderHeader.payerAddress[0].payerAddr_1}}</div>
+                            </div>
+                            <div class="generals">
+                                <div style="margin-left: 8px;" class="div_inputsaddress ng-binding">{{orderHeader.payerAddress[0].payerAddr_2}}</div>
+                            </div>
+                            <div class="generals">
+                                <div style="margin-left: 8px;" class="div_inputsaddress ng-binding">{{orderHeader.payerAddress[0].payerAddr_3}}</div>
+                            </div>
+                            <div class="generals">
+                                <div style="margin-left: 8px;" class="div_inputsaddress ng-binding">{{orderHeader.payerAddress[0].payerAddr_4}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderClsaddress" style="width:25%">
+                        <div style="margin-left: 30px;display: inline-block;">
+                            <span style="font-size: 14px;font-weight: bold;"><b> Sold to Address:</b>&nbsp;<span style="font-size:14px;">{{orderHeader.sold_to_party}}</span></span>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.sold_To_Address[0].sold_to_addr_0}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.sold_To_Address[0].sold_to_addr_1}}</div>
+                            </div>
+                            <div class="generals">
+                            <div class="div_inputsaddress ng-binding" >{{orderHeader.sold_To_Address[0].sold_to_addr_2}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.sold_To_Address[0].sold_to_addr_3}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.sold_To_Address[0].sold_to_addr_4}}</div>
+                            </div>
+                        </div>
+                        <div style="display:inline-block;margin-left:29px;margin-top:63px">
+                            <span style="font-size: 14px;font-weight: bold;"><b> Forwarder Address:</b>&nbsp;<span style="font-size:14px">{{orderHeader.forwarder_sold_to}}</span></span>
+                             <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.forwarderName}}</div>
+                            </div>
+                             <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.forwarderAddress[0].forwarderAddr_0}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.forwarderAddress[0].forwarderAddr_1}}</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="three columns columnsfloat orderheaderClsaddress" style="width:25%">
+                        <div style="margin-left: 22px;display: inline-block;">
+                            <span style="font-size: 14px;font-weight: bold;"><b> Invoice to Address:</b>&nbsp;<span style="font-size:14px;">{{orderHeader.invoice_to_party}}</span></span>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.invoice_To_Address[0].invoice_to_addr_0}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.invoice_To_Address[0].invoice_to_addr_1}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.invoice_To_Address[0].invoice_to_addr_2}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.invoice_To_Address[0].invoice_to_addr_3}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.invoice_To_Address[0].invoice_to_addr_4}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="three columns columnsfloat orderheaderClsaddress" style="width:25%">
+                        <div style="margin-left: 7px;margin-top: -83px;display:inline-block">
+                            <span style="font-size: 14px;font-weight: bold;"><b> End Customer Address:</b>&nbsp;<span style="font-size:14px">{{orderHeader.end_customer_sold_to}}</span></span>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.endCustName}}</div>
+                            </div>
+                            <div class="generals">
+                                    <div class="div_inputsaddress ng-binding">{{orderHeader.endCustEmail}}</div>
+                            </div>
+                             <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.endCustAddress[0].endCustAddr_0}}</div>
+                            </div>
+                             <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.endCustAddress[0].endCustAddr_1 }}</div>
+                            </div>
+                              <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.endCustAddress[0].endCustAddr_2}}</div>
+                            </div>
+                             <div class="generals">
+                                <div class="div_inputsaddress ng-binding">{{orderHeader.endCustAddress[0].endCustAddr_3}}</div>
+                            </div>
+                            <div class="generals">
+                                <div class="div_inputsaddress ng-binding" >{{orderHeader.endCustAddress[0].endCustAddr_4}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div ng-init = "expandOrCollapse('attentiondetails','c')"></div>
+                <div class="ossRow" style="margin-left:-1px;margin-top:-5px;width:100%;">
+                <div ng-click="expandOrCollapse('attentiondetails')">
+                    <div class="twelve columns columnsfloat row_title">
+                        <div class="{{expandOrCollapseImg['attentiondetails']}} expCloseImgDiv" ></div>
+                        <span><b>Attention To:&nbsp;&nbsp;</b></span>
+                    </div>
+                    <hr>
+                </div>
+                <div ng-show="attentiondetails" id="attentiondetails">
+                    <div class="three columns columnsfloat orderheaderCls" style="margin-left:-82px;">
+                        <div class="generals" style="color: black;">
+                            <span style="font-size: 14px;font-weight: bold;color: black;"><b>Ship-To:</b></span>
+                        </div>
+                        <div class="generals">
+                             <span>Name:</span>
+                            <div class="div_input ng-binding" id="ship_to_attn">{{orderHeader.ship_to_attn}}</div>
+                        </div>
+                        <div class="generals">
+                             <span>Phone:</span>
+                            <div class="div_input ng-binding" id="ship_to_phone">{{orderHeader.ship_to_phone}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Fax:</span>
+                            <div class="div_input ng-binding" id="ship_to_fax">{{orderHeader.ship_to_fax}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Email:</span>
+                            <div class="div_input ng-binding" id="ship_to_email">{{orderHeader.ship_to_email}}</div>
+                        </div>
+                    </div>
+                     <div class="three columns columnsfloat orderheaderCls">
+                        <div class="generals">
+                            <span style="font-size: 14px;font-weight: bold;color: black;"><b>Sold-To:</b></span>
+                        </div>
+                        <div class="generals">
+                             <span>Name:</span>
+                            <div class="div_input ng-binding" id="sold_to_attn">{{sold}}</div>
+                        </div>
+                        <div class="generals">
+                                 <span>Phone:</span>
+                            <div class="div_input ng-binding" id="sold_to_phone">{{orderHeader.sold_to_phone}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Fax:</span>
+                            <div class="div_input ng-binding" id="sold_to_fax">{{orderHeader.sold_to_fax}}</div>
+                        </div>
+                        <div class="generals">
+                            <span>Email:</span>
+                            <div class="div_input ng-binding" id="sold_to_email">{{orderHeader.sold_to_email}}</div>
+                        </div>
+                    </div>
+                    <div class="three columns columnsfloat orderheaderCls">
+                            <div class="generals" style="color: black;">
+                                <span style="font-size: 14px;font-weight: bold;color: black;"><b>Invoice-To:</b></span>
+                            </div>
+                            <div class="generals">
+                                 <span>Name:</span>
+                                <div class="div_input ng-binding" id="invoice_to_attn">{{orderHeader.invoice_to_attn}}</div>
+                            </div>
+                            <div class="generals">
+                                     <span>Phone:</span>
+                                <div class="div_input ng-binding" id="invoice_to_phone">{{orderHeader.invoice_to_phone}}</div>
+                            </div>
+                            <div class="generals">
+                                <span>Fax:</span>
+                                <div class="div_input ng-binding" id="invoice_to_fax">{{orderHeader.invoice_to_fax}}</div>
+                            </div>
+                            <div class="generals">
+                                <span>Email:</span>
+                                <div class="div_input ng-binding" id="invoice_to_email">{{orderHeader.invoice_to_email}}</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <ng-switch on = "orderNotesflag">
+                <div ng-init = "expandOrCollapse('orderNotes','c')"></div>
+                <div class="ossRow" style="margin-left:-1px;margin-top:-8px;width:100%;">
+                    <div ng-click="expandOrCollapse('orderNotes')">
+                        <div class="twelve columns columnsfloat row_title">
+                            <div class="{{expandOrCollapseImg['orderNotes']}} expCloseImgDiv" ></div>
+                            <span><b>Order Notes</b></span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div ng-switch-when="true">
+                        <div ng-show="orderNotes" id="orderNotestab">
+                            <div class="five columns columnsfloat" ng-show="Holdcodesflag">
+                                <div class="generals">
+                                    <span>Header Status:
+                                        <a href id="holecodemoreinfo" ng-show="moreflag"><b>More</b></a>
+                                        <div class="holdCodeMoreInfo" height="auto">
+                                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                            <div ng-repeat="(name,value) in holdCodeMoreInfo">
+                                               <div class="generals">
+                                                    <span><b>{{name}}:</b></span>
+                                                    <div class="div_input" id="holdval">{{value}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </span>
+                                    <div ng-repeat="(name,value) in holdCodes">
+                                        <div class="div_input">
+                                            <b>{{name}}&nbsp;:&nbsp;</b>{{value}}
+                                        </div>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div ng-show="cancelReasonflag">
+                                    <div class="generals" style="margin-top:153px;">
+                                        <span>Cancelation Reason:</span>
+                                        <div class="div_input" id="Sold_To_Address_0">{{orderHeader.cancelation_reason}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                          <div ng-show="commentsflag">
+                                <div class="three columns columnsfloat">
+                                    <div class="generals">
+                                        <span>Comments:
+                                        </span>
+                                            <div class="div_input">
+                                                <textarea readonly="readonly"  style="background-color:white;font-size: 12px;overflow-y:auto;height:auto !important" rows="14" cols="6" class="commentstextarea">{{comments}}</textarea>
+                                                <!--<span>{{comments}}</span>-->
+                                               </div>
+                                            <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ten columns columnsfloat" ng-hide="Holdcodesflag"></div>
+                            <div class="ten columns columnsfloat" ng-hide="commentsflag"></div>
+                        </div>
+                    </div>
+                     <div ng-switch-when="false">
+                        <div ng-show="orderNotes" id="orderNotestab">
+                            <div class="five columns columnsfloat"><div style="font-size:14px; font-weight:bold; float:left; margin-top:15px; color:#F00; background: none repeat scroll 0 0 #F7D7D7;padding:10px;">No records found for Order Notes.</div></div>
+                            <div class="ten columns columnsfloat" ng-hide="Holdcodesflag"></div>
+                            <div class="ten columns columnsfloat" ng-hide="commentsflag"></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-switch>
+            <div class="ossRow" style="margin-left:0px;width:95%;margin-top:-7px">
+            <div ng-click="expandOrCollapse('lineItemList')">
+                <div class="twelve columns columnsfloat row_title">
+                    <div class="{{expandOrCollapseImg['lineItemList']}} expCloseImgDiv" ></div>
+                    <span><b>Line Items</b></span>
+                </div>
+                <hr>
+            </div>
+            <div ng-switch on="orderTypeFlag">
+                <div ng-switch-when="false">
+                    <div ng-show="lineItemList" id="lineItemList">
+                        <div><br>
+                        <tabset>
+                            <tab title="Item Details"   template-url="partials/lineItemDetails.html"></tab>
+                            <tab title="Serial / Asset #" template-url="partials/serialAssetInfo.html"></tab>
+                            <tab title="Pricing"   template-url="partials/pricing.html"></tab>
+                            <tab title="Shipment"   template-url="partials/shipment.html"></tab>
+                            <tab title="Order Life Cycle" template-url="partials/orderLifeCycle.html"></tab>
+                        </tabset>
+                        </div>
+                    </div>
+                </div>
+                <div ng-switch-when="true">
+                    <div ng-show="lineItemList" id="lineItemList">
+                        <div><br>
+                        <tabset>
+                            <tab title="Item Details"   template-url="partials/lineItemDetails.html"></tab>
+                            <tab title="Serial / Asset #" template-url="partials/serialAssetInfo.html"></tab>
+                            <tab title="Pricing"   template-url="partials/pricing.html"></tab>
+                            <tab title="Order Life Cycle" template-url="partials/orderLifeCycle.html"></tab>
+                        </tabset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div ng-init = "expandOrCollapsePanelNames=['shipped', 'open']"></div>
+<div class="ossRow collapseexpand"></div>
+<div ng-controller="serialAssetInfoCtrl">
+    <div class="ossRow serialAssetShippedExtCls">
+        <div ng-click="expandOrCollapse('shipped')">
+            <div class="twelve columns row_title">
+                <div class="{{expandOrCollapseImg['shipped']}} expCloseImgDiv" ></div>
+                <span><b>Shipped</b></span>
+            </div>
+            <hr>
+            <!--<div class="twelve columns" ng-show="shipped" style="width: 98%;margin-left: 16px;text-align: right;"><a href ng-show="dataShipFlag" ng-click="exportShippedData();" style="pointer:cursor;"><img src="../common/images/excel.png" title="Export to excel"></a></div>-->
+        </div>
+        <div ng-show="shipped" id="shippingtab" style="">
+            <div class="ossRow" ng-hide="dataShipFlag">
+                <div class="twelve columns serialassetshippederror">{{errorShipMessage}}</div>
+            </div>
+            <div ng-show="dataShipFlag">
+                <table class="hpTbl hpTblBorderCls">
+                    <thead>
+                        <th ng-repeat="column in shippedHeadings"><span class="serialAssetHeaderFont">{{getColumnDescription(column)}}</span></th>
+                    </thead>
+                    <tbody ng-repeat="item in shippedItems.data">
+                        <tr>
+                           <td ng-repeat="(key,val) in shippedHeadings">{{item[val]}}</td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <div class="ossRow serialAssetOpenExtCls">
+        <div ng-click="expandOrCollapse('open')">
+            <div class="twelve columns row_title">
+                <div class="{{expandOrCollapseImg['open']}} expCloseImgDiv" ></div>
+                <span><b>Open</b></span>
+            </div>
+        <!--<div class="twelve columns" ng-show="open" style="width: 98%;margin-left: 16px;text-align: right;"><a href ng-show="dataOpenFlag" ng-click="exportOpenData();" style="pointer:cursor;"><img src="../common/images/excel.png" title="Export to excel"></a></div>-->
+        </div>
+        <div ng-show="open" id="shippingtab1" style="">
+            <div class="ossRow" ng-hide="dataOpenFlag">
+                <div class="twelve columns serialassetopenerror">{{errorOpenMessage}}</div>
+            </div>
+            <div ng-show="dataOpenFlag">
+                <table class="hpTbl hpTblBorderCls">
+                    <thead>
+                        <th ng-repeat="column in openHeadings"><span class="serialAssetHeaderFont">{{getColumnDescription(column)}}</span></th>
+                    </thead>
+                    <tbody ng-repeat="item in openItems.data">
+                        <tr>
+                           <td ng-repeat="(key,val) in openHeadings">{{item[val]}}</td> 
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>
+        </div>    
+    </div>    
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

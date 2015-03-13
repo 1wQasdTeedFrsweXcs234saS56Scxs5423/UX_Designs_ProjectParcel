@@ -1,0 +1,344 @@
+$grey:#999;
+$bordergrey:#abadb3;
+$cyan:#9dddfe;
+$lightgrey:#e8e8e8;
+$listblue:#57bae8;
+$green:#00bd16;
+$white:#fff;
+$vlightgrey:#e6e9eb;
+$black:#000;
+$inputcolor:#0096dc;
+$tableborder:#ddd;
+$thbg:#fafafa;
+$darkgrey:#666;
+$tdgrey:#f1f1f1;
+$red:#f00;
+$floatR:right;
+$floatL:left;
+
+
+.list {
+  margin-top: 15px;
+  span {
+    width: 15%;
+    color: $grey;
+    font-size: 14px;
+  }
+  select {
+    border: $bordergrey 1px solid;
+    width: 30%;
+    color: $grey;
+    &:hover {
+      border: $cyan 1px solid;
+    }
+  }
+}
+
+.list_check {
+  text-align: right;
+  margin-top: 15px;
+  color: $grey;
+  font-size: 12px;
+}
+
+.list_input {
+  text-align: right;
+  margin-top: 15px;
+  color: $grey;
+  font-size: 14px;
+  span {
+    margin-top: 3px;
+    width: 11%;
+    float: $floatR;
+    margin-right: 5px;
+  }
+  strong {
+    margin-top: 3px;
+    width: 7%;
+    float: $floatR;
+    margin-right: 5px;
+  }
+  b {
+    margin-top: 3px;
+    width: 5%;
+    float: $floatR;
+    margin-right: 5px;
+  }
+  select {
+    border: $bordergrey 1px solid;
+    margin-top: 2px;
+    width: 12%;
+    float: $floatR;
+    color: $grey;
+    &:hover {
+      border: $cyan 1px solid;
+    }
+  }
+  input {
+    border: $bordergrey 1px solid;
+    width: 12%;
+    float: $floatR;
+    height: 24px;
+    color: $grey;
+    font-size: 12px;
+    margin-right: 10px;
+    &:hover {
+      border: $cyan 1px solid;
+    }
+  }
+  img {
+    margin-top: 3px;
+    float: $floatR;
+    margin-right: 8px;
+  }
+}
+
+.list_info {
+  border-bottom: $lightgrey 1px solid;
+  padding-bottom: 8px;
+  margin-top: 15px;
+  width: 95%;
+  float: $floatL;
+  margin-right: 5%;
+  span {
+    margin-top: 5px;
+    float: $floatL;
+    color: $listblue;
+    font-size: 18px;
+  }
+  img {
+    float: $floatL;
+    margin-right: 10px;
+  }
+}
+
+.list_fonts {
+  line-height: 16px;
+  padding-left: 10%;
+  width: 90%;
+  float: $floatL;
+  color: $grey;
+  font-size: 14px;
+  margin-right: 5px;
+  padding-top: 5px;
+  a {
+    width: 70%;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    float: $floatR;
+    color: $listblue;
+    overflow: hidden;
+  }
+  span {
+    color: $listblue;
+  }
+  strong {
+    color: red;
+  }
+  .cur {
+    color: $green;
+  }
+  img {
+    margin-bottom: -4px;
+  }
+}
+
+.button {
+  border-bottom: 0px;
+  border-left: 0px;
+  margin-top: 3%;
+  margin-left: 10%;
+  clear: both;
+  border-top: 0px;
+  border-right: 0px;
+}
+
+.list_num {
+  text-align: right;
+  margin-top: 30px;
+  color: $grey;
+  font-size: 12px;
+  ul {
+    float: $floatR;
+    li {
+      padding-bottom: 5px;
+      padding-left: 8px;
+      padding-right: 8px;
+      background: $listblue;
+      float: $floatL;
+      color: $white;
+      font-weight: bold;
+      margin-right: 5px;
+      padding-top: 5px;
+    }
+  }
+  .num {
+    margin-top: 5px;
+    float: $floatR;
+  }
+  span {
+    color: $listblue;
+    font-weight: bold;
+  }
+  a {
+    border: $vlightgrey 1px solid;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    float: $floatL;
+    color: $black;
+    font-weight: bold;
+    margin-right: 5px;
+    padding-top: 5px;
+    &:hover {
+      background: $listblue;
+      color: white;
+    }
+  }
+  input {
+    border: $vlightgrey 1px solid;
+    margin-top: -8px;
+    width: 5%;
+    float: $floatR;
+    height: 28px;
+    margin-left: 10px;
+    margin-right: 10px;
+    &:hover {
+      border: $inputcolor 1px solid;
+    }
+  }
+  strong {
+    padding-bottom: 8px;
+    margin-top: -8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: $listblue;
+    float: $floatR;
+    color: $white;
+    cursor: pointer;
+    padding-top: 8px;
+    &:hover {
+      background: $inputcolor;
+    }
+  }
+  .lgt {
+    color: $listblue;
+  }
+  .lgt_cur {
+    background: $listblue;
+    color: white;
+  }
+  .list_span {
+    float: $floatR;
+  }
+}
+
+.four {
+  padding: 5px;
+}
+
+.top_right {
+  padding: 0px;
+  &:hover {
+    box-shadow: $white 2px 3px 8px;
+    -webkit-box-shadow: $white 2px 3px 8px;
+    -moz-box-shadow: white 2px 3px 8px;
+  }
+}
+
+.item_table table {
+  border: $tableborder 1px solid;
+  margin-top: 15px;
+  th {
+    text-align: center;
+    font-weight: bold;
+  }
+  td, th {
+    padding: 2px;
+  }
+  td.numeric {
+    text-align: right;
+  }
+  th {
+    &.numeric {
+      text-align: right;
+    }
+    border-bottom: $tableborder 1px solid;
+    padding: 10px;
+    background: $thbg;
+    color: $darkgrey;
+    font-size: 12px;
+    font-weight: 100;
+    border-right: $tableborder 1px solid;
+  }
+  td {
+    text-align: center;
+    padding-bottom: 10px;
+    color: $darkgrey;
+    font-size: 12px;
+    border-right: $tdgrey 1px solid;
+    padding-top: 10px;
+    span {
+      color: green;
+    }
+    strong {
+      color: $red;
+      font-weight: 100;
+    }
+  }
+}
+
+
+.vireportcomm {
+  float: $floatR;
+  padding-left: 850px;
+}
+
+.virepcont {
+  float: left;
+  margin-left: 20px;
+  margin-top: -15px;
+}
+
+div.row.virepoline {
+  margin-top: -10px !important;
+}
+
+span.virepname {
+  font-size: 14px !important;
+  text-align: left !important;
+  color: $black !important;
+}
+
+.vitabinnfo {
+  width: 950px;
+  margin-left: 5px !important;
+}
+
+.vireppan {
+  margin-left: 11px;
+}
+
+.vifre {
+  margin-left: 34px;
+}
+
+.vihrline {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.vireppanel {
+  padding-left: 85px;
+  height: 150px;
+}
+
+.borderline{
+  border: solid $tableborder;
+clear: both;
+margin: 5px 0 5px;
+height: 0;
+width: 246px;
+border-width: 1px 0 0;
+}

@@ -1,0 +1,78 @@
+<div ng-controller="shipmentInformationCtrl" class="ship-container-ext shipmarginTopCls">
+<div class="row">
+<div  ng-repeat="item in shipments" class="ship-rpt">
+    <div class="ship-rpt-inner-content">
+        <div class="twelve columns columnsfloat ship-row_title">
+            <div ng-click="expandOrCollapseShipment('shipnum{{$index}}', '{{item.shipmentno}}', '{{item.hpdeliveryno}}', '{{item.legacy_order_no}}' )" class="cursor">
+                <span id="shipnum{{$index}}" class="collapseImg expCloseImgDiv"></span>
+                <span style="font-size:14px"><b>HP Delivery #:</b></span><div class="div-num"><a ng-click="redirectToShipment('{{item.hpdeliveryno}}','{{item.legacy_order_no}}')">{{item.shipmentno}}</a></div>
+                <div style="float:right">
+                    <a ng-click="openPodnPack('{{item.packlist}}')"><button type="button" class="primary ship-btn">Pack List</button></a>
+                    <a ng-click="openPodnPack('{{item.podimage}}')"><button type="button" class="primary ship-btn">POD Images</button></a>
+                </div>
+                <div style="clear:both"></div>
+                <table cellspacing="0" cellpadding="0" class="tblheader">
+                    <tr>
+                        <td><span>Ship Date:</span> {{item.shipmentdate | date:'yyyy-MM-dd:hh:mm:ss'}}</td>
+                        <td><span>Delivery Date:</span> {{item.deliverydate | date:'yyyy-MM-dd:hh:mm:ss'}}</td>
+                        <td><span>Ship Method:</span> {{item.ship_method}}</td>
+                        <td><span>Ship Cond.:</span> {{item.ship_conditions}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><span>Delivery Comment:</span> {{item.delivery_comment}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="shipnum{{$index}}" ng-show="((lineitemflg == 'shipnum{{$index}}') && showLineItem)">
+            <hr>
+            <div class="ship-deliverto columns columnsfloat">
+                <div class="generals">
+                    <span>Deliver To:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{item.delvtocity}}, {{item.country_name}}, {{item.delvtozipcode}}</div>
+                </div>
+                <div class="generals">
+                    <span>Weight:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{item.weight}}</div>
+                </div>
+            </div>
+            <div class="three columns columnsfloat">
+                <div class="generals">
+                    <span>Depot:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding"><a class="cursor" ng-click="showShipAddress('{{item.shipmentno}}')">{{item.depot_to_addr_1}}</a></div>
+                </div>
+                <div class="generals">
+                    <span>Truck ID:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{item.truckid}}</div>
+                </div>
+            </div>
+            <div class="three columns columnsfloat">
+                <div class="generals">
+                    <span>No. Of Boxes:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding">{{item.quantity}}</div>
+                </div>
+                <div class="generals">
+                    <span>carrier:</span>
+                    <div id="Delivery_Type" class="div_input ng-binding" ng-show="{{item.carrierFlag}}"><a class="cursor"  ng-click="redirectUrl('{{item.carrierwebpage}}')">{{item.carriername}}</a></div>
+                    <div id="Delivery_Type" class="div_input ng-binding" ng-hide="{{item.carrierFlag}}">{{item.carriername}}</div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <br />
+            <div class="ship-rpt-inner-content">
+                <tabset>
+                    <tab title="Item Information" template-url="partials/itemInformation.html"></tab>
+                    <tab title="Box Information" template-url="partials/boxInformation.html"></tab>
+                    <tab title="Tracking Information" template-url="partials/trackingInformation.html"></tab>
+                    <tab title="Status History" template-url="partials/statusHistory.html"></tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+<div>
+    <div class="ship-row div-norecord" ng-show="showhideShipment">
+        No Records Found
+    </div>
+</div>

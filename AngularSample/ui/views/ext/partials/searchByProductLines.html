@@ -1,0 +1,10 @@
+<div>
+  <div class="modal-header" style="margin-left: -14px;">
+      <a type="button" class="close" ng-click="$modalCancel()" aria-hidden="true"><b>X</b></a>
+      <h3>click on  product line to choose</h3>
+  </div>
+    <select style="width: 100%; height:100%;" multiple="multiple" name="shipC" id="shipC" ng-model="shipC" size="10">
+      <option ng-repeat="obj in locList" value="{{obj.val}}">{{obj.name}}</option>
+  </select>
+</div>
+<div><a class="slim button secondary btn_label" ng-click="$modalSuccess();" style="float: right;margin-right: 39px;margin-bottom: 12px;">Ok</a></div></div>

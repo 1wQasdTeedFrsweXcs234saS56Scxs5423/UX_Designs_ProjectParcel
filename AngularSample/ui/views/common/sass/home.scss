@@ -1,0 +1,329 @@
+$white:#fff;
+$grey:#5a5a5a;
+$lightgrey:#ccc;
+$lightgrey:#B9B8B8;
+$blue:#0096D6;
+$vlightgrey:#e4e8e8;
+$secgrey:#767676;
+$orange:#d7410B;
+$oragneovr:#c1401a;
+$discolor:#a9a9a9;
+$floatl:left;
+$floatr:right;
+$selectcolor:#2BA6CB;
+$disbg:#dddddd;
+$pribg:#006699;
+
+
+
+/*******************************
+
+Grid
+
+********************************/
+
+.grid_3 {
+  width: 315px;
+  float: $floatl;
+  display: block;
+  margin: 0 15px 0 0;
+}
+
+.row_2 {
+  width: 100%;
+  float: $floatl;
+  display: block;
+  margin: 0 0 7px 0;
+}
+
+.myReportbox {
+  height: 72px !important;
+}
+
+.alpha {
+  margin-left: 0px;
+}
+
+.omega {
+  margin-right: 0px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  min-width: 300px;
+  margin: auto;
+}
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ' ';
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+* {
+  html .clearfix, &:first-child + html .clearfix {
+    zoom: 1;
+  }
+}
+
+body {
+  font-family: 'hp_simplified_w01_regularRg';
+}
+
+.active_table {
+  background-color: $white;
+  color: $grey;
+  padding: 13px;
+  border: 1px solid $lightgrey;
+  border-bottom: 3px solid $blue;
+  &:hover, &:focus {
+    background-color: $vlightgrey;
+  }
+}
+
+.intro_table {
+  background-color: $blue;
+  color: white;
+  border: 2px solid $blue;
+  padding: 18px;
+  p {
+    padding-bottom: 15px;
+  }
+}
+
+.w_40 {
+  width: 45% !important;
+}
+
+.w_50 {
+  width: 50%;
+}
+
+.w_100 {
+  width: 100%;
+}
+
+.left {
+  float: $floatl;
+}
+
+.right {
+  float: $floatr;
+}
+
+/*******************************
+
+Fonts
+
+********************************/
+
+.homePage {
+  h1, h2, p {
+    margin: 0;
+  }
+  label {
+    margin: 0 0 5px 0;
+    &:hover {
+      cursor: default;
+    }
+  }
+  h1 {
+    font-weight: 28px;
+    margin: 0;
+    color: $white;
+    font-family: 'hp_simplified_w01_boldregular';
+  }
+  h2 {
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+  p, label {
+    font-size: 14px;
+  }
+}
+
+/*******************************
+
+Forms
+
+********************************/
+
+.homePage {
+  input, select {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 0;
+    width: 100%;
+    height: 26px;
+    background-color: white;
+    border: 1px solid $lightgrey;
+  }
+  label img {
+    float: $floatr;
+  }
+  .active_table h1 {
+    color: $grey;
+  }
+}
+
+/*******************************
+
+Buttons
+
+********************************/
+
+.homePage button {
+  -webkit-border-radius: 0 4px;
+  -moz-border-radius: 0 4px;
+  border-radius: 0 4px;
+  border: 0px;
+  text-align: center;
+  font-size: 21px;
+  color: white;
+  font-weight: bold;
+  height: 36px;
+  padding: 0px 20px;
+  float: $floatr;
+  margin-top: 5px;
+  cursor: pointer;
+  line-height: 30px;
+}
+
+.critical {
+  background: $orange;
+  &:hover {
+    background: $oragneovr;
+  }
+}
+
+.primary {
+  background: $blue;
+  &:hover {
+    background: $pribg;
+  }
+}
+
+.critical {
+  background: $orange;
+  &:hover {
+    background: $oragneovr;
+  }
+}
+
+.secondary {
+  background: $secgrey;
+  &:hover {
+    background: $grey;
+  }
+}
+
+/*******************************
+
+IMG
+
+********************************/
+
+.grid_3 img {
+  max-width: 312px;
+  height: 100%;
+}
+
+.w_40 img {
+  max-width: 15px;
+  height: 15px;
+}
+
+.relPos {
+  position: relative;
+}
+
+img.ui-datepicker-trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*home select dropdown start*/
+
+.styled-select {
+  select {
+    background: transparent;
+    width: 100%;
+    padding: 5px;
+    font-size: 13px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 26px;
+    appearance: none;
+    -webkit-appearance: none;
+    color: $blue;
+  }
+  width: 100%;
+  height: 26px;
+  overflow: hidden;
+  color: $selectcolor;
+  border: 1px solid $lightgrey;
+  background: url("../images/s-21px-hpe.png") no-repeat 262px -1430px white;
+  position: relative;
+  margin-bottom: 13px;
+  &:hover {
+    border: 1px $grey solid;
+  }
+  &.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white;
+  }
+  .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid $lightgrey;
+    position: absolute;
+    right: 30px;
+    top: 0;
+  }
+  &.disabled {
+    border: 1px solid $lightgrey;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px $disbg;
+    select {
+      color: $discolor;
+    }
+  }
+  select span {
+    height: 30px;
+    border-bottom: 1px solid $lightgrey;
+  }
+}
+
+.searchmsg {
+  font-size: 13px;
+  padding: 1px 1px 15px 1px;
+  margin-top: -6px;
+}
+
+/*home select dropdown end*/
+
+.homeid {
+  margin-left: 3px;
+}
+
+.homeorder {
+  width: 320px !important;
+}
+ .redtxt{
+  color:red;
+  }

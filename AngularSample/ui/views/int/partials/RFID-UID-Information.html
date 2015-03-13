@@ -1,0 +1,28 @@
+
+ <div class="bg-color-white shipmarginTopCls" >
+ <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-width100">
+     <tr>
+           <th>Item</th>
+           <th>CLIN</th>
+           <th>HP Product #</th>
+           <th>Descripton</th>
+           <th>UID</th>
+           <th>Serial #</th>
+           <th>Box</th>           
+    </tr>    
+     <tr ng-repeat="item in RFIDItems" ng-show="RFIDflag" >
+           <td>{{item.item_subitem}}</td>
+           <td>{{item.cust_product_no}}</td>
+           <td>{{item.material_no}}</td>
+           <td>{{item.product_descr}}</td>
+           <td>{{item.dod_uid}}</td>
+           <td>{{item.serial_number}}</td>
+           <td>{{item.box_no}}</td>           
+    </tr>    
+    </table>
+     <div ng-hide="RFIDflag" class="div-norecord">
+             No Records Found
+</div> 
+
+</div>    
+ 

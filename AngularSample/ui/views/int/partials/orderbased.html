@@ -1,0 +1,54 @@
+<div ng-controller="eventNotificationCtrl">
+   <div class="twelve columns">
+      <div id="container">
+         <div id="header">
+            <div class="headerTxt">Event notification setup menu</div>
+                <div class="menuDiv">
+                    <div class="menuBtnSelect">Order Based</div>
+                    <div class="menuBtn">Profile Based</div>
+                    <div class="menuBtn">Active Profiles</div>
+                </div>
+            </div>
+            <div id="HPDetail">
+                <div class="HPOrderTxt">HP Order Number</div>
+                <input id="txtfiedl" name="" type="text" ng-model="hpOrderNo"/>
+                <div>&nbsp;&nbsp;<a class="slim button searchBTN primary btn_label"style="margin-top:4px;" href ng-click="searchOrderForNotify(hpOrderNo)">Search</a></div>
+            </div>
+            <br><br>
+         </div>
+
+         <div ng-show="noDataFlag"><br><br><br><br>
+            <div ><span class="txtPadding" style="font-size: 15px; margin-left: 175px;">Choose Order to setup notification for:</span></div><br>
+            <div class="row tableDIV sitrackingInfo" style="width:72%" ng-show="noDataFlag" >
+               <table id="tableTwo" width="100%" cellspacing="1" cellpadding="0" border="0" class="sistatus_history">
+                  <thead>
+                     <tr class="tableHeader font_black ossCols" ></tr>
+                  </thead>
+                  <tr id="autoFilter" class="font_black sitableautofillter" >
+                     <th ng-repeat="(title,name) in columnNames">
+                        <input type=text ng-model="$parent.search[name]">
+                     </th>
+                  </tr>
+                  <tr ng-repeat="item in items | filter:query | orderBy:predicate:reverse" >
+                     <td ng-show="item.watchOrderFlag" ng-class="sortedTD_{{columnNames[0].id}}"><a ng-model="item.legacy_order_no" href id="eventOption"  ng-click="redirectToSaveSetUp('{{item.order_no}}','{{item.legacy_order_no}}','{{item.watchOrderFlag}}');">{{item.order_no}}<img src="../../common/images/watchon2.gif"></a></td>
+                     <td ng-hide="item.watchOrderFlag" ng-class="sortedTD_{{columnNames[1].id}}"><a ng-model="item.legacy_order_no" href id="eventOption"  ng-click="redirectToSaveSetUp('{{item.order_no}}','{{item.legacy_order_no}}','{{item.watchOrderFlag}}');">{{item.order_no}}<img src="../../common/images/watchoff2.gif"></a></td>
+                     <td ng-class="sortedTD_{{columnNames[2].id}}">{{item.customer_name}}</td>
+                     <td ng-class="sortedTD_{{columnNames[1].id}}">{{item.purchase_order_no}}</td>
+                     <td ng-class="sortedTD_{{columnNames[0].id}}">{{item.purch_order_date}}</td>
+                  </tr>
+               </table>
+            </div>
+         </div><br><br><br>
+         <div ng-show="msgFlag" style="font-size: 14px;"><br><br><br><a href id="eventOption" style="margin: 180px;" ng-model="orderNo" ng-click="redirectToSaveSetUp(orderNo);">{{errorMsg}}</a></div>
+         <br>
+         <div id="Subheader" style="margin-left:180px;"><span class="txtPadding">Currently Active Orders</span></div>
+         <div id="CAODetail" style="margin-left:180px;">
+            <span class="txtlinkDarkGray" style="text-decoration:none"><a style="text-decoration:none;color:#2BA6CB;" href id="detailed" ng-click="redirectToDetaildActive();">Detailed Active Orders</a></span><br>
+            <div ng-repeat="order in activeOrders">
+               <span class="txtlinkBlueTxt" style="text-decoration:none"><a class="orderNoLink" ng-model="order.legacy_order_no" style="color:#2BA6CB;"  href="javascript:void(0)" id="eventOption" ng-click="redirectToSaveSetUp('{{order.order_no}}','{{order.legacy_order_no}}');"><img src="../../common/images/watchon2.gif">&nbsp;&nbsp;{{order.order_no}}</span><br>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

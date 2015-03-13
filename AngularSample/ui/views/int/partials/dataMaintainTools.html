@@ -1,0 +1,82 @@
+<div id="mainDiv">
+    <div id="tableDetails">
+        <form ng-controller="dataMaintainToolsCtrl" id="dataMaintainToolsForm" name="dataMaintainToolsForm">	
+            <div id="tableheader">
+                <div class="columDiv">Table Selection</div>
+                <div class="filterDiv">
+                    <div class="table-styled-select">
+                        <div class="table-dd_border"></div>
+                            <select ng-model="query.table" ng-change="getTableDetails(query.table);" class="selectAdmin">
+                                <option value="">Select</option>
+                                <option ng-repeat="(id,val) in adminTables" value="{{id}}|{{val}}">{{val}}</option>
+                            </select>
+                        </div>	
+                </div>
+            </div>
+                <div id="header" ng-show="default_row">
+                    <div class="columDiv">And / Or</div>
+                    <div class="filterDiv"><span class="columnsHeader">Columns</span><span class="filterHeader">Filter</span></div>
+                    <div class="iconDiv"></div>
+                </div>
+                <div id="fieldRow1" class="fieldRow" ng-show="default_row">
+                    <div class="btnDiv"></div>
+                    <div class="fieldDiv">
+                        <!--<input id="field1" class="txtfield1" name="" type="text" ng-model="query.field1">-->
+                        <div class="ddropdown2">
+                            <div class="relative-styled-select">
+                            <div class="relative-dd_border"></div>
+                                <select id="field1" ng-model="query.field1" class="selectAdmin"> 
+                                    <option value="">Select</option>
+                                    <option ng-repeat="tablecolumn in tablecolumns" value="{{tablecolumn}}">{{tablecolumn}}</option>
+                                </select>
+                            </div>	
+                        </div>
+                        <div class="ddropdown2">
+                            <div class="relative-styled-select">
+                            <div class="relative-dd_border"></div>
+                                <select id="op" ng-model="query.op1" class="selectAdmin">
+                                        <option value="">Select</option>
+                                        <option value="=" selected>= </option>
+                                        <option value="<>"><></option>
+                                        <option value="<"><</option>
+                                        <option value=">">></option>
+                                        <option value="like">like</option>
+                                        <option value="not like">not like</option>
+                                        <option value="is null">is NULL</option>
+                                        <option value="is not null">is not NULL </option>
+                                </select>
+                            </div>	
+                        </div>
+                        <input id="value1" class="txtfield1" name="" type="text" ng-model="query.value1">
+                        <div addrowbutton></div>
+                    </div>
+                </div>
+            <div class="dynamicRows"></div>
+            <div id="userButtons">
+                <div class="TRText">
+                    <a class="slim button secondary" ng-show="clearall_button" ng-click="clearAllButton()">Clear All</a>
+                    <a class="slim button secondary" ng-show="update_button" ng-click="editTable()">Edit</a>
+                    <a class="slim button searchBTN primary btn_label" ng-show="select_button" ng-click="executeQuery()">Query Table</a>
+                    <a class="slim button searchBTN primary btn_label" ng-show="count_button" ng-click="showCount()">Show Count(*)</a>
+                </div>
+            </div>
+            <div id="tableResult" ng-show="showTableResult">
+                <div id="TRheader">
+                    <div class="TRText"><span ng-model="queryTableName">{{queryTableName}}</span></div>
+                </div>
+                <div id="TRSubheader" ng-show="showTableQuery"><span ng-model="tableQuery">{{tableQuery}}</span></div>
+                <div class="querytable" ng-show="showQueryTable"></div>
+                <div class="updatequerytable"  ng-show="showEditTable"></div>
+                <div style="margin: 5px 5px 5px 490px;">
+                <a class="slim button secondary" ng-show="delete_button1" ng-click="deleteRows()">Delete Selected Row(s)</a>
+                <a class="slim button secondary" ng-show="insert_button1" ng-click="insertRows()">Insert Row</a>
+                <a class="slim button secondary" ng-show="add_new_row_button1" ng-click="editTableRows()">Edit Row(s)</a>
+                <a class="slim button searchBTN primary btn_label" ng-show="save_button1" ng-show="update_button" ng-click="saveRecords()">Save</a>
+                </div>'
+			</div>
+            </div>
+                    <div class="editRecordsButton" ng-click="saveRecords()" ng-show="edit_record_button">Save<div>
+        </form>	
+    </div>
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

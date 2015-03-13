@@ -1,0 +1,624 @@
+<div ng-init = "expandOrCollapsePanelNames=['refineSearch', 'searchResult']"></div>
+<div ng-controller="collapseExpandCtrl">
+    <div class="row collapseexpand"></div>
+    <div class="row">
+        <div ng-controller="refineSearchCtrl">
+            <div ng-click="expandOrCollapse('refineSearch')">
+                <div class="twelve columns row_title">
+                    <div class="{{expandOrCollapseImg['refineSearch']}} expCloseImgDiv" ></div>
+                    <span ng-hide="advSearch"><b>Simple Search</b></span>
+                    <span ng-show="advSearch"><b>Advanced Search</b></span>
+                </div>
+            </div>
+            <div class="tableTopBTNs">
+                <a href ng-click="redirectToAdvSearch()" class="slim button secondary btn_label" style="margin-top: 15px;" ng-hide="advSearch">Advanced Search</a>
+                <a href ng-click="redirectToStdSearch()" class="slim button secondary btn_label" style="margin-top: 15px;" ng-show="advSearch">Standard Search</a>
+            </div>
+            <hr>
+            <div ng-init = "expandOrCollapse('refineSearch','e')"></div>
+            <div ng-show="refineSearch">
+                <div ng-init = "expandOrCollapse('refineSearch','e')"></div>
+                <form id="refSearchFrom">
+                    <div class="alert error"></div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">Purchase Order#:</span>
+                            <input type="text" id="poNo" class="form-input js_color_change ordSumInpExt" ng-model="poNo" ng-enter="isRSFormValid()">
+                        </div>
+                        <div class="generals">
+                            <span class="refinesearchorders">Order Status:
+                                <img  src="../../common/images/questionIcon.jpg" ng-click="getHelp('status')">
+                            </span>
+                            <div class="orderSummaryselect ordSumInpExt stdSearchSelect" style="background: url('../common/images/s-21px-hpe.png') no-repeat 200px -1429px white !important; overflow:hidden;">
+                                <div class="dd_border"></div>
+                                <select style="width:272px;background: transparent;" name="orderStatusSelected" id="orderStatusSelected" ng-model="orderStatusSelected">
+                                    <option ng-repeat="obj in orderStatus" value="{{obj.val}}" ng-selected="({{obj.val == orderStatusSearch}})">{{obj.name}}</option>
+                                    <optgroup label="---Ship/Invoice Status---">
+                                        <option ng-repeat="obj in shipInvStatusList" value="{{obj.val}}">{{obj.name}}</option>
+                                    </optgroup>
+                                    <optgroup label="---Cumulative Status---">
+                                        <option ng-repeat="obj in cumulativeStatusList" value="{{obj.val}}">{{obj.name}}</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">HP Order#:</span>
+                            <input type="text" id="hpOrderNo" class="form-input js_color_change ordSumInpExt" ng-model="hpOrderNo" ng-enter="isRSFormValid()">
+                        </div>
+                    </div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">Shipment#:</span>
+                            <input type="text" id="shipmentNo" class="form-input js_color_change ordSumInpExt" ng-model="shipmentNo" ng-enter="isRSFormValid()">
+                        </div>
+                    </div>
+                    <div class="three columns threeClms">
+                        <div class="generals">
+                            <span class="refinesearchorders">Attention To:</span>
+                            <input type="text" id="attentionTo" class="form-input js_color_change ordSumInpExt" ng-model="attentionTo" ng-enter="isRSFormValid()">
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Advance Search Start -->
+                     <div ng-show="advSearch">
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Invoice#:</span>
+                                <input type="text" id="invoiceNo" class="form-input js_color_change ordSumInpExt" ng-model="invoiceNo" ng-enter="isRSFormValid()">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Customer Product:</span>
+                                <input type="text" id="cProduct" class="form-input js_color_change ordSumInpExt" ng-model="cProduct" ng-enter="isRSFormValid()">
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Product:</span>
+                                <input type="text" id="product" class="form-input js_color_change ordSumInpExt" ng-model="product" ng-enter="isRSFormValid()">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Changed Since(in days):</span>
+                                <input type="text" id="changedSince" class="form-input js_color_change ordSumInpExt" ng-model="changedSince" ng-enter="isRSFormValid()">
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders" style="margin-bottom: 55px;"></span><br><br><br><br><br><br>
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders" style="margin-bottom: 55px;"></span><br><br><br><br><br><br>
+                            </div>
+                        </div>
+
+                        <div class="eight columns">
+                            <div class="generalsAdvanced">
+                                <span class="refinesearchorders">Ref / Contract</span>
+                                <div>
+                                    <div class="styledSelectExt flLeft" style="width:225px !important;overflow:hidden;">
+                                        <div class="dd_border"></div>
+                                        <select name="searchName0" id="searchName0" style="width: 247px;background: transparent;" ng-model="searchRefContract.searchName0">
+                                            <option ng-repeat="(numbers,value) in refContract" ng-selected="numbers==defaultRef"  value="{{numbers}}">{{value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="four columns rowTitle" style="width:37% !important;padding-top:0px;margin-left: 12px;" >
+                                        <input style="height: 27px;border: 2px solid #CCC;"type="text" id="searchNum0" name="searchNum0" class="form-input js_color_change" ng-model="searchRefContract.searchNum0" ng-enter="isRSFormValid()">
+                                    </div>
+                                    <div addmorecontract></div>
+                                    <div class="searchbynumrows"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="three columns" style="clear:both">
+                            <div class="generals advSrchdatimg advSrchWidth">
+                                <span class="refinesearchorders">Order Date:</span>
+                                <input type="text" placeholder="Start Date" id="orderStartDate" class="form-input js_color_change ordSumInpExt advSrchWidth" ng-model="orderStartDate" ng-enter="isRSFormValid()" my-datepicker>
+                                <!--<input type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" my-datepicker-date-range style="width:94%;">-->
+                            </div>
+                            <div class="generals advSrchenddatimg advSrchWidth">
+                                <input type="text" placeholder="End Date" id="orderEndDate" class="form-input js_color_change ordSumInpExt" ng-model="orderEndDate" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                            <div class="generals advdatimg advSrchWidth">
+                                <span class="refinesearchorders">Delivery Date :</span>
+                                <input type="text" placeholder="Start Date" id="delvStart" class="form-input js_color_change ordSumInpExt" ng-model="delvStart" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                            <div class="generals advenddatimg advSrchWidth">
+                             <input type="text" placeholder="End Date" id="delvEnd" class="form-input js_color_change ordSumInpExt" ng-model="delvEnd" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                        </div>
+                        <div class="three columns">
+                           <div class="generals advSrchdatimg advSrchWidth">
+                                <span class="refinesearchorders">Shipment Date</span>
+                                <input type="text" placeholder="Start Date" id="shipStartDate" class="form-input js_color_change ordSumInpExt" ng-model="shipStartDate" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                            <div class="generals advSrchenddatimg advSrchWidth">
+                                <input type="text" placeholder="End Date" id="shipEndDate" class="form-input js_color_change ordSumInpExt" ng-model="shipEndDate" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                             <div class="generals advdatimg advSrchWidth">
+                                <span class="refinesearchorders">Requested Date:</span>
+                                <input type="text" placeholder="Start Date" id="reqStart" class="form-input js_color_change ordSumInpExt" ng-model="reqStart" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                            <div class="generals advenddatimg advSrchWidth">
+                                <input type="text" placeholder="End Date" id="reqEnd" class="form-input js_color_change ordSumInpExt" ng-model="reqEnd" ng-enter="isRSFormValid()" my-datepicker>
+                            </div>
+                        </div>
+                        <div style="clear:both">
+                            <div class="three columns threeClms" >
+                                <div class="generals">
+                                    <span class="refinesearchorders">Ship To(ID)</span>
+                                    <!--<span style="margin-top: 0px;margin-left: -100px;" ng-click="searhByProdLine()" ><img src="../../common/images/popupArrow1.jpg"></img></span>-->
+                                    <input type="text" id="shipToId" class="form-input js_color_change ordSumInpExt" ng-model="shipToId" ng-enter="isRSFormValid()">
+                                </div>
+                                <div class="generals advSrchWidth">
+                                    <span class="refinesearchorders">Ship To Country:</span>
+                                    <!--<input type="text" id="shipC" class="form-input js_color_change ordSumInpExt" ng-model="shipC">-->
+                                    <div class="orderSummaryselect ordSumInpExt mTopState" style="background: url('../common/images/s-21px-hpe.png') no-repeat 200px -1429px white !important;overflow:hidden;">
+                                        <div class="dd_border"></div>
+                                        <select style="width:272px;background: transparent;" name="orderStatusSelected" id="shipC" ng-model="shipC" ng-change="shipToCountry();">
+                                            <option value=""> Please Select</option>
+                                            <option ng-repeat="(numbers,value) in countryCodes" value="{{numbers}}">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="generals">
+                                    <span class="refinesearchorders">Ship to Zip:</span>
+                                    <input type="text" id="shipZip" class="form-input js_color_change ordSumInpExt" ng-model="shipZip" ng-enter="isRSFormValid()">
+                                </div>
+                            </div>
+                            <div class="three columns threeClms" >
+                                <div class="generals">
+                                    <span class="refinesearchorders">Sold  To(ID):</span>
+                                    <input type="text" id="soldToId" class="form-input js_color_change ordSumInpExt" ng-model="soldToId" ng-enter="isRSFormValid()">
+                                </div>
+                                <div class="generals">
+                                    <span class="refinesearchorders">Ship to State/Region:</span>
+                                    <input type="text" id="shipS" class="form-input js_color_change ordSumInpExt mTopAmt" ng-model="shipS" ng-enter="isRSFormValid()">
+                                    <span style="margin-left:146px;margin-top: -38px;" ng-click="searchByShipRegion()" ><img src="../../common/images/popupArrow1.jpg"></img></span>
+
+                                    <!--<span style="margin-left: -100px;" ng-click="searchByCountry()" ><img src="../../common/images/popupArrow1.jpg"></img></span>-->
+                                    <!--<div class="orderSummaryselect ordSumInpExt mTopState" style="background: url('../common/images/s-21px-hpe.png') no-repeat 200px -1429px white !important;">
+                                        <div class="dd_border"></div>
+                                        <select style="width: 100%;" name="orderStatusSelected" id="shipS" ng-model="shipS">
+                                            <option value=""> Please Select</option>
+                                            <option ng-repeat="(numbers,value) in countryCodes" value="{{numbers}}">{{value}}</option>
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <div class="generals advSrchWidth">
+                                    <span class="refinesearchorders">Product  Line:</span>
+                                    <input type="text" id="prodLine" class="form-input js_color_change ordSumInpExt" ng-model="prodLine" ng-enter="isRSFormValid()">
+                                    <span style="margin-left: 150px;margin-top: -38px;" ng-click="searhByProdLine()" ><img src="../../common/images/popupArrow1.jpg"></img></span>
+                                </div>
+                            </div>
+                        <div class="three columns threeClms" >
+                            <div class="generals">
+                                <span class="refinesearchorders" style="margin-top:68px;">Bill To(ID):</span>
+                                <input type="text" id="billToId" class="form-input js_color_change ordSumInpExt" ng-model="billToId" ng-enter="isRSFormValid()">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Purchasing  Agent:</span>
+                                <input type="text" id="pagent" class="form-input js_color_change ordSumInpExt" ng-model="pagent" ng-enter="isRSFormValid()">
+                            </div>
+                            <!--<div class="generals advSrchWidth">
+                                <span class="refinesearchorders" style="margin-top:19px;"></span>
+                                <input type="text" id="poNo" class="form-input js_color_change ordSumInpExt mTopAmt" ng-model="shipRegion">
+                                <span style="margin-left: 150px;margin-top: -38px;" ng-click="searchByShipRegion()" ><img src="../../common/images/popupArrow1.jpg"></img></span>
+                            </div>-->
+                            <!--<div class="generals">
+                                <span class="refinesearchorders">Purchasing  Agent:</span>
+                                <span style="margin-left: -100px;" ng-click="searhByProdLine()" >
+                                    <img src="../../common/images/popupArrow1.jpg"></img></span>
+                                <input type="text" id="pagent" class="form-input js_color_change ordSumInpExt" ng-model="pagent">
+                            </div>-->
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                    <!-- Advance Search End -->
+                    <div class="tableTopBTNs" style="margin-top: -20px; margin-bottom: 16px;">
+                        <a class="slim button secondary btn_label" href ng-click="reSet();">Clear</a>
+                        <a href ng-click="isRSFormValid()" class="slim button searchBTN primary btn_label">Display</a>
+                    </div>
+                </form>
+            </div>
+            <!-- ng-switch -->
+        </div>
+    </div><br>
+    <!-- Search Result Section -->
+    <div class="row">
+        <div ng-controller="orderListCtrl" id="orderListCtrlDiv" ng-show="showResult">
+            <div ng-show="showhide">
+                <div class="nine columns row_title">
+                <div class="{{expandOrCollapseImg['searchResult']}} expCloseImgDiv" ></div>
+                <span><b>Search Result</b></span>
+            </div>
+            </div>
+            <div ng-click="expandOrCollapse('searchResult')" ng-hide="showhide">
+                <div class="nine columns row_title">
+                    <div class="{{expandOrCollapseImg['searchResult']}} expCloseImgDiv" ></div>
+                    <span><b>Search Result</b></span>
+                </div>
+            </div>
+            <hr>
+            <div class="row ossearchrow" ng-show="showhide" id="nodatafound"></div>
+            <div ng-show="searchResult" ng-hide="showhide">
+                <ng-switch on="refineFlag">
+                    <div ng-switch-when="true" class="ossearchBy">{{refineSearchMsg}}</div>
+                    <div ng-switch-when="false" class="ossearchmsgBy">{{refineSearchMsg}}</div>
+                </ng-switch>
+                <div class="clrboth"></div>
+                <div class="datalist" id="panelDIV" ng-show="false;" osspanel>
+                </div>
+                <br>
+                <div class="tableDIV" ng-show="true;" style="min-height:0%;">
+                    <div class="table_overflow" style="min-height:0%;">
+                        <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                            <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                            <tbody ng-repeat="order in orders">
+                                <tr>
+                                    <td>
+                                        <div ng-click="lineItemColExp('{{order.legacy_order_no}}','{{order.order_no}}');">
+                                            <span class="collapseImg expCloseImgDiv" id="{{order.legacy_order_no}}" style="margin-top: -2px;"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a class="orderNoLink" ng-click="redirectToOrderDetails('{{order.legacy_order_no}}');" href id='{{order.legacy_order_no}}'>
+                                            <span>{{order.order_no}}</span>
+                                        </a>
+                                    </td>
+                                    <td>{{order.purchase_order_no}}</td>
+                                    <td>{{order.total_order_value}}&nbsp;{{order.currency}} / ${{order.dlr_total_price}}</td>
+                                    <td><a class="trigger" id="{{order.order_overall_status}}">{{order.order_overall_status}}</a>
+                                        <div height="100px;" class="table_details OrderStatusPopup">
+                                            <ul class="prodpopunorlist">
+                                                <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                <li class="prodstatuslist"><span>Quote Creation Date :</span>{{order.quote_creation_date| date:'yyyy-MM-dd'}}</li>
+                                                <li class="prodstatuslist"><span>HP Receive Date :</span>{{order.hp_receive_date| date:'yyyy-MM-dd'}}</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>{{order.total_order_value}}&nbsp;{{order.currency}}</td>
+                                    <td>{{order.total_net_price}}&nbsp;{{order.currency}}</td>
+                                    <td>{{order.order_type_descr}}</td>
+                                    <td>{{order.purch_order_date| date:'yyyy-MM-dd'}}</td>
+                                    <td>{{order.quote_no}}</td>
+                                    <td>{{order.so_no}}</td>
+                                    <td>{{order.ship_to_addr_1}}</td>
+                                    <td>{{order.last_update| date:'yyyy-MM-dd'}}</td>
+                                </tr>
+                                <tr ng-show="((lineitemflg == '{{order.legacy_order_no}}') && showLineItem)">
+                                    <td colspan="27">
+                                        <div id="test{{order.legacy_order_no}}">
+                                            <div id="smallLoader" style="margin-left:30%;"><img src="../common/images/i-pre-sm-hpe.gif"></div><div id="overlaySmall"></div>
+                                            <!--line items start -->
+                                            <div>
+                                                <div ng-repeat="(name,val) in bundleItems">
+                                                    <div class="bundleHeaderCls" ng-click="lineItemColpseExpand('{{order.legacy_order_no}}','showData{{$index}}')" ng-show="showBundleDetails('{{name}}')">
+                                                        <span class="collapseImg expCloseImgDiv" id="showData{{$index}}{{order.legacy_order_no}}" style="margin: 0px 1px 1px 1px !important;"></span>&nbsp;<span>Bundle - Total  :  {{bundlePrices[name]| currency:""}}&nbsp;{{val[0].currency}} &nbsp;&nbsp;&nbsp;<span ng-show="{{showbundlePrice}}">Bundle id : {{name}}  </span></span>
+                                                        <br>
+                                                        <br>
+                                                        <div ng-show="showBundleItems(val)">
+                                                            <div ng-show="('{{order.legacy_order_no}}{{$index}}')">
+                                                                <div style="margin:0px 10px;">
+                                                                    <table  id="lineItemTable borderCls" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl" ng-show="showTbl('{{order.legacy_order_no}}','showData{{$index}}')" id="showData{{$index}}{{order.legacy_order_no}}" style="border: 1px solid #999999 !important;">
+                                                                        <thead ng-switch on="showBundelProductCharFlag">
+                                                                            <tr class="tableHeader ossColsLineItems" ng-switch-when="false"></tr>
+                                                                            <tr class="tableHeader ossColsWithProductCharsLineItems" ng-switch-when="true"></tr>
+                                                                        </thead>
+                                                                        <tbody ng-repeat="item in val" ng-hide="bundleChildItem{{item.higherLevel}}{{item.legacyorderno}}">
+                                                                            <tr id="bundleChildItem{{item.higherLevel}}{{item.legacyorderno}}">
+                                                                                <td ng-show="{{item.showBundleProductCharFlag}}">
+                                                                                    <div ng-click="showBundelProductChars('bundleProductCharsDetails{{$index}}',c,'{{$index}}','showData{{$index}}');$event.stopPropagation();">
+                                                                                        <span class="productCollapseImg productExpCloseImgDiv" title="Show product characteristics" id="bundleProductCharsDetails{{$index}}" style="margin: 0px 1px 1px 1px;"></span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td ng-hide="{{item.showItemcontent}}"></td>
+                                                                                <td class="table_details" >
+                                                                                    <div ng-click="showBundleChildElements('bundleChildItem{{item.itemSubItem}}{{item.legacyorderno}}','{{item.itemSubItem}}','showData{{$index}}',c,'{{item.legacyorderno}}','{{$parent.$index}}');$event.stopPropagation()" ng-show="{{item.showItemcontent}}">
+                                                                                        <span class="collapseImg expCloseImgDiv" id="bundleChild{{item.itemSubItem}}{{item.legacyorderno}}{{$parent.$index}}" style="margin: 0px 1px 1px {{30*item.level_indent}}px !important;" ng-show="showBundleImage('{{item.itemSubItem}}','{{name}}')"></span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="table_details" >
+                                                                                    <span ng-show="{{item.showItemcontent}}"><div ng-class="applyIndent({{item.level_indent}})"></div>{{item.itemSubItem}}</span>
+                                                                                    <span style="margin-left: 5px;" ng-show="{{item.showItemcontent}}">
+                                                                                        <img src="../common/images/hold-flag.png" ng-show="{{item.holdCode}}" class="productflag">
+                                                                                        <div class="flag_tip table_details">
+                                                                                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                                                            <div >
+                                                                                                <span style="color:#000000; height:20px;width:100%;text-align: left;"><b>block/hold info</b></span>
+                                                                                            </div><hr>
+                                                                                            <div ng-repeat="value in item.holdItems" class="generals">
+                                                                                                <div class="div_input" id="HoldCode" style="width:100%;">
+                                                                                                    {{value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                    <span style="margin-left: 5px;" ng-show="{{item.udfTextFlag}}">
+                                                                                        <a href class="udf_details" ><span><b style=" font-weight: bold; font-size: 14px; margin-top: 15px; color:steelblue;">&nbsp;UDF&nbsp;</b></span></a>
+                                                                                        <div class="udfDetails">
+                                                                                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                                                            <div class="generals">
+                                                                                                <div class="div_input" id="udfDetails" style="width:100%;">
+                                                                                                    {{item.udfText}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td class="table_details"><div ng-show="{{item.showItemcontent}}"><a href ng-click="showProductDetails('{{item.itemSubItem}}','{{item.legacyorderno}}');">{{item.product}}</a></div></td>
+                                                                                <td class="table_details"><div>{{item.configId}}</div></td>
+                                                                                <td class="table_details">{{item.itemStatus}}</td>
+                                                                                <td class="table_details">{{item.productDescr}}</td>
+                                                                                <td class="table_details">{{item.openQty}}</td>
+                                                                                <td class="table_details">{{item.shippedQty}}</td>
+                                                                                <td class="table_details">{{item.hpDeliveryNo}}</td>
+                                                                                <td class="table_details">{{item.dealId}}</td>
+                                                                                <td class="table_details">{{item.bundlePrice}}&nbsp;{{item.currency}}</td>
+                                                                                <td class="table_details">{{item.plannedShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.actualShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.plannedDeliveryDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.actualDeliveryDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details"><a href ng-click="getShipmentDetails('{{item.hpDeliveryNo}}','{{item.legacyorderno}}')">{{item.shipmentNo}}</a></td>
+                                                                                <td class="table_details"><a href ng-click="searchInvoice('{{item.invoiceNo}}','{{item.fullInvoiceNo}}','{{item.system}}')">{{item.invoiceNo}}</a></td>
+                                                                                <td class="table_details">{{item.invoiceDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.shipDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.requestedDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.cancellationReason}}</td>
+                                                                                <td class="table_details">{{item.scCommitDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.entitlementID}}</td>
+                                                                                <td class="table_details">{{item.billingPlan}}</td>
+                                                                                <td class="table_details">{{item.factShippedDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{item.actualCustShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                            </tr>
+                                                                            <tr ng-show="showBundleProductCharacteristics{{$index}}">
+                                                                                <td colspan="27" ng-show="showBundleProductCharacteristics{{$index}}">
+                                                                                    <div style="padding: 1px;margin: 0 0 1px {{100 * ($parent.$index+1)}}px;"   id="bundleProductCharsDetails{{$index}}" ng-show="bundleProductCharsDetails{{$index}}">
+                                                                                        <table class="prodcutCharTbl">
+                                                                                            <thead>
+                                                                                                <tr class="tableHeader ossproductcols"></tr>
+                                                                                            </thead>
+                                                                                            <tbody ng-repeat="prodchar in item.productCharacteristics">
+                                                                                                <tr>
+                                                                                                    <td class="table_details">{{prodchar.charac_id}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_id_descr}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_value}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_value_descr}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_line}}</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div ng-hide="showBundleItems(val)">
+                                                            <div ng-show="('{{order.legacy_order_no}}{{$index}}')">
+                                                                <div style="margin:0px 10px;">
+                                                                    <table  id="lineItemTable borderCls" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl" ng-show="showTbl('{{order.legacy_order_no}}','showData{{$index}}')" id="showData{{$index}}{{order.legacy_order_no}}" style="border: 1px solid #999999 !important;">
+                                                                        <thead ng-switch on="showBundelProductCharFlag">
+                                                                            <tr class="tableHeader ossColsLineItems" ng-switch-when="false"></tr>
+                                                                            <tr class="tableHeader ossColsWithProductCharsLineItems" ng-switch-when="true"></tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr id="bundleChildItem{{val.higherLevel}}{{val.legacyorderno}}" ng-hide="bundleChildItem{{val.higherLevel}}{{val.legacyorderno}}">
+                                                                                <td ng-show="{{val.showBundleProductCharFlag}}">
+                                                                                    <div ng-click="showBundelProductChars('bundleProductCharsDetails{{$index}}',c,'{{$index}}')">
+                                                                                        <span class="productCollapseImg productExpCloseImgDiv" title="Show product characteristics" id="bundelProductCharsDetails{{$index}}" style="margin: 0px 1px 1px 1px;"></span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td ng-hide="{{val.showItemcontent}}"></td>
+                                                                                <td class="table_details" ><div ng-click="showBundleChildElements('childItem{{val.itemSubItem}}{{val.legacyorderno}}','{{val.itemSubItem}}',c,'{{val.legacyorderno}}','{{$parent.$index}}');$event.stopPropagation()">
+                                                                                    <span class="collapseImg expCloseImgDiv" id="bundleChild{{val.itemSubItem}}{{val.legacyorderno}}{{$parent.$index}}" style="margin: 0px 1px 1px {{30*item.level_indent}}px !important;" ng-show="showBundleImage('{{val.itemSubItem}}')"></span></div></td>
+                                                                                <td class="table_details" >
+                                                                                    <span><div ng-class="applyIndent({{val.level_indent}})"></div>{{val.itemSubItem}}</span>
+                                                                                    <span style="margin-left: 5px;">
+                                                                                        <img src="../common/images/hold-flag.png" ng-show="{{val.holdCode}}" class="productflag">
+                                                                                        <div class="flag_tip table_details">
+                                                                                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                                                            <div >
+                                                                                                <span style="color:#000000; height:20px;width:100%;text-align: left;"><b>block/hold info</b></span>
+                                                                                            </div><hr>
+                                                                                            <div ng-repeat="value in val.holdItems" class="generals">
+                                                                                                <div class="div_input" id="HoldCode" style="width:100%;">
+                                                                                                    {{value}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                    <span style="margin-left: 5px;" ng-show="{{item.udfTextFlag}}">
+                                                                                        <a href class="udf_details" ><span><b style=" font-weight: bold; font-size: 14px; margin-top: 15px; color:steelblue;">&nbsp;UDF&nbsp;</b></span></a>
+                                                                                        <div class="udfDetails">
+                                                                                            <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                                                            <div class="generals">
+                                                                                                <div class="div_input" id="udfDetails" style="width:100%;">
+                                                                                                    {{val.udfText}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td class="table_details"><div><a href ng-click="showProductDetails('{{val.itemSubItem}}','{{val.legacyorderno}}');">{{val.product}}</a></div></td>
+                                                                                <td class="table_details"><div>{{val.configId}}</div></td>
+                                                                                <td class="table_details">{{val.itemStatus}}</td>
+                                                                                <td class="table_details">{{val.productDescr}}</td>
+                                                                                <td class="table_details">{{val.openQty}}</td>
+                                                                                <td class="table_details">{{val.shippedQty}}</td>
+                                                                                <td class="table_details">{{val.hpDeliveryNo}}</td>
+                                                                                <td class="table_details">{{val.dealId}}</td>
+                                                                                <td class="table_details">{{val.bundlePrice}}&nbsp;{{val.currency}}</td>
+                                                                                <td class="table_details">{{val.plannedShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.actualShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.plannedDeliveryDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.actualDeliveryDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details"><a href ng-click="getShipmentDetails('{{val.hpDeliveryNo}}','{{val.legacyorderno}}')">{{val.shipmentNo}}</a></td>
+                                                                                <td class="table_details"><a href ng-click="searchInvoice('{{val.invoiceNo}}','{{val.fullInvoiceNo}}','{{val.system}}')">{{val.invoiceNo}}</a></td>
+                                                                                <td class="table_details">{{val.invoiceDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.shipDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.requestedDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.cancellationReason}}</td>
+                                                                                <td class="table_details">{{val.scCommitDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.entitlementID}}</td>
+                                                                                <td class="table_details">{{val.billingPlan}}</td>
+                                                                                <td class="table_details">{{val.factShippedDate| date:'yyyy-MM-dd'}}</td>
+                                                                                <td class="table_details">{{val.actualCustShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                            </tr>
+                                                                            <tr ng-show="showBundleProductCharacteristics{{$index}}">
+                                                                                <td colspan="27"  ng-show="showBundleProductCharacteristics{{$index}}">
+                                                                                    <div style="padding: 1px;margin: 0 0 1px {{100 * ($parent.$index+1)}}px;" id="bundleProductCharsDetails{{$index}}" ng-show="bundleProductCharsDetails{{$index}}">
+                                                                                        <table class="prodcutCharTbl">
+                                                                                            <thead>
+                                                                                                <tr class="tableHeader ossproductcols"></tr>
+                                                                                            </thead>
+                                                                                            <tbody ng-repeat="prodchar in item.productCharacteristics">
+                                                                                                <tr>
+                                                                                                    <td class="table_details">{{prodchar.charac_id}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_id_descr}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_value}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_value_descr}}</td>
+                                                                                                    <td class="table_details">{{prodchar.charac_line}}</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ng-show="showNonBundle">
+                                                    <div ng-show="('{{order.legacy_order_no}}{{$index}}')">
+                                                        <div class="bundleHeaderCls" ng-click="lineItemColpseExpand('{{order.legacy_order_no}}','nonbundle1')"><span class="collapseImg expCloseImgDiv" id="nonbundle1{{order.legacy_order_no}}" style="margin: 0px 1px 1px 1px !important;"></span>
+                                                            <span style="margin: 0px 1px 1px 5px">Non bundle - &nbsp;&nbsp;&nbsp;</span>
+                                                        </div>
+                                                        <div style="margin: -14px 1px 1px 125px;font-weight: bold;font-size: 16px;color: steelblue;">Total : {{NoBundleTotalPrice| currency:""}}&nbsp;{{nonBundleCurrency}}</div>
+                                                        <br>
+                                                        <br>
+                                                        <div style="margin:0px 10px;">
+                                                            <table  id="lineItemTable borderCls" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl" ng-show="showTbl('{{order.legacy_order_no}}','nonbundle1')" id="nonbundle1{{order.legacy_order_no}}" style="border: 1px solid #999999 !important;">
+                                                                <thead ng-switch on="showProductCharFlag">
+                                                                    <tr class="tableHeader ossColsLineItems" ng-switch-when="false"></tr>
+                                                                    <tr class="tableHeader ossColsWithProductCharsLineItems" ng-switch-when="true"></tr>
+                                                                </thead>
+                                                                <tbody ng-repeat="item in nonBundleItems" ng-hide="childItem{{item.higherLevel}}{{item.legacyorderno}}">
+                                                                    <tr id="childItem{{item.higherLevel}}{{item.legacyorderno}}">
+                                                                        <td ng-show="{{item.showProductCharFlag}}">
+                                                                            <div ng-click="showProductChars('productCharsDetails{{$index}}',c,'{{$index}}')">
+                                                                                <span class="productCollapseImg productExpCloseImgDiv" title="Show product characteristics" id="productCharsDetails{{$index}}" style="margin: 0px 1px 1px 1px;"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td ng-hide="{{item.showItem}}"></td>
+                                                                        <td class="table_details" >
+                                                                            <div ng-click="showChildElements('childItem{{item.itemSubItem}}{{item.legacyorderno}}','{{item.itemSubItem}}',c,'{{item.legacyorderno}}','{{$parent.$index}}')" ng-show="{{item.showItem}}">
+                                                                                <span class="collapseImg expCloseImgDiv" id="child{{item.itemSubItem}}{{item.legacyorderno}}{{$parent.$index}}" style="margin: 0px 1px 1px {{30*item.level_indent}}px !important;" ng-show="showImage('{{item.itemSubItem}}')"></span>
+                                                                            </div></td>
+                                                                        <td class="table_details" >
+                                                                            <span ng-show="{{item.showItem}}"><div ng-class="applyIndent({{item.level_indent}})"></div>{{item.itemSubItem}}</span>
+                                                                            <span style="margin-left: 5px;" ng-show="{{item.showItem}}">
+                                                                                <img src="../common/images/hold-flag.png" ng-show="{{item.nonBundleHoldCode}}" class="productflag">
+                                                                                <div class="flag_tip table_details">
+                                                                                    <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                                                    <div >
+                                                                                        <span style="color:#000000; height:20px;width:100%;text-align: left;"><b>block/hold info</b></span>
+                                                                                    </div><hr>
+                                                                                    <div ng-repeat="value in item.holdItems" class="generals">
+                                                                                        <div class="div_input" id="HoldCode" style="width:100%;">
+                                                                                            {{value}}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </span>
+                                                                            <span style="margin-left: 5px;" ng-show="{{item.udfTextFlag}}">
+                                                                                <a href class="udf_details" ><span><b style=" font-weight: bold; font-size: 14px; margin-top: 15px; color:steelblue;">&nbsp;UDF&nbsp;</b></span></a>
+                                                                                <div class="udfDetails">
+                                                                                    <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                                                                    <div class="generals">
+                                                                                        <div class="div_input" id="udfDetails" style="width:100%;">
+                                                                                            {{item.udfText}}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="table_details"><div ng-show="{{item.showItem}}"><a href ng-click="showProductDetails('{{item.itemSubItem}}','{{item.legacyorderno}}');">{{item.product}}</a></div></td>
+                                                                        <td class="table_details"><div>{{item.configId}}</div></td>
+                                                                        <td class="table_details">{{item.itemStatus}}</td>
+                                                                        <td class="table_details">{{item.productDescr}}</td>
+                                                                        <td class="table_details">{{item.openQty}}</td>
+                                                                        <td class="table_details">{{item.shippedQty}}</td>
+                                                                        <td class="table_details">{{item.hpDeliveryNo}}</td>
+                                                                        <td class="table_details">{{item.dealId}}</td>
+                                                                        <td class="table_details">{{item.bundlePrice}}&nbsp;{{item.currency}}</td>
+                                                                        <td class="table_details">{{item.plannedShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.actualShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.plannedDeliveryDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.actualDeliveryDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details"><a href ng-click="getShipmentDetails('{{item.hpDeliveryNo}}','{{item.legacyorderno}}')">{{item.shipmentNo}}</a></td>
+                                                                        <td class="table_details"><a href ng-click="searchInvoice('{{item.invoiceNo}}','{{item.fullInvoiceNo}}','{{item.system}}')">{{item.invoiceNo}}</a></td>
+                                                                        <td class="table_details">{{item.invoiceDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.shipDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.requestedDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.cancellationReason}}</td>
+                                                                        <td class="table_details">{{item.scCommitDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.entitlementID}}</td>
+                                                                        <td class="table_details">{{item.billingPlan}}</td>
+                                                                        <td class="table_details">{{item.factShippedDate| date:'yyyy-MM-dd'}}</td>
+                                                                        <td class="table_details">{{item.actualCustShipDate| date:'yyyy-MM-dd'}}</td>
+                                                                    </tr>
+                                                                    <tr ng-show="productCharsDetails{{$index}}">
+                                                                        <td colspan="27" ng-show="showProductCharacteristics{{$index}}">
+                                                                            <div style="padding: 1px;margin: 0 0 1px {{100 * ($parent.$index+1)}}px;" id="productCharsDetails{{$index}}" ng-show="productCharsDetails{{$index}}">
+                                                                                <table class="prodcutCharTbl">
+                                                                                    <thead>
+                                                                                        <tr class="tableHeader ossproductcols"></tr>
+                                                                                    </thead>
+                                                                                    <tbody ng-repeat="prodchar in item.productCharacteristics">
+                                                                                        <tr>
+                                                                                            <td class="table_details">{{prodchar.charac_id}}</td>
+                                                                                            <td class="table_details">{{prodchar.charac_id_descr}}</td>
+                                                                                            <td class="table_details">{{prodchar.charac_value}}</td>
+                                                                                            <td class="table_details">{{prodchar.charac_value_descr}}</td>
+                                                                                            <td class="table_details">{{prodchar.charac_line}}</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- line items end -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <span id="dynamicExportTable"></span>
+                <br>
+                <div class="row">
+                    <div class="pagination ossPagination" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="loader"><img src="../../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

@@ -1,0 +1,364 @@
+$white:#fff;
+$black:#000;
+$grey:#767676;
+$lightgrey:#ccc;
+$purple:#822980;
+$drcolor:#007DBA;
+$darkgrey:#5a5a5a;
+$vlightgrey:#f2f2f2;
+$tdgrey:#E4E4E4;
+$midgrey:#999;
+$hptablegrey:#cdcccb;
+$trcolor:#f7f7f7;
+
+
+.table_sortable {
+  table {
+    background-color: $white;
+    border: 2px $lightgrey solid;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  th {
+    background-color: $grey;
+    font-size: 1.4em;
+    line-height: 18px;
+    color: $white;
+    color: $white;
+    vertical-align: bottom;
+    border-left: 1px $white solid;
+    padding: 12px 20px;
+    a.col_header {
+      color: $white;
+    }
+  }
+  td {
+    background-color: $white;
+    font-size: 1.4em;
+    line-height: 18px;
+    color: $black;
+    vertical-align: top;
+    border-right: 1px $lightgrey solid;
+    border-bottom: 1px $lightgrey solid;
+    padding: 12px 20px;
+    a:visited {
+      color: $purple;
+    }
+  }
+  .last_td {
+    border-bottom: 1px $lightgrey solid;
+    padding: 5px 10px;
+  }
+  .dr_fnd {
+    background-color: $white;
+    font-size: 1.4px;
+    line-height: 18px;
+    color: $black;
+    a:hover {
+      background-color: $drcolor;
+      color: $white;
+    }
+  }
+}
+
+thead {
+  .sortedASC, .sortedDESC {
+    background-color: $darkgrey;
+  }
+  .sortedASC a, .sortedDESC .sortedASC a {
+    background-position: left bottom;
+  }
+  .sortedASC a:hover {
+    background-position: left -37px;
+  }
+  .sortedDESC {
+    .sortedASC a:hover {
+      background-position: left -37px;
+    }
+    a {
+      background-position: left -37px;
+      &:hover {
+        background-position: left bottom;
+      }
+    }
+  }
+}
+
+.icn_srt {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+.table_sortable {
+  .icn_srt {
+    width: 13px;
+    line-height: 15px;
+  }
+  .numeric {
+    text-align: right;
+  }
+  th, td {
+    text-align: left;
+  }
+  .last_td {
+    text-align: right;
+  }
+  tbody {
+    border: none;
+  }
+  .dfinder {
+    direction: rtl;
+    text-align: right;
+  }
+  .df_list {
+    direction: rtl;
+    display: none;
+    position: absolute;
+    text-align: right;
+    margin-top: -26px;
+    margin-left: -98px;
+    border-right: 2px $darkgrey solid;
+    .df_fst {
+      margin-top: 24px !important;
+    }
+  }
+  .dd_upside .df_fst {
+    margin-top: -125px !important;
+  }
+  .df_list {
+    .df_fst {
+      margin-top: 23px;
+    }
+    .df_li {
+      text-align: left;
+      a {
+        background-color: $white;
+        display: inline-block;
+        color: $black;
+        width: 100%;
+        text-decoration: none;
+        padding: 6px 8px;
+        border-left: 2px $darkgrey solid;
+        border-bottom: 1px $lightgrey solid;
+      }
+    }
+    .df_lst a {
+      border-bottom: 2px $darkgrey solid;
+    }
+    .df_li a:hover {
+      background-color: $drcolor;
+      color: $white;
+      z-index: 2;
+    }
+    .df_fst a {
+      border-top: 2px $darkgrey solid;
+    }
+  }
+  .df_list_top {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+*:first-child + html .table_sortable {
+  .df_list {
+    margin-left: 0;
+  }
+  .df_list_top {
+    right: 0;
+  }
+  .df_list .df_li a {
+    display: block;
+    width: 120px;
+  }
+}
+
+.table_sortable {
+  .dd_upside {
+    border-right: 0px;
+    li {
+      border-right: 2px $darkgrey solid;
+    }
+    .df_list_top a {
+      border-top-color: white;
+      border-bottom: 2px $darkgrey solid;
+      &:hover {
+        border-top-color: white;
+        border-bottom: 2px $darkgrey solid;
+      }
+    }
+  }
+  .dd_list {
+    display: none;
+    position: absolute;
+  }
+  .dr_fnd a {
+    display: block;
+    background: url(../../i/patterns/s-table-icons-hpe.png) center top no-repeat transparent;
+    _background-image: url(../../i/patterns/s-table-icons-ie6-hpe.gif);
+  }
+  .dd_list_active {
+    display: block;
+  }
+  .dd_act {
+    direction: rtl;
+    text-align: right;
+    .dd_item a {
+      display: block;
+      background: none;
+      font-size: 12px;
+      text-decoration: none;
+      padding: 8px 10px;
+    }
+  }
+}
+
+/*.table_sortable .dd_upside .df_list_top{position:relative;top:-2px}*/
+
+.sort_col .col_header {
+  display: inline-block;
+  float: left;
+}
+
+.icn_srt {
+  a {
+    direction: rtl;
+    display: inline-block;
+    background-image: url(../images/s-table-icons-hpe.png) !important;
+    _background-image: url(../images/s-table-icons-hpe.png) !important;
+    background-repeat: no-repeat;
+    background-position: left -22px;
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    padding: 0 !important;
+    width: 13px;
+    height: 13px;
+    &:hover {
+      background-position: left -37px;
+      text-decoration: none !important;
+    }
+  }
+  display: inline-block;
+  background-color: transparent;
+  text-align: right;
+}
+
+.table_sortable {
+  .df_arr_wht, .df_arr_wht_u {
+    background-image: url(../../i/patterns/s-table-icons-hpe.png);
+    _background-image: url(../../i/patterns/s-table-icons-ie6-hpe.gif);
+    background-position: left top;
+    background-repeat: no-repeat;
+    width: 53px;
+    height: 22px;
+  }
+  td.sorted {
+    background-color: $vlightgrey;
+  }
+  .df_arr_wht, .df_arr_wht_u {
+    width: 52px;
+    height: 21px;
+  }
+  .dr_fnd {
+    .df_arr_wht {
+      border: 2px $white solid;
+      background-color: $white;
+      &:hover {
+        background-color: $white;
+        border: 2px $darkgrey solid;
+      }
+    }
+    .df_arr_wht_u {
+      background-color: $white;
+      border-top: 2px $darkgrey solid;
+      border-left: 2px $darkgrey solid;
+      border-bottom: 2px white solid;
+      &:hover {
+        background-color: $white;
+        border-top: 2px $darkgrey solid;
+        border-left: 2px $darkgrey solid;
+        border-bottom: 2px white solid;
+        border-right: 1px $darkgrey solid;
+      }
+      border-right: 1px $darkgrey solid;
+    }
+  }
+  .df_list {
+    margin-left: 0;
+    z-index: 2;
+    width: 130px;
+  }
+  .table_static {
+    a {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 18px;
+      color: $darkgrey;
+      margin-bottom: 0;
+    }
+    th {
+      border-left: 0;
+      padding: 12px 20px 12px 1px;
+      &.th_fst {
+        border-left: 0;
+        padding: 12px 20px;
+      }
+    }
+    td {
+      border-right: 0;
+      width: 82px;
+      padding: 12px 20px 12px 1px;
+      &.td_fst {
+        width: 388px;
+        padding: 12px 20px;
+      }
+    }
+  }
+}
+
+/********************************************************************************/
+
+/* Static table*/
+
+/*-------------------------*/
+
+tbody tr {
+  white-space: nowrap;
+}
+
+td.sorted {
+  background-color: $tdgrey;
+}
+
+table {
+  &.hpTbl {
+    border: 0px solid $midgrey !important;
+  }
+  thead tr th {
+    padding: 15px 20px 15px 10px;
+    background-color: $grey;
+    color: $white;
+    border: none !important;
+    cursor: pointer;
+  }
+  &.hpTbl tr td {
+    border-bottom: 1px solid $hptablegrey !important;
+    padding: 15px 10px !important;
+    height: 45px;
+  }
+  tr {
+    &:nth-child(even) {
+      background: $trcolor !important;
+    }
+    &:nth-child(odd) {
+      background: $white!important;
+    }
+  }
+}

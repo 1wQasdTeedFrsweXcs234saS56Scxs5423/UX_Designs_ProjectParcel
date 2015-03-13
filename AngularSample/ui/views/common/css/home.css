@@ -1,0 +1,559 @@
+/*******************************
+
+Grid
+
+********************************/
+.grid_3 {
+  width: 315px;
+  float: left;
+  display: block;
+  margin: 0 15px 0 0; }
+
+.row_2 {
+  width: 100%;
+  float: left;
+  display: block;
+  margin: 0 0 7px 0; }
+
+.myReportbox {
+  height: 52px !important; }
+
+.alpha {
+  margin-left: 0px; }
+
+.omega {
+  margin-right: 0px; }
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  min-width: 300px;
+  margin: auto; }
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+.clearfix:after {
+  clear: both;
+  content: ' ';
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+* html .clearfix, *:first-child + html .clearfix {
+  zoom: 1; }
+
+body {
+  font-family: HPSimplified, Arial; }
+
+.active_table {
+  background-color: white;
+  color: #5a5a5a;
+  padding: 0 13px 8px 13px;
+  border: 1px solid #b9b8b8;
+  border-bottom: 3px solid #0096d6; }
+  .active_table:hover, .active_table:focus {
+    background-color: #e4e8e8; }
+
+.intro_table {
+  background-color: #0096d6;
+  color: white;
+  border: 2px solid #0096d6;
+  padding: 0px 18px; }
+  .intro_table p {
+    padding-bottom: 15px; }
+.w_advanced {
+}
+.w_advanced img {
+  max-width: 15px;
+  height: 15px;
+  margin-top: 4px;}
+
+.w_40 {
+  width: 45% !important; }
+
+.w_50 {
+  width: 50%; }
+
+.w_100 {
+  width: 100%; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+/*******************************
+
+Fonts
+
+********************************/
+.homePage h1, .homePage h2, .homePage p {
+  margin: 0; }
+.homePage label {
+  margin: 0 0 5px 0; }
+  .homePage label:hover {
+    cursor: default; }
+.homePage h1 {
+  font-weight: 28px;
+  margin: 0;
+  color: white;
+  font-family: 'hp_simplified_w01_boldregular'; }
+.homePage h2 {
+  text-align:left;
+  font-size:20px;
+  font-weight: bold;
+  margin: 1px 0px 10px 1px
+  }
+.homePage p, .homePage label {
+  font-size: 14px; }
+
+/*******************************
+
+Forms
+
+********************************/
+.homePage input, .homePage select {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 0;
+  width: 100%;
+  height: 26px;
+  background-color: white;
+  border: 1px solid #b9b8b8; }
+.homePage label img {
+  float: right; }
+.homePage .active_table h1 {
+  color: #5a5a5a; }
+
+/*******************************
+
+Buttons
+
+********************************/
+.homePage button {
+  -webkit-border-radius: 0 4px;
+  -moz-border-radius: 0 4px;
+  border-radius: 0 4px;
+  border: 0px;
+  text-align: center;
+  font-size: 21px;
+  color: white;
+  font-weight: bold;
+  height: 36px;
+  /*padding: 0px 20px;*/
+  padding: 1px 10px 0 10px;
+  float: right;
+  margin-top: -5px;
+  cursor: pointer;
+  line-height: 30px; }
+
+.critical {
+  background: #d7410b; }
+  .critical:hover {
+    background: #c1401a; }
+
+.primary {
+  background: #0096d6; }
+  .primary:hover {
+    background: #006699; }
+
+.critical {
+  background: #d7410b; }
+  .critical:hover {
+    background: #c1401a; }
+
+.secondary {
+  background: #767676; }
+  .secondary:hover {
+    background: #5a5a5a; }
+
+/*******************************
+
+IMG
+
+********************************/
+.grid_3 img {
+  max-width: 312px;
+  height: 100%; }
+
+.w_40 img {
+  max-width: 15px;
+  height: 15px; }
+
+.relPos {
+  position: relative; }
+
+img.ui-datepicker-trigger {
+  position: absolute;
+  top: 0;
+  right: 0; }
+/*advance select dropdown start*/
+  .styledSelect {
+  height: 26px;
+  overflow: hidden;
+  color: #2ba6cb;
+  border: 1px solid #b9b8b8;
+  position: relative;
+  background: url("../images/s-21px-ie6-hpe.gif") no-repeat 159px -1430px white;
+  margin-bottom: 13px; }
+  .styledSelect select {
+    border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/s-21px-ie6-hpe.gif") no-repeat 159px -1430px white;
+    text-indent: 0.01px;
+    text-overflow: "";
+    cursor: pointer;
+    background-color: white;
+    color: #0096d6;}
+
+    .styledSelect select#byDate0 {
+      outline : none;
+      overflow : hidden;
+      text-indent : 0.01px;
+      text-overflow : '';
+      height:18px;
+      margin-top: 3px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+    }
+    .styledSelect select#byDate0::-ms-expand{
+
+     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    }
+  .styledSelect:hover {
+    border: 1px #5a5a5a solid; }
+  .styledSelect.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white; }
+  .styledSelect .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid #b9b8b8;
+    position: absolute;
+    right: 30px;
+    top: 0; }
+  .styledSelect.disabled {
+    border: 1px solid #b9b8b8;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px #dddddd; }
+    .styledSelect.disabled select {
+      color: darkgrey; }
+  .styledSelect select span {
+    height: 30px;
+    border-bottom: 1px solid #b9b8b8; }
+
+    .verticalLine {
+    border-right: thin solid grey;
+}
+
+.styledSelectExt {
+  height: 26px;
+  overflow: hidden;
+  color: #2ba6cb;
+  border: 1px solid #b9b8b8;
+  position: relative;
+  background: url("../images/s-21px-ie6-hpe.gif") no-repeat 200px -1430px white;
+  margin-bottom: 13px; }
+  .styledSelectExt select {
+    border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/s-21px-ie6-hpe.gif") no-repeat 200px -1430px white;
+    text-indent: 0.01px;
+    text-overflow: "";
+    cursor: pointer;
+    background-color: white;
+    color: #0096d6;}
+
+    .styledSelectExt select#byDate0 {
+      outline : none;
+      overflow : hidden;
+      text-indent : 0.01px;
+      text-overflow : '';
+      height:18px;
+      margin-top: 3px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+    }
+    .styledSelectExt select#byDate0::-ms-expand{
+
+     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    }
+  .styledSelectExt:hover {
+    border: 1px #5a5a5a solid; }
+  .styledSelectExt.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white; }
+  .styledSelectExt .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid #b9b8b8;
+    position: absolute;
+    right: 30px;
+    top: 0; }
+  .styledSelectExt.disabled {
+    border: 1px solid #b9b8b8;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px #dddddd; }
+    .styledSelectExt.disabled select {
+      color: darkgrey; }
+  .styledSelectExt select span {
+    height: 30px;
+    border-bottom: 1px solid #b9b8b8; }
+
+    .verticalLine {
+    border-right: thin solid grey;
+}
+
+  .styledSelectTax {
+  height: 26px;
+  overflow: hidden;
+  color: #2ba6cb;
+  border: 1px solid #b9b8b8;
+  position: relative;
+  background: url("../images/s-21px-ie6-hpe.gif") no-repeat 143px -1430px white;
+  margin-bottom: 13px; }
+  .styledSelectTax select {
+    border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/s-21px-ie6-hpe.gif") no-repeat 143px -1430px white;
+    text-indent: 0.01px;
+    text-overflow: "";
+    cursor: pointer;
+    background-color: white;
+    color: #0096d6;}
+
+    .styledSelectTax select#byDate0 {
+      outline : none;
+      overflow : hidden;
+      text-indent : 0.01px;
+      text-overflow : '';
+      height:18px;
+      margin-top: 3px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+    }
+    .styledSelectTax select#byDate0::-ms-expand{
+
+     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    }
+  .styledSelectTax:hover {
+    border: 1px #5a5a5a solid; }
+  .styledSelectTax.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white; }
+  .styledSelectTax .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid #b9b8b8;
+    position: absolute;
+    right: 30px;
+    top: 0; }
+  .styledSelectTax.disabled {
+    border: 1px solid #b9b8b8;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px #dddddd; }
+    .styledSelectTax.disabled select {
+      color: darkgrey; }
+  .styledSelectTax select span {
+    height: 30px;
+    border-bottom: 1px solid #b9b8b8; }
+
+    .verticalLine {
+    border-right: thin solid grey;
+  }
+
+  .styledSelectAdvanced {
+  height: 26px;
+  overflow: hidden;
+  color: #2ba6cb;
+  border: 1px solid #b9b8b8;
+  position: relative;
+  background: url("../images/s-21px-ie6-hpe.gif") no-repeat 205px -1430px white;
+  margin-bottom: 13px; }
+  .styledSelectAdvanced select {
+    border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/s-21px-ie6-hpe.gif") no-repeat 205px -1430px white;
+    text-indent: 0.01px;
+    text-overflow: "";
+    cursor: pointer;
+    background-color: white;
+    color: #0096d6;}
+
+    .styledSelectAdvanced select#byDate0 {
+      outline : none;
+      overflow : hidden;
+      text-indent : 0.01px;
+      text-overflow : '';
+      height:18px;
+      margin-top: 3px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+    }
+    .styledSelectAdvanced select#byDate0::-ms-expand{
+
+     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    }
+  .styledSelectAdvanced:hover {
+    border: 1px #5a5a5a solid; }
+  .styledSelectAdvanced.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white; }
+  .styledSelectAdvanced .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid #b9b8b8;
+    position: absolute;
+    right: 30px;
+    top: 0; }
+  .styledSelectAdvanced.disabled {
+    border: 1px solid #b9b8b8;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px #dddddd; }
+    .styledSelectAdvanced.disabled select {
+      color: darkgrey; }
+  .styledSelectAdvanced select span {
+    height: 30px;
+    border-bottom: 1px solid #b9b8b8; }
+
+    .verticalLine {
+    border-right: thin solid grey;
+}
+
+
+  div.styledSelectAmount {
+  height: 26px;
+  overflow: hidden;
+  color: #2ba6cb;
+  border: 1px solid #b9b8b8;
+  background: url("../images/s-21px-hpe.png") no-repeat 198px -1430px white;
+  position: relative;
+  margin-bottom: 13px; }
+  .styledSelectAmount select {
+   border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("../images/s-21px-hpe.png") no-repeat 198px -1430px white;
+    width: 223px;
+    text-indent: 0.01px;
+    text-overflow: "";
+    cursor: pointer;
+    background-color: white;
+    color: #0096d6; }
+  .styledSelectAmount:hover {
+    border: 1px #5a5a5a solid; }
+  .styledSelectAmount.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white; }
+  .styledSelectAmount .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid #b9b8b8;
+    position: absolute;
+    right: 30px;
+    top: 0; }
+  .styledSelectAmount.disabled {
+    border: 1px solid #b9b8b8;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px #dddddd; }
+    .styledSelectAmount.disabled select {
+      color: darkgrey; }
+  .styledSelectAmount select span {
+    height: 30px;
+    border-bottom: 1px solid #b9b8b8; }
+
+/*home select dropdown start*/
+.styled-select {
+  width: 100%;
+  height: 26px;
+  overflow: hidden;
+  color: #2ba6cb;
+  border: 1px solid #b9b8b8;
+  background: url("../images/s-21px-hpe.png") no-repeat 261px -1429px white;
+  position: relative;
+  margin-bottom: 13px; }
+  .styled-select select {
+    background: transparent;
+    width: 100%;
+    padding: 5px;
+    font-size: 13px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 26px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+    color: #0096d6; }
+
+  .styled-select:hover {
+    border: 1px #5a5a5a solid; }
+  .styled-select.order_status {
+    background: url("../images/s-21px-hpe.png") no-repeat 104px -1430px white; }
+  .styled-select .dd_border {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid #b9b8b8;
+    position: absolute;
+    right: 30px;
+    top: 0; }
+  .styled-select.disabled {
+    border: 1px solid #b9b8b8;
+    background: url("../images/s-21px-hpe.png") no-repeat 262px -1459px #dddddd; }
+    .styled-select.disabled select {
+      color: darkgrey; }
+  .styled-select select span {
+    height: 30px;
+    border-bottom: 1px solid #b9b8b8; }
+
+.searchmsg {
+  font-size: 13px;
+  padding: 1px 1px 8px 1px;
+  margin-top: -6px; }
+
+/*home select dropdown end*/
+.homeid {
+  margin-left: 3px; }
+
+.homeorder {
+  width: 320px !important; }
+.lastviewordertble{
+border: 1px solid #999999 !important;
+}
+.lastviewOrdersCls{
+/*height: 327px;
+overflow-x: hidden;*/
+width: 980px;
+border: 1px solid #999999;
+}
+table.lastvieworderTable tr td {
+border-bottom: 1px solid #cdcccb !important;
+padding: 5px 10px !important;
+height: 25px;
+font-size:13px;
+}
+.customerNameCls{
+    white-space: normal;
+}

@@ -1,0 +1,32 @@
+<div ng-controller="activeProfileCtrl">
+    <!--<div class="row" >
+        <div ng-click="expandOrCollapse('orderHistory')">
+            <div class="row_title order_history">
+                    <div class="{{expandOrCollapseImg['orderHistory']}} expCloseImgDiv" ></div>
+                    <span>
+                        <b>My Personal Proflies </b>
+                    </span>
+            </div>
+        </div>
+    </div>-->
+    <div id="Subheader"><span class="txtPadding"> Current Active Profiles </span></div><hr>
+    <div class="row" ng-show="orderHistory">
+        <div class="twelve columns orderdetailerror" ng-show="noDataFlag">{{error}}</div>
+    </div>
+    <br><div  id="panelDIV" profilepanel></div>
+    <!--<div ng-hide="noDataFlag">
+        <div ng-show="orderHistory">
+            <div class="row table_overflow">
+                <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                    <thead><tr class="tableHeader font_black "></tr></thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td><a ng-model="item.iobject_name" href id="eventOption"  ng-click="redirectToSaveProfile('{{item.iobject_name}}','{{true}}','{{item.iobject_id}}');"><img src="../../common/images/pIcon.png">&nbsp;&nbsp;&nbsp;<img src="../../common/images/watchon.png">{{item.iobject_name}}</a></td><td><a href="http://oss-tst.corp.hp.com/os/profile.tcl?vo=1&iprofile=1583">Info</a></td>
+                       </tr>
+                    </tbody>     
+                </table>
+            </div>
+        </div>    
+        <br>
+    </div>-->
+</div>

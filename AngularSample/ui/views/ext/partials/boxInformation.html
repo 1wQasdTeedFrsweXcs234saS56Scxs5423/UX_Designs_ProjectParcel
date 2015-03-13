@@ -1,0 +1,165 @@
+<div class="shipmarginTopCls">
+    <ng-switch on="errorFlag">
+        <div ng-switch-when="true" class="div-norecord">{{errorMessage}}</div>
+        <div ng-switch-when="false">
+            <div ng-show="showinnerlineItems">
+            <div class="ship-rpt-inner-content bg-color-white" ng-repeat="(box,details) in groupsParentItems">
+                <div class="spacer">&nbsp;</div>
+                <div ng-click="expandOrCollapseShipmentInner('outerTbl{{boxItem.shipment_no}}{{$index}}', '{{$parent.$index}}')">
+                    <span id="outerTbl{{boxItem.shipment_no}}{{$index}}{{$parent.$index}}" class="collapseImg expCloseImgDiv ship-box-expand-collapse"></span>    
+                    <div class="ship-box-inner-header">
+                        <table cellspacing="0" cellpadding="0" class="tblheader">
+                            <tr>
+                                <td>Box: {{box}}</td>
+                                <td>Qty:: {{groupsParentBoxes[box][0].headerbox_qty}}</td>
+                                <td>Weight: {{groupsParentBoxes[box][0].weight}}</td>
+                                <td>Dimension: {{groupsParentBoxes[box][0].width.toFixed(1)}} * {{groupsParentBoxes[box][0].len.toFixed(1)}} * {{groupsParentBoxes[box][0].height.toFixed(1)}} </td>
+                            </tr>
+                            <tr>
+                                <td>Receive Status: {{groupsParentBoxes[box][0].sc_recv}}</td>
+                                <td>Ship Status: {{groupsParentBoxes[box][0].sc_ship}}</td>
+                                <td>EPC: {{groupsParentBoxes[box][0].epc}}</td>
+                                <td>Tracking: {{groupsParentBoxes[box][0].trackingno}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tbl-innerdetails-bg" id="outerDiv{{boxItem.shipment_no}}{{index}}" ng-show="outerTbl{{boxItem.shipment_no}}{{$index}}">
+                    <div ng-show="showinnerlineItems" class="innerlineitems">
+                        <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-width10">
+                            <tr>
+                                <th>Box</th>
+                                <th>Qty</th>
+                                <th>Weight</th>
+                                <th>Dimension</th>
+                                <th>EPC</th>
+                                <th>Receive Status</th>
+                                <th>Ship Status</th>
+                                <th>Tracking #</th>
+                            </tr>
+                        </table>
+                        <div  ng-repeat="boxItem in details| orderObjectBy:'boxno':false">
+                            <div ng-click="expandOrCollapseShipmentInner('innertblnum{{boxItem.box_no}}{{$index}}',{{$parent.$index}})">
+                                <span id="innertblnum{{boxItem.box_no}}{{$index}}{{$parent.$index}}" class="collapseImg expCloseImgDiv ship-expand-collapse"></span>        
+                                <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-width10 cursor">
+                                    <tr>
+                                        <td>{{boxItem.boxno}}</td>
+                                        <td>{{boxItem.itembox_qty}}</td>
+                                        <td>{{boxItem.weight}}</td>
+                                        <td>{{boxItem.width.toFixed(1)}} * {{boxItem.len.toFixed(1)}} * {{boxItem.height.toFixed(1)}}</td>
+                                        <td>{{boxItem.epc}}</td>
+                                        <td>{{boxItem.sc_recv}}</td>
+                                        <td>{{boxItem.sc_ship}}</td>
+                                        <td>{{boxItem.trackingno}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div ng-show="innertblnum{{boxItem.box_no}}{{$index}}">
+                                <div class="ship-rpt-inner-content" >
+                                    <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-details tbl-innerdetails-width33 cursor">
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>HP Product#</th>
+                                            <th>Description</th>
+                                            <th>Box Qty</th>
+                                        </tr>
+                                    </table>
+                                    <div ng-show="innerflag">
+                                        <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-details tbl-innerdetails-width33 cursor">
+                                            <tr>
+                                                <td>{{boxItem.item_subitem}}</td>
+                                                <td>{{boxItem.material_no}}</td>
+                                                <td>{{boxItem.product_descr}}</td>
+                                                <td>{{boxItem.box_qty}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <br /> 
+                                    <div ng-hide="innerflag" class="div-norecord">
+                                        No Records Found
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="showinnerlineItems" class="innerlineitems">
+                        <div class="ship-rpt-inner-content" >
+                            <br />
+                            <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-details tbl-innerdetails-width33 cursor">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Product#</th>
+                                    <th>Description</th>
+                                    <th>Box Quantity</th>
+                                </tr>
+                            </table>
+                            <div>
+                                <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-details tbl-innerdetails-width33 cursor">
+                                    <tr ng-repeat="boxInfo in boxItem">
+                                        <td>{{boxInfo.item_subitem}}</td>
+                                        <td>{{boxInfo.material_no}}</td>
+                                        <td>{{boxInfo.product_descr}}</td>
+                                        <td>{{boxInfo.itembox_qty}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br /> 
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer">&nbsp;</div>
+            </div>
+            </div>
+            <div ng-hide="showinnerlineItems">
+            <div class="ship-rpt-inner-content bg-color-white" ng-repeat="(boxno,details) in boxItems">
+                <div class="spacer">&nbsp;</div>
+                <div ng-click="expandOrCollapseShipmentInner('outerTbl{{details[0].shipment_no}}{{$index}}', '{{$parent.$index}}')">
+                    <span id="outerTbl{{details[0].shipment_no}}{{$index}}{{$parent.$index}}" class="collapseImg expCloseImgDiv ship-box-expand-collapse"></span>    
+                    <div class="ship-box-inner-header">
+                        <table cellspacing="0" cellpadding="0" class="tblheader">
+                            <tr>
+                                <td>Box: {{boxno}}</td>
+                                <td>Qty: {{details[0].qty}}</td>
+                                <td>Weight: {{details[0].weight}}</td>
+                                <td>Dimension:{{details[0].width.toFixed(1)}} * {{details[0].length.toFixed(1)}} * {{details[0].height.toFixed(1)}} </td>
+                            </tr>
+                            <tr>
+                                <td>Receive Status: {{details[0].sc_recv}}</td>
+                                <td>Ship Status: {{details[0].sc_ship}}</td>
+                                <td>EPC: {{details[0].epc}}</td>
+                                <td>Tracking: {{details[0].trackingno}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tbl-innerdetails-bg" ng-show="outerTbl{{details[0].shipment_no}}{{$index}}" id="outerTbl{{details[0].shipment_no}}{{$index}}">
+                    <div ng-hide="showinnerlineItems" class="innerlineitems">
+                        <div class="ship-rpt-inner-content" >
+                            <br />
+                            <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-details tbl-innerdetails-width33 cursor">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Product#</th>
+                                    <th>Description</th>
+                                    <th>Box Quantity</th>
+                                </tr>
+                            </table>
+                            <div>
+                                <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-details tbl-innerdetails-width33 cursor">
+                                    <tr ng-repeat="boxInfo in details">
+                                        <td>{{boxInfo.item_subitem}}</td>
+                                        <td>{{boxInfo.material_no}}</td>
+                                        <td>{{boxInfo.product_descr}}</td>
+                                        <td>{{boxInfo.itembox_qty}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br /> 
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer">&nbsp;</div>
+            </div>
+            </div>
+    </ng-switch>
+</div>

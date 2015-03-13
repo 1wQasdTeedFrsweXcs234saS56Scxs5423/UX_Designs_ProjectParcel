@@ -1,0 +1,48 @@
+$black:#000000;
+$border:#999999;
+$sibg:#F7D7D7;
+
+
+
+.siheaderRow {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-top: 30px;
+  margin-left: 151px;
+  color: red;
+  background: none repeat scroll 0 0 $sibg;
+  height: 40px;
+  padding: 10px; }
+
+.sitrackingInfo {
+  overflow: auto; }
+  
+  .sitableautofillter{
+border: 1px solid $border;color: $black; text-shadow: 2px 1px 2px $border;display:none;
+}
+.sistatusHistory{
+    overflow:auto;
+}
+
+.sitracking_table {
+  border: 1px solid $border;
+  color: black;
+  text-shadow: 2px 1px 2px $border;
+  display: none; }
+
+.sitrack_info {
+  border: 1px solid $border;
+  color: black; }
+  
+.siboxinfo{
+overflow:auto;
+}
+
+.sitablebox_info{
+border: 1px solid $border;color: $black; text-shadow: 2px 1px 2px $border;display:none;
+}
+
+.sistatus_history{
+border: 1px solid $border; color: $black;
+}

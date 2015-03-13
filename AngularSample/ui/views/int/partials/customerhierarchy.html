@@ -1,0 +1,16 @@
+
+<div id="mainDiv" ng-controller="CustomerHierarchyCtrl">
+    <div id="EContainer">
+          <h1>Customer Hierarchy Search</h1>
+        
+      
+        <tabset>
+            <tab title="Lookup by Id"  template-url="partials/customerhierarchytool.html"></tab>
+            <tab title="Lookup by CBN"   tabcontent="{{title}}" template-url="partials/Lookupcbn.html"></tab> 
+             <tab title="Lookup by Customer Name"   template-url="partials/Lookupcustomername.html"></tab>                 
+        </tabset>
+
+      
+        
+    </div>
+</div>

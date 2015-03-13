@@ -1,0 +1,23 @@
+
+<div class="modal-header">
+        <a type="button" class="close" ng-click="$modalCancel()" aria-hidden="true"><b>X</b></a>
+        <h3>Delete Email Address</h3>
+</div>
+<div class="modal-body" ng-controller="eventBasedController">
+    <div>Please choose one of the email addresses from the drop down list and press the button below to delete it.
+If you want to add multiple addresses, press the button again on the next screen.</div>
+    <div class="deleteEmail">Be aware that the email address {{loggedInEmail}} cannot be deleted on order status,
+but must be changed directly in your portal’s user profile.</div>
+    <div class="styled-select" style="width: 60%;">
+        <div class="dd_border"></div>    
+        <select style="width: 100%;" name="deleteEmail" id="deleteEmail" ng-model="deleteEmail"
+         ng-options="email for email in deleteEmailList">
+        </select>
+    </div>
+    <div><a class="slim button secondary btn_label" ng-click="$modalSuccess();" style="margin-top: 5px;">Delete Email Address</a></div>
+</div>
+<div class="modal-footer">
+    <a class="slim button searchBTN primary btn_label" ng-click="$modalCancel();">Close</a>
+    <!--<button class="btn btn-warning" ng-click="cancel()">Cancel</button> -->
+</div>
+        

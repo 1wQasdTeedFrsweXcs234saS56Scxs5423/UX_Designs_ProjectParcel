@@ -1,0 +1,74 @@
+<div ng-init = "expandOrCollapsePanelNames=['orderHistory']"></div>
+<div class="row collapseexpand"></div>
+<div ng-controller="detailedactiveOrderCtrl">
+    <div class="row" >
+        <div ng-click="expandOrCollapse('orderHistory')">
+            <div class="row_title order_history">
+                    <div class="{{expandOrCollapseImg['orderHistory']}} expCloseImgDiv" ></div>
+                    <span>
+                        <b>My Notification Orders</b>
+                    </span>
+                    <br><br><br>
+           </div>
+        </div>
+    </div>
+    <div class="row" ng-show="orderHistory">
+        <div class="twelve columns orderdetailerror" ng-show="noDataFlag">{{error}}</div>
+    </div>
+    <div ng-hide="noDataFlag">
+        <div ng-show="orderHistory">
+            <div class="row table_overflow" ng-show="true;">
+                <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                    <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                    <tbody>
+                        <tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate:reverse">
+                            <td   ng-class="sortedTD_{{columnNames[0].id}}"><div ng-show="{{item.showItem}}">{{item.customerPoNo}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[1].id}}"><div ng-show="{{item.showItem}}">{{item.salesOrg}}</div></td>
+                            
+                            <td   ng-class="sortedTD_{{columnNames[2].id}}">
+                                <div ng-show="{{item.showItem}}">
+                                <a  href id="{{item.legacyOrder}}" class="trigger" ng-click="getEventDetails('{{item.legacyOrder}}')" ><img src="../../common/images/watchon.png"></a>
+                                &nbsp;<a href id='{{item.orderNo}}' ng-click="redirectToOrderDetails('{{item.orderNo}}');">{{item.orderNo}}
+                                
+                                    <div height="100px;" class="table_details OrderStatusPopup">
+                                        <a href class="closeBtn" ><img src="../common/images/closeBtn.png"></a>
+                                        <div style="line-height:25px" ng-show="events[0].optionSettings.Ack">Acknowledgement</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.orderChn">Order Change (watch order)</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.sddChn">Delivery Date Change</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statSubmit">Status Change: Submitted</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statAdmin">Status Change: Admin/Processing</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statAcked">Status Change: Admin/Acked</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statProd">Status Change: Production</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statPDone">Status Change: ProductionDone</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statRegis">Status Change: Registered</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statShip">Status Change: Shipped to Customer</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statShipF">Status Change: Shipped from Factory</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statDelv">Status Change: Delivered</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statCanc">Status Change: Canceled</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.statInv">Status Change: Invoiced</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.holdEntry">Hold Category: Order Entry</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.holdFulfill">Hold Category: Factory Fulfillment</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.holdShip">Hold Category: Shipping</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.holdBill">Hold Category: Billing</div>
+                                        <div style="line-height:25px"ng-show="events[0].optionSettings.holdFallout">Hold Category: Fallout</div>
+                                    </div>
+                                </div></a>
+                            </td>
+                            <td   ng-class="sortedTD_{{columnNames[3].id}}"><div ng-show="{{item.showItem}}">{{item.status}}</div><div ng-show="{{item.showItem}}"></td>
+                            <td   ng-class="sortedTD_{{columnNames[4].id}}"><div ng-show="{{item.showItem}}">{{item.deliveryStatus}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[5].id}}"><div ng-show="{{item.showItem}}">{{item.hpDeliveryNo}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[6].id}}"><div ng-show="{{item.showItem}}">{{item.customerOrder}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[7].id}}"><div ng-show="{{item.showItem}}">{{item.customerName}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[8].id}}"><div ng-show="{{item.showItem}}">{{item.lastUpdate}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[8].id}}"><div ng-show="{{item.showItem}}">{{item.commentText}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[10].id}}"><div ng-show="{{item.showItem}}">{{item.nearestActionDate}}</div></td>
+                            <td   ng-class="sortedTD_{{columnNames[11].id}}"><div ng-show="{{item.showItem}}">{{item.custInformed}}</div></td>
+                       </tr>
+                    </tbody>     
+                </table>
+            </div>
+        </div>    
+        <br>
+    </div>
+</div>
+ 

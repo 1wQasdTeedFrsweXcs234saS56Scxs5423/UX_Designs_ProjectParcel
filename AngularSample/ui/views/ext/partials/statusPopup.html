@@ -1,0 +1,18 @@
+<div style="width:25%">
+<table class="tbl-innerdetails" cellspacing="0" cellpadding="0">
+<tbody ng-repeat="item in billingData | filter : {index : numIndex}"> 
+<tr>
+   <th colspan="2">Billing Details</th> 
+</tr>  
+ <tr>
+   <td>Master Bill#</td>
+   <td>{{item.masterbillno}}</td>
+  </tr>
+  <tr>
+     <td>Housing Bill#</td>
+    <td>{{item.housebillno}}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div><a class="slim button secondary btn_label" ng-click="$modalSuccess();" style="margin-top: 5px;">Close</a></div>

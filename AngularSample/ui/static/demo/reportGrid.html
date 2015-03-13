@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html ng-app="ossApp" lang="en" class="js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <title>Report Grid</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="./lib/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" type="text/css" href="./lib/public.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/util.css">
+    <link rel="stylesheet" type="text/css" href="./css/orderDetail.css">
+</head>
+<body style="zoom:1;">
+
+<div id="Coming" onclick="closeTable('Coming')">
+  <div class="customer_row"><div class="pic"><img src="./images/icon_coming.png"></div><div class="txt">COMING SOON</div></div>
+</div>
+
+<div class="row">
+    <div class="eight columns logo">
+        <img src="./images/logo.png" alt="hp">
+        <span style="color:black!important;">Customer Transaction Viewer</span><br>
+        <ul id="menu_nv" class="nav" style="width:100%!important;">
+			<li><a href="./home.html" class="current">Home</a> &nbsp;|</li>
+			<li><a href="http://d2t0020g.austin.hp.com:8580/ncis_sb3/demo/home">Order Management</a> &nbsp;|</li>
+			<li><a href="#" onclick="showTable('Coming');">User Maintenance</a> &nbsp;</li>
+        </ul>
+    </div>
+	<div class="four columns">
+		<div class="offset-by-eight" style="margin-top:40px;">
+			<a href="#"><img src="./images/settings.gif"></a>
+			<a href="#"><img src="./images/support.gif"></a>
+		</div>
+	<div class="login">Welcome, Cerda Barbara [<a href="./home.html">Preferences</a>]</div>
+	</div><hr>
+</div>
+
+<br><br><br>
+<div ng-init = "expandOrCollapsePanelNames=['lineItemList']"></div>
+
+<div ng-controller="expandOrCollapseCtrl">
+<div class="row" >
+	<div ng-click="expandOrCollapse('lineItemList')">
+		<div class="eight columns row_title"><div ng-controller="reportGridCtrl">
+			<img ng-src="{{expandOrCollapseImg['lineItemList']}}" alt="line_Item_List">
+			<span><b>Report - {{reportName}}</b></span>
+		</div></div>
+	</div>
+	<div class="four columns" style="margin-top:11px!important;">
+		<a href="javascript:jQuery('#autoFilter').toggle();" class="small button" style="margin-left:88px;">auto filter</a>
+		<a href="javascript:exporttoexcel();" class="small button" style="margin-left:5px;">export to excel</a>
+	</div><hr>
+</div>
+
+<div ng-show="lineItemList"><div ng-controller="lineItemListCtrl">
+	<div class="row table_overflow" >
+	<div class=throver></div>
+	<div class=table_info>
+		<ul id="th0">
+		  <li ng-click="predicate = 'Houston_Synnex'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Houston_Synnex'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th1">
+		  <li ng-click="predicate = 'P_O'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-P_O'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th2">
+		  <li ng-click="predicate = 'HPOrderNo'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-HPOrderNo'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th3">
+		  <li ng-click="predicate = 'SAP'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-SAP'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th4">
+		  <li ng-click="predicate = 'Shp_Pt'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Shp_Pt'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th5">
+		  <li ng-click="predicate = 'C_R_P_B'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-C_R_P_B'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th6">
+		  <li ng-click="predicate = 'Hold'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Hold'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th7">
+		  <li ng-click="predicate = 'Purchase_OrderDate'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Purchase_OrderDate'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th8">
+		  <li ng-click="predicate = 'Order_Create_Date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Order_Create_Date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th9">
+		  <li ng-click="predicate = 'SLA_Start_Date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-SLA_Start_Date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th10">
+		  <li ng-click="predicate = 'FB_Config'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-FB_Config'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th11">
+		  <li ng-click="predicate = 'Rack_QTY'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Rack_QTY'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th12">
+		  <li ng-click="predicate = 'Racks_shipped'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Racks_shipped'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th13">
+		  <li ng-click="predicate = 'Server_QTY'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Server_QTY'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th14">
+		  <li ng-click="predicate = 'Node'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-InvoNodeiceNo'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th15">
+		  <li ng-click="predicate = 'Node'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Node'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th16">
+		  <li ng-click="predicate = 'Option_Qty'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Option_Qty'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th17">
+		  <li ng-click="predicate = 'RDD'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-RDD'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th18">
+		  <li ng-click="predicate = 'SLA_Date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-SLA_Date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th19">
+		  <li ng-click="predicate = 'Current_System_Commit_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Current_System_Commit_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th20">
+		  <li ng-click="predicate = 'Planned_order_start_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Planned_order_start_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th21">
+		  <li ng-click="predicate = 'Sched_Delivery_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Sched_Delivery_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th22">
+		  <li ng-click="predicate = 'Owner'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Owner'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th23">
+		  <li ng-click="predicate = 'Houston_Status'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Houston_Status'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th24">
+		  <li ng-click="predicate = 'Synnex_Status'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Synnex_Status'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th25">
+		  <li ng-click="predicate = 'Facebook_Data_Center'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Facebook_Data_Center'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th26">
+		  <li ng-click="predicate = 'ShipToName'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ShipToName'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th27">
+		  <li ng-click="predicate = 'ShipToAddress1'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ShipToAddress1'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th28">
+		  <li ng-click="predicate = 'ShipToAddress2'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ShipToAddress2'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th29">
+		  <li ng-click="predicate = 'ShipToAddress3'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ShipToAddress3'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th30">
+		  <li ng-click="predicate = 'ShipToAddress4'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ShipToAddress4'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th31">
+		  <li ng-click="predicate = 'ShipToCountry'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ShipToCountry'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th32">
+		  <li ng-click="predicate = 'Total_Order_Value'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Total_Order_Value'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th33">
+		  <li ng-click="predicate = 'OE_Delay_Root_Cause_Comments'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-OE_Delay_Root_Cause_Comments'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th34">
+		  <li ng-click="predicate = '3PI_name_with_Contact'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-3PI_name_with_Contact'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th35">
+		  <li ng-click="predicate = 'HP_PO_to_3PI'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-HP_PO_to_3PI'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th36">
+		  <li ng-click="predicate = 'PO_to_3PI_Date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-PO_to_3PI_Date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th37">
+		  <li ng-click="predicate = 'HP_Material_received_3PI'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-HP_Material_received_3PI'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th38">
+		  <li ng-click="predicate = 'CFE_Material_received_3PI'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-CFE_Material_received_3PI'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th39">
+		  <li ng-click="predicate = '3PO_Material_received_3PI'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-3PO_Material_received_3PI'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th40">
+		  <li ng-click="predicate = 'Solution_Shipped'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Solution_Shipped'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th41">
+		  <li ng-click="predicate = '3PI_invoice_HP_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-3PI_invoice_HP_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th42">
+		  <li ng-click="predicate = 'Tracking'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Tracking'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th43">
+		  <li ng-click="predicate = 'AGS_HUB_to_Facebook_Tracking'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-AGS_HUB_to_Facebook_Tracking'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th44">
+		  <li ng-click="predicate = 'Carrier'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Carrier'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th45">
+		  <li ng-click="predicate = 'Solution_Shipped'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Solution_Shipped'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th46">
+		  <li ng-click="predicate = '3PI_invoice_HP_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-3PI_invoice_HP_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th47">
+		  <li ng-click="predicate = 'Tracking'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Tracking'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th48">
+		  <li ng-click="predicate = 'AGS_HUB_to_Facebook_Tracking'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-AGS_HUB_to_Facebook_Tracking'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th49">
+		  <li ng-click="predicate = 'Carrier'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Carrier'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th50">
+		  <li ng-click="predicate = 'ADD'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-ADD'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th51">
+		  <li ng-click="predicate = 'Made_RDD_Y_N'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Made_RDD_Y_N'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th52">
+		  <li ng-click="predicate = 'OTD_TAT'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-OTD_TAT'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+		<ul id="th53">
+		  <li ng-click="predicate = 'Root_Cause'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+		  <li ng-click="predicate = '-Root_Cause'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+		</ul>
+	</div>
+
+	<table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="table_details" style="white-space:nowrap">
+	<!--<tr style="border: 1px solid #999999;color: #000000; text-shadow: 2px 1px 2px #999;">
+		<td colspan="14">Line Items</td></tr>-->
+	<tr id="colName" class="font_black table_details">
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')"ng-class="getClass('Houston_Synnex')" ng-click="changeSorting('Houston_Synnex')">
+		<strong>Houston / Synnex</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')"ng-class="getClass('P_O')" ng-click="changeSorting('P_O')">
+		<strong>P.O.</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')"ng-class="getClass('HPOrderNo')" ng-click="changeSorting('HPOrderNo')">
+		<strong>HPOrderNo</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('SAP')" ng-click="changeSorting('SAP')">
+		<strong>SAP #</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Shp_Pt')" ng-click="changeSorting('Shp_Pt')">
+		<strong>Shp Pt</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('C_R_P_B')" ng-click="changeSorting('C_R_P_B')">
+		<strong>C/R/P/B</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Hold')" ng-click="changeSorting('Hold')">
+		<strong>Hold</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Purchase_OrderDate')" ng-click="changeSorting('Purchase_OrderDate')">
+		<strong>Purchase OrderDate</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Order_Create_Date')" ng-click="changeSorting('Order_Create_Date')">
+		<strong>Order Create Date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('SLA_Start_Date')" ng-click="changeSorting('SLA_Start_Date')">
+		<strong>SLA Start Date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('FB_Config')" ng-click="changeSorting('FB_Config')">
+		<strong>FB Config</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Rack_QTY')" ng-click="changeSorting('Rack_QTY')">
+		<strong>Rack QTY</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Racks_shipped')" ng-click="changeSorting('Racks_shipped')">
+		<strong>SRacks shipped</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Server_QTY')" ng-click="changeSorting('Server_QTY')">
+		<strong>Server QTY</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Node')" ng-click="changeSorting('Node')">
+		<strong>Node QTY</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Option_Qty')" ng-click="changeSorting('Option_Qty')">
+		<strong>Option QTY</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('RDD')" ng-click="changeSorting('RDD')">
+		<strong>RDD</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('SLA_Date')" ng-click="changeSorting('SLA_Date')">
+		<strong>SLA Date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Current_System_Commit_date')" ng-click="changeSorting('Current_System_Commit_date')">
+		<strong>Current System Commit date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Planned_order_start_date')" ng-click="changeSorting('Planned_order_start_date')">
+		<strong>Planned order start date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Sched_Delivery_date')" ng-click="changeSorting('Sched_Delivery_date')">
+		<strong>Sched Delivery date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Owner')" ng-click="changeSorting('Owner')">
+		<strong>Owner</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Houston_Status')" ng-click="changeSorting('Houston_Status')">
+		<strong>Houston Status</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Synnex_Status')" ng-click="changeSorting('Synnex_Status')">
+		<strong>Synnex Status</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Facebook_Data_Center')" ng-click="changeSorting('Facebook_Data_Center')">
+		<strong>Facebook Data Center</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ShipToName')" ng-click="changeSorting('ShipToName')">
+		<strong>ShipToName</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ShipToAddress1')" ng-click="changeSorting('ShipToAddress1')">
+		<strong>ShipToAddress1</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ShipToAddress2')" ng-click="changeSorting('ShipToAddress2')">
+		<strong>ShipTo Address 2</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ShipToAddress3')" ng-click="changeSorting('ShipToAddress3')">
+		<strong>ShipTo Address 3</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ShipToAddress4')" ng-click="changeSorting('ShipToAddress4')">
+		<strong>ShipTo Address 4</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ShipToCountry')" ng-click="changeSorting('ShipToCountry')">
+		<strong>ShipToCountry</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Total_Order_Value')" ng-click="changeSorting('Total_Order_Value')">
+		<strong>Total Order Value $</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('OE_Delay_Root_Cause_Comments')" ng-click="changeSorting('OE_Delay_Root_Cause_Comments')">
+		<strong>OE Delay Root Cause/Comments</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('3PI_name_with_Contact')" ng-click="changeSorting('3PI_name_with_Contact')">
+		<strong>3PI name with Contact</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('HP_PO_to_3PI')" ng-click="changeSorting('HP_PO_to_3PI')">
+		<strong>HP PO # to 3PI</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('PO_to_3PI_Date')" ng-click="changeSorting('PO_to_3PI_Date')">
+		<strong>PO to 3PI Date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('HP_Material_received_3PI')" ng-click="changeSorting('HP_Material_received_3PI')">
+		<strong>HP Material received @ 3PI</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('CFE_Material_received_3PI')" ng-click="changeSorting('CFE_Material_received_3PI')">
+		<strong>CFE Material received @ 3PI</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('3PO_Material_received_3PI')" ng-click="changeSorting('3PO_Material_received_3PI')">
+		<strong>3PO Material received @ 3PI</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Solution_Shipped')" ng-click="changeSorting('Solution_Shipped')">
+		<strong>Solution Shipped</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('3PI_invoice_HP_date')" ng-click="changeSorting('3PI_invoice_HP_date')">
+		<strong>3PI invoice HP date</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Tracking')" ng-click="changeSorting('Tracking')">
+		<strong>Tracking #</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('AGS_HUB_to_Facebook_Tracking')" ng-click="changeSorting('AGS_HUB_to_Facebook_Tracking')">
+		<strong>AGS HUB to Facebook Tracking # </strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Carrier')" ng-click="changeSorting('Carrier')">
+		<strong>Carrier</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('ADD')" ng-click="changeSorting('ADD')">
+		<strong>ADD</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Made_RDD_Y_N')" ng-click="changeSorting('Made_RDD_Y_N')">
+		<strong>Made RDD Y/N</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('OTD_TAT')" ng-click="changeSorting('OTD_TAT')">
+		<strong>OTD TAT</strong></th>
+		<th class="sort-none table_details" style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-class="getClass('Root_Cause')" ng-click="changeSorting('Root_Cause')">
+		<strong>Root Cause</strong></th>
+
+
+	</tr>
+	<tr id="autoFilter" class="font_black table_details">
+		<th ng-repeat="name in columnIds">
+		<input type=text ng-model="$parent.search[name]"></th>
+	</tr>
+
+	<tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate | startFrom:currentPage*itemsPerPage | limitTo:itemsPerPage" class="table_details">
+		<td class="table_details">{{item.Houston_Synnex}}</td>
+		<td class="table_details">{{item.P_O}}</td>
+		<td class="table_details">{{item.HPOrderNo}}</td>
+		<td class="table_details">{{item.SAP}}</td>
+		<td class="table_details">{{item.Shp_Pt}}</td>
+		<td class="table_details">{{item.C_R_P_B}}</td>
+		<td class="table_details">{{item.Hold}}</td>
+		<td class="table_details">{{item.Purchase_OrderDate}}</td>
+		<td class="table_details">{{item.Order_Create_Date}}</td>
+		<td class="table_details">{{item.SLA_Start_Date}}</td>
+		<td class="table_details">{{item.FB_Config}}</td>
+		<td class="table_details">{{item.Rack_QTY}}</td>
+		<td class="table_details"><a href="#">{{item.Racks_shipped}}</a></td>
+		<td class="table_details"><a href="#">{{item.Server_QTY}}</a></td>
+		<td class="table_details"><a href="#">{{item.Node}}</a></td>
+		<td class="table_details">{{item.Option_Qty}}</td>
+		<td class="table_details">{{item.RDD}}</td>
+		<td class="table_details">{{item.SLA_Date}}</td>
+		<td class="table_details">{{item.Current_System_Commit_dat}}</td>
+		<td class="table_details">{{item.Planned_order_start_date}}</td>
+		<td class="table_details">{{item.Sched_Delivery_date}}</td>
+		<td class="table_details">{{item.Owner}}</td>
+		<td class="table_details">{{item.Houston_Status}}</td>
+		<td class="table_details">{{item.Synnex_Status}}</td>
+		<td class="table_details">{{item.Facebook_Data_Center}}</td>
+		<td class="table_details">{{item.ShipToName}}</td>
+		<td class="table_details">{{item.ShipToAddress1}}</td>
+		<td class="table_details">{{item.ShipToAddress2}}</td>
+		<td class="table_details"><a href="#">{{item.ShipToAddress3}}</a></td>
+		<td class="table_details"><a href="#">{{item.ShipToAddress4}}</a></td>
+		<td class="table_details"><a href="#">{{item.ShipToCountry}}</a></td>
+		<td class="table_details">{{item.Total_Order_Value}}</td>
+		<td class="table_details">{{item.OE_Delay_Root_Cause_Comments}}</td>
+		<td class="table_details">{{item.3PI_name_with_Contact}}</td>
+		<td class="table_details">{{item.HP_PO_to_3PI}}</td>
+		<td class="table_details">{{item.PO_to_3PI_Date}}</td>
+		<td class="table_details">{{item.HP_Material_received_3PI}}</td>
+		<td class="table_details">{{item.CFE_Material_received_3PI}}</td>
+		<td class="table_details">{{item.3PO_Material_received_3PI}}</td>
+		<td class="table_details">{{item.Solution_Shipped}}</td>
+		<td class="table_details">{{item.3PI_invoice_HP_date}}</td>
+		<td class="table_details">{{item.Tracking}}</td>
+		<td class="table_details">{{item.AGS_HUB_to_Facebook_Tracking}}</td>
+		<td class="table_details">{{item.Carrier}}</td>
+		<td class="table_details"><a href="#">{{item.ADD}}</a></td>
+		<td class="table_details"><a href="#">{{item.Made_RDD_Y_N}}</a></td>
+		<td class="table_details"><a href="#">{{item.OTD_TAT}}</a></td>
+		<td class="table_details">{{item.Root_Cause}}</td>
+	</tr>
+	</table>
+	</div>
+	<br>
+	<div class="row"><div class="pagination">
+		<div class="num" class="margin_left20">[
+			<span class="font_blue">{{items.length}}</span> items
+			<span class="font_blue">{{totalPages}}</span> pages ]
+		</div>
+			<table class="goto" style="margin-left:1px;height:25px;">
+			<tr><td><input type=text style="width:45px;height:25px;margin-top:-5px;" maxlength=2 ng-model="pageNo"></td><td>
+			<span style="background: #57bae8;padding: 6px 6px;margin-left:-10px;margin-top:-10px;color: #fff;cursor: pointer;" ng-click="gotoPage()">GO</span>
+			</td></tr></table>
+		<ul>
+			<li ng-class="{disabled: currentPage == 0}">
+				<a href ng-click="prevPage()" class="prevnext">&laquo;</a>
+			</li>
+			<li ng-repeat="n in range(pagedItems.length)"
+				ng-class="{active: n == currentPage}"
+			ng-click="setPage()">
+				<a href ng-bind="n + 1">1</a>
+			</li>
+			<li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+				<a href ng-click="nextPage()" class="prevnext">&raquo;</a>
+			</li>
+		</ul>
+	</div></div>
+</div></div>
+
+</div>
+
+<div class="row footer"><hr>
+    <div class="twelve columns">
+        Powered by HP Order Status Tracking System | @ 2013 Hewlett-Packard Development Company, L.P
+    </div>
+</div>
+
+
+<script type="text/javascript" src="./lib/angular.min.js"></script>
+<script type="text/javascript" src="./lib/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="./lib/jquery-ui-1.8.16.custom.min.js"></script>
+
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/reportGrid.js"></script>
+
+<script>
+jQuery(function() {
+	jQuery("#dateFrom").datepicker();
+	jQuery("#dateTo").datepicker();
+	jQuery("tr:nth-child(even)").css("background","#fff");
+	jQuery("tr:nth-child(odd)").css("background","#fafafa");
+	jQuery(".orderNoLink").bind("click", function() {
+		var orderNo = jQuery(this).attr("id");
+		localStorage.setItem("orderNo", orderNo );
+		jQuery(location).attr("href", "orderDetail.htm?orderNo="+orderNo);
+	});
+});
+function exporttoexcel() {
+			window.open('data:application/vnd.ms-excel,' + encodeURIComponent(jQuery('#searchResults').html()));
+        }
+</script>
+</body></html>

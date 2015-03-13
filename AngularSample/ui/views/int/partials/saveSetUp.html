@@ -1,0 +1,144 @@
+<div ng-controller="saveSetUpCtrl">
+<div id="ImainDiv">
+<div id="EContainer">
+<div id="Eheader" style="line-height:31px">
+<span class="EheaderTxtPadding">Event Notification Options</span></div>
+<ng-switch on="testFlag"> 
+   
+   <div ng-switch-when="true">
+        <div id="NSSubheader" style="line-height: 0px;" ng-hide="orderTextFlag"><span class="subheadertext" >Setup Event Notification for order  {{hpOrderNo}}</span></div>
+        <div id="NSSubheader"  ng-show="orderTextFlag" style="height: 65px !important;"><span class="subheadertext" >Change Event Notification for order {{hpOrderNo}}</span>
+        <span class="subheaderdeletetext" ng-show="orderTextFlag">
+         <br>   <span ><a class="subheaderdeletetext"style="line-height:1px" ng-model="legacyOrder" href ng-click="deleteSetup(legacyOrder)">Remove Event Notification for order {{hpOrderNo}}</a></span>
+        </span>
+        <br>
+        <br>
+        </div>
+    </div>
+    <div ng-switch-when="false">
+        <div ng-hide="testFlag">
+            <div id="NSSubheader" style="line-height: 0px;" ng-hide="wflag"><span class="subheadertext" >Setup Event Notification for profile  '{{profileName}}'</span></div>
+            <div id="NSSubheader" ng-show="wflag" style="height: 102px !important;"><span class="subheadertext" >Change Event Notification for profile <br>'{{profileName}}'</span>
+            <span class="subheaderdeletetext" ng-show="wflag">
+            <br><span ><a class="subheaderdeletetext"style="line-height:1px" ng-model="id" href ng-click="deleteSetup(id)">Remove Event Notification for profile '{{profileName}}'</a></span>
+            </span>
+            </div>
+        </div>
+    </div>
+</ng-switch>
+
+<div id="NSSubheader"><span class="textPaddingLeft"><strong>Select the event you want to be notified about:</strong></span><span class="questionIcon"><img  src="../../common/images/questionIcon.jpg" ng-mouseleave="mouseleave()" ng-mouseover="mouseover()"></span></div><br><br>
+<div id="SelectEventForm">
+<div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="Ack" id="Ack" value="Ack" ng-model="Ack" type="checkbox" ng-click="storeCheckBoxVal('Ack');"/><label for="Ack" class="lableHead">Acknowledgement </label></span></div>
+<div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="sddChn" id="sddChn" value="sddChn" ng-model="sddChn" type="checkbox" ng-click="storeCheckBoxVal('sddChn');"/><label for="sddChn" class="lableHead">Delivery Date Change</label></span></div>
+<div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="orderChn" id="orderChn" ng-model="orderChn" value="orderChn" type="checkbox" ng-click="storeCheckBoxVal('orderChn');"/><label for="orderChn" class="lableHead">Order Change</label></span></div>
+</div>
+
+<div id="NSGrayTitle"><span class="EeventTxt txtGray textPaddingLeft"><strong><b>Status Change:</b></strong></span></div>
+
+<div id="SelectEventForm">
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statSubmit" type="checkbox" type="checkbox" ng-model="statSubmit" ng-click="storeCheckBoxVal('statSubmit')"/><label for="statSubmit" class="lableHead">Submitted</label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statAdmin" type="checkbox" ng-model="statAdmin" ng-click="storeCheckBoxVal('statAdmin')"/><label for="statAdmin" class="lableHead">Admin/Processing </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statAcked" type="checkbox" ng-model="statAcked" ng-click="storeCheckBoxVal('statAcked')"/><label for="statAcked" class="lableHead">Admin/Acked</label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statProd" type="checkbox" ng-model="statProd" ng-click="storeCheckBoxVal('statProd')"/><label for="statProd"  class="lableHead">Production </label></span></div>
+</div>
+
+
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statPDone" type="checkbox" ng-model="statPDone" ng-click="storeCheckBoxVal('statPDone');"/><label for="statPDone" class="lableHead">ProductionDone</label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statShipF" type="checkbox" ng-model="statShipF" ng-click="storeCheckBoxVal('statShipF');"/><label for="statShipF" class="lableHead">Shipped from Factory </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statRegis" type="checkbox" ng-model="statRegis" ng-click="storeCheckBoxVal('statRegis');" /><label for="statRegis" class="lableHead">Registered</label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statShip" type="checkbox" ng-model="statShip" ng-click="storeCheckBoxVal('statShip');"/><label for="statShip" class="lableHead">Shipped to Customer </label></span></div>
+</div>
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statDelv" type="checkbox" ng-model="statDelv" ng-click="storeCheckBoxVal('statDelv');"/><label for="statDelv" class="lableHead">Delivered </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statCanc"type="checkbox" ng-model="statCanc" ng-click="storeCheckBoxVal('statCanc');"/><label for="statCanc" class="lableHead">Canceled </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="statInv" type="checkbox" ng-model="statInv" ng-click="storeCheckBoxVal('statInv');"/><label for="statInv" class="lableHead">Invoiced </label></span></div>
+<div style="height: 30px;"></div></div></div>
+
+<div id="NSGrayTitle" class="EBformDiv"><span class="EeventTxt txtGray textPaddingLeft"><strong>Hold Categories:</strong></span></div>
+<br>
+<div id="SelectEventForm">
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="holdEntry" type="checkbox" ng-model="holdEntry" ng-click="storeCheckBoxVal('holdEntry');" /><label for="holdEntry" class="lableHead">Order Entry </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="holdFulfil" type="checkbox"  ng-model="holdFulfil" ng-click="storeCheckBoxVal('holdFulfill');"/><label for="holdFulfill" class="lableHead">Factory Fulfillment </label></span></div>
+</div>
+
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="holdShip" type="checkbox" ng-model="holdShip" ng-click="storeCheckBoxVal('holdShip');"/><label for="holdShip" class="lableHead">Shipping </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="holdBill" type="checkbox" ng-model="holdBill" ng-click="storeCheckBoxVal('holdBill');"/><label for="holdBill" class="lableHead">Billing </label></span></div>
+</div>
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="holdFallout" type="checkbox" ng-model="holdFallout" ng-click="storeCheckBoxVal('holdFallout');"/><label for="holdFallout"class="lableHead">Fallout </label></span></div>
+<div style="height: 30px;"></div></div></div>
+<br><br><br><br>
+
+<div id= "NSSubheader"><span class="textPaddingLeft"><strong> Additional email addresses to be included in the notification: </strong></span></div>
+
+<div id="SelectEventForm"><br>
+    <div class="ddropdown">
+        <div class="relative-styled-select">
+            <select class="dd2" style="font-size:15px;color:#9a9a9a;margin-top:-3px;" id="resp1" ng-model="emaildetails.emailType1">
+                <option value="C" id="cc">CC</option>
+                <option value="T" id="to">To</option>
+            </select>
+        </div>
+    </div>
+    <input type="text" id="emailaddress1" ng-model="emaildetails.emailaddress1" class="txtfield1" id="aqqq" />
+</div><br>
+
+<div class="dynamicRows"></div>
+<div addmore></div>
+<br><br><br><br><br><br>
+
+
+<div id="NSSubheader" style="margin-bottom:4px;"><span class="textPaddingLeft"><strong> Send Notification: </strong></span></div>
+
+<div id="SelectEventForm">
+<div class="EBRBformDiv"><span class="rdbut"><input name="timing" id="immediate" value="immediate" ng-model="timing" type="radio" ng-click="storeCheckTiming('immediate');"/><label for="immediate" class="lableHead"> For individual events immediately</span></div>
+<div class="EBRBformDiv"><span class="rdbut"><input name="timing" id="combine" value="combine" ng-model="timing" type="radio" ng-click="storeCheckTiming('combine');"/><label for="combine" class="lableHead"> Combined once a day </span></div><br><br>
+</div>
+
+
+<div id="SelectEventForm">
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input id="formatHead" type="checkbox" checked="checked" ng-model="formatHead" ng-click="storeCheckFormVal('formatHead');"/><label for="formatHead" class="lableHead">Header Information </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input id="formatItem" type="checkbox" ng-model="formatItem" ng-click="storeCheckFormVal('formatItem');"/><label for="formatItem" class="lableHead">Item Information </label></span></div>
+<div></div></div>
+
+
+<div class="EBformDiv">
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="formatPrice" type="checkbox" ng-model="formatPrice" ng-click="storeCheckFormVal('formatPrice');"/><label for="formatPrice" class="lableHead">Pricing Information </label></span></div>
+<div style="height: 30px;"><span class="chkbox form checkboxMargin"><input  id="formatSplit" type="checkbox" ng-model="formatSplit" ng-click="storeCheckFormVal('formatSplit');"/><label for="formatSplit" class="lableHead">Include Split Information</label></span></div>
+</div>
+<div class="EBformDiv">
+<div><span class="chkbox form checkboxMargin"><input  id="formatShip" type="checkbox"ng-model="formatShip" ng-click="storeCheckFormVal('formatShip');" /><label for="formatShip" class="lableHead">Shipment Information  </label></span></div>
+<div></div></div></div>
+
+<div id="saveSettingDiv">
+<div id="emailToBtn"><a href ng-click="saveSetup()"><span class="btn_label">Save Settings</span></a></div>
+</div>
+</div>
+<br><br><br>
+<div height="auto" class="pop-up"><b>Acknowledgement</b> - A notification is sent once the order is loaded into the system for the first time.<p>
+<b>Delivery Date Change</b> - A notification is sent for the first planned delivery date and any subsequent changes to the planned delivery date.<p>
+<b>Order Change (watch order)</b> - A notification is sent for any change on the order including status changes, date changes and item changes. This selection may result in a high number of notifications.<p>
+<b>Status Change:</b><br>
+<b>Admin/Processing</b> - The order for a product has been received by the supplier. <br>
+<b>Production</b> - The product on the order has been moved into the production cycle at the factory.<br>
+<b>Consolidation</b> - The product on the order is at the consolidation hub and has not shipped.<br>
+<b>Shipped</b> - The product on the order has been shipped<br>
+<b>Delivered</b> - The product on the order has been delivered and HP has received a POD (Proof of Delivery).  Not all carriers send POD dates; if no POD is sent to HP the order will stay in Shipped status.<br>
+<b>Invoiced</b> - The product on the order has been invoiced.<p>
+<b>Hold Categories</b><br>
+<b>Order Entry</b> - The order has an order entry hold.<br>
+<b>Factory Fulfillment</b> - The order has an factory fulfillment hold. <br>
+<b>Shipping</b> - The order has an shipping hold.<br>
+<b>Billing</b> - The order has an billing hold.<br>
+<b>Fallout</b> - The order has an fallout hold<br><div>
+</div>
+</div>
+</div>
+</div>
+</div>

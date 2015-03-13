@@ -1,0 +1,226 @@
+$midgrey:#767676;
+$shadow:rgba(0, 0, 0, 0.05);
+$white:#ffffff;
+$disablecolor:#f2f2f2;
+$blue:#0096d6;
+$grey:#999999;
+$lightgrey:#ccc;
+$inline:inline-block;
+
+.pagination {
+  /*clear: both;*/
+  float: right;
+  font-size: 14px;
+  .num {
+    float: right;
+    font-size: 14px;
+    line-height: 30px;
+    padding-right: 15px;
+    margin-left: 20px;
+  }
+  ul {
+    display: $inline;
+    *display: inline;
+    *zoom: 1;
+    margin-left: 0;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px $shadow;
+    -moz-box-shadow: 0 1px 2px $shadow;
+    box-shadow: 0 1px 2px $shadow;
+    li {
+      display: inline;
+      text-align: center;
+      span {
+        margin: 4px 0 0 0px;
+        padding: 0 0px;
+        line-height: 25px;
+        text-decoration: none;
+        border-left-width: 0px;
+      }
+      a {
+        margin: 3px 1px 0 0;
+        float: left;
+        padding: 0;
+        line-height: 22px;
+        color: $midgrey;
+        text-decoration: none;
+        background-color: $white;
+        border: 2px solid $lightgrey;
+        width: 26px;
+        height: 26px;
+        &:hover {
+          color: $blue;
+          background-color: $white;
+          border: 2px solid $midgrey;
+        }
+      }
+      :first-child {
+        a, span {
+          border-left-width: 1px;
+          -webkit-border-radius: 3px 0 0 3px;
+          -moz-border-radius: 3px 0 0 3px;
+          border-radius: 3px 0 0 3px;
+        }
+      }
+    }
+  }
+}
+
+.pag_prev {
+  background: url("../images/s-31px-hpe.png") no-repeat;
+  margin-top: 5px;
+  height: 16px;
+  width: 9px;
+}
+
+.pag_next {
+  background: url("../images/s-31px-hpe.png") no-repeat;
+  margin-top: 5px;
+  height: 16px;
+  width: 9px;
+  background-position: 2px -666px;
+  display: $inline;
+}
+
+.pag_prev {
+  background-position: 1px -630px;
+  display: $inline;
+}
+
+.pagination ul li a:hover {
+  .pag_next {
+    background-position: 2px -738px;
+  }
+  .pag_prev {
+    background-position: 1px -702px;
+  }
+}
+
+.disabled {
+  a {
+    background-color: $disablecolor !important;
+    border-color: $lightgrey !important;
+    &:hover {
+      background-color: $disablecolor !important;
+      border-color: $lightgrey !important;
+    }
+  }
+  .pag_prev, a:hover .pag_prev {
+    background-position: 1px -774px !important;
+  }
+  .pag_next, a:hover .pag_next {
+    background-position: 2px -810px !important;
+  }
+}
+
+.pagination {
+  ul {
+    li {
+      :last-child {
+        a, span {
+          -webkit-border-radius: 0 3px 3px 0;
+          -moz-border-radius: 0 3px 3px 0;
+          border-radius: 0 3px 3px 0;
+        }
+      }
+      &.active a {
+        color: $white;
+        background-color: $blue;
+        cursor: default;
+        border-color: $blue !important;
+      }
+    }
+    .active {
+      a :hover {
+        color: $blue;
+      }
+      span {
+        color: $white;
+        background-color: $blue;
+        cursor: default;
+      }
+    }
+    .disabled {
+      span {
+        color: $grey;
+        background-color: transparent;
+        cursor: default;
+      }
+      a {
+        color: $grey;
+        background-color: transparent;
+        cursor: default;
+        :hover {
+          color: $grey;
+          background-color: transparent;
+          cursor: default;
+        }
+      }
+    }
+  }
+  .pagination-centered {
+    text-align: center;
+  }
+  .pagination-right {
+    text-align: right;
+  }
+  .goto {
+    float: right;
+    font-size: 14px;
+    line-height: 30px;
+    padding-right: 15px;
+    margin-left: 1px;
+    height: 25px;
+    input {
+      width: 45px;
+      height: 25px;
+      margin-top: -5px;
+    }
+    span {
+      background: $blue !important;
+      padding: 4px 6px;
+      margin-left: -10px;
+      margin-top: -4px;
+      color: $white;
+      cursor: pointer;
+      height: 24px;
+      margin-right: 4px;
+    }
+  }
+}
+
+.paging_cnt {
+  display: $inline;
+  margin-right: 10px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 14px;
+  color: black;
+}
+
+.showResultsOptBtns {
+  float: right;
+}
+
+.switchtablepanel {
+  float: left !important;
+}
+
+.resultsPerPage {
+  float: right;
+}
+
+.showResultsOptBtns .pagination {
+  clear: none !important;
+}
+
+.switchtablepanel {
+  margin: 4px 0px !important;
+}
+
+.resultsPerPage .active {
+  cursor: default !important;
+}

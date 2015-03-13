@@ -1,0 +1,197 @@
+<div ng-init = "expandOrCollapsePanelNames=['shipmentInformation', 'trackingInformation','statusHistory', 'boxInformation']"></div>
+<div class="row collapseexpand"></div>
+<div ng-controller="shipmentHeaderCtrl">
+<div class="row siheaderRow" ng-show="showhide">
+    <div ng-click="expandOrCollapse('shipmentInformation')">
+			<div class="twelve columns row_title">
+				<div class="{{expandOrCollapseImg['shipmentInformation']}} expCloseImgDiv" ></div>
+				<span><b>Shipment Information</b></span>
+			</div>
+	</div>
+    <div ng-show="shipmentInformation">
+        <div class="twelve columns shipmentErr">{{error}}</div>
+    </div>
+</div>
+<div class="row" ng-hide="showhide">
+	<div ng-click="expandOrCollapse('shipmentInformation')">
+			<div class="twelve columns row_title">
+				<div class="{{expandOrCollapseImg['shipmentInformation']}} expCloseImgDiv" ></div>
+				<span><b>Shipment Information</b></span>
+			</div>
+		<hr>
+	</div>
+
+<div ng-show="shipmentInformation">
+    <div class="six columns shipmentDet">
+        <div class="generals">
+            <span>Shipment No:</span>
+            <div class="div_input" id="ShipmentNo" ng-model="ShipmentNo">{{items[0].shipment_no}}</div>
+        </div>
+        <div class="generals">
+            <span>Ship Date:</span>
+            <div class="div_input" id="ship_date" ng-model="ship_date">{{items[0].ship_date | date:'yyyy-MM-dd'}}</div>
+        </div>
+        <div class="generals">
+            <span>Delivery Date:</span>
+            <div class="div_input" id="delivery_date" ng-model="delivery_date">{{items[0].delivery_date | date:'yyyy-MM-dd'}}</div>
+        </div>
+        <div class="generals">
+            <span>Purchase Order#:</span>
+            <div class="div_input" id="cust_po_no" ng-model="cust_po_no">{{items[0].cust_po_no}}</div>
+        </div>
+        <div class="generals">
+            <span>HP Order#:</span>
+            <div ng-show="multiOrderFlag" class="div_input" id="order_number">
+                <div class="styledSelect flLeft" style="float:left;width:168px;overflow:hidden;margin-right: 10px;">
+                    <div class="dd_border"></div>
+                    <select name="searchtotal" id="searchtotal" ng-model="multiOrderSelected" style="width:188px;background: transparent;">
+                        <option ng-repeat="(name,value) in multiOrders" ng-selected="value==mOrders" value="{{value}}">{{name}}</option>
+                    </select>
+                </div>
+                 <a class="slim button searchBTN primary btn_label" href="index.html#/ex/orderheaderdetail?orderNo={{multiOrderSelected}}&orderNoFor=OR"  style="margin-top:0px;">Go</a>
+            </div>
+            <div ng-hide="multiOrderFlag" class="div_input" id="Order_Date" ng-model="Order_Date">
+                <a class="orderNoLink" href="index.html#/ex/orderheaderdetail?orderNo={{items[0].legacy_order_no}}&orderNoFor=OR" id='{{items[0].hp_order_no}}'>{{items[0].hp_order_no}}</a>
+            </div>
+        </div>
+        <div class="generals">
+            <span>Customer Number:</span>
+            <div class="div_input" id="customer_no" ng-model="customer_no">{{items[0].customer_no}}</div>
+        </div>
+        <div class="generals">
+            <span>Customer Name:</span>
+            <div class="div_input" id="customer_name" ng-model="customer_name">{{items[0].customer_name}}</div>
+        </div>
+    </div>
+
+<div class="six columns shipmentDet">
+        <div class="generals">
+            <span>Carrier:</span>
+            <div class="div_input" id="carrier" ng-model="carrier">{{items[0].carrier}}</div>
+        </div>
+        <div class="generals">
+            <span>Weight:</span>
+            <div class="div_input" id="unit_of_measure" ng-model="unit_of_measure">{{items[0].weight}} {{items[0].unit_of_measure}}</div>
+        </div>
+        <div class="generals">
+            <span>Tax Value:</span>
+            <div class="div_input" id="tax_value" ng-model="tax_value">{{items[0].tax_value}}</div>
+        </div>
+        <div class="generals">
+            <span>Shipping Charges:</span>
+            <div class="div_input" id="shipping_charges" ng-model="shipping_charges">{{items[0].shipping_charges}}</div>
+        </div>
+        <div class="generals">
+            <span>Payment Terms:</span>
+            <div class="div_input" id="payment_terms" ng-model="payment_terms">{{items[0].payment_terms}}</div>
+        </div>
+        <div class="generals">
+            <span>Depot:</span>
+            <div class="div_input" id="depot_to_addr_1" ng-show="addOneFlag">{{items[0].depot_to_addr_1}}</div>
+            <span ng-show="addTwoFlag"></span>
+            <div class="div_input" id="depot_to_addr_2" ng-show="addTwoFlag">{{items[0].depot_to_addr_2}}</div>
+            <span ng-show="addThreeFlag"></span>
+            <div class="div_input" id="depot_to_addr_3" ng-show="addThreeFlag">{{items[0].depot_to_addr_3}}</div>
+            <span ng-show="addFourFlag"></span>
+            <div class="div_input" id="depot_to_addr_4" ng-show="addFourFlag">{{items[0].depot_to_addr_4}}</div>
+            <span ng-show="addFiveFlag"></span>
+            <div class="div_input" id="depot_to_addr_5" ng-show="addFiveFlag">{{items[0].depot_to_addr_5}}</div>
+            <span ng-show="addSixFlag"></span>
+            <div class="div_input" id="depot_to_addr_6" ng-show="addSixFlag">{{items[0].depot_to_addr_6}}</div>
+            <span ng-show="addSevenFlag"></span>
+            <div class="div_input" id="depot_to_addr_7" ng-show="addSevenFlag">{{items[0].depot_to_addr_7}}</div>
+        </div>
+    </div>
+</div></div>
+
+<div ng-show="trackingInfo">
+<div class="row">
+	<div ng-click="expandOrCollapse('trackingInformation')">
+			<div class="twelve columns row_title">
+				<div class="{{expandOrCollapseImg['trackingInformation']}} expCloseImgDiv" ></div>
+				<span><b>Tracking Information</b></span>
+			</div>
+		<hr>
+	</div>
+</div>
+
+<div ng-show="trackingInformation" ng-controller="trackInfoListCtrl">
+    <div class="row tableDIV sitrackingInfo">
+        <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="sitrack_info">
+            <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+
+            <tr id="autoFilter" class="font_black  sitracking_table">
+                <th ng-repeat="(title,name) in columnNames">
+                <input type=text ng-model="$parent.search[name]"></th>
+            </tr>
+            <tr ng-repeat="item in items | filter:query | orderBy:predicate:reverse" >
+                <td ng-class="sortedTD_{{columnNames[0].id}}">
+                    <a href ng-click="searchTrackAndTrace('{{item.tat_url}}')" ng-show="isTrackClickable('{{item.tat_url}}')">{{item.tracking_no}}</a>
+                    <span ng-hide="isTrackClickable('{{item.tat_url}}')">{{item.tracking_no}}</span>
+                </td>
+                <td ng-class="sortedTD_{{columnNames[1].id}}">
+                    <a href ng-click="displayCarrier('{{item.carrier_website}}')" ng-show="isCarrierClickable('{{item.carrier_website}}')">{{item.carrier}}</a>
+                    <span ng-hide="isCarrierClickable('{{item.carrier_website}}')">{{item.carrier}}</span>
+                </td>
+                <td ng-class="sortedTD_{{columnNames[2].id}}">{{item.hawb}}</td>
+            </tr>
+        </table>
+    </div>
+</div></div>
+
+<div ng-show="statusHist">
+<div class="row">
+	<div ng-click="expandOrCollapse('statusHistory')">
+			<div class="twelve columns row_title">
+				<div class="{{expandOrCollapseImg['statusHistory']}} expCloseImgDiv" ></div>
+				<span><b>Status History</b></span>
+			</div>
+		<hr>
+	</div>
+</div>
+
+<div ng-show="statusHistory" ng-controller="statusHistoryListCtrl">
+    <div class="row tableDIV sistatusHistory">
+        <table id="tableTwo" width="100%" cellspacing="1" cellpadding="0" border="0" class="sistatus_history">
+            <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+            <tr id="autoFilter" class="font_black  sitableautofillter">
+                <th ng-repeat="(title,name) in columnNames">
+                <input type=text ng-model="$parent.search[name]"></th>
+            </tr>
+            <tr ng-repeat="item in items | filter:query | orderBy:predicate:reverse" >
+                <td ng-class="sortedTD_{{columnNames[0].id}}">{{item.tracking_no}}</td>
+                <td ng-class="sortedTD_{{columnNames[1].id}}">{{item.status}}</td>
+                <td ng-class="sortedTD_{{columnNames[2].id}}">{{item.reason}}</td>
+            </tr>
+        </table>
+	</div>
+</div></div>
+
+<div ng-show="boxInfo">
+<div class="row">
+	<div ng-click="expandOrCollapse('boxInformation')">
+			<div class="twelve columns row_title">
+				<div class="{{expandOrCollapseImg['boxInformation']}} expCloseImgDiv" ></div>
+				<span><b>Box Information</b></span>
+			</div>
+		<hr>
+	</div>
+</div>
+<div ng-show="boxInformation" ng-controller="boxInfoListCtrl">
+    <div class="row tableDIV siboxinfo">
+        <table id="tableThree" width="100%" cellspacing="1" cellpadding="0" border="0" class="sitable_info">
+            <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+            <tr id="autoFilter" class="font_black  sitablebox_info">
+                <th ng-repeat="(title,name) in columnNames">
+                <input type=text ng-model="$parent.search[name]"></th>
+            </tr>
+            <tr ng-repeat="item in items | filter:query | orderBy:predicate:reverse" >
+                <td ng-class="sortedTD_{{columnNames[0].id}}">{{item.order_no}}</td>
+                <td ng-class="sortedTD_{{columnNames[1].id}}">{{item.box_no}}</td>
+                <td ng-class="sortedTD_{{columnNames[2].id}}">{{item.weight}}</td>
+            </tr>
+        </table>
+	</div>
+</div></div>
+
+<div id="loader"><img src="../../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

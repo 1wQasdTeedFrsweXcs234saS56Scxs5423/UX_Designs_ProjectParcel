@@ -1,0 +1,503 @@
+.button {
+  font-family: "HPSimplified",Arial;
+  -moz-border-radius: 0 4px;
+  border-radius: 0 4px;
+  padding: 0 20px;
+  display: inline-block;
+  height: 40px;
+  background-color: #f05332; }
+  .button input {
+    border: none;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    overflow: visible; }
+  .button .btn_label, .button input {
+    text-transform: none;
+    line-height: 38px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none; }
+  .button:hover, .button:focus {
+    background-color: #d6492d;
+    text-decoration: none; }
+  .button:visited span {
+    color: white; }
+  .button.inline {
+    height: 36px;
+    padding: 0 15px;
+    margin-left: 5px; }
+    .button.inline .btn_label {
+      line-height: 34px;
+      font-size: 16px; }
+    .button.inline input {
+      height: 36px;
+      font-size: 18px; }
+  .button .slim .btn_label {
+    line-height: 26px;
+    font-size: 14px;
+    margin-bottom: 1px; }
+
+.slim input {
+  line-height: 26px;
+  font-size: 14px;
+  margin-bottom: 1px; }
+
+.button .slim input {
+  height: 26px; }
+.button.slim {
+  height: 26px;
+  padding: 0 10px;
+  margin-left: 5px;
+  line-height: 26px; }
+
+a.button {
+  color: white;
+  text-decoration: none; }
+  a.button:hover {
+    color: white;
+    text-decoration: none; }
+
+.button.critical {
+  background-color: #d7410b;
+  cursor: pointer;
+  color: white; }
+  .button.critical input {
+    background-color: #d7410b;
+    cursor: pointer;
+    color: white; }
+  .button.critical:hover {
+    background-color: #c1401a;
+    color: white; }
+    .button.critical:hover input {
+      background-color: #c1401a;
+      color: white; }
+.button.critical_disabled {
+  color: white;
+  background-color: #cccccc;
+  cursor: default; }
+  .button.critical_disabled:hover, .button.critical_disabled input {
+    color: white;
+    background-color: #cccccc;
+    cursor: default; }
+.button.cancel {
+  color: white;
+  background-color: #767676;
+  cursor: pointer; }
+  .button.cancel input {
+    color: white;
+    background-color: #767676;
+    cursor: pointer; }
+  .button.cancel:hover {
+    background-color: #5a5a5a; }
+    .button.cancel:hover input {
+      background-color: #5a5a5a; }
+.button.cancel_disabled {
+  color: white;
+  background-color: #cccccc;
+  cursor: default; }
+  .button.cancel_disabled:hover, .button.cancel_disabled input {
+    color: white;
+    background-color: #cccccc;
+    cursor: default; }
+.button.primary {
+  color: white;
+  background-color: #0096d6;
+  cursor: pointer; }
+  .button.primary input {
+    color: white;
+    background-color: #0096d6;
+    cursor: pointer; }
+  .button.primary:hover {
+    background-color: #006699; }
+    .button.primary:hover input {
+      background-color: #006699; }
+.button.primary_disabled {
+  background-color: #cccccc;
+  color: white;
+  cursor: default; }
+  .button.primary_disabled:hover, .button.primary_disabled input {
+    background-color: #cccccc;
+    color: white;
+    cursor: default; }
+.button.secondary {
+  color: white;
+  background-color: #767676; }
+  .button.secondary input {
+    color: white;
+    background-color: #767676; }
+  .button.secondary:hover {
+    background-color: #5a5a5a; }
+    .button.secondary:hover input {
+      background-color: #5a5a5a; }
+.button.secondary_disabled {
+  background-color: #cccccc;
+  color: white;
+  cursor: default; }
+  .button.secondary_disabled:hover, .button.secondary_disabled input {
+    background-color: #cccccc;
+    color: white;
+    cursor: default; }
+
+.btn_toggle span.btn_label {
+  cursor: pointer;
+  line-height: 18px;
+  font-size: 14px; }
+.btn_toggle .btn_inner {
+  margin: 0px;
+  padding: 1px 6px 0;
+  display: inline-block;
+  height: 21px;
+  border: 2px #cccccc solid;
+  border-collapse: collapse; }
+.btn_toggle a.first {
+  margin-right: 1px; }
+.btn_toggle a:hover .btn_inner, .btn_toggle a:focus .btn_inner {
+  background-color: white;
+  color: #007dba;
+  border-color: #5a5a5a; }
+.btn_toggle .btn_inner {
+  background-color: #007ca2; }
+.btn_toggle .arr_wht_rgt {
+  background-position: right -136px; }
+.btn_toggle .btn_inner, .btn_toggle span {
+  color: #767676;
+  background-color: white; }
+.btn_toggle a:hover .btn_inner, .btn_toggle a:hover span {
+  background-color: white;
+  color: #007dba; }
+.btn_toggle a.chkd .btn_inner, .btn_toggle a.chkd span {
+  cursor: default;
+  border-color: #007dba;
+  color: white;
+  background-color: #007dba; }
+.btn_toggle a.chkd:hover .btn_inner, .btn_toggle a.chkd:hover span {
+  cursor: default;
+  border-color: #007dba;
+  color: white;
+  background-color: #007dba; }
+.btn_toggle a.error .btn_inner, .btn_toggle a.error span {
+  color: red;
+  border-color: red;
+  background-color: white; }
+.btn_toggle a.error:hover .btn_inner, .btn_toggle a.error:hover span {
+  background-color: white;
+  color: red;
+  border-color: #5a5a5a; }
+.btn_toggle a.error:hover .btn_inner, .btn_toggle a.error:hover span {
+  background-color: white;
+  border-color: #5a5a5a;
+  color: red; }
+
+.btn_pagination {
+  font-family: "HPSimplified",Arial; }
+  .btn_pagination .btn_label {
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 26px;
+    height: 26px;
+    font-size: 14px; }
+  .btn_pagination .btn_inner {
+    padding: 0 10px;
+    -moz-border-radius: 0 4px;
+    border-radius: 0 4px;
+    display: inline-block; }
+  .btn_pagination .page_number {
+    display: inline-block;
+    font-weight: normal;
+    padding-left: 3px; }
+  .btn_pagination .btn_inner, .btn_pagination span {
+    background-color: #0096d6;
+    color: white; }
+  .btn_pagination:hover .btn_inner, .btn_pagination:hover span {
+    background-color: #0084bd; }
+  .btn_pagination.disabled:hover .btn_inner, .btn_pagination.disabled .btn_inner, .btn_pagination.disabled:hover span, .btn_pagination.disabled span {
+    background-color: #cccccc;
+    cursor: default; }
+
+.btn_share .btn_label, .btn_print .btn_label {
+  background-image: url(../../i/common/s-15px-hpe.png);
+  background-repeat: no-repeat;
+  _background-image: url(../../i/common/s-15px-ie6-hpe.gif); }
+
+.btn_indicator .arrow_left .icon, .btn_indicator .arrow_right .icon, .btn_indicator .search_left .icon, .btn_indicator .search_right .icon {
+  background-image: url(../../i/common/s-15px-hpe.png);
+  background-repeat: no-repeat;
+  _background-image: url(../../i/common/s-15px-ie6-hpe.gif); }
+
+.btn_share_trigger_parent {
+  height: 19px;
+  display: inline-block; }
+
+.btn_share, .btn_print {
+  text-transform: capitalize; }
+
+.btn_share .btn_label {
+  padding-left: 18px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  display: inline-block;
+  background-position: 0 -581px; }
+
+.btn_print .btn_label {
+  padding-left: 18px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  display: inline-block;
+  background-position: 0 -581px;
+  background-position: left -790px; }
+
+.btn_share .btn_inner, .btn_print .btn_inner {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 0 4px 0 4px; }
+
+.btn_share .btn_inner span, .btn_print .btn_inner span {
+  color: #767676; }
+
+.btn_share a:hover .btn_inner .btn_label, .btn_print a:hover .btn_inner .btn_label {
+  text-decoration: underline; }
+
+.btn_share a:hover .btn_inner, .btn_print a:hover .btn_inner {
+  text-decoration: none; }
+
+.share_widget_holder {
+  display: none; }
+
+.share_popup_dark .border_bottom a, .share_popup_dark .email a {
+  padding: 8px 30px 8px 8px;
+  display: inline-block;
+  _display: block; }
+
+.share_popup_light .border_bottom a, .share_popup_light .email a {
+  padding: 8px 30px 8px 8px;
+  display: inline-block;
+  _display: block; }
+
+.share_popup_dark .border_bottom {
+  border-bottom: 1px solid #666666; }
+.share_popup_dark .popup_list {
+  border-radius: 3px;
+  -moz-border-radius: 3px; }
+.share_popup_dark .border_bottom, .share_popup_dark .email {
+  background-color: #3f4043; }
+.share_popup_dark .border_bottom span, .share_popup_dark .email span {
+  font-size: 95%;
+  color: #b2b2b2; }
+.share_popup_dark .border_bottom:hover, .share_popup_dark .email:hover {
+  background-color: #494a4d; }
+.share_popup_dark .border_bottom:hover span, .share_popup_dark .email:hover span {
+  font-size: 95%;
+  color: #f2f2f2; }
+
+.btn_icon a, .btn_expand_all .icn_pls_drk, .icn_mns_drk, .btn_checkbox .checkbox {
+  background-image: url(../../i/common/s-21px-hpe.png);
+  background-repeat: no-repeat;
+  _background-image: url(../../i/common/s-21px-ie6-hpe.gif); }
+
+.btn_icon {
+  display: inline-block; }
+  .btn_icon .close {
+    display: inline-block; }
+  .btn_icon div {
+    border-radius: 3px;
+    -moz-border-radius: 3px; }
+  .btn_icon .close a {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    display: inline-block;
+    background-position: left -455px;
+    font-size: 0px;
+    color: #373536;
+    line-height: 0px; }
+    .btn_icon .close a:hover {
+      background-position: left -500px;
+      font-size: 0px;
+      color: #373536; }
+  .btn_icon .remove a {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    display: inline-block;
+    background-position: left -544px;
+    font-size: 0px;
+    color: #100e0f;
+    line-height: 0px; }
+    .btn_icon .remove a:hover {
+      background-position: left -585px;
+      font-size: 0px;
+      color: #100e0f; }
+  .btn_icon .zoom a {
+    height: 15px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0px 0px 0px 17px;
+    font-size: 14px;
+    background-position: left -626px;
+    color: #767676;
+    line-height: 18px; }
+    .btn_icon .zoom a:hover {
+      background-position: left -626px;
+      text-decoration: underline; }
+
+.btn_indicator {
+  font-family: "HPSimplified",Arial; }
+  .btn_indicator .icon, .btn_indicator span.btn_label {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    border: none; }
+  .btn_indicator .icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px; }
+  .btn_indicator .btn_inner {
+    display: inline-block;
+    height: 21px;
+    padding: 0 10px 0 8px;
+    -moz-border-radius: 0 4px;
+    border-radius: 0 4px;
+    background-color: #767676;
+    color: white; }
+    .btn_indicator .btn_inner span {
+      background-color: #767676;
+      color: white; }
+  .btn_indicator a:hover .btn_inner {
+    background-color: #5a5a5a; }
+    .btn_indicator a:hover .btn_inner span {
+      background-color: #5a5a5a; }
+  .btn_indicator .disabled .btn_inner, .btn_indicator .disabled:hover .btn_inner {
+    background-color: #cccccc;
+    color: white;
+    cursor: default; }
+    .btn_indicator .disabled .btn_inner span, .btn_indicator .disabled:hover .btn_inner span {
+      background-color: #cccccc;
+      color: white;
+      cursor: default; }
+  .btn_indicator .arrow_left {
+    padding: 5px 10px 0 6px; }
+  .btn_indicator .arrow_right {
+    padding: 5px 6px 0 10px; }
+  .btn_indicator .arrow_left .btn_label {
+    padding: 0; }
+  .btn_indicator .arrow_right .btn_label {
+    padding: 0; }
+  .btn_indicator .arrow_right .icon {
+    background-position: left -2756px; }
+  .btn_indicator .arrow_left .icon {
+    background-position: left -2791px; }
+  .btn_indicator .search_left {
+    padding: 5px 8px 0 10px; }
+    .btn_indicator .search_left .icon {
+      background-position: left -2722px;
+      width: 15px;
+      height: 15px; }
+  .btn_indicator .search_right .icon {
+    background-position: left -2722px;
+    width: 15px;
+    height: 15px; }
+  .btn_indicator .search_left .btn_label {
+    padding-left: 5px; }
+  .btn_indicator .search_right {
+    padding: 5px 8px 0 10px; }
+    .btn_indicator .search_right .btn_label {
+      padding-right: 3px;
+      padding-left: 0px; }
+
+.btn_expand_all .icn_pls_drk, .icn_mns_drk {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  cursor: pointer; }
+
+.btn_expand_all a:hover {
+  cursor: pointer; }
+.btn_expand_all .icn_pls_drk {
+  background-position: left -1680px; }
+.btn_expand_all .icn_mns_drk {
+  background-position: left -1815px;
+  margin-left: 23px; }
+.btn_expand_all .active .icn_pls_drk, .btn_expand_all a:hover .icn_pls_drk {
+  background-position: left -1950px; }
+.btn_expand_all .active .icn_mns_drk, .btn_expand_all a:hover .icn_mns_drk {
+  background-position: left -2085px; }
+
+.btn_expand .expand-icn {
+  width: 18px;
+  height: 18px;
+  background: url(../../i/patterns/s-plus-minus-btn.jpg) no-repeat;
+  display: inline-block; }
+.btn_expand a:hover {
+  cursor: pointer; }
+.btn_expand .expand-icn {
+  background-position: left -420px; }
+.btn_expand .expanded .expand-icn {
+  background-position: left -350px; }
+
+.btn_checkbox {
+  line-height: 18px;
+  font-family: "HPSimplified",Arial; }
+  .btn_checkbox .label {
+    display: inline-block;
+    margin-left: 5px; }
+  .btn_checkbox label {
+    font-size: 14px;
+    line-height: 18px;
+    color: #767676;
+    vertical-align: middle; }
+  .btn_checkbox a:hover label {
+    text-decoration: underline; }
+  .btn_checkbox .checkbox {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-position: left 0; }
+    .btn_checkbox .checkbox:hover {
+      background-position: left -45px; }
+
+.chkd .checkbox {
+  background-position: left -90px; }
+  .chkd .checkbox:hover {
+    background-position: left -90px; }
+
+.btn_label {
+  margin-top: 5px;
+  clear: both;
+  webkit-border-radius: 0 4px;
+  -moz-border-radius: 0 4px;
+  border-radius: 0 4px;
+  border: 0px !important;
+  text-align: center;
+  color: white;
+  padding: 0px 15px;
+  text-transform: none;
+  line-height: 23px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important; }
+
+.btn_label_slim {
+  font-weight: normal !important;
+  webkit-border-radius: 0 4px;
+  -moz-border-radius: 0 4px;
+  border-radius: 0 4px;
+  border: 0px !important;
+  line-height: 24px; }
+
+.pagination .btn_label_slim {
+  line-height: 12px !important; }
+
+.HPLargeBTN {
+  height: 36px !important; }
+
+.HPMediumBTN {
+  height: 26px !important; }
+
+.searchBTN {
+  margin-left: 0px !important; }

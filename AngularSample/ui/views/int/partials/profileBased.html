@@ -1,0 +1,35 @@
+<div>
+    <div ng-controller="sharedProfileCtrl">
+    
+        <div id="Subheader"><span class="txtPadding"> Shared Profiles </span></div>
+        <hr>
+        <div class="row" ng-show="orderHistory">
+            <div class="twelve columns orderdetailerror" ng-show="noDataFlag">{{error}}</div>
+        </div>
+        <div  id="panelDIV" profilepanel></div>
+    </div>
+</div>
+
+<!--<div ng-controller="myPersonalProfileCtrl">
+    
+    <div>
+        <div><span> Personal Profiles </span></div>
+        <!--<hr>
+        <div class="row" ng-show="orderHistory">
+            <div class="twelve columns orderdetailerror" ng-show="noDataFlag">{{error}}</div>
+        </div>
+        <div  id="panelDIV" profilepanel></div>
+    </div>
+ 
+ </div>-->
+ <div>
+ <div ng-controller="sharedProfileCtrl">
+    <div id="Subheader"><span class="txtPadding"> Shared Profiles </span></div>
+    <hr>
+    <div class="row" ng-show="orderHistory">
+        <div class="twelve columns orderdetailerror" ng-show="noDataFlag">{{error}}</div>
+    </div>
+    <div  id="panelDIV" profilepanel></div>
+</div>
+
+</div>

@@ -1,0 +1,133 @@
+<div ng-controller="eventBasedController">
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Specify Order Filter</strong></span></div>
+        <div id="EdivContRow">
+        you may choose to recieve notifications on all your open orders or only specific orders. By leaving the filters below blank, you will recieve information on all orders according to the event type(s) you select. If you wish to recive notifications on specific orders, use the following filters:</div>
+        <div id="EorderAttendDiv">
+            <div id="EorderAttend_inner">
+                <div id="EfieldDiv"><span class="EeventTxt">Purchase Order Number*</span><br>
+                <input id="aqqq" ng-model="purchOrderNumDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+                <div id="EfieldDiv"><span class="EeventTxt">Attention To</span><br>
+                <input id="aqqq" ng-model="attnToDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+            </div>
+        </div>
+     <!--   <div id="EBISubheader"><span class="textLftPadding"><strong>Select the event you want to be notified about:</strong></span><span class="questionIcon"><img src="../../common/images/questionIcon.jpg"></span></div>
+        <br>
+        <div class="EBSelectEventForm">
+       
+            <div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="ackDaily" id="ackDaily" value="ack" ng-model="ackDaily" type="checkbox" ng-click="storeCheckBoxVal('ack');"/><label for="ackDaily" class="lableHead">Acknowledgement</label></span></div>
+            <div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="sddChngDaily" id="sddChngDaily" value="sddChng" ng-model="sddChngDaily" type="checkbox" ng-click="storeCheckBoxVal('sddChng');"/><label for="sddChngDaily" class="lableHead">Delivery Date Change</label></span></div>
+            <div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="ordChngDaily" id="ordChngDaily" value="ordChng" ng-model="ordChngDaily" type="checkbox" ng-click="storeCheckBoxVal('ordChng');"/><label for="ordChngDaily" class="lableHead">Order Change</label></span></div>
+        </div>
+        <div id="EBIForm"><span class="EeventTxt txtGray textLftPadding">Status Change</span></div>
+        <div class="EBSelectEventForm">
+            <div class="EBformDiv">
+                <div><span class="chkbox form checkboxMargin"><input name="adminDaily" id="adminDaily" value="admin" ng-model="adminDaily" type="checkbox" ng-click="storeCheckBoxVal('admin');"/><label for="adminDaily" class="lableHead">Admin/Processing</label></span></div>
+                <div><span class="chkbox form checkboxMargin"><input name="consolDaily" id="consolDaily" value="consol" ng-model="consolDaily" type="checkbox" ng-click="storeCheckBoxVal('consol');"/><label for="consolDaily" class="lableHead">Consolidation</label></span></div>  
+                <div><span class="chkbox form checkboxMargin"><input name="cancelDaily" id="cancelDaily" value="cancel" ng-model="cancelDaily" type="checkbox" ng-click="storeCheckBoxVal('cancel');"/><label for="cancelDaily" class="lableHead">Cancelled</label></span></div>              
+                <div><span class="chkbox form checkboxMargin"></span></div>
+            </div>
+            <div class="EBformDiv">
+                <div><span class="chkbox form checkboxMargin"><input name="delDaily" id="delDaily" value="del" ng-model="delDaily" type="checkbox" ng-click="storeCheckBoxVal('del');"/><label for="delDaily" class="lableHead">Delivered</label></span></div>
+                <div><span class="chkbox form checkboxMargin"><input name="invDaily" id="invDaily" value="inv" ng-model="invDaily" type="checkbox" ng-click="storeCheckBoxVal('inv');"/><label for="invDaily" class="lableHead">Invoiced</label></span></div>                
+            </div>
+            <div class="EBformDiv">
+                <div><span class="chkbox form checkboxMargin"><input name="prodDaily" id="prodDaily" value="prod" ng-model="prodDaily" type="checkbox" ng-click="storeCheckBoxVal('prod');"/><label for="prodDaily" class="lableHead">Production</label></span></div>
+                <div><span class="chkbox form checkboxMargin"><input name="shipDaily" id="shipDaily" value="ship" ng-model="shipDaily" type="checkbox" ng-click="storeCheckBoxVal('ship');"/><label for="shipDaily" class="lableHead">Shipped</label></span></div>
+            </div>
+        </div>
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Select the event you want to be notified about:</strong></span><span class="questionIcon"><img src="../../common/images/questionIcon.jpg"></span></div>
+        <br>
+        <div class="EBSelectEventForm">
+            <div class="EBRBformDiv"><span class="rdbut"><input name="timingDaily" id="immediateDaily" value="immediate" ng-model="timingDaily" type="radio" ng-click="storeTiming('immediate');"/><label for="immediateDaily" class="lableHead"> Send immediately </label></span></div>
+            <div class="EBRBformDiv"><span class="rdbut"><input name="timingDaily" id="combineDaily" value="combine" ng-model="timingDaily" type="radio" ng-click="storeTiming('combine');"/><label for="combineDaily" class="lableHead"> Combine events and send once a day </label></span></div>
+        </div>
+        <br><br> -->
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Specify the transport type:</strong></span><span class="questionIcon"><img src="../../common/images/questionIcon.jpg"></span></div>
+        <br>
+        <div class="EBSelectEventForm" style="margin-bottom: 20px;">
+            <div class="EBRBformDiv"><span class="rdbut"><input name="transportDaily" id="emailDaily" value="email" ng-model="transportDaily" type="radio" ng-click="transportType('email');"/><label for="emailDaily" class="lableHead"> Email </label></span></div>            
+        </div>
+        <div id="specifyTransportDiv">
+            <div id="emailTxtDiv">Email to</div>
+            <div class="flLeft">
+                <!--
+                <input style="" ng-model="emailTo" value="Optional Example" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active"/>
+                -->
+                <textarea rows="10" cols="150" ng-model="emailToDaily" value="Optional Example" data-placeholder="Optional Example" class="form-input js_color_change pre-active" ></textarea>
+            </div>
+            <div id="emailToBtn1" ng-click="addEmailId()" style="margin-right: 180px;">Add Email Id</div>
+            <div id="emailToBtn1" ng-click="deleteEmailId()"  ng-show="deleteButton">Delete Email Id</div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">Mail Format:</div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">
+                <div class="EBRBformDiv"><span class="rdbut"><input name="transFormatDaily" id="TableTabDelimitedDaily" value="TableTabDelimited" ng-model="transFormatDaily" type="radio" ng-click="storeTransFormat('TableTabDelimited');"/><label for="TableTabDelimitedDaily" class="eHead"> Attach File</label></span></div>
+                <div class="EBRBformDiv"><span class="rdbut"><input name="transFormatDaily" id="weblinkDaily" value="weblink" ng-model="transFormatDaily" type="radio" ng-click="storeTransFormat('weblink');"/><label for="weblinkDaily" class="eHead"> Web Link</label></span></div>
+            </div>
+        </div>
+        <div id="specifyTransportDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft" style="font-size: 15px;"><span class="chkbox form checkboxMargin"><input name="incHLDaily" id="incHLDaily" value="incHL" ng-model="incHLDaily" type="checkbox" ng-click="storeCheckBoxVal('incHL');"/><label for="IncHLDaily" class="lableHead">Include Header Line</label></span></div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">Send Email As:</div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">
+                <div class="EBRBformDiv"><span class="rdbut"><input name="msgFormatDaily" id="textDaily" value="text" ng-model="msgFormatDaily" type="radio" ng-click="storeMsgFormat('text');"/><label for="textDaily" class="eHead"> Text </label></span></div>
+                <div class="EBRBformDiv"><span class="rdbut"><input name="msgFormatDaily" id="htmlDaily" value="html" ng-model="msgFormatDaily" type="radio" ng-click="storeMsgFormat('html');"/><label for="htmlDaily" class="eHead"> HTML </label></span></div>
+            </div>
+        </div>
+        <div class="EBSelectEventForm">
+            <div class="EBRBformDiv"><span class="rdbut"><input checked="true" name="transportDaily" id="ftpDaily" value="ftp" ng-model="transportDaily" type="radio" ng-click="transportType('ftp');"/><label for="ftpDaily" class="lableHead"> FTP </label></span></div>
+        </div>
+        <div id="EtxtFieldFormDiv">
+            <div id="EorderAttend_inner">
+                <div id="EfieldDiv"><span class="EformTxtField">Host</span><br>
+                    <input id="aqqq" ng-model="hostDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active" id="hostDaily" />
+                </div>
+                <div id="EfieldDiv"><span class="EformTxtField">Path</span><br>
+                    <input id="aqqq" ng-model="pathDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active" id="pathDaily" />
+                </div>
+            </div>
+            <div id="EorderAttend_inner">
+                <div id="EfieldDiv"><span class="EformTxtField">User</span><br>
+                    <input id="aqqq" ng-model="userDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active" id="userDaily" />
+                </div>
+                <div id="EfieldDiv"><span class="EformTxtField">Password</span><br>
+                    <input id="aqqq" ng-model="passwordDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active" id="passwordDaily" />
+                </div>
+            </div>
+        </div>
+        <div id="EBInternalVisibleDiv" ng-show="intVisible">
+            <div id="EBIIVSubheader"><span class="textLftPadding"><strong>Only Internal Visible Setting:</strong></span></div>
+          
+            <div class="EBSelectEventForm" style="margin-bottom:50px;">
+                <div class="EBRBformDiv"><span class="rdbut"><input name="transportDaily" id="httpDaily" value="http" ng-model="transportDaily" type="radio" ng-click="transportType('http');"/><label for="httpDaily" class="lableHead"> http URL</label></span></div>
+                <div class="flLeft">
+                    <input style="" value="Optional Example" ng-model="httpUrlDaily" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active" id="url" />
+                </div>
+                <div id="EmailformatDiv">
+                    <div id="emailTxtDiv"></div>
+                    <div class="flLeft Emailformat">Format: <span class="rdbut"><input name="transFormatDaily" id="OSSXMLDaily" value="OSSXML" ng-model="transFormatDaily" type="radio" ng-click="storeTransFormat('OSSXML');"/><label for="httpDaily" class="eHead" style="margin-left:75px; margin-top:-30px;" > OSS Xml</label></span></div>
+                </div>
+            </div>
+        </div>
+        <div id="EBfooterBtn">
+            <div>
+                <div id="emailToBtn">Test Connection</div>
+                <div id="emailToBtn" ng-click="saveSetup()" ng-show="showSaveBtn">Save Setup</div>
+            </div>
+        </div> 
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+<!--</div>
+</div> -->

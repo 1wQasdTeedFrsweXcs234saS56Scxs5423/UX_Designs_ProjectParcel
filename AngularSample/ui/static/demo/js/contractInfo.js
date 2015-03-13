@@ -1,0 +1,25 @@
+var contractInfo = {
+'2030017503':{'contractHeader':{'PO_No':'TestGIS111','Sales_Org':'','HP_Order_No':'','Quote_No':'TestQ1234','Contract_No':'2030017503', 'Contract_Start_Date':'2013-01-10','Contract_End_Date':'2016-01-09',
+                'Total_Order_Value':'','Tax':'','Payment_Terms':'','Payment_Method':'','Customer_No':'','Customer_Name':'','Inv_No':'','Sold_To_Address_1':'',
+                'Sold_To_Address_2':'','Sold_To_Address_3':'','Sold_To_Address_4':'','Sold_To_Address_5':'','Sold_To_Attention_1':'',
+                'Sold_To_Attention_2':'','Sold_To_Attention_3':'','Sold_To_Attention_4':'','Sold_To_Attention_5':''
+				},
+'lineItems':[{'item_subitem':'10','Product':'HA101AC','product_descr':'HP Next Day HW Support','open_qty':'1',
+                'ItemStatus':'In Progress','ListUnitPrice':'14,710.00','NetLinePrice':'14,710.00'},
+			{'item_subitem':'20','Product':'HA151AC','product_descr':'HP Hardware Maintenance Onsite Support','open_qty':'1',
+                'ItemStatus':'In Progress','ListUnitPrice':'825.69','NetLinePrice':'1420.18'},
+			{'item_subitem':'30','Product':'AB455A','product_descr':'HP Servers 8GB DDR2 Memory Module Pair','open_qty':'1',
+                'ItemStatus':'In Progress','ListUnitPrice':'260.58','NetLinePrice':'448.2'},
+			{'item_subitem':'40','Product':'AB455A','product_descr':'HP Servers 8GB DDR2 Memory Module Pair','open_qty':'1',
+                'ItemStatus':'In Progress','ListUnitPrice':'201.16','NetLinePrice':'346'},
+			{'item_subitem':'50','Product':'HA158AC','product_descr':'HP Software Technical Unlimited Support','open_qty':'1',
+                'ItemStatus':'In Progress','ListUnitPrice':'3086.13','NetLinePrice':'13270.35'},
+			{'item_subitem':'60','Product':'BA927AC','product_descr':'HP-UX 11i v3 Base OE LTU','open_qty':'1',
+                'ItemStatus':'In Progress','ListUnitPrice':'825.69','NetLinePrice':'1420.18'}],
+'HA101AC':{'productdetails':{'item_subitem':'10','Product':'HA101AC','product_descr':'HP Next Day HW Support','deal_id':'','requested_date':'','plant':'','ship_from':''}},
+'HA151AC':{'productdetails':{'item_subitem':'20','Product':'HA151AC','product_descr':'HP Hardware Maintenance Onsite Support','deal_id':'','requested_date':'','plant':'','ship_from':''}},
+'AB455A':{'productdetails':{'item_subitem':'30','Product':'AB455A','product_descr':'HP Servers 8GB DDR2 Memory Module Pair','deal_id':'','requested_date':'','plant':'','ship_from':''}},
+'AB455A':{'productdetails':{'item_subitem':'40','Product':'AB455A','product_descr':'HP Servers 8GB DDR2 Memory Module Pair','deal_id':'','requested_date':'','plant':'','ship_from':''}},
+'HA158AC':{'productdetails':{'item_subitem':'50','Product':'HA158AC','product_descr':'HP Software Technical Unlimited Support','deal_id':'','requested_date':'','plant':'','ship_from':''}},
+'BA927AC':{'productdetails':{'item_subitem':'60','Product':'BA927AC','product_descr':'HP-UX 11i v3 Base OE LTU','deal_id':'','requested_date':'','plant':'','ship_from':''}}           			
+				}};

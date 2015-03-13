@@ -1,0 +1,72 @@
+<div class="innerrow marginTopCls" ng-controller="orderLifeCycleDetailsCtrl">
+    <div ng-repeat= "deliveryGroup in deliveryGroups" class="delGroupsCls">
+        <div class="flLeft orderDetailscls cursorCls" ng-click="orderLifeCyleColpseExpand('deliveryGroups{{$index}}',e)"><span class="expandImg expCloseImgDiv" id="deliveryGroups{{$index}}"></span></div>
+        <div class="flLeft orderDetailscls"><span class="orderDetailTxt orderNumbercls" ng-click="orderLifeCyleColpseExpand('deliveryGroups{{$index}}',e)" style="cursor:pointer;" title="click here">{{deliveryGroup.delivery_group}}</span></div>
+		<div class="innerrow whiteBg">
+			<div class="deliveryGroupDiv" id="deliveryGroups{{$index}}" ng-show="deliveryGroups{{$index}}">
+				<div class="innerrow"></div>
+                <div>
+                    <div class="innerrow">
+                        <div class="Detailinnerrow">
+                            <span class="deliverySubHeading"><strong class="shipmentNoCls">Shipment No : </strong>{{deliveryGroup.shipment_no}}</span>
+                            <span class="deliverySubHeading" style="padding:5px;"><strong style="font-weight:bold;">Delivery No : </strong>{{deliveryGroup.fact_delv_no}}</span>
+                            <span class="deliverySubHeading" style="padding:10px;"><strong style="font-weight:bold;">Bol No : </strong> {{deliveryGroup.cust_bol_no}}</span>
+                            <span class="deliverySubHeading" style="padding:80px;"><strong style="font-weight:bold;">Route : </strong> {{deliveryGroup.route}}</span>
+                        </div>
+                        <div class="Detailinnerrow orderDetMinImgMargin">
+                            <div class="deliveryTable">
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Production Started</div>
+                                    <div class="calendarDate">{{deliveryGroup.bt_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Production Done</div>
+                                    <div class="calendarDate">{{deliveryGroup.pd_actual|date:'yyyy-MM-dd'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Delivery Generated</div>
+                                    <div class="calendarDate">{{deliveryGroup.dg_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Factory Shipped</div>
+                                    <div class="calendarDate">{{deliveryGroup.pgi_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Landed</div>
+                                    <div class="calendarDate">{{deliveryGroup.ercv_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Shipped</div>
+                                    <div class="calendarDate">{{deliveryGroup.eshp_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Delivered</div>
+                                    <div class="calendarDate">{{deliveryGroup.pod_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                                <div class="calendarOrderDesign">
+                                    <div class="calendarHeading">Invoiced</div>
+                                    <div class="calendarDate">{{deliveryGroup.invo_actual|date:'yyyy-MM-dd hh:mm'}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="innerrow marginCls">
+                        <div class="flLeft cursorCls" ng-click="orderLifeCyleColpseExpand('lifecycleitemgrid{{$index}}',e)"><span class="collapseImg expCloseImgDiv" id="lifecycleitemgrid{{$index}}"></span></div>
+                        <div class="flLeft cursorCls" title="click here" ng-click="orderLifeCyleColpseExpand('lifecycleitemgrid{{$index}}',e)"><span class="orderDetailTxt">Items</span></div>
+                        <div class="DetailItemInnerrow">
+                            <div class="table_overflow" ng-show="lifecycleitemgrid{{$index}}" style="min-height:0%;">
+                                <table id="tableOne" class="hpTbl hpTblBorderCls">
+                                    <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                                <tbody>
+                                <tr ng-repeat="item in deliveryGroup.items">
+                                    <td ng-repeat="name in columnNames">{{item[name.id]}}</td>
+                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

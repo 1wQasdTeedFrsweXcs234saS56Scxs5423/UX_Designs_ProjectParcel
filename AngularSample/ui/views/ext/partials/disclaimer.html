@@ -1,0 +1,20 @@
+
+<div class="modal-header">
+        <a type="button" class="close" ng-click="$modalCancel()" aria-hidden="true"><b>X</b></a>
+        <h3>Event Notification Options</h3>
+</div>
+<div class="modal-body">
+    <div style="font-weight:bold;">Disclaimer</div>
+    <div>The information that Event Notification will send using ftp or via email with attachments is in a non-encrypted format.</div>
+    <br>
+    <div>An alternative, more secure method to receive order information is to use the “Export” button available in the Simple and Advanced Search screens.</div>
+    <div class="disclaimer">This disclaimer must be accepted in order to complete setup.</div>
+    <div>If you do not agree, your previous Event Notification configuration will be used.</div><br>
+    <div>Do you agree with sending dsensitive notification data over the internet?</div>
+</div>
+<div class="modal-footer" ng-controller = "eventBasedController">
+    <a class="slim button searchBTN secondary btn_label flLeft" ng-click="$modalCancel()">No, I Do Not Agree</a>
+    <a class="slim button searchBTN primary btn_label" ng-click="$modalSuccess()">I Agree</a>
+    <!--<button class="btn btn-warning" ng-click="cancel()">Cancel</button> -->
+</div>
+        

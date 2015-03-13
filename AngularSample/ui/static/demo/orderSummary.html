@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html ng-app="ossApp" lang="en" class="js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <title>Order Summary</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="./lib/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" type="text/css" href="./lib/public.css">
+	<link rel="stylesheet" type="text/css" href="./css/orderSummary.css">
+    <link rel="stylesheet" type="text/css" href="./css/util.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+	<style>
+	.pop-up {
+	  position: absolute;
+	  left:740px;
+	  top:580px;
+	  width: 380px;
+	  padding: 10px;
+	  background: #FFFFFF;
+	  color: #000000;
+	  border: 1px solid #1a1a1a;
+	  font-size: 14px;
+	}
+	.pop-up td { border: 1px solid #1a1a1a; }
+	</style>
+</head>
+<body style="zoom:1;">
+
+<div id="Coming" onclick="closeTable('Coming')">
+  <div class="customer_row"><div class="pic"><img src="./images/icon_coming.png"></div><div class="txt">COMING SOON</div></div>
+</div>
+
+<div class="row">
+    <div class="eight columns logo">
+        <img src="./images/logo.png" alt="hp">
+        <span style="color:black!important;">Customer Transaction Viewer</span><br>
+        <ul id="menu_nv" class="nav" style="width:100%!important;">
+			<li><a href="./home.html" class="current">Home</a> &nbsp;|</li>
+			<li><a href="http://d2t0020g.austin.hp.com:8580/ncis_sb3/demo/home">Order Management</a> &nbsp;|</li>
+			<li><a href="#" onclick="showTable('Coming');">User Maintenance</a> &nbsp;</li>
+        </ul>
+    </div>
+	<div class="four columns">
+		<div class="offset-by-eight" style="margin-top:40px;">
+			<a href="#"><img src="./images/settings.gif"></a>
+			<a href="#"><img src="./images/support.gif"></a>
+		</div>
+	<div class="login">Welcome, Cerda Barbara [<a href="./home.html">Preferences</a>]</div>
+	</div><hr>
+</div>
+
+<div ng-init = "expandOrCollapsePanelNames=['refineSearch', 'searchResult']"></div>
+
+<div ng-controller="expandOrCollapseCtrl">
+<div class="row">
+	<div ng-show="collapseAll" style="text-align:right;font-size:12px;color:#6dc3eb;">
+		<a href ng-click="expandOrCollapseAll('c')"><span>[-] Collapse All</span></a></div>
+	<div ng-show="expandAll" style="text-align:right;font-size:12px;color:#6dc3eb;">
+	<a href ng-click="expandOrCollapseAll('e')"><span>[+] Expand All</span></a></div>
+</div>
+
+<div class="row">
+	<div ng-click="expandOrCollapse('refineSearch')">
+			<div class="twelve columns row_title">
+				<img ng-src="{{expandOrCollapseImg['refineSearch']}}" alt="Refine_Search">
+				<span><b>Refine Search</b></span>
+			</div>
+		<hr>
+	</div>
+    <div ng-show="refineSearch">
+		<div class="six columns">
+			<div class="generals">
+				<span>Purchase Order#:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="PO_No">
+			</div>
+			<div class="generals">
+				<span>HP Order#:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="HP_Order_No">
+			</div>
+			<div class="generals">
+				<span>Shipment#:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="Shipment_No">
+			</div>
+			<div class="generals">
+				<span>Invoice#:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="OF1">
+			</div>
+			<div class="generals" style="">
+				<a href="./orderSummary.html" class="small button" style="font-size: 12px; margin-left:200px;">Search</a>
+			</div>
+		</div>
+		<div class="six columns">
+			<div class="generals">
+				<span>Date From:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="dateFrom" >
+			</div>
+			<div class="generals">
+				<span>Date To:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="dateTo">
+			</div>
+		   <div class="generals">
+				<span>Customer #:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="OIF1">
+			</div>
+			<div class="generals">
+				<span>Customer Name:</span>
+				<input type="text" style="border: 1px solid #ccc;" id="OIF2">
+			</div>
+		</div>
+	</div>
+</div><br>
+
+<div class="row">
+	<div ng-click="expandOrCollapse('searchResult')">
+			<div class="nine columns row_title">
+				<img ng-src="{{expandOrCollapseImg['searchResult']}}" alt="Search_Result">
+				<span><b>Search Result</b></span>
+			</div>
+	</div>
+	<div class="three columns" style="margin-top:14px!important;">
+		<a href="javascript:jQuery('#autoFilter').toggle();" class="small button" style="margin-left:10px;">auto filter</a>
+		<a href="javascript:exporttoexcel();" class="small button" style="margin-left:5px;margin-right:-2px;">export to excel</a>
+	</div><hr>
+	<div ng-show="searchResult">
+		<div class="row" >
+			<div style="float:right;margin-right:30px;">
+			  <div class="row" >
+					<div class="small-12 columns list_panel_change"  style="margin-top:8px;" width="100px;">
+						<span onclick="setDisplayModel('isTable');switchSrc('tabImg');">
+							<img id="tabImg" src="./images/icon_list_blue.png" style="margin-bottom:-1px;">
+							<a href="#" class="grey" style="margin-left:4px;font-size:14px;">List</a>
+						</span>
+						<span onclick="setDisplayModel('isPanel');switchSrc('palImg')">
+							<img id="palImg" src="./images/icon_panel_grey.png" style="margin-bottom:-1px;">
+							<a href="#" class="grey" style="margin-left:4px;font-size:14px;">Panel</a> |
+						</span>
+
+					</div>
+			  </div>
+			</div>
+		</div>
+
+		<div ng-controller="orderListCtrl">
+		<div class="datalist" id="panelDIV" style="display:block">
+			<ul ng-repeat="item in pagedItems[currentPage]">
+				<li class="rightpd">
+				<div class="whitearea panel-view">
+					<dl class="dotline titleline_blue" style="border-bottom: 1px solid #e8e8e8;margin-bottom:8px;">
+						<dt class="title"><img src="./images/list_tb.png"></dt><dd class="title">
+						<span style="color:#2BA6CB;">No:</span><a class="orderNoLink" href="#" id='{{item.hp_order_number}}'>{{item.hp_order_number}}</a></dd><hr>
+					</dl>
+					<dl>
+						<dt class="content">PO&nbsp;No#:</dt>
+						<dd class="content">{{item.po_number}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Order&nbsp;Type:</dt>
+						<dd class="content">{{item.order_type}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Order&nbsp;Status:</dt>
+						<dd class="content">{{item.order_status}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Quote&nbsp;No#:</dt>
+						<dd class="content">{{item.quote_no}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Order&nbsp;Date:</dt>
+						<dd class="content">{{item.order_date}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Planned&nbsp;Ship&nbsp;Date:</dt>
+						<dd class="content">{{item.planned_ship_date}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Actual&nbsp;Ship&nbsp;Date:</dt>
+						<dd class="content">{{item.actual_ship_date}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Planned&nbsp;Delivery&nbsp;Date:</dt>
+						<dd class="content">{{item.planned_delivery_date}}</dd>
+					</dl>
+					<dl>
+						<dt class="content">Actual&nbsp;Delivery&nbsp;Date:</dt>
+						<dd class="content"><a href="#">{{item.actual_delivery_date}}</a></dd>
+					</dl>
+					<dl>
+						<dt class="content">Shipment&nbsp;No:</dt>
+						<dd class="content"><a href="#">{{item.shipment_no}}</a></dd>
+					</dl>
+					<a href="#" class="orderNoLink button" style="font-size: 12px; margin-left:-10px!important;" id='{{item.hp_order_number}}'>Details</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+<br>
+
+		<div id="tableDIV"><div class=throver></div>
+<div class=table_info>
+				<ul id=th0>
+				  <li ng-click="predicate = 'po_number'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-po_number'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th1>
+				  <li ng-click="predicate = 'hp_order_number'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-hp_order_number'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th2>
+				  <li ng-click="predicate = 'order_type'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-order_type'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th3>
+				  <li ng-click="predicate = 'order_status'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-order_status'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th4>
+				  <li ng-click="predicate = 'quote_no'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-quote_no'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th5>
+				  <li ng-click="predicate = 'order_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-order_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th6>
+				  <li ng-click="predicate = 'planned_ship_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-planned_ship_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th7>
+				  <li ng-click="predicate = 'actual_ship_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-actual_ship_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th8>
+				  <li ng-click="predicate = 'planned_delivery_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-planned_delivery_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th9>
+				  <li ng-click="predicate = 'actual_delivery_date'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-actual_delivery_date'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+				<ul id=th10>
+				  <li ng-click="predicate = 'shipment_no'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-shipment_no'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+			</div>
+			<!--<div class=table_info>
+				<ul ng-repeat="(i,name) in columnIds" id="th{{i}}">
+				  <li ng-click="predicate = '{{name}}'; reverse=true"><img src="./images/ups.png">&nbsp;&nbsp;Ascending</li>
+				  <li ng-click="predicate = '-{{name}}'; reverse=false"><img src="./images/down.png">&nbsp;&nbsp;Descending</li>
+				</ul>
+			</div>-->
+		<div style="overflow:auto;">
+		<table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" style="border: 1px solid #999999; color: #000000;overflow:auto;">
+			<tr class="font_black" style="border: 1px solid #999999;color: #000000;">
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('po_number')" ng-click="changeSorting('po_number')">
+				<strong>PO&nbsp;Number</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-click="changeSorting('hp_order_number')">
+				<strong>HP&nbsp;Order&nbsp;Number</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('hp_order_number')" ng-click="changeSorting('order_type')">
+				<strong>Order&nbsp;Type</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('order_status')" ng-click="changeSorting('order_status')">
+				<strong>Order&nbsp;Status</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('quote_no')" ng-click="changeSorting('quote_no')">
+				<strong>Quote&nbsp;#</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('order_date')" ng-click="changeSorting('order_date')">
+				<strong>Order&nbsp;Date</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('planned_ship_date')" ng-click="changeSorting('planned_ship_date')">
+				<strong>Planned&nbsp;Ship&nbsp;Date</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('actual_ship_date')" ng-click="changeSorting('actual_ship_date')">
+				<strong>Actual&nbsp;Ship&nbsp;Date</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('planned_delivery_date')" ng-click="changeSorting('planned_delivery_date')">
+				<strong>Planned&nbsp;Delivery&nbsp;Date</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('actual_delivery_date')" ng-click="changeSorting('actual_delivery_date')">
+				<strong>Actual&nbsp;Delivery&nbsp;Date</strong></th>
+				<th style="background: none repeat scroll 0 0 #FAFAFA;border-bottom: 1px solid #999999;border-right: 1px solid #999999;color: #666666;font-size: 12px;font-weight: 100;padding: 10px;padding: 9px 10px; vertical-align: top;" class="sort-none" ng-class="getClass('shipment_no')" ng-click="changeSorting('shipment_no')">
+				<strong>Shipment&nbsp;No&nbsp;#</strong></th>
+			</tr>
+			<tr id="autoFilter" class="font_black table_details">
+				<th ng-repeat="name in columnIds">
+				<input type=text ng-model="$parent.search[name]"></th>
+			</tr>
+			<tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate | startFrom:currentPage*itemsPerPage | limitTo:itemsPerPage"
+				style="border: 1px solid #999999;color: #000000;white-space:nowrap;">
+				<td style="border: 1px solid #999999;color: #000000;">{{item.po_number}}</td>
+				<td style="border: 1px solid #999999;color: #000000;"><a class="orderNoLink" href="#" id='{{item.hp_order_number}}'>{{item.hp_order_number}}</a></td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.order_type}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">
+					<a href="#" class="trigger" ng-mouseleave="mouseleave()" ng-mouseover="mouseover('{{item.order_status}}');"
+						id="{{item.order_status}}">{{item.order_status}}</a>
+				</td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.quote_no}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.order_date}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.planned_ship_date}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.actual_ship_date}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.planned_delivery_date}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">{{item.actual_delivery_date}}</td>
+				<td style="border: 1px solid #999999;color: #000000;">
+					<a class="shipmentNoLink" href="#" id='{{item.shipment_no}}'>{{item.shipment_no}}</a>
+				</td>
+			</tr>
+		</table></div>
+	<div ng-show="statusShow" height="auto" class="table_details pop-up">
+		<div class="generals">
+			<span class="margin_left10">Quote Creation Date:</span>
+			<div class="div_input margin_left10" id="item_subitem">{{orderHeader.Quote_Creation_date}}</div>
+		</div>
+		<div class="generals">
+			<span class="margin_left10">Purchase Order Date:</span>
+			<div class="div_input margin_left10" id="Product" >{{orderHeader.PO_Date}}</div>
+		</div>
+		<div class="generals">
+			<span class="margin_left10">HP Receive Date:</span>
+			<div class="div_input margin_left10" id="product_descr">{{orderHeader.HP_Receive_date}}</div>
+		</div>
+		<div class="generals">
+			<span class="margin_left10">Payment Receive Date:</span>
+			<div class="div_input margin_left10" id="deal_id">{{orderHeader.Payment_Receive_date}}</div>
+		</div>
+		<div class="generals">
+			<span class="margin_left10">Order Load Date:</span>
+			<div class="div_input margin_left10" id="requested_date">{{orderHeader.Order_Load_Date}}</div>
+		</div>
+		<div class="generals">
+			<span class="margin_left10">Clean Order Date:</span>
+			<div class="div_input margin_left10" id="plant">{{orderHeader.Clean_Order_date}}</div>
+		</div>
+		<div class="generals">
+			<span class="margin_left10">Order Close Date:</span>
+			<div class="div_input margin_left10" id="ship_from">{{orderHeader.Order_Close_Date}}</div>
+		</div>
+	</div>
+		</div>
+		<br>
+		<div class="row"><div class="pagination">
+			<div class="num" style="margin-left:20px;">[
+				<span class="font_blue">{{items.length}}</span> items
+				<span class="font_blue">{{totalPages}}</span> pages ]
+			</div>
+			<table class="goto" style="margin-left:1px;height:25px;">
+			<tr><td><input type=text style="width:45px;height:25px;margin-top:-5px;" maxlength=2 ng-model="pageNo"></td><td>
+			<span style="background: #57bae8;padding: 6px 6px;margin-left:-10px;margin-top:-10px;color: #fff;cursor: pointer;" ng-click="gotoPage()">GO</span>
+			</td></tr></table>
+			<ul>
+				<li ng-class="{disabled: currentPage == 0}">
+					<a href ng-click="prevPage()" class="prevnext">&laquo;</a>
+				</li>
+				<li ng-repeat="n in range(pagedItems.length)"
+					ng-class="{active: n == currentPage}"
+				ng-click="setPage()">
+					<a href ng-bind="n + 1">1</a>
+				</li>
+				<li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+					<a href ng-click="nextPage()" class="prevnext">&raquo;</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	</div></div>
+</div>
+
+<div class="row footer"><hr>
+    <div class="twelve columns">
+        Powered by HP Order Status Tracking System | @ 2013 Hewlett-Packard Development Company, L.P
+    </div>
+</div>
+
+
+<script type="text/javascript" src="./lib/angular.min.js"></script>
+<script type="text/javascript" src="./lib/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="./lib/jquery-ui-1.8.16.custom.min.js"></script>
+
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/orderSummary.js"></script>
+
+<script>
+jQuery(function() {
+	jQuery("#dateFrom").datepicker();
+	jQuery("#dateTo").datepicker();
+	setDisplayModel('isTable');
+	jQuery("tr:nth-child(even)").css("background","#fff");
+	jQuery("tr:nth-child(odd)").css("background","#fafafa");
+	/*jQuery('a.trigger').hover(function() {
+		jQuery(this).parent().find('.pop-up').show();
+	});
+	jQuery('a.trigger').mouseout(function() {
+		jQuery(this).siblings('.pop-up').hide();
+	});*/
+});
+</script>
+
+</body></html>

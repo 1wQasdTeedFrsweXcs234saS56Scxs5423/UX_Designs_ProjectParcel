@@ -1,0 +1,135 @@
+<div ng-controller="eventBasedController">
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Specify Order Filter</strong></span></div>
+        <div id="EdivContRow">
+        you may choose to recieve notifications on all your open orders or only specific orders. By leaving the filters below blank, you will recieve information on all orders according to the event type(s) you select. If you wish to recive notifications on specific orders, use the following filters:</div>
+        <div id="EorderAttendDiv">
+            <div id="EorderAttend_inner">
+                <div id="EfieldDiv"><span class="EeventTxt">Purchase Order Number*</span><br>
+                <input id="aqqq" ng-model="purchOrderNum" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+                <div id="EfieldDiv"><span class="EeventTxt">Attention To</span><br>
+                <input id="aqqq" ng-model="attnTo" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+            </div>
+        </div>
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Select the event you want to be notified about:</strong></span><span class="questionIcon"><img src="../../common/images/questionIcon.jpg"></span></div>
+        <br>
+        <div class="EBSelectEventForm">
+        <!--<div class="formDiv"><span class="chkbox form checkboxMargin"><input name="Ack" id="Ack" value="Ack" ng-model="Ack" type="checkbox" ng-click="storeCheckBoxVal('Ack');"/><label for="Ack" class="lableHead">Acknowledgement </label></span></div>-->
+            <div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="ack" id="ack" value="ack" ng-model="ack" type="checkbox" ng-click="storeCheckBoxVal('ack');"/><label for="ack" class="lableHead">Acknowledgement</label></span></div>
+            <div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="sddChng" id="sddChng" value="sddChng" ng-model="sddChng" type="checkbox" checked="checked" ng-click="storeCheckBoxVal('sddChng');"/><label for="sddChng" class="lableHead">Delivery Date Change</label></span></div>
+            <div class="EBformDiv"><span class="chkbox form checkboxMargin"><input name="ordChng" id="ordChng" value="ordChng" ng-model="ordChng" type="checkbox" ng-click="storeCheckBoxVal('ordChng');"/><label for="ordChng" class="lableHead">Order Change</label></span></div>
+        </div>
+        <div id="EBIForm"><span class="EeventTxt txtGray textLftPadding">Status Change</span></div>
+        <div class="EBSelectEventForm">
+            <div class="EBformDiv">
+                <div><span class="chkbox form checkboxMargin"><input name="admin" id="admin" value="admin" ng-model="admin" type="checkbox" ng-click="storeCheckBoxVal('admin');"/><label for="admin" class="lableHead">Admin/Processing</label></span></div>
+                <div><span class="chkbox form checkboxMargin"><input name="consol" id="consol" value="consol" ng-model="consol" type="checkbox" ng-click="storeCheckBoxVal('consol');"/><label for="consol" class="lableHead">Consolidation</label></span></div>  
+                <div><span class="chkbox form checkboxMargin"><input name="cancel" id="cancel" value="cancel" ng-model="cancel" type="checkbox" ng-click="storeCheckBoxVal('cancel');"/><label for="cancel" class="lableHead">Cancelled</label></span></div>              
+                <div><span class="chkbox form checkboxMargin"></span></div>
+            </div>
+            <div class="EBformDiv">
+                <div><span class="chkbox form checkboxMargin"><input name="del" id="del" value="del" ng-model="del" type="checkbox" ng-click="storeCheckBoxVal('del');"/><label for="del" class="lableHead">Delivered</label></span></div>
+                <div><span class="chkbox form checkboxMargin"><input name="inv" id="inv" value="inv" ng-model="inv" type="checkbox" ng-click="storeCheckBoxVal('inv');"/><label for="inv" class="lableHead">Invoiced</label></span></div>                
+            </div>
+            <div class="EBformDiv">
+                <div><span class="chkbox form checkboxMargin"><input name="prod" id="prod" value="prod" ng-model="prod" type="checkbox" ng-click="storeCheckBoxVal('prod');"/><label for="prod" class="lableHead">Production</label></span></div>
+                <div><span class="chkbox form checkboxMargin"><input name="ship" id="ship" value="ship" ng-model="ship" type="checkbox" ng-click="storeCheckBoxVal('ship');"/><label for="ship" class="lableHead">Shipped</label></span></div>
+            </div>
+        </div>
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Select the event you want to be notified about:</strong></span><span class="questionIcon"><img src="../../common/images/questionIcon.jpg"></span></div>
+        <br>
+        <div class="EBSelectEventForm">
+            <div class="EBRBformDiv"><span class="rdbut"><input name="timing" id="immediate" value="immediate" ng-model="timing" type="radio" ng-click="storeTiming('immediate');"/><label for="immediate" class="lableHead"> Send immediately </label></span></div>
+            <div class="EBRBformDiv"><span class="rdbut"><input name="timing" id="combine" value="combine" ng-model="timing" type="radio" ng-click="storeTiming('combine');"/><label for="combine" class="lableHead"> Combine events and send once a day </label></span></div>
+        </div>
+        <br><br>
+        <div id="EBISubheader"><span class="textLftPadding"><strong>Specify the transport type:</strong></span><span class="questionIcon"><img src="../../common/images/questionIcon.jpg"></span></div>
+        <br>
+        <div class="EBSelectEventForm" style="margin-bottom: 20px;">
+            <div class="EBRBformDiv"><span class="rdbut"><input checked="true" name="transport" id="email" value="email" ng-model="transport" type="radio" ng-click="transportType('email');"/><label for="email" class="lableHead"> Email </label></span></div>            
+        </div>
+        <div id="specifyTransportDiv">
+            <div id="emailTxtDiv">Email to</div>
+            <div class="flLeft">
+               <!-- <input style="" ng-model="emailTo" value="Optional Example" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active"/>
+                -->
+                <textarea rows="10" cols="150" ng-model="emailTo" value="Optional Example" data-placeholder="Optional Example" class="form-input js_color_change pre-active"></textarea>
+            </div>
+            <div id="emailToBtn1" ng-click="addEmailId()" style="margin-right: 180px;">Add Email Id</div>
+            <div id="emailToBtn1" ng-click="deleteEmailId()" ng-show="deleteButton">Delete Email Id</div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">Mail Format:</div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">
+                <div class="EBRBformDiv"><span class="rdbut"><input checked="true" name="transFormat" id="TableTabDelimited" value="TableTabDelimited" ng-model="transFormat" type="radio" ng-click="storeTransFormat('TableTabDelimited');"/><label for="TableTabDelimited" class="eHead"> Attach File</label></span></div>
+                <div class="EBRBformDiv"><span class="rdbut"><input checked="true" name="transFormat" id="weblink" value="weblink" ng-model="transFormat" type="radio" ng-click="storeTransFormat('weblink');"/><label for="weblink" class="eHead"> Web Link</label></span></div>
+            </div>
+        </div>
+        <div id="specifyTransportDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft" style="font-size: 15px;"><span class="chkbox form checkboxMargin"><input name="incHL" id="incHL" value="incHL" ng-model="incHL" type="checkbox" ng-click="storeCheckBoxVal('incHL');"/><label for="IncHL" class="lableHead">Include Header Line</label></span></div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">Send Email As:</div>
+        </div>
+        <div id="EmailformatDiv">
+            <div id="emailTxtDiv"></div>
+            <div class="flLeft Emailformat">
+                <div class="EBRBformDiv"><span class="rdbut"><input name="msgFormat" id="text" value="text" ng-model="msgFormat" type="radio" ng-click="storeMsgFormat('text');"/><label for="text" class="eHead"> Text </label></span></div>
+                <div class="EBRBformDiv"><span class="rdbut"><input name="msgFormat" id="html" value="html" ng-model="msgFormat" type="radio" ng-click="storeMsgFormat('html');"/><label for="html" class="eHead"> HTML </label></span></div>
+            </div>
+        </div>
+        <div class="EBSelectEventForm">
+            <div class="EBRBformDiv"><span class="rdbut"><input checked="true" name="transport" id="ftp" value="ftp" ng-model="transport" type="radio" ng-click="transportType('ftp');"/><label for="ftp" class="lableHead"> FTP </label></span></div>
+        </div>
+        <div id="EtxtFieldFormDiv">
+            <div id="EorderAttend_inner">
+                <div id="EfieldDiv"><span class="EformTxtField">Host</span><br>
+                    <input id="aqqq" ng-model="host" data-placeholder="Host" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+                <div id="EfieldDiv"><span class="EformTxtField">Path</span><br>
+                    <input id="aqqq" ng-model="path" data-placeholder="Path" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+            </div>
+            <div id="EorderAttend_inner">
+                <div id="EfieldDiv"><span class="EformTxtField">User</span><br>
+                    <input id="aqqq" ng-model="user" data-placeholder="User" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+                <div id="EfieldDiv"><span class="EformTxtField">Password</span><br>
+                    <input id="aqqq" ng-model="password" data-placeholder="Password" type="text" class="form-input js_color_change pre-active"/>
+                </div>
+            </div>
+        </div>
+        <div id="EBInternalVisibleDiv" ng-show="intVisible">
+            <div id="EBIIVSubheader"><span class="textLftPadding"><strong>Only Internal Visible Setting:</strong></span></div>
+           <!-- <div id="specifyTransportDiv"> -->
+            <div class="EBSelectEventForm" style="margin-bottom:50px;">
+                <div class="EBRBformDiv"><span class="rdbut"><input name="transport" id="http" value="http" ng-model="transport" type="radio" ng-click="transportType('http');"/><label for="http" class="lableHead"> http URL</label></span></div>
+                <div class="flLeft">
+                    <input style="" value="Optional Example" ng-model="httpUrl" data-placeholder="Optional Example" type="text" class="form-input js_color_change pre-active" id="url" />
+                </div>
+                <div id="EmailformatDiv">
+                    <div id="emailTxtDiv"></div>
+                    <div class="flLeft Emailformat">Format: <span class="rdbut"><input name="transFormat" id="OSSXML" value="OSSXML" ng-model="transFormat" type="radio" ng-click="storeTransFormat('OSSXML');"/><label for="http" class="eHead" style="margin-left:75px; margin-top:-30px;" > OSS Xml</label></span></div>
+                </div>
+            </div>
+        </div>
+        <div id="EBfooterBtn">
+            <div>
+                <div id="emailToBtn" >Test Connection</div>
+                <div id="emailToBtn" ng-click="saveSetup()" ng-show="showSaveBtn">
+                    Save Setup
+                </div>
+                
+            </div>
+        </div>
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>
+<!--</div>
+</div> -->

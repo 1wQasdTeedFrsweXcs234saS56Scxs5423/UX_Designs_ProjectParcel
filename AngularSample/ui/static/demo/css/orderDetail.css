@@ -1,0 +1,116 @@
+/* line 6, ../sass/orderDetail.scss */
+.collExp {
+  text-align: right;
+  font-size: 12px;
+  color: #6dc3eb;
+}
+
+/* line 9, ../sass/orderDetail.scss */
+.generals .refine_search_inp {
+  border: 1px solid #cccccc;
+}
+
+/* line 12, ../sass/orderDetail.scss */
+.search_btn {
+  font-size: 14px;
+  margin-left: 127px;
+}
+
+/*
+.detail_number{ color: #0096D6; float: left; width: 205px; padding-left: 10px; 
+	dt { font-family: Arial, Helvetica, sans-serif; line-height: 20px; font-size: 14px; }
+	dd { font-family: Impact; font-size: 30px; line-height: 36px; }
+}
+
+.detail_form {
+	.status { clear: both; overflow: hidden; padding-top: 25px; padding-bottom: 35px; padding-left: 10px; 
+		dt { font-family: Impact; font-size: 36px; color: #0096D6; padding-right: 35px; float: left; }
+		dd { float: right; width: 130px; height: 43px; float: left; display: block; font-size: 18px; font-family: Arial, Helvetica, sans-serif; line-height: 43px; text-align: center; padding-left: 5px; padding-right: 5px; }
+		.statuson{ background-image: url(../images/ocsv_icon10.png); background-repeat: no-repeat; color: $white; }
+		.statusoff{ background-image: url(../images/ocsv_icon11.png); background-repeat: no-repeat; color: #999; }
+	}
+}*/
+/* line 29, ../sass/orderDetail.scss */
+.table_details {
+  border: 1px solid #999999;
+  color: #000000;
+}
+.table_details td {
+  width:180px!important;
+}
+
+/* line 30, ../sass/orderDetail.scss */
+.goto_page {
+  margin-left: 20px;
+  height: 30px;
+}
+
+/* line 31, ../sass/orderDetail.scss */
+.click_go {
+  background: #57bae8;
+  padding: 6px 8px;
+  margin-top: -11px;
+  color: white;
+  cursor: pointer;
+}
+
+/* line 32, ../sass/orderDetail.scss */
+.margin_top0 {
+  margin-top: 0px;
+}
+
+/* line 33, ../sass/orderDetail.scss */
+.margin_top10 {
+  margin-top: 10px;
+}
+
+/* line 34, ../sass/orderDetail.scss */
+.margin_top30 {
+  margin-top: 30px;
+}
+
+/* line 35, ../sass/orderDetail.scss */
+.margin_top40 {
+  margin-top: 40px;
+}
+
+/* line 36, ../sass/orderDetail.scss */
+.margin_left0 {
+  margin-left: 0px;
+}
+
+/* line 37, ../sass/orderDetail.scss */
+.margin_left10 {
+  margin-left: 10px !important;
+}
+
+/* line 38, ../sass/orderDetail.scss */
+.margin_left20 {
+  margin-left: 20px;
+}
+
+/* line 40, ../sass/orderDetail.scss */
+#quote_right {
+  float: right;
+}
+
+/* line 41, ../sass/orderDetail.scss */
+#status_type {
+  clear: both;
+  margin-top: -30px;
+}
+
+/* line 42, ../sass/orderDetail.scss */
+#autoFilter {
+  text-shadow: 2px 1px 2px #999999;
+  display: none;
+}
+
+/* line 43, ../sass/orderDetail.scss */
+#colName {
+}
+
+/* line 44, ../sass/orderDetail.scss */
+#pagetitle {
+  color: black!important;
+}

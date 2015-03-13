@@ -1,0 +1,25 @@
+$blue:#6DC3EB;
+$margin_top:0px;
+$margin_left:0px;
+$white:#fff;
+
+.generals{
+	.refine_search_inp{border: 1px solid #ccc;}	
+}
+
+.save_btn{font-size: 14px; margin-left:127px}
+
+.margin_top0{margin-top:$margin_top;}
+.margin_top10{margin-top:10px;}
+.margin_top30{margin-top:30px;}
+.margin_top40{margin-top:40px;}
+.margin_top100{margin-top:100px;}
+.margin_left0{margin-left:$margin_left;}
+.margin_left10{margin-left:10px !important;}
+.margin_left20{margin-left:20px;}
+
+
+
+#pagetitle{color:black!important;}
+#bt_right{padding:30px;}
+#bt_left{padding:27px;}

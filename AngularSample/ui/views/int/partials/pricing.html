@@ -1,0 +1,68 @@
+<div ng-controller="pricingTabCtrl">
+    <div class="pricingmaindiv">
+        <table id="pricingtableOne" width="100%" cellspacing="1" cellpadding="0" border="0px solid #999999" class="hpTbl pricing" >
+            <thead>
+                <tr class="tableHeader font_black table_details ossCols" style="white-space:nowrap;border: 1px solid #999999;color: #000000;"></tr>
+            </thead>
+                <tbody ng-repeat="itemdata in bundleitemsdataoption">
+                    <tr ng-show="{{itemdata.showBundleKey}}">
+                        <td colspan="17" class="total" ng-click="toggleDetail('{{itemdata.indexPricing}}');lineItemColpseExpand('showData{{itemdata.indexPricing}}',e)"><span class="collapseImg expCloseImgDiv" id="showData{{itemdata.indexPricing}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Bundle Id : {{itemdata.bundlekey}}</span></td>
+                    </tr>
+                    <tr ng-show="showData{{itemdata.indexPricing}}">
+                        <td class="table_details" ><div ng-show="{{itemdata.showItemcontent}}">{{itemdata.BundleItemno}}</div></td>
+                        <td class="table_details"><div ng-show="{{itemdata.showItemcontent}}">{{itemdata.Bundlehpproduct}}</div></td>
+                        <td class="table_details">{{itemdata.BundleOption}}</td>
+                        <td class="table_details"><div >{{itemdata.Bundledescription}}</div></td>
+                        <td class="table_details"><div>{{itemdata.Bundleidcode}}</div></td>
+                        <td class="table_details"><div >{{itemdata.BundleorderQty}}</div></td>
+                        <td class="table_details"><div>{{itemdata.Bundleshipqty}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{itemdata.Bundlelistunitprice}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{itemdata.BundlelistExtprice}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{itemdata.Bundlediscount1}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{itemdata.Bundlediscount}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{itemdata.Bundlenetlineprice}}</div></td>
+                        <td class="table_details"><div>{{itemdata.Bundlecurrency}}</div></td>
+                        <td class="table_details"><div>{{itemdata.BundleshipFrom}}</div></td>
+                        <td class="table_details"><div>{{itemdata.BundlevendorName}}</div></td> 
+                    </tr>
+                </tbody>
+                <tr><td colspan="17" class="total" ng-show="showNonBundle">Non Bundle</td></tr>
+                <tbody ng-repeat="item in items">   
+                    <tr>
+                       <td class="table_details" ><div ng-show="{{item.showItem}}">{{item.Itemno}}</div></td>
+                        <td class="table_details"><div ng-show="{{item.showItem}}">{{item.hpproduct}}</div></td>
+                        <td class="table_details"><div>{{item.option}}</div></td>
+                        <td class="table_details"><div>{{item.description}}</div></td>
+                        <td class="table_details"><div>{{item.idcode}}</div></td>
+                        <td class="table_details"><div>{{item.orderQty}}</div></td>
+                        <td class="table_details"><div>{{item.shipqty}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{item.listunitprice}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{item.listExtprice}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{item.discount1}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{item.discount}}</div></td>
+                        <td class="table_details"><div style="text-align: right;">{{item.netlineprice}}</div></td>
+                        <td class="table_details"><div>{{item.currency}}</div></td>
+                        <td class="table_details"><div>{{item.shipFrom}}</div></td>
+                        <td class="table_details"><div>{{item.vendorName}}</div></td>
+                    </tr>
+                </tbody>                 
+                <tr>
+                    <th class="total">Total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><div style="text-align: right;">{{totallistExtPrice}}</div></td>
+                    <td><div style="text-align: right;">{{totalDiscPersentage}}%</div></td>
+                    <td><div style="text-align: right;">{{totalDiscValue}}</div></td>
+                    <td><div style="text-align: right;">{{totalNetPrice}}</div></td>
+                    <td><div>{{currency}}</div></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </table>
+    </div>
+</div>

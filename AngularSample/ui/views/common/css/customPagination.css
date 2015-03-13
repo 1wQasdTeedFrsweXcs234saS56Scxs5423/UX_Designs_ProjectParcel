@@ -1,0 +1,163 @@
+.pagination {
+  /*clear: both;*/
+  float: right;
+  font-size: 14px; }
+  .pagination .num {
+    float: right;
+    font-size: 14px;
+    line-height: 30px;
+    padding-right: 15px;
+    margin-left: 20px; }
+  .pagination ul {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-left: 0;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); }
+    .pagination ul li {
+      display: inline;
+      text-align: center; }
+      .pagination ul li span {
+        margin: 4px 0 0 0px;
+        padding: 0 0px;
+        line-height: 25px;
+        text-decoration: none;
+        border-left-width: 0px; }
+      .pagination ul li a {
+        margin: 3px 1px 0 0;
+        float: left;
+        padding: 0;
+        line-height: 22px;
+        color: #767676;
+        text-decoration: none;
+        background-color: white;
+        border: 2px solid #cccccc;
+        width: 26px;
+        height: 26px; }
+        .pagination ul li a:hover {
+          color: #0096d6;
+          background-color: white;
+          border: 2px solid #767676; }
+      .pagination ul li :first-child a, .pagination ul li :first-child span {
+        border-left-width: 1px;
+        -webkit-border-radius: 3px 0 0 3px;
+        -moz-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px; }
+
+.pag_prev {
+  background: url("../images/s-31px-hpe.png") no-repeat;
+  margin-top: 5px;
+  height: 16px;
+  width: 9px; }
+
+.pag_next {
+  background: url("../images/s-31px-hpe.png") no-repeat;
+  margin-top: 5px;
+  height: 16px;
+  width: 9px;
+  background-position: 2px -666px;
+  display: inline-block; }
+
+.pag_prev {
+  background-position: 1px -630px;
+  display: inline-block; }
+
+.pagination ul li a:hover .pag_next {
+  background-position: 2px -738px; }
+.pagination ul li a:hover .pag_prev {
+  background-position: 1px -702px; }
+
+.disabled a {
+  background-color: #f2f2f2 !important;
+  border-color: #cccccc !important; }
+  .disabled a:hover {
+    background-color: #f2f2f2 !important;
+    border-color: #cccccc !important; }
+.disabled .pag_prev, .disabled a:hover .pag_prev {
+  background-position: 1px -774px !important; }
+.disabled .pag_next, .disabled a:hover .pag_next {
+  background-position: 2px -810px !important; }
+
+.pagination ul li :last-child a, .pagination ul li :last-child span {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0; }
+.pagination ul li.active a {
+  color: white;
+  background-color: #0096d6;
+  cursor: default;
+  border-color: #0096d6 !important; }
+.pagination ul .active a :hover {
+  color: #0096d6; }
+.pagination ul .active span {
+  color: white;
+  background-color: #0096d6;
+  cursor: default; }
+.pagination ul .disabled span {
+  color: #999999;
+  background-color: transparent;
+  cursor: default; }
+.pagination ul .disabled a {
+  color: #999999;
+  background-color: transparent;
+  cursor: default; }
+  .pagination ul .disabled a :hover {
+    color: #999999;
+    background-color: transparent;
+    cursor: default; }
+.pagination .pagination-centered {
+  text-align: center; }
+.pagination .pagination-right {
+  text-align: right; }
+.pagination .goto {
+  float: right;
+  font-size: 14px;
+  line-height: 30px;
+  padding-right: 15px;
+  margin-left: 1px;
+  height: 25px; }
+  .pagination .goto input {
+    width: 45px;
+    height: 25px;
+    margin-top: -5px; }
+  .pagination .goto span {
+    background: #0096d6 !important;
+    padding: 4px 6px;
+    margin-left: -10px;
+    margin-top: -4px;
+    color: white;
+    cursor: pointer;
+    height: 24px;
+    margin-right: 4px; }
+
+.paging_cnt {
+  display: inline-block;
+  margin-right: 10px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 14px;
+  color: black; }
+
+.showResultsOptBtns {
+  float: right; }
+
+.switchtablepanel {
+  float: left !important; }
+
+.resultsPerPage {
+  float: right; }
+
+.showResultsOptBtns .pagination {
+  clear: none !important; }
+
+.switchtablepanel {
+  margin: 4px 0px !important; }
+
+.resultsPerPage .active {
+  cursor: default !important; }

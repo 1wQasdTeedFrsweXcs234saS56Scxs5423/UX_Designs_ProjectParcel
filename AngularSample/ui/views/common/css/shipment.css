@@ -1,0 +1,71 @@
+.ship-container-int {font-family: HPSimplified, Arial; width: 1348px; overflow-x: auto;} 
+.ship-container-ext {font-family: HPSimplified, Arial; width: 1442px; overflow-x: auto;}
+.ship-row {width:99%}
+.div-num {color: #007CB9; display: inline-block; font-size: 14px; font-weight: bold; padding-left: 5px; padding-top: 7px;}
+.inner-content {margin-left: 13px; width: 90%;}
+.tbl-innerdetails-bg {background-color: #F1F1F1; width:99.85%; margin-left:1px; padding-bottom: 0.5%;}
+.tbl-innerdetails-bg-ext {background-color: #F1F1F1; width:99.5%; margin-left:0.3%; padding-bottom: 0.5%;}
+table.tblheader { margin-left: 16px; width: 85%;}
+table.tblheader tr {background-color: #F1F1F1 !important;}
+table.tblheader tr td {background-color: #F1F1F1; width:25%;}
+table.tblheader tr td span {color: #999999; text-align:right}
+table.tbl-innerdetails {width:92%; border: 1px solid #D9D9D9; font-size:14px;  margin-left: 6.1%;}
+table.tbl-innerdetails tr th {background-color:#5A5A5A; color:#FFFFFF; text-align:left; padding:10px;}
+table.tbl-innerdetails tr:nth-child(even)  {background-color: #ffffff !important}
+table.tbl-innerdetails tr:nth-child(odd)  {background-color: #F7F7F7 !important}
+table.tbl-innerdetails tr td {color:#6B6B6B; text-align:left; border-left:1px solid #D9D9D9; border-bottom:1px solid #D9D9D9;}
+table.tbl-innerdetails tr td a {color: #007CB9}
+table.tbl-innerdetails-details { margin-left: 8.75%; width: 90%;}
+table.tbl-innerdetails-details-ext { margin-left: 8.65%; width: 90%;}
+table.tbl-innerdetails-details-ext { margin-left: 8.9%; width: 90.67%;}
+table.tbl-innerdetails-width33 tr th {width:25%; text-align:left}
+table.tbl-innerdetails-width33 tr td {width:25%; text-align:left}
+table.tbl-innerdetails-width25 tr th {width:25%; text-align:left}
+table.tbl-innerdetails-width25 tr td {width:25%; text-align:left}
+table.tbl-innerdetails-width10 tr th {width:10%; text-align:left}
+table.tbl-innerdetails-width10 tr td {width:10%; text-align:left}
+table.tbl-innerdetails-width10-ext tr th {width:10px; text-align:left}
+table.tbl-innerdetails-width10-ext tr td {width:10px; text-align:left}
+table.tbl-innerdetails-width100 {width:100% !important; margin-left:0 !important}
+.spacer {height:2px !important}
+.innerlineitems {margin-top: 0.2%}
+.shipinnerheader {width:15% !important}
+.ship-tab {margin-bottom:2px !important}
+.shipmarginTopCls {margin-top: -18px !important} 
+.ship-expand-collapse {margin-left:4.1%}
+.ship-btn{-webkit-border-radius: 0 4px; -moz-border-radius: 0 4px; border-radius: 0 4px; border: 0px; text-align: center; font-size: 16px; color: white; font-weight: bold; height: 36px; padding: 1px 10px 0 10px; margin-top: 5px; cursor: pointer; line-height: 30px;}
+.ship-row_title{cursor: pointer; width: 100%;}
+.ship-three {width: 20% !important; font-size:16px !important; cursor:pointer}
+.ship-generals {position: relative;}
+.ship-generals span {clear: both; width: auto !important; text-align: right; color: #999; margin: 4px 5px 3px 0; font-size: 14px; float: left;}
+.ship-generals .div_input {width:auto !important; text-align: left; float: left; padding-bottom: 5px; margin-top: 5px; color: #000; font-size: 14px;}
+.ship-tbl-three {width: 21% !important; font-size:16px !important; cursor:pointer}
+.ship-generals-tbl-header span {width:34% !important; font-weight:bold; margin-left:-30px;}
+.ship-generals-tbl-header .div_input {width:50% !important; margin-top:3px !important}
+.ship-generals-item-tbl-header {margin-left:10px}
+.ship-generals-item-tbl-header span {width:auto !important; font-weight:bold}
+.ship-generals-item-tbl-header .div_input {width:auto !important}
+.item-inner-left {margin-left:3.8%}
+.item-four {padding: 0 !important}
+.cursor{cursor:pointer}
+
+.ship-rpt {background-color:#F1F1F1; margin-bottom:8px}
+.ship-rpt-inner-content {margin-left: 8px; width: 98.7%;}
+
+.ship-box-inner-header { background-color: #F1F1F1; margin-left: 0.1%; padding-bottom: 0.2%; width: 99.8%; padding-top: 0.2%;}
+.ship-box-inner-header-ext { background-color: #F1F1F1; margin-left: 0.3%; padding-bottom: 0.2%; width: 99.5%; padding-top: 0.2%;}
+.ship-item-inner-header { background-color: #F1F1F1; margin-left: 0.1%; padding-bottom: 6.2%; width: 99.8%; padding-top: 0.5%;}
+.ship-item-inner-header-ext { background-color: #F1F1F1; margin-left: 0.3%; padding-bottom: 4%; width: 99.5%; padding-top: 0.5%;}
+.bg-color-white {background-color:#FFFFFF;}
+.div-norecord { background-color: #FFFFFF; color: #E70205 !important; font-size: 16px; font-weight: bold; margin-left: 3.18%; padding: 7px 0 7px 8px; width: 94.8%;}
+.ship-box-tbl-three {width: 13% !important; font-size:16px !important; cursor:pointer}
+.ship-box-expand-collapse {margin-left: 1.5%; margin-top: 0.7%;}
+ul.itemBoxDetails ul {float:left}
+ul.itemBoxDetails li {float:left}
+.ship-deliverto {width:40%}
+.ship-deliverto .generals span {width:22% !important}
+.ship-deliverto .generals .div_input {width:73% !important}
+.ship-item-four {width:30%}
+.ship-item-four .generals span {width:48%}
+.ship-item-four .generals .div_input {width:50%}
+.ship-item-row1-span {width:35.5% !important}

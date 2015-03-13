@@ -1,0 +1,25 @@
+<div class="bg-color-white shipmarginTopCls">
+    <table cellspacing=0 cellpadding=0 class="tbl-innerdetails tbl-innerdetails-width100">
+        <tr>
+            <th>Tracking #</th>
+            <th>Carrier</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Date</th>
+            <th>Loaded</th>
+        </tr>
+        <tr ng-repeat="item in statusItems" ng-show="statusflag">
+            <td><a class="cursor" ng-click="getBillingDetails('{{$index}}')">{{item.trackingno}}</a></td>
+            <td>{{item.carriername}}</td>
+            <td>{{item.location}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.reason}}</td>
+            <td>{{item.event_datetime | date:'yyyy-MM-dd'}}</td>
+            <td>{{item.loaded}}</td>
+        </tr>
+    </table>
+    <div ng-hide="statusflag" class="div-norecord">
+        No Records Found
+    </div>
+</div>

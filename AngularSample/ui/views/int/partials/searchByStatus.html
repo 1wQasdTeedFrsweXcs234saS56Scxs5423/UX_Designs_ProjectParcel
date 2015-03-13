@@ -1,0 +1,519 @@
+<div ng-init = "expandOrCollapsePanelNames=['orderenrtys','shipment','billings','fallouts','statuss','factoryfullfilment',cancel]"></div>
+<div style="background-color:#F3F3F3;">Select exception/block classifcation</div>
+<span class="collapseexpand" style="float: left;"></span>
+<div ng-init = "expandOrCollapse('ossRow','e')"></div>
+<div ng-controller="refineSearchCtrl">
+    <a class="slim button searchBTN primary btn_label"style="margin-top:-17px;margin-right: 109px;float: right;" href ng-click="checkAll()">SelectAll</a>
+    <a class="slim button searchBTN primary btn_label"style="margin-top: -26px;float: right;margin-right: 16px;" href ng-click="resetAll()">ResetAll</a>
+    <div class="ossRow" style="margin-left:-1px;margin-top:-25px;width:100%;">
+        <div ng-click="expandOrCollapse('orderenrtys')">
+            <div class="twelve columns row_titleadvnce" style="float: right">
+                <div class="{{expandOrCollapseImg['orderenrtys']}} expCloseImgDiv" style="margin-top: 2px;" ></div>
+                    <span style="color:steelblue"><b>Order Entry</b></span>
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div ng-show="orderenrtys" id="orderenrtytab">
+            <div class="orderentrystatus">
+                <input  id="orderentryid" type="checkbox" class="orderentrymain" ng-click="orderEntrySel();"/>
+                <label for="orderentryid">OrderEntry</label>
+            </div>
+            <hr>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycr" type="checkbox" style="margin-top: -18px;" ng-model="oe_cr" value="oe_cr" ng-click="singlesel({{'oe_cr'}},'oe_cr');"/>
+                    <label for="showorderEntrycr">{{showorderEntry.oe_cr}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycfg" type="checkbox" style="margin-top: -18px;" ng-model="oe_cfg" value="oe_cfg" ng-click="singlesel({{'oe_cfg'}},'oe_cfg');"/>
+                    <label for="showorderEntrycfg">{{showorderEntry.oe_cfg}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrydoc" type="checkbox" style="margin-top: -18px;" ng-model="oe_doc" value="oe_doc" ng-click="singlesel({{'oe_doc'}},'oe_doc');"/>
+                    <label for="showorderEntrydoc">{{showorderEntry.oe_doc}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryinfo" type="checkbox" style="margin-top: -18px;" ng-model="oe_info" value="oe_info" ng-click="singlesel({{'oe_info'}},'oe_info');"/>
+                    <label for="showorderEntryinfo">{{showorderEntry.oe_info}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrypri" type="checkbox" style="margin-top: -18px;" ng-model="oe_pri" value="oe_pri" ng-click="singlesel({{'oe_pri'}},'oe_pri');"/>
+                    <label for="showorderEntrypri">{{showorderEntry.oe_pri}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrystax" type="checkbox" style="margin-top: -18px;" ng-model="oe_stax" value="oe_stax" ng-click="singlesel({{'oe_stax'}},'oe_stax');">
+                    <label for="showorderEntrystax">{{showorderEntry.oe_stax}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryacc" type="checkbox" style="margin-top: -18px;" ng-model="oe_acc" value="oe_acc" ng-click="singlesel({{'oe_acc'}},'oe_acc');"/>
+                    <label for="showorderEntryacc">{{showorderEntry.oe_acc}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrybitf" type="checkbox" style="margin-top: -18px;" ng-model="oe_bitf" value="oe_bitf" ng-click="singlesel({{'oe_bitf'}},'oe_bitf');"/>
+                        <label for="showorderEntrybitf">{{showorderEntry.oe_bitf}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycont" type="checkbox" style="margin-top: -18px;" ng-model="oe_cont" value="oe_cont" ng-click="singlesel({{'oe_cont'}},'oe_cont');"/>
+                    <label for="showorderEntrycont">{{showorderEntry.oe_cont}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycust" type="checkbox" style="margin-top: -18px;" ng-model="oe_cust" value="oe_cust" ng-click="singlesel({{'oe_cust'}},'oe_cust');"/>
+                    <label for="showorderEntrycust">{{showorderEntry.oe_cust}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycins" type="checkbox" style="margin-top: -18px;" ng-model="oe_cins" value="oe_cins" ng-click="singlesel({{'oe_cins'}},'oe_cins');"/>
+                    <label for="showorderEntrycins">{{showorderEntry.oe_cins}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryoth" type="checkbox" style="margin-top: -18px;" ng-model="oe_oth" value="oe_oth" ng-click="singlesel({{'oe_oth'}},'oe_oth');"/>
+                    <label for="showorderEntryoth">{{showorderEntry.oe_oth}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycrp" type="checkbox" style="margin-top: -18px;" ng-model="oe_crp" value="oe_crp" ng-click="singlesel({{'oe_crp'}},'oe_crp');"/>
+                    <label for="showorderEntrycrp">{{showorderEntry.oe_crp}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrydata" type="checkbox" style="margin-top: -18px;" ng-model="oe_data" value="oe_data" ng-click="singlesel({{'oe_data'}},'oe_data');"/>
+                    <label for="showorderEntrydata">{{showorderEntry.oe_data}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrydeal" type="checkbox" style="margin-top: -18px;" ng-model="oe_deal" value="oe_deal" ng-click="singlesel({{'oe_deal'}},'oe_deal');"/>
+                    <label for="showorderEntrydeal">{{showorderEntry.oe_deal}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrydupo" type="checkbox" style="margin-top: -18px;" ng-model="oe_dupo" value="oe_dupo" ng-click="singlesel({{'oe_dupo'}},'oe_dupo');"/>
+                    <label for="showorderEntrydupo">{{showorderEntry.oe_dupo}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryeord" type="checkbox" style="margin-top: -18px;" ng-model="oe_eord" value="oe_eord" ng-click="singlesel({{'oe_eord'}},'oe_eord');"/>
+                    <label for="showorderEntryeord">{{showorderEntry.oe_eord}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryfulcr" type="checkbox" style="margin-top: -18px;" ng-model="oe_fulcr" value="oe_fulcr" ng-click="singlesel({{'oe_fulcr'}},'oe_fulcr');"/>
+                    <label for="showorderEntryfulcr">{{showorderEntry.oe_fulcr}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryleas" type="checkbox" style="margin-top: -18px;" ng-model="oe_leas" value="oe_leas" ng-click="singlesel({{'oe_leas'}},'oe_leas');"/>
+                    <label for="showorderEntryleas">{{showorderEntry.oe_leas}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrylic" type="checkbox" style="margin-top: -18px;" ng-model="oe_lic" value="oe_lic" ng-click="singlesel({{'oe_lic'}},'oe_lic');"/>
+                    <label for="showorderEntrylic">{{showorderEntry.oe_lic}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryois" type="checkbox" style="margin-top: -18px;" ng-model="oe_ois" value="oe_ois" ng-click="singlesel({{'oe_ois'}},'oe_ois');"/>
+                    <label for="showorderEntryois">{{showorderEntry.oe_ois}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryoee" type="checkbox" style="margin-top: -18px;" ng-model="oe_oee" value="oe_oee" ng-click="singlesel({{'oe_oee'}},'oe_oee');"/>
+                    <label for="showorderEntryoee">{{showorderEntry.oe_oee}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrypay" type="checkbox" style="margin-top: -18px;" ng-model="oe_pay" value="oe_pay" ng-click="singlesel({{'oe_pay'}},'oe_pay');"/>
+                    <label for="showorderEntrypay">{{showorderEntry.oe_pay}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryres" type="checkbox" style="margin-top: -18px;" ng-model="oe_res" value="oe_res" ng-click="singlesel({{'oe_res'}},'oe_res');"/>
+                    <label for="showorderEntryres">{{showorderEntry.oe_res}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryso" type="checkbox" style="margin-top: -18px;" ng-model="oe_so" value="oe_so" ng-click="singlesel({{'oe_so'}},'oe_so');"/>
+                    <label for="showorderEntryso">{{showorderEntry.oe_so}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryserv" type="checkbox" style="margin-top: -18px;" ng-model="oe_serv" value="oe_serv" ng-click="singlesel({{'oe_serv'}},'oe_serv');"/>
+                    <label for="showorderEntryserv">{{showorderEntry.oe_serv}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryship" type="checkbox" style="margin-top: -18px;" ng-model="oe_ship" value="oe_ship" ng-click="singlesel({{'oe_ship'}},'oe_ship');"/>
+                    <label for="showorderEntryship">{{showorderEntry.oe_ship}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryshto" type="checkbox" style="margin-top: -18px;" ng-model="oe_shto" value="oe_shto" ng-click="singlesel({{'oe_shto'}},'oe_shto');"/>
+                    <label for="showorderEntryshto">{{showorderEntry.oe_shto}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryskel" type="checkbox" style="margin-top: -18px;" ng-model="oe_skel" value="oe_skel" ng-click="singlesel({{'oe_skel'}},'oe_skel');"/>
+                    <label for="showorderEntryskel">{{showorderEntry.oe_skel}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrysupp" type="checkbox" style="margin-top: -18px;" ng-model="oe_supp" value="oe_supp" ng-click="singlesel({{'oe_supp'}},'oe_supp');"/>
+                    <label for="showorderEntrysupp">{{showorderEntry.oe_supp}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntryvdps" type="checkbox" style="margin-top: -18px;" ng-model="oe_vdps" value="oe_vdps" ng-click="singlesel({{'oe_vdps'}},'oe_vdps');"/>
+                    <label for="showorderEntryvdps">{{showorderEntry.oe_vdps}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showorderEntry">
+                    <input  id="showorderEntrycmov" type="checkbox" style="margin-top: -18px;" ng-model="oe_cmov" value="oe_cmov" ng-click="singlesel({{'oe_cmov'}},'oe_cmov');"/>
+                    <label for="showorderEntrycmov" style="margin-left: -2px;margin-top: -20px;">{{showorderEntry.oe_cmov}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ossRow" style="margin-left:-1px;margin-top:-25px;width:100%;">
+        </br>
+        <div ng-click="expandOrCollapse('factoryfullfilment')">
+            <div class="twelve columns row_titleadvnce" style="float: right">
+                <div class="{{expandOrCollapseImg['factoryfullfilment']}} expCloseImgDiv" style="margin-top:2px"></div>
+                <span style="color:steelblue"><b>Factory FullFillments</b></span>
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div ng-show="factoryfullfilment" id="factoryfullfilmenttab" >
+            <div class="factoryfullfilment">
+                <input  id="factoryfullfilment" type="checkbox" class="factoryfullmain" ng-click="factoryFulfillmentSel();"/>
+                <label for="factoryfullfilment">FactoryFulfillment</label>
+            </div>
+            <hr>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentcfg" type="checkbox" style="margin-top: -18px;" ng-model="ff_cfg" value="ff_cfg" ng-click="singlesel({{'ff_cfg'}},'ff_cfg');"/>
+                    <label for="factoryfullfilmentcfg">{{showFactoryfullments.ff_cfg}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentdoc" type="checkbox" style="margin-top: -18px;" ng-model="ff_doc" value="ff_doc"  ng-click="singlesel({{'ff_doc'}},'ff_doc');"/>
+                    <label for="factoryfullfilmentdoc">{{showFactoryfullments.ff_doc}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                 <div class="showfactory">
+                        <input  id="showstatusffwmat" type="checkbox" style="margin-top: -18px;" ng-model="ff_mat" value="ff_mat"  ng-click="singlesel({{'ff_mat'}},'ff_mat');"/>
+                       <label for="showstatusffwmat">{{showFactoryfullments.ff_mat}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentchg" type="checkbox" style="margin-top: -18px;" ng-model="ff_chg" value="ff_chg"  ng-click="singlesel({{'ff_chg'}},'ff_chg');"/>
+                    <label for="factoryfullfilmentchg">{{showFactoryfullments.ff_chg}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentcons" type="checkbox" style="margin-top: -18px;" ng-model="ff_cons" value="ff_cons"  ng-click="singlesel({{'ff_cons'}},'ff_cons');"/>
+                    <label for="factoryfullfilmentcons">{{showFactoryfullments.ff_cons}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentalli" type="checkbox" style="margin-top: -18px;" ng-model="ff_alli" value="ff_alli"  ng-click="singlesel({{'ff_alli'}},'ff_alli');"/>
+                    <label for="factoryfullfilmentalli">{{showFactoryfullments.ff_alli}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentalloc" type="checkbox" style="margin-top: -18px;" ng-model="ff_alloc" value="ff_alloc"  ng-click="singlesel({{'ff_alloc'}},'ff_alloc');"/>
+                    <label for="factoryfullfilmentalloc">{{showFactoryfullments.ff_alloc}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentcred" type="checkbox" style="margin-top: -18px;" ng-model="ff_cred" value="ff_cred"  ng-click="singlesel({{'ff_cred'}},'ff_cred');"/>
+                    <label for="factoryfullfilmentcred">{{showFactoryfullments.ff_cred}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentesc1" type="checkbox" style="margin-top: -18px;" ng-model="ff_esc1" value="ff_esc1"  ng-click="singlesel({{'ff_esc1'}},'ff_esc1');"/>
+                    <label for="factoryfullfilmentesc1">{{showFactoryfullments.ff_esc1}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentesc2" type="checkbox" style="margin-top: -18px;" ng-model="ff_esc2" value="ff_esc2"  ng-click="singlesel({{'ff_esc2'}},'ff_esc2');"/>
+                    <label for="factoryfullfilmentesc2">{{showFactoryfullments.ff_esc2}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentesc3" type="checkbox" style="margin-top: -18px;" ng-model="ff_esc3" value="ff_esc3"  ng-click="singlesel({{'ff_esc3'}},'ff_esc3');"/>
+                    <label for="factoryfullfilmentesc3">{{showFactoryfullments.ff_esc3}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentfact" type="checkbox" style="margin-top: -18px;" ng-model="ff_fact" value="ff_fact"  ng-click="singlesel({{'ff_fact'}},'ff_fact');"/>
+                    <label for="factoryfullfilmentfact">{{showFactoryfullments.ff_fact}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentexp" type="checkbox" style="margin-top: -18px;" ng-model="ff_exp" value="ff_exp"  ng-click="singlesel({{'ff_exp'}},'ff_exp');"/>
+                    <label for="factoryfullfilmentexp">{{showFactoryfullments.ff_exp}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentnpi" type="checkbox" style="margin-top: -18px;" ng-model="ff_npi" value="ff_npi"  ng-click="singlesel({{'ff_npi'}},'ff_npi');"/>
+                    <label for="factoryfullfilmentnpi">{{showFactoryfullments.ff_npi}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentobs" type="checkbox" style="margin-top: -18px;" ng-model="ff_obs" value="ff_obs"  ng-click="singlesel({{'ff_obs'}},'ff_obs');"/>
+                    <label for="factoryfullfilmentobs">{{showFactoryfullments.ff_obs}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentplant" type="checkbox" style="margin-top: -18px;" ng-model="ff_plant" value="ff_plant"  ng-click="singlesel({{'ff_plant'}},'ff_plant');"/>
+                    <label for="factoryfullfilmentplant">{{showFactoryfullments.ff_plant}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilment" type="checkbox" style="margin-top: -18px;" ng-model="ff_prod" value="ff_prod"  ng-click="singlesel({{'ff_prod'}},'ff_prod');"/>
+                    <label for="factoryfullfilment">{{showFactoryfullments.ff_prod}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="showstatusffwshipm" type="checkbox" style="margin-top: -18px;" ng-model="ff_shipm" value="ff_shipm"  ng-click="singlesel({{'ff_shipm'}},'ff_shipm');"/>
+                    <label for="showstatusffwshipm">{{showFactoryfullments.ff_shipm}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmenttba" type="checkbox" style="margin-top: -18px;" ng-model="ff_tba" value="ff_tba"  ng-click="singlesel({{'ff_tba'}},'ff_tba');"/>
+                    <label for="factoryfullfilmenttba">{{showFactoryfullments.ff_tba}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showfactory">
+                    <input  id="factoryfullfilmentoth" type="checkbox" style="margin-top: -18px;" ng-model="ff_oth" value="ff_oth"  ng-click="singlesel({{'ff_oth'}},'ff_oth');"/>
+                    <label for="factoryfullfilmentoth">{{showFactoryfullments.ff_oth}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ossRow" style="margin-left:-1px;margin-top:-25px;width:100%;">
+        </br>
+        <div ng-click="expandOrCollapse('shipment')" >
+            <div class="twelve columns row_titleadvnce" style="float: right">
+                <div class="{{expandOrCollapseImg['shipment']}} expCloseImgDiv" style="margin-top:2px"></div>
+                <span style="color:steelblue"><b>Shipping</b></span>
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div ng-show="shipment" id="shippingtab" style="">
+            <div class="maincheck">
+                <input  id="mainid" type="checkbox" class="shipmentall" ng-click="shipmentSel();"/>
+                <label for="mainid">Shipment</label>
+            </div>
+            <hr>
+            <div class="three columns orderheaderCls">
+                <div class="shipid">
+                    <input  id="statPDone1" type="checkbox" style="margin-top: -18px;" ng-model="ship_tra" value="ship_tra" ng-click="singlesel({{'ship_tra'}},'ship_tra');"/>
+                    <label for="statPDone1">{{showShippingOrder.ship_tra}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="shipid">
+                    <input  id="statPDone2" type="checkbox" style="margin-top: -18px;" ng-model="ship_mer" value="ship_mer" ng-click="singlesel({{'ship_mer'}},'ship_mer');"/>
+                   <label for="statPDone2">{{showShippingOrder.ship_mer}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="shipid">
+                    <input  id="statPDone3" type="checkbox" style="margin-top: -18px;margin-left: -19px;" ng-model="ship_sch" value="ship_sch" ng-click="singlesel({{'ship_sch'}},'ship_sch');"/>
+                   <label for="statPDone3">{{showShippingOrder.ship_sch}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="shipid">
+                    <input  id="statPDone4" type="checkbox" style="margin-top: -18px;" ng-model="ship_fo" value="ship_fo" ng-click="singlesel({{'ship_fo'}},'ship_fo');"/>
+                    <label for="statPDone4">{{showShippingOrder.ship_fo}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="shipid">
+                    <input  id="statPDone5" type="checkbox" style="margin-top: -18px;" ng-model="ship_ship" value="ship_ship" ng-click="singlesel({{'ship_ship'}},'ship_ship');"/>
+                    <label for="statPDone5"></label>{{showShippingOrder.ship_ship}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ossRow" style="margin-left:-1px;margin-top:-25px;width:100%;">
+        </br>
+        <div ng_click="expandOrCollapse('billings')">
+            <div class="twelve columns row_titleadvnce" style="float: right">
+                <div class="{{expandOrCollapseImg['billings']}} expCloseImgDiv" style="margin-top:2px" ></div>
+                <span style="color:steelblue"><b>Billing</b></span>
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div ng_show="billings" id="billingtab" style="">
+            <div class="billcheck">
+                <input  id="mainids" type="checkbox" class="bill" ng-click="billingSel();"/>
+                <label for="mainids">Billing</label>
+            </div>
+            <hr>
+            <div class="three columns orderheaderCls">
+                <div class="bills">
+                    <input  id="statbill" type="checkbox" style="margin_top: _18px;" ng-model="bill_inv" value=" bill_inv" ng-click="singlesel({{'bill_inv'}},'bill_inv');"/>
+                    <label for="statbill">{{showBillingOrder.bill_inv}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="bills">
+                    <input  id="statbill1" type="checkbox" style="margin-top: -18px;" ng-model="bill_part" value="bill_part" ng-click="singlesel({{'bill_part'}},'bill_part');"/>
+                    <label for="statbill1">{{showBillingOrder.bill_part}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="bills">
+                    <input  id="statbill2" type="checkbox" style="margin-top: -18px;" ng-model="bill" value="bill" ng-click="singlesel({{'bill'}},'bill');"/>
+                    <label for="statbill2">{{showBillingOrder.bill}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ossRow" style="margin-left:-1px;margin-top:-25px;width:100%;">
+        </br>
+        <div ng-click="expandOrCollapse('statuss')">
+            <div class="twelve columns row_titleadvnce" style="float: right">
+                <div class="{{expandOrCollapseImg['statuss']}} expCloseImgDiv" style="margin-top:2px" ></div>
+                <span style="color:steelblue"><b>Status</b></span>
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div ng-show="statuss" id="falloutstab" style="">
+            <div class="showstatuscheck">
+                <input  id="showstatusid" type="checkbox" class="statusmain" ng-click="statusSel();"/>
+                <label for="showstatusid">Status</label>
+            </div>
+            <hr>
+            <div class="three columns orderheaderCls">
+                <div class="showstatus">
+                    <input  id="showstatusawcf" type="checkbox" style="margin-top: -18px;" ng-model="st_awcf" value="st_awcf" ng-click="singlesel({{'st_awcf'}},'st_awcf');"/>
+                    <label for="showstatusawcf">{{showstatus.st_awcf}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showstatus">
+                    <input  id="showstatusawcr" type="checkbox" style="margin-top: -18px;" ng-model="st_awcr" value="st_awcr" ng-click="singlesel({{'st_awcr'}},'st_awcr');"/>
+                    <label for="showstatusawcr">{{showstatus.st_awcr}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showstatus">
+                    <input  id="showstatusshw" type="checkbox" style="margin-top: -18px;" ng-model="st_shw" value="st_shw" ng-click="singlesel({{'st_shw'}},'st_shw');"/>
+                    <label for="showstatusshw">{{showstatus.st_shw}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showstatus">
+                    <input  id="showstatusffw" type="checkbox" style="margin-top: -18px;" ng-model="st_ffw" value="st_ffw" ng-click="singlesel({{'st_ffw'}},'st_ffw');"/>
+                    <label for="showstatusffw">{{showstatus.st_ffw}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showstatus">
+                    <input  id="showstatusoew" type="checkbox" style="margin-top: -18px;" ng-model="st_oew" value="st_oew" ng-click="singlesel({{'st_oew'}},'st_oew');"/>
+                    <label for="showstatusoew">{{showstatus.st_oew}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="showstatus">
+                    <input  id="showstatusawrp" type="checkbox" style="margin-top: -18px;" ng-model="st_awrp" value="st_awrp" ng-click="singlesel({{'st_awrp'}},'st_awrp');"/ >
+                    <label for="showstatusawrp" style="margin-left:-2px;margin-top: -19px;">{{showstatus.st_awrp}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ossRow" style="margin-left:-1px;margin-top:-25px;margin-bottom:-20px;width:100%;">
+        </br>
+        <div ng-click="expandOrCollapse('fallouts')">
+            <div class="twelve columns row_titleadvnce" style="float: right">
+                <div class="{{expandOrCollapseImg['fallouts']}} expCloseImgDiv" style="margin-top:2px" ></div>
+                <span style="color:steelblue"><b>FallOut</b></span>
+            </div>
+        </div>
+        &nbsp;&nbsp;
+        <div ng-show="fallouts" id="falloutstab" style="">
+           <div class="falloutscheck">
+                <input  id="falloutsids" type="checkbox" class="bill" ng-click="falloutSel();"/>
+                <label for="falloutsids">FallOuts</label>
+            </div>
+            <hr>
+            <div class="three columns orderheaderCls">
+                <div class="fallouts" >
+                    <input  id="falloutssap" type="checkbox" style="margin-top: -18px;" ng-model="fo_sap" value="fo_sap" ng-click="singlesel({{'fo_sap'}},'fo_sap');"/>
+                    <label for="falloutssap">{{showfallouts.fo_sap}}</label>
+                </div>
+            </div>
+            <div class="three columns orderheaderCls">
+                <div class="fallouts">
+                    <input  id="falloutsois" type="checkbox" style="margin-top: -18px;" ng-model="fo_ois" value="fo_ois" ng-click="singlesel({{'fo_ois'}},'fo_ois');"/>
+                    <label for="falloutsois">{{showfallouts.fo_ois}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div><a class="slim button secondary btn_label" ng-click="$modalSuccess();" style="margin-top: 35px;float: right;margin-right:70px;">OK</a></div>
+    <div><a class="slim button secondary btn_label" ng-click="$modalCancel()" aria-hidden="true" style="margin-top:-25px;float: right;">Cancel</a></div>
+</div>

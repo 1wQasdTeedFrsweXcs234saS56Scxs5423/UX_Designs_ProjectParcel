@@ -1,0 +1,96 @@
+<div ng-controller="homeCtrl" class="homePage">
+    <div class="ossRow paneltop">
+        <div class="four columns homeorder" style="float: left;">
+            <div class="grid_3 active_table alpha">
+                <h1>Orders</h1>
+                <form name="myForm" >
+                    <div class="styled-select" style="width: 286px;overflow:hidden;">
+                        <div class="dd_border"></div>
+                        <select name="RecentOrders" style="width:308px;background: transparent;" id="RecentOrders" ng-model="order.recentOrders" ng-change="disableFields(false)">
+                            <option value="">
+                            View Recent Orders
+                            </option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="3">Last 3 Days</option>
+                            <option value="2">Last 2 Days</option>
+                            <option value="1">Last 1 Day</option>
+                        </select>
+                    </div>
+                    <h2>Search</h2>
+                    <div class="alert error">Please enter some search criteria.</div>
+                    <div class="alert errorMsg"></div>
+                        <label for="IDNumber">ID# <span id="orderNoForId" class="homeid"></span></label>
+                        <input type="text" placeholder="Search Order #, PO # or Shipment #" id="orderNo" ng-model="order.orderNo" ng-disabled="isDisabled" ng-enter="isFormValid(order)"/>
+                        <input type="hidden" id="orderNoFor" readonly="true">
+                        <input type="hidden" id="orderNoForVal" ng-model="order.orderNoFor">
+                        <label for"customer"><span class="redtxt" ng-show="mandatory">* &nbsp;</span>Customer <span id="customerForId" class="homeid"></span></label>
+                        <input type="text" placeholder="Enter Id/Name.." id="customer" ng-model="order.customer" ng-class="addClassDisabled" ng-enter="isFormValid(order)">
+                        <input type="hidden" id="customerNameNoFor" readonly="true">
+                        <input type="hidden" id="customerNameNoVal" ng-model="order.customerNameNoFor">
+                        <label>Status</label>
+                    <div class="styled-select" style="width: 286px;overflow:hidden;" ng-class="addClassDisabled">
+                        <div class="dd_border"></div>
+                        <select  id='status' style="width:308px;background: transparent;" ng-model='order.status' ng-disabled="isDisabled">
+                            <option value="">Select...</option>
+                            <option value="submitted">Submitted</option>
+                            <option value="processing">Processing</option>
+                            <option value="acked">Acked</option>
+                            <option value="prod">Production</option>
+                            <option value="prod_done">ProductionDone</option>
+                            <option value="fact_ship">Shipped From Factory</option>
+                            <option value="ech">Registered</option>
+                            <option value="cust_ship">Shipped To Customer</option>
+                            <option value="delv">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="w_40 left relPos dpDiv" ng-class="addClassDisabled">
+                        <label>Order Date(From)</label>
+                        <input type="text"  id="orderFromDp" ng-model="order.orderFromDp" ng-enter="isFormValid(order)" my-datepicker-date-range>
+                    </div>
+                    <div class="w_40 right relPos dpDiv" ng-class="addClassDisabled">
+                        <label>Order Date(To)</label>
+                        <input type="text"  id="orderToDp" ng-model="order.orderToDp" ng-enter="isFormValid(order)" my-datepicker-date-range>
+                    </div>
+                    <div>
+                        <a href ng-click="isFormValid(order)"><button type="button" class="primary">Search</button></a>
+                    </div>
+                </form>
+            </div>
+            <!--<div class="grid_3" style="margin-top: 5px;">
+                <div class="row_2 active_table myReportbox">
+                    <form>
+                        <h1>Simple Search
+                            <a href ng-click="redirectToOrderSummary()"><button type="button" class="primary" style="margin-top:5px;">Go</button></a>
+                        </h1>
+                    </form>
+                </div>
+            </div>-->
+            <div class="grid_3" style="margin-top: 5px;">
+                <div class="row_2 active_table myReportbox">
+                    <form>
+                        <h1>My Reports
+                            <a href ng-click="searchUser()"><button type="button" class="primary" style="margin-top:5px;">Go</button></a>
+                        </h1>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="four columns homeorder" style="width: 58% !important; float:left;">
+            <div class="row_2 intro_table" style="width: 980px !important;">
+                <h1>Track Your Order</h1>
+                <p>Welcome to HP Customer Transaction Viewer. View Recent Orders. Complete simple search. Search for specific search criteria and generate reports.</p>
+            </div>
+        </div>
+        <div ng-show="showLastViewOrdersFlag" style="float:left; width:58%;">
+            <div class="six columns" style="margin-left: 2px;">
+                <!--<div class="grid_3 omega">
+                    <img src="../common/images/Landing_312.jpg" />
+                </div>-->
+                <h2>My Last Viewed Orders</h2>
+                <div class="lastviewOrdersCls"><div lastvieworders></div></div>
+                <div id="loader"><img src="../common/images/i-pre-sm-hpe.gif"></div><div id="overlay"></div>
+            </div>
+        </div>
+</div>
+

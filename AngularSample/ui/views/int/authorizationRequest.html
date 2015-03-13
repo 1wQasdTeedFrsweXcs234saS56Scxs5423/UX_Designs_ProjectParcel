@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="ossApp" lang="en" class="js no-touch svg inlinesvg svgclippaths no-ie8compat" xmlns:ng="http://angularjs.org <http://angularjs.org/> " id="ng-app">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Authorization Request</title>
+<link href="../common/css/authorizationRequest.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../common/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../common/lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="../common/lib/angular.min.js"></script>
+<script type="text/javascript" src="./js/app.js"></script>
+<script type="text/javascript" src="./js/controller.js"></script>
+</head>
+  <body>
+    <div ng-controller="AuthorizationCtrl">
+      <div id="EPmainDiv">
+        <div id="EPcontainer">
+          <div id="EPheader">
+            <div class="headerTxt"><span class="lftpadding">Access Denied - Authorization Required to access OSS</span></div>
+            </div>
+            <div id="EPcontent">
+              <p>This server could not verify that you are authorized to access the document/application you requested. Either</p>
+              <ul>
+                <li>you don't have rights to access the document/application/URL you requested</li>
+                <li>or you haven't applied for access using <span class="EPtxtlink"><a href="https://accessmanager.corp.hp.com/uam/">User Access Management (UAM)</a></span></li>
+                <li>Please use instead <span class="EPtxtlink"><a href id="uam" ng-click="redirectToUAM();">SANDY Quick View</a></span></li>
+              </ul>
+                <p>Note: For logging in you can either use</p>
+              <ul>
+                <li>your <strong>simplified HP email address</strong> and your <strong>NT/Windows password</strong></li>
+                <li>or your <strong>personal OSS WebLogin</strong> and <strong>WebPassword</strong></li>
+              </ul>
+              <p>If you have problems login in using your email address, make sure it works with other HP applicaitons (e.g. @hp). If it works there, please log a ticket.</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

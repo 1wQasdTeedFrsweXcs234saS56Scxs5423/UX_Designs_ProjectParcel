@@ -1,0 +1,208 @@
+body{
+	margin:0;
+	padding:0;
+	background:white;
+	font-family:"HP Simplified", "HP Simplified Light", "HP Simplified W01 Bold";
+}
+#mainDiv{
+	width:100%;
+	height:100%;
+}
+#container{
+	width:918px;
+	height:100px;
+	margin:auto;
+}
+#header{
+	width:918px;
+	height:34px;
+	border-top:1px solid #cccccc;
+}
+#header .headerTxt{
+	width:342px;
+	height:34px;
+	border-bottom:1px solid #cccccc;
+	float:left;
+	font-size:17px;
+	font-weight:bold;
+	line-height:34px;
+	padding-left:5px;
+
+
+}
+#header .menuDiv{
+	width:571px;
+	height:34px;
+	float:left;
+	font-size:17px;
+	font-weight:bold;
+	line-height:34px;
+	border-bottom:1px solid #cccccc;
+
+}
+#header .menuDiv .menuBtn{
+	height:34px;
+	float:left;
+	font-size:15px;
+	font-weight:bold;
+	line-height:34px;
+	padding:0px 5px 0px 5px;
+	text-align:center;
+	border-bottom:1px solid #cccccc;
+	margin:0px 10px 0px 10px;
+}
+#header .menuDiv .menuBtn:active{
+	height:34px;
+	float:left;
+	font-size:15px;
+	font-weight:bold;
+	line-height:34px;
+	padding:0px 5px 0px 5px;
+	text-align:center;
+	border-radius:0px 5px 0px 0px;
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-bottom:1px solid white;
+	background:white;
+	color:#0099d8;
+	margin:0px 10px 0px 10px;
+
+
+}
+
+#header .menuDiv .menuBtnSelect{
+	height:34px;
+	float:left;
+	font-size:15px;
+	font-weight:bold;
+	line-height:34px;
+	padding:0px 5px 0px 5px;
+	text-align:center;
+	border-radius:0px 5px 0px 0px;
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-bottom:1px solid white;
+	background:white;
+	color:#0099d8;
+	margin:0px 10px 0px 10px;
+
+}
+
+
+#Subheader{
+	width:100%;
+	
+	margin-top:2px;
+	font-size:18px;
+	font-weight:bold;
+	line-height:30px;
+	color: black;
+
+}
+#CAODetail{
+	width:100%;
+	font-size:14px;
+	font-weight:bold;
+	line-height:34px;
+	border:1px solid #cccccc;
+
+}
+
+#HPDetail{
+	width:918px;
+	height:35px;
+	margin-top:20px;
+	margin:45px 0px 24px 0px;
+}
+#HPDetail .HPOrderTxt{
+	height:35px;
+	float:left;
+	font-size:14px;
+	color:#1f1f1f;
+	padding-left:15px;
+	line-height:70px;
+}
+ #txtfiedl {
+	width:268px;
+	height:29px;
+	margin:17px 5px 0px 15px;
+	background:white;
+	border:1px solid #b9b8b8;
+	float:left;
+}
+/*.btnDiv{
+	width:38px;
+	height:29px;
+	margin-right:10px;
+	margin-top:3px;
+	float:left;
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;
+	color: #FFF;
+	background:#0096d6;
+	border-radius:0px 5px 0px 5px;
+	line-height:29px;
+}*/
+.btn{
+	font-family: "HPSimplified",Arial;
+  -moz-border-radius: 0 4px;
+  border-radius: 0 4px;
+  padding: 0 20px;
+  display: inline-block;
+  height: 40px;
+  background-color: #f05332;
+}
+.primary:hover {
+background: #069;
+}
+
+.txtlinkDarkGray{
+	font-size:15px;
+	color:#1f1f1f;
+	text-decoration:none;
+	font-weight:bold;
+	padding-left:10px;
+}
+.txtlinkDarkGray:hover{
+	font-size:15px;
+	color:#1f1f1f;
+	text-decoration:underline;
+	font-weight:bold;
+	padding-left:10px;
+}
+.txtlinkBlueTxt{
+	font-size:14px;
+	color:#0099d8;
+	text-decoration:none;
+	font-weight:normal;
+	line-height:14px;
+	padding-left:10px;.tabletxt{
+                font-size:14px;
+                padding:2px 0px 2px 0px;
+                text-align:center;
+}
+
+}
+.txtlinkBlueTxt:hover{
+	font-size:14px;
+	color:#0099d8;
+	text-decoration:underline;
+	font-weight:normal;
+	line-height:14px;
+	padding-left:10px;
+}
+.txtPadding{
+	padding-left:5px;
+}
+.margintop{
+	margin-top:30px;
+}
+.tabletxt{
+                font-size:14px;
+                padding:2px 0px 2px 0px;
+                text-align:center;
+                color: #FFF;
+}

@@ -1,0 +1,153 @@
+.list {
+	margin-top: 15px
+}
+.list span {
+	width: 15%; color: #999; font-size: 14px
+}
+.list select {
+	border-bottom: #abadb3 1px solid; border-left: #abadb3 1px solid; width: 30%; color: #999; border-top: #abadb3 1px solid; border-right: #abadb3 1px solid
+}
+.list select:hover {
+	border-bottom: #9dddfe 1px solid; border-left: #9dddfe 1px solid; border-top: #9dddfe 1px solid; border-right: #9dddfe 1px solid
+}
+.list_check {
+	text-align: right; margin-top: 15px; color: #999; font-size: 12px
+}
+.list_input {
+	text-align: right; margin-top: 15px; color: #999; font-size: 14px
+}
+.list_input span {
+	margin-top: 3px; width: 11%; float: right; margin-right: 5px
+}
+.list_input strong {
+	margin-top: 3px; width: 7%; float: right; margin-right: 5px
+}
+.list_input b {
+	margin-top: 3px; width: 5%; float: right; margin-right: 5px
+}
+.list_input select {
+	border-bottom: #abadb3 1px solid; border-left: #abadb3 1px solid; margin-top: 2px; width: 12%; float: right; color: #999; border-top: #abadb3 1px solid; border-right: #abadb3 1px solid
+}
+.list_input select:hover {
+	border-bottom: #9dddfe 1px solid; border-left: #9dddfe 1px solid; border-top: #9dddfe 1px solid; border-right: #9dddfe 1px solid
+}
+.list_input input {
+	border-bottom: #abadb3 1px solid; border-left: #abadb3 1px solid; width: 12%; float: right; HEIGHT: 24px; color: #999; font-size: 12px; border-top: #abadb3 1px solid; margin-right: 10px; border-right: #abadb3 1px solid
+}
+.list_input input:hover {
+	border-bottom: #9dddfe 1px solid; border-left: #9dddfe 1px solid; border-top: #9dddfe 1px solid; border-right: #9dddfe 1px solid
+}
+.list_input img {
+	margin-top: 3px; float: right; margin-right: 8px
+}
+.list_info {
+	border-bottom: #e8e8e8 1px solid; padding-bottom: 8px; margin-top: 15px; width: 95%; float: left; margin-right: 5%
+}
+.list_info span {
+	margin-top: 5px; float: left; color: #57bae8; font-size: 18px
+}
+.list_info img {
+	float: left; margin-right: 10px
+}
+.list_fonts {
+	line-height: 16px; padding-left: 10%; width: 90%; float: left; color: #999; font-size: 14px; margin-right: 5px; padding-top: 5px
+}
+.list_fonts a {
+	width: 70%; text-overflow: ellipsis; display: block; white-space: nowrap; float: right; color: #57bae8; overflow: hidden
+}
+.list_fonts span {
+	color: #57bae8
+}
+.list_fonts strong {
+	color: #f00
+}
+.list_fonts .cur {
+	color: #00bd16
+}
+.list_fonts img {
+	margin-bottom: -4px;
+}
+.button {
+	border-bottom: 0px; border-left: 0px; margin-top: 3%; MARGIN-LEFT: 10%; CLEAR: both; border-top: 0px; border-right: 0px
+}
+.list_num {
+	text-align: right; margin-top: 30px; color: #999; font-size: 12px
+}
+.list_num ul {
+	float: right
+}
+.list_num ul li {
+	padding-bottom: 5px; padding-left: 8px; padding-right: 8px; background: #57bae8; float: left; color: #fff; font-weight: bold; margin-right: 5px; padding-top: 5px
+}
+.list_num .num {
+	margin-top: 5px; float: right
+}
+.list_num span {
+	color: #57bae8; font-weight: bold
+}
+.list_num a {
+	border-bottom: #e6e9eb 1px solid; border-left: #e6e9eb 1px solid; padding-bottom: 5px; padding-left: 8px; padding-right: 8px; float: left; color: #000; border-top: #e6e9eb 1px solid; font-weight: bold; margin-right: 5px; border-right: #e6e9eb 1px solid; padding-top: 5px
+}
+.list_num a:hover {
+	background: #57bae8; color: #fff
+}
+.list_num input {
+	border-bottom: #e6e9eb 1px solid; border-left: #e6e9eb 1px solid; margin-top: -8px; width: 5%; float: right; HEIGHT: 28px; MARGIN-LEFT: 10px; border-top: #e6e9eb 1px solid; margin-right: 10px; border-right: #e6e9eb 1px solid
+}
+.list_num input:hover {
+	border-bottom: #0096dc 1px solid; border-left: #0096dc 1px solid; border-top: #0096dc 1px solid; border-right: #0096dc 1px solid
+}
+.list_num strong {
+	padding-bottom: 8px; margin-top: -8px; padding-left: 10px; padding-right: 10px; background: #57bae8; float: right; color: #fff; CURSOR: pointer; padding-top: 8px
+}
+.list_num strong:hover {
+	background: #0096dc
+}
+.list_num .lgt {
+	color: #57bae8
+}
+.list_num .lgt_cur {
+	background: #57bae8; color: #fff
+}
+.list_num .list_span {
+	float: right
+}
+.four {
+	padding-bottom: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px
+}
+.top_right {
+	padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px
+}
+.top_right:hover {
+	box-shadow: #fff 2px 3px 8px; -webkit-box-shadow: #fff 2px 3px 8px; -moz-box-shadow: #fff 2px 3px 8px
+}
+.item_table table {
+	border-bottom: #ddd 1px solid; border-left: #ddd 1px solid; margin-top: 15px; border-top: #ddd 1px solid; border-right: #ddd 1px solid
+}
+.item_table table th {
+	text-align: center; font-weight: bold
+}
+.item_table table td {
+	padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
+}
+.item_table table th {
+	padding-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px
+}
+.item_table table td.numeric {
+	text-align: right
+}
+.item_table table th.numeric {
+	text-align: right
+}
+.item_table table th {
+	border-bottom: #ddd 1px solid; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; background: #fafafa; color: #666; font-size: 12px; font-weight: 100; border-right: #ddd 1px solid; padding-top: 10px
+}
+.item_table table td {
+	text-align: center; padding-bottom: 10px; color: #666; font-size: 12px; border-right: #f1f1f1 1px solid; padding-top: 10px
+}
+.item_table table td span {
+	color: #008000
+}
+.item_table table td strong {
+	color: #f00; font-weight: 100
+}

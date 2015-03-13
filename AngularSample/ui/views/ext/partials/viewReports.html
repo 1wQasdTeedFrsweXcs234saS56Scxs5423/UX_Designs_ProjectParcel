@@ -1,0 +1,99 @@
+<div ng-init = "expandOrCollapsePanelNames=['lineItemList']"></div>
+<div ng-controller="expandOrCollapseCtrl">
+        <div class="row" >
+            <div ng-click="expandOrCollapse('lineItemList')">
+                <div class="twelve columns row_title">
+                    <div class="{{expandOrCollapseImg['lineItemList']}} expCloseImgDiv" ></div>
+                    <span><b>My Reports</b></span>
+                </div>
+            </div>
+            <hr>
+            <br>
+            <div ng-hide="nodataFlag">
+                <div ng-show="lineItemList">
+                    <div id="reportsMsg">{{message}}</div>
+                </div>
+            </div>
+            <div ng-show="nodataFlag">
+                <div ng-show="lineItemList">
+                    <div class="small-8" ng-show="fileErr">
+                        <div class="twelve columns orderdetailerror">{{fileErrMsg}}</div>
+                    </div>
+                    <div ossreportsswitchtablepanel class="switchtablepanel vireportextcomm"></div>
+                    <div ng-controller="viewReportsController">
+                       <div class="small-8 virepcont">
+                            <div class="row" style="margin-top:-10px;">
+                                <div class="generals" >
+                                    <span class="virepname">Report Name:</span>
+                                    <input type="text"  id="Customer" class="form-input js_color_change">
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br><br><br><br>
+                        <div class="row"></div>
+                        <div class="tableDIV vitabinnfo" ng-show="false;">
+                            <div class="table_overflow">
+                                <table id="tableOne" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                                    <thead><tr class="tableHeader font_black ossCols" ></tr></thead>
+                                    <tr class="font_black table_details"></tr>
+                                    <tbody>
+                                        <tr ng-repeat="item in items | reportFilter:searchReport | orderBy:predicate:reverse">
+                                            <td ng-show="{{columnNames[0].id}}" ng-class="sortedTD_{{columnNames[0].id}}">{{item.name}}</td>
+                                            <td ng-show="{{columnNames[1].id}}" ng-class="sortedTD_{{columnNames[1].id}}">{{item.sched_interval}}</td>
+                                            <td ng-show="{{columnNames[2].id}}" ng-class="sortedTD_{{columnNames[2].id}}">{{item.last_change| date:'yyyy-MM-dd'}}</td>
+                                            <td><span ng-repeat="xlsfile in item.files.xls">
+                                                <!--<a ng-show="{{$last}}" href="http://{{xlsfile.report_file}}" ng-show="fileExists(item.files,'xls')"
+                                                    id="excel_button" title="excel download" alt="{{xlsfile.run_no}}"><img src="../common/images/excel.png"/></a>-->
+                                                    <a ng-show="{{$last}}" href ng-show="fileExists(item.files,'xls')"
+                                                    id="excel_button" title="excel download" alt="{{xlsfile.run_no}}" ng-click="getReports({{xlsfile}},'xls')"><img src="../common/images/excel.png"/></a>
+                                                </span>
+                                                <span ng-repeat="csvfile in item.files.csv">
+                                                <!--<a ng-show="{{$last}}" href="http://{{csvfile.report_file}}" ng-show="fileExists(item.files,'csv')"
+                                                    id="csv_button" title="csv download" alt="{{csvfile.run_no}}"><img src="../common/images/csv-icon.png"/></a>-->
+                                                    <a ng-show="{{$last}}" href ng-show="fileExists(item.files,'csv')"
+                                                    id="csv_button" title="csv download" alt="{{csvfile.run_no}}" ng-click="getReports({{csvfile}},'csv')"><img src="../common/images/csv-icon.png"/></a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="panelDIV" class="vireppan" ng-show="true;">
+                            <div class=row>
+                                <div ng-repeat="item in items | reportFilter:searchReport">
+                                    <div class="three columns panel-view whitearea reportPanel">
+                                        <div class="list_fonts">
+                                            <img src="../../common/images/list_tb.png" style="">
+                                            <span class="panelTitle">{{item.name}}<hr class="borderline"></span><br>
+                                            <div class="panelContent">
+                                                Frequency:<span class="vifre">{{item.sched_interval}}</span><br>
+                                                Last Change: <span>{{item.last_change| date:'yyyy-MM-dd'}}</span>
+                                            </div>
+                                            <hr class="vihrline">
+                                        </div>
+                                        <div class="vireppanel">
+                                            <span ng-repeat="xlsfile in item.files.xls">
+                                            <!--<a ng-show="{{$last}}" href="http://{{xlsfile.report_file}}" ng-show="fileExists(item.files,'xls')"
+                                                id="excel_button" title="excel download" alt="{{xlsfile.run_no}}"><img src="../common/images/excel.png"/></a>-->
+                                                <a ng-show="{{$last}}" href ng-show="fileExists(item.files,'xls')"
+                                                id="excel_button" title="excel download" alt="{{xlsfile.run_no}}" ng-click="getReports({{xlsfile}},'xls')"><img src="../common/images/excel.png"/></a>
+                                            </span>
+                                            <span ng-repeat="csvfile in item.files.csv">
+                                            <!--<a ng-show="{{$last}}" href="http://{{csvfile.report_file}}" ng-show="fileExists(item.files,'csv')"
+                                                id="csv_button" title="csv download" alt="{{csvfile.run_no}}"><img src="../common/images/csv-icon.png"/></a>-->
+                                                <a ng-show="{{$last}}" href ng-show="fileExists(item.files,'csv')"
+                                                id="csv_button" title="csv download" alt="{{csvfile.run_no}}" ng-click="getReports({{csvfile}},'csv')"><img src="../common/images/csv-icon.png"/></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <br>
+                </div>
+             </div>
+        </div>
+</div>
+</div>
+<div id="loader"><img src="../../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

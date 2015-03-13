@@ -1,0 +1,303 @@
+<div ng-init = "expandOrCollapsePanelNames=['advncdSearch', 'searchResults']"></div>
+<div ng-controller="collapseExpandCtrl">
+    <div class="row collapseexpand"></div>
+    <div class="row">
+        <div ng-controller="advSearchCtrl">
+            <div ng-click="expandOrCollapse('advncdSearch')">
+                <div class="twelve columns row_title">
+                    <div class="{{expandOrCollapseImg['advncdSearch']}} expCloseImgDiv" ></div>
+                    <span><b>Advanced Search</b></span>                
+                </div>
+            </div>
+            <div class="tableTopBTNs">
+                <a href ng-click="redirectToStdSearch()" class="slim button secondary btn_label" style="margin-top: 15px;">Standard Search</a>
+            </div>
+            <hr>
+          <!--  <div ng-init = "expandOrCollapse('advncdSearch','c')"></div>-->
+                <div ng-show="advncdSearch">
+                    <div ng-init = "expandOrCollapse('advncdSearch','e')"></div>
+                    <form id="refSearchFrom" name="refSearchFrom">
+                        <div class="alert error"></div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Purchase Order#:</span>
+                                <input type="text"  id="poNo" class="form-input js_color_change" ng-model="poNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Shipment#:</span>
+                                <input type="text"  id="shipmentNo" class="form-input js_color_change" ng-model="shipmentNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Order Status:</span>
+                                <input type="text"  id="orderStatus" class="form-input js_color_change" ng-model="orderStatus">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Order Origin:</span>
+                                <input type="text"  id="orderOrigin" class="form-input js_color_change" ng-model="orderOrigin">
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">HP Order#:</span>
+                                <input type="text"  id="hpOrderNo" class="form-input js_color_change" ng-model="hpOrderNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Invoice#:</span>
+                                <input type="text"  id="invoiceNo" class="form-input js_color_change" ng-model="invoiceNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">SAP Order#:</span>
+                                <input type="text"  id="sapOrderNo" class="form-input js_color_change" ng-model="sapOrderNo">
+                            </div>
+                        </div>    
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Date From:</span>
+                                <input type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" my-datepicker-date-range>
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Customer #:</span>
+                                <input type="text"  id="customer" class="form-input js_color_change" ng-model="customer">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Order Type:</span>
+                                <input type="text"  id="orderType" class="form-input js_color_change" ng-model="orderType">
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Date To:</span>
+                                <input type="text"  id="orderToDp" class="form-input js_color_change" ng-model="orderToDp" my-datepicker-date-range>
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Customer Name:</span>
+                                <input type="text"  id="customerName" class="form-input js_color_change" ng-model="customerName">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Sales Admin:</span>
+                                <input type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                            </div>                                
+                        </div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Search by Numbers </b></span>  
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;">
+                            <div class="styled-select flLeft" style="width: 22% !important;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByNo">
+                                    <option ng-repeat="numbers in SearchbyNumbers" value="{{numbers}}">{{numbers}}</option>
+                                </select>
+                            </div>    
+                            <div class="two columns row_title" style="width: 30% !important;padding-top:0px;margin-left: 12px;" >
+                                <input style="height: 27px;width: 75%"type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                            </div>  
+                            <div addmorebynum></div>
+                            <div class="searchbynumrows"></div>
+                        </div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Search by Codes </b></span>  
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;">
+                            <div class="styled-select flLeft" style="width: 22% !important;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByCodes">
+                                    <option ng-repeat="(name,val) in SearchbyCodes" value="{{name}}|{{val}}">{{name}}</option>SearchbyDates
+                                </select>
+                            </div>    
+                            <div class="two columns row_title" style="width: 30% !important;padding-top:0px;margin-left: 12px;">
+                                <input style="height: 27px;width: 75%"type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                            </div>  
+                            <div addmorebycode></div>
+                            <div class="searchbycoderows"></div>
+                        </div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Search by Dates </b></span>  
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;">
+                            <div class="styled-select flLeft" style="width: 22% !important;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByNo">
+                                    <option ng-repeat="dates in SearchbyDates" value="{{dates}}">{{dates}}</option>
+                                </select>
+                            </div>
+                            <div class="two columns row_title" style="width: 30% !important;padding-top:0px;margin-left: 12px;">
+                                <input style="height: 27px;width: 75%" type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" placeholder="Start Date" my-datepicker-date-range>
+                            </div>
+                            <div class="two columns row_title" style="width: 30% !important;padding-top:0px;margin-left: -62px;">
+                                <input style="height: 27px;width: 75%" type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" placeholder="End Date" my-datepicker-date-range>
+                            </div>
+                            <div addates></div>
+                           <div class="searchaddates"></div>   
+                        </div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Search by Status </b></span>  
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;">
+                            <div>
+                                <div class="styled-select flLeft" style="width: 22% !important;">
+                                    <div class="dd_border"></div>    
+                                    <select name="searchByNo" id="searchByNo" ng-model="status">
+                                        <option ng-repeat=" (name,val) in SearchbyStatus" value="{{name}}">{{name}}</option>
+                                    </select>
+                                </div>    
+                                <div class="two columns row_title" style="width: 30% !important;padding-top:0px;margin-left: 12px;">
+                                    <input style="height: 27px;width: 75%"type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                                </div>  
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Search by Total Order Amount </b></span>  
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;">
+                            <div class="styled-select flLeft" style="width: 22% !important;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByNo">
+                                    <option ng-repeat="(name,val) in SearchbyTotal" value="{{name}}">{{name}}</option>
+                                </select>
+                            </div>
+                            <div class="styled-select flLeft" style="width: 22% !important;margin-left: 12px;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByNo">
+                                    <option ng-repeat="(name,val) in SearchbyTotal" value="{{val}}">{{val}}</option>
+                                </select>
+                            </div>
+                            <div class="two columns row_title" style="width: 30% !important;padding-top:0px;margin-left: 12px;">
+                                <input style="height: 27px;width: 75%" type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp">
+                            </div>
+                            <div addmorebytotal></div>
+                            <div class="searchbytotalrows"></div>   
+                        </div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Search by Location Type </b></span> 
+                             
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;" class="seven columns">
+                            <div class="styled-select flLeft" style="width: 38% !important;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByNo" style="width: 123%;">
+                                    <option ng-repeat="(name,val) in SearchbyLocation" value="{{name}}">{{name}}</option>
+                                </select>
+                            </div>    
+                            <div class="two columns row_title" style="width: 51% !important;padding-top:0px;margin-left: 12px;" >
+                                <input style="height: 27px;width: 75%"type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                            </div>  
+                            <div addmorebyloc></div>
+                            <div class="searchbylocrows"></div>
+                        </div>
+                        <div class="two columns">Test</div>
+                        
+                        <hr>
+                        <div class="two columns row_title" style="width: 20% !important;">                       
+                            <span style="margin-right: 20px;"><b>Portal/User ID </b></span>  
+                        </div>
+                        <div style="padding-top:15px; padding-bottom:10px;" class="seven columns">
+                            <div class="styled-select flLeft" style="width: 38% !important;">
+                                <div class="dd_border"></div>    
+                                <select name="searchByNo" id="searchByNo" ng-model="searchByNo" style="width: 123%;">
+                                    <option ng-repeat="portal in SearchbyPortal" value="{{portal}}">{{portal}}</option>
+                                </select>
+                            </div>    
+                            <div class="two columns row_title" style="width: 51% !important;padding-top:0px;margin-left: 12px;" >
+                                <input style="height: 27px;width: 75%"type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                            </div>  
+                            <div addmorebypor></div>
+                            <div class="searchbyporrows"></div>
+                        </div>
+                        <div class="two columns">Test</div>
+                        
+                        <hr>
+                        <div class="tableTopBTNs">
+                            <a class="slim button secondary btn_label" href ng-click="reSet();">Clear</a>
+                            <a href ng-click="isASFormValid()" class="slim button searchBTN primary btn_label">Display</a>
+                        </div>
+                    </form>                        
+                </div>
+                
+                
+        <!--    <ng-switch on = "dataflag">
+                <div ng-show="expandOrCollapse('advncdSearch','e')" class="refineSearchMain" ng-switch-when="true">
+                    <form id="refSearchFrom">
+                        <div class="alert error"></div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Purchase Order#:</span>
+                                <input type="text"  id="poNo" class="form-input js_color_change" ng-model="poNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Shipment#:</span>
+                                <input type="text"  id="shipmentNo" class="form-input js_color_change" ng-model="shipmentNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Order Status:</span>
+                                <input type="text"  id="orderStatus" class="form-input js_color_change" ng-model="orderStatus">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Order Origin:</span>
+                                <input type="text"  id="orderOrigin" class="form-input js_color_change" ng-model="orderOrigin">
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">HP Order#:</span>
+                                <input type="text"  id="hpOrderNo" class="form-input js_color_change" ng-model="hpOrderNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Invoice#:</span>
+                                <input type="text"  id="invoiceNo" class="form-input js_color_change" ng-model="invoiceNo">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">SAP Order#:</span>
+                                <input type="text"  id="sapOrderNo" class="form-input js_color_change" ng-model="sapOrderNo">
+                            </div>
+                        </div>    
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Date From:</span>
+                                <input type="text"  id="orderFromDp" class="form-input js_color_change" ng-model="orderFromDp" my-datepicker-date-range>
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Customer #:</span>
+                                <input type="text"  id="customer" class="form-input js_color_change" ng-model="customer">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Order Type:</span>
+                                <input type="text"  id="orderType" class="form-input js_color_change" ng-model="orderType">
+                            </div>
+                        </div>
+                        <div class="three columns threeClms">
+                            <div class="generals">
+                                <span class="refinesearchorders">Date To:</span>
+                                <input type="text"  id="orderToDp" class="form-input js_color_change" ng-model="orderToDp" my-datepicker-date-range>
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Customer Name:</span>
+                                <input type="text"  id="customerName" class="form-input js_color_change" ng-model="customerName">
+                            </div>
+                            <div class="generals">
+                                <span class="refinesearchorders">Sales Admin:</span>
+                                <input type="text" id="salesAdmin" class="form-input js_color_change" ng-model="salesAdmin">
+                            </div>                                
+                        </div><hr>
+                        <div class="tableTopBTNs">
+                            <a class="slim button secondary btn_label" href ng-click="reSet();">Clear</a>
+                            <a href ng-click="isASFormValid()" class="slim button searchBTN primary btn_label">Display</a>
+                        </div>
+                    </form>       
+                </div>
+            </ng-switch> -->
+        </div>
+    </div><br>
+</div>
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

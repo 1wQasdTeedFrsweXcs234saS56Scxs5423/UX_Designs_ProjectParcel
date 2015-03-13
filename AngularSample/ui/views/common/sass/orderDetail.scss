@@ -1,0 +1,261 @@
+$lightblue:#6dc3eb;
+$lightgrey:#cccccc;
+$grey:#999;
+$blue:#0096D6;
+$lightblue:#57bae8;
+$ordercolor:#F7D7D7;
+$ordertxtcolor:#F00;
+$black:#000000;
+$floatR:right;
+$floatL:left;
+
+/* line 6, ../sass/orderDetail.scss */
+
+.collExp {
+  text-align: right;
+  font-size: 12px;
+  color: $lightblue;
+}
+
+/* line 9, ../sass/orderDetail.scss */
+
+.generals .refine_search_inp {
+  border: 1px solid $lightgrey;
+}
+
+/* line 12, ../sass/orderDetail.scss */
+
+.search_btn {
+  font-size: 14px;
+  margin-left: 127px;
+}
+
+/*
+
+.detail_number{ color: $blue; float: $floatL; width: 205px; padding-left: 10px; 
+
+	dt { font-family: Arial, Helvetica, sans-serif; line-height: 20px; font-size: 14px; }
+
+	dd { font-family: Impact; font-size: 30px; line-height: 36px; }
+
+}
+
+
+
+.detail_form {
+
+	.status { clear: both; overflow: hidden; padding-top: 25px; padding-bottom: 35px; padding-left: 10px; 
+
+		dt { font-family: Impact; font-size: 36px; color: $blue; padding-right: 35px; float: $floatL; }
+
+		dd { float: right; width: 130px; height: 43px; float: $floatL; display: block; font-size: 18px; font-family: Arial, Helvetica, sans-serif; line-height: 43px; text-align: center; padding-left: 5px; padding-right: 5px; }
+
+		.statuson{ background-image: url(../images/ocsv_icon10.png); background-repeat: no-repeat; color: $white; }
+
+		.statusoff{ background-image: url(../images/ocsv_icon11.png); background-repeat: no-repeat; color: $grey; }
+
+	}
+
+}*/
+
+/* line 29, ../sass/orderDetail.scss */
+
+.table_details td {
+  width: 180px!important;
+}
+
+/* line 30, ../sass/orderDetail.scss */
+
+.goto_page {
+  margin-left: 20px;
+  height: 30px;
+}
+
+/* line 31, ../sass/orderDetail.scss */
+
+.click_go {
+  background: $lightblue;
+  padding: 6px 8px;
+  margin-top: -11px;
+  color: white;
+  cursor: pointer;
+}
+
+/* line 32, ../sass/orderDetail.scss */
+
+.margin_top0 {
+  margin-top: 0px;
+}
+
+/* line 33, ../sass/orderDetail.scss */
+
+.margin_top10 {
+  margin-top: 10px;
+}
+
+/* line 34, ../sass/orderDetail.scss */
+
+.margin_top30 {
+  margin-top: 30px;
+}
+
+/* line 35, ../sass/orderDetail.scss */
+
+.margin_top40 {
+  margin-top: 40px;
+}
+
+/* line 36, ../sass/orderDetail.scss */
+
+.margin_left0 {
+  margin-left: 0px;
+}
+
+/* line 37, ../sass/orderDetail.scss */
+
+.margin_left10 {
+  /*margin-left: 10px !important;
+
+  padding-top: 6px;*/
+  white-space: normal;
+}
+
+/* line 38, ../sass/orderDetail.scss */
+
+.margin_left20 {
+  margin-left: 20px;
+}
+
+/* line 40, ../sass/orderDetail.scss */
+
+#quote_right {
+  float: $floatR;
+}
+
+/* line 41, ../sass/orderDetail.scss */
+
+#status_type {
+  clear: both;
+  margin-top: -30px;
+  width: 1000px;
+}
+
+/* line 42, ../sass/orderDetail.scss */
+
+/* line 43, ../sass/orderDetail.scss */
+
+#colName! {}
+
+/* line 44, ../sass/orderDetail.scss */
+
+#pagetitle {
+  color: black!important;
+}
+
+.div_input .commentstextarea {
+  color: $grey;
+  font-size: 11px;
+  float: $floatL;
+  padding-bottom: 5px;
+  text-align: left;
+  resize: none;
+  width: 270px;
+  margin-left: 10px;
+}
+
+#lineItemListMain {
+  position: relative;
+}
+
+.row .paginationcss {
+  margin-left: 2px;
+  width: 982px;
+}
+
+.prodpopunorlist {
+  list-style: none outside none;
+}
+
+.proddetlist {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  span {
+    text-align: right;
+    padding-left: 8px;
+    padding-right: 5px;
+  }
+}
+
+div.orderdetailrow{
+margin-left:2px !important;
+
+}
+.orderdetailsship{
+margin-left:2px !important;width:972px !important;
+
+}
+.orderdetailsold{
+margin-top:128px;
+}
+.ordershipflage{
+margin-left:155px;width:972px;
+}
+.ordernotfound{
+font-size:14px; font-weight:bold; float:left; margin-top:15px; color:$ordertxtcolor; background: none repeat scroll 0 0 $ordercolor;
+}
+.orderdetilrefine{
+white-space:nowrap;
+}
+.orderdetailerror{
+font-size:14px; font-weight:bold; float:left; margin-left:1px; margin-top:24px;color:red;background: none repeat scroll 0 0 $ordercolor;height:40px;padding:14px;
+}
+.orederlineelem{
+margin-left:2px !important;width:972px !important;
+
+}
+.orderdetaitable{
+width:972px !important;margin-left:3px !important;
+}
+.orderauto{
+height:auto;
+
+}
+
+.orderdetailresult{
+overflow:auto; height:384px
+
+}
+.orderdetailmaintable{
+overflow:auto;
+}
+.ordertrresult{
+white-space:nowrap;border: 1px solid $grey;color: $black;
+}
+
+.orderdetilrefine{
+white-space:nowrap;
+}
+.inquotedetails{
+width:40%;
+}
+.ordernot{
+font-size:14px; font-weight:bold; float:left; margin-top:15px; color:$ordertxtcolor; background: none repeat scroll 0 0 $ordercolor;padding:10px;
+
+}
+.holdorder{
+width:100%;
+}
+.blockholdorder{
+color:#000000; height:20px;width:100%;text-align: left
+
+}
+.intquoter{
+margin-left:5px;width: 120px;
+}
+.orderinttab{
+height:384px;
+}
+.txtblack{
+  color:$black;
+  }

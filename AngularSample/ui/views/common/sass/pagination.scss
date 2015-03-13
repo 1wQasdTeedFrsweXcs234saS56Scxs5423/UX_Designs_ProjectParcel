@@ -1,0 +1,288 @@
+$lightgrey:#ccc;
+$pagcolor:#767676;
+$discolor:#f2f2f2;
+$midgrey:#9b9b9b;
+$blue:#0096d9;
+$floatL:left;
+$floatR:right;
+
+
+
+/* Pagination */
+
+.pag_back, .pag_forward {
+  border: 2px solid $lightgrey;
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.pag_back {
+  margin-right: 1px;
+}
+
+.pag_forward {
+  margin-right: 20px;
+}
+
+.pag_back, .pag_forward, .paging_cnt, .pag_arrows {
+  float: $floatL;
+}
+
+.paging_cnt {
+  display: inline-block;
+  margin-right: 10px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 14px;
+  color: black;
+}
+
+.pag_back:hover, .pag_forward:hover {
+  border-color: $pagcolor;
+}
+.icn_pag_back {
+  background: transparent url("../images/s-31px-hpe.png") no-repeat;
+  margin-top: 5px;
+  height: 14px;
+  overflow: hidden;
+  display: block;
+  width: 31px;
+}
+
+.icn_pag_forward {
+  background: transparent url("../images/s-31px-hpe.png") no-repeat;
+  margin-top: 5px;
+  height: 14px;
+  overflow: hidden;
+  display: block;
+  width: 31px;
+  background-position: left -666px;
+  margin-left: 8px;
+  margin-right: -17px;
+}
+
+.icn_pag_back {
+  background-position: left -630px;
+}
+
+.pag_forward:hover .icn_pag_forward {
+  background-position: left -738px;
+}
+
+.pag_back:hover .icn_pag_back {
+  background-position: left -702px;
+}
+
+.icn_pag_back {
+  margin-left: 7px;
+  margin-right: -16px;
+}
+.disabled_back {
+  .pag_back {
+    cursor: default;
+    background: $discolor;
+  }
+  .icn_pag_back {
+    background-position: left -774px;
+  }
+  .pag_back:hover {
+    .icn_pag_back {
+      background-position: left -774px;
+    }
+    border-color: $lightgrey;
+  }
+  .pag_forward:hover {
+    border-color: $pagcolor;
+  }
+}
+
+.disabled_forward {
+  .pag_forward {
+    cursor: default;
+    background: $discolor;
+  }
+  .icn_pag_forward {
+    background-position: left -810px;
+  }
+  .pag_forward:hover {
+    .icn_pag_forward {
+      background-position: left -810px;
+    }
+    border-color: $lightgrey;
+  }
+  .pag_back:hover {
+    border-color: $pagcolor;
+  }
+}
+
+.disabled_both {
+  .paging_cnt {
+    color: $midgrey;
+  }
+  .pag_back, .pag_forward {
+    cursor: default;
+    background: $discolor;
+  }
+  .icn_pag_back, .pag_back:hover .icn_pag_back {
+    background-position: left -774px;
+  }
+  .icn_pag_forward {
+    background-position: left -810px;
+  }
+  .pag_forward:hover {
+    .icn_pag_forward {
+      background-position: left -810px;
+    }
+    border-color: $lightgrey;
+  }
+  .pag_back:hover {
+    border-color: $lightgrey;
+  }
+}
+.paging_horiz {
+  a {
+    display: block;
+    float: $floatL;
+    width: 31px;
+    margin-right: -9px;
+    height: 36px;
+    background: transparent url("../images/s-31px-hpe.png") no-repeat;
+  }
+  .pag_hor_back {
+    background-position: left -270px;
+  }
+  .pag_hor_forward {
+    background-position: left -330px;
+  }
+  .pag_hor_back:hover {
+    background-position: left -390px;
+  }
+  .pag_hor_forward:hover {
+    background-position: left -450px;
+  }
+}
+
+.disabled_back .pag_hor_back, .disabled_both .pag_hor_back {
+  background-position: left -510px;
+  &:hover {
+    background-position: left -510px;
+  }
+}
+
+.disabled_forward .pag_hor_forward, .disabled_both .pag_hor_forward {
+  background-position: left -570px;
+  &:hover {
+    background-position: left -570px;
+  }
+}
+.paging_views {
+  .pag_back, .pag_forward {
+    width: 31px;
+    height: 26px;
+  }
+  .icn_pag_table {
+    margin: 0;
+    height: 22px;
+    background: transparent url("../images/s-31px-hpe.png") no-repeat;
+    overflow: hidden;
+    display: block;
+  }
+  .icn_pag_list {
+    margin: 0;
+    height: 22px;
+    background: transparent url("../images/s-31px-hpe.png") no-repeat;
+    overflow: hidden;
+    display: block;
+    background-position: left -90px;
+  }
+  .icn_pag_table {
+    background-position: left -225px;
+  }
+  a:hover {
+    .icn_pag_list {
+      background-position: left -45px;
+    }
+    .icn_pag_table {
+      background-position: left -180px;
+    }
+  }
+  .icn_forward_active {
+    .icn_pag_table, &:hover .icn_pag_table {
+      background-position: left -135px;
+    }
+  }
+  .icn_back_active {
+    .icn_pag_list, &:hover .icn_pag_list {
+      background-position: left 0px;
+    }
+  }
+  .pag_back {
+    margin-right: 0px;
+  }
+  .pag_arrows a {
+    border: 2px solid $lightgrey;
+    &:hover {
+      border-color: $pagcolor;
+    }
+    &.pag_back {
+      border-right-width: 1px;
+    }
+    &.pag_forward {
+      border-left-width: 1px;
+    }
+    &.icn_forward_active, &.icn_back_active {
+      border-color: $blue;
+    }
+    &.icn_forward_active {
+      border-right: 0;
+    }
+    &.icn_back_active {
+      border-left: 0;
+    }
+  }
+}
+.paging_grouped {
+  .dd_sort {
+    display: inline-block;
+    padding-right: 20px;
+    float: $floatL;
+  }
+  .paging_views, .paging {
+    display: inline-block;
+    float: $floatL;
+  }
+}
+.text_only {
+  float: $floatR;
+}
+
+.paging_dot {
+  padding: 10px 0;
+  display: inline-block;
+  .icn_pag_dot_active, .icn_pag_dot_inactive {
+    height: 16px;
+    width: 16px;
+    background: transparent url("../images/s-21px-hpe.png") no-repeat;
+    _background-image: url("../images/s-21px-ie6-hpe.gif");
+    display: inline-block;
+  }
+  .icn_pag_dot_active {
+    background-position: left -2811px;
+  }
+  .icn_pag_dot_inactive {
+    background-position: left -2881px;
+  }
+  a {
+    display: inline-block;
+    padding-right: 10px;
+    &:hover {
+      .icn_pag_dot_active, .icn_pag_dot_inactive {
+        background-position: left -2846px;
+      }
+    }
+    &.icon_lst {
+      padding-right: 0;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+/*--------- date picker ------------*/
+.ui-datepicker {
+  font-family: HPSimplified, Arial; }
+  .ui-datepicker table td {
+    width: 31px !important; }
+
+.ui-corner-all {
+  border-radius: 0px !important; }
+
+#ui-datepicker-div .ui-widget-header {
+  background: #b9b8b8 !important;
+  color: black !important;
+  Border: 1px solid #cccccc !important; }
+
+.ui-datepicker-header .ui-datepicker-title {
+  font-size: 14px !important;
+  font-weight: normal !important; }
+
+.ui-widget-header .ui-icon {
+  background: url(../images/16px_new_icons.png) no-repeat !important; }
+
+.ui-icon.ui-icon-circle-triangle-w {
+  background-position: -1px -79px !important; }
+.ui-icon.ui-icon-circle-triangle-e {
+  background-position: 0px -64px !important; }
+
+.ui-widget-content {
+  border: 2px solid #b9b8b8 !important; }
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  margin-top: 4px !important; }
+
+.ui-state-default {
+  border: 1px solid #cccccc !important;
+  background: white !important;
+  text-align: center;
+  font-weight: bold;
+  color: black !important;
+  text-align: center !important; }
+
+.ui-state-hover, .ui-widget-header .ui-state-hover {
+  border: 1px solid #cccccc !important;
+  background: #e5e8e8 !important; }
+
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover {
+  top: 2px !important; }
+.ui-datepicker .ui-datepicker-prev-hover {
+  left: 2px !important; }
+.ui-datepicker .ui-datepicker-next-hover {
+  right: 2px !important; }
+.ui-datepicker table thead tr th {
+  background-color: white !important;
+  color: black !important;
+  font-size: 12px !important;
+  font-weight: normal !important; }
+
+.ui-state-default.ui-state-highlight {
+  background: white !important;
+  border-color: #0096d6 !important;
+  color: #0096d6 !important; }
+
+.ui-state-highlight.ui-state-hover {
+  background: white !important; }
+
+.ui-state-default.ui-state-active {
+  background: #0096d6 !important;
+  border-color: #0096d6 !important;
+  color: white !important; }
+
+/*--------- date picker ------------*/

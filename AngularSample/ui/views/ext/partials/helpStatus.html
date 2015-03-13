@@ -1,0 +1,55 @@
+<div style="margin-left:20px;">
+    <div class="homePage"><h2>Order Status Help</h2></div>
+    <div class="homePage">
+        <label>The various order statuses provided include:</label>
+        <label>
+            <ul style="list-style: disc inside; margin-left: 20px;">
+                <li><b style="font-weight: bold;">All</b> = Displays all orders regardless of what status they are in</li>
+                <li><b style="font-weight: bold;">Not shipped</b> = None of the products on the order have shipped - includes orders in admin, production and consolidation</li>
+                <li><b style="font-weight: bold;">Not delivered</b> = None of the products on the order have been delivered - includes orders in admin, production, consolidation and shipped</li>
+                <li><b style="font-weight: bold;">Admin</b> = Order for product has been received by the supplier</li>
+                <li><b style="font-weight: bold;">Production</b> = Product on the order has been moved into the production cycle at the factory</li>
+                <li><b style="font-weight: bold;">Production Done</b> = Product on the order has moved from production to FGI(Finished Goods Inventory)</li>
+                <li><b style="font-weight: bold;">Consolidation</b> = Product on the order is at the consolidation hub and has not shipped to customer</li>
+                <li><b style="font-weight: bold;">Shipped</b> = Product on the order has been shipped</li>
+                <li><b style="font-weight: bold;">Delivered</b> = Product on the order has been delivered and HP has received a POD (not all carriers send POD dates)</li>
+                <li><b style="font-weight: bold;">Canceled</b> = Entire order is canceled - NOTE: This status is only available for a limited number of orders</li>
+            </ul>
+        </label>
+    </div>
+    <div class="homePage">
+        <label>
+            If you select Not shipped this includes orders which are in the Admin/Processing, Consolidation and Production status. If you select Not delivered this includes orders in Admin/Processing, Production, Consolidation and Shipped status.
+        </label>
+    </div>
+    <hr>
+    <div class="row_title"><span>Ship/Invoice Status</span></div>
+    <br><br>
+    <div class="homePage">
+        <label>
+            <ul style="list-style: disc inside; margin-left: 20px;">
+                <li><b style="font-weight: bold;">Not shipped</b> = No products on the order have shipped(includes orders in admin/production, consolidation)</li>
+                <li><b style="font-weight: bold;">Partial shipped</b> = Some products on the order have shipped</li>
+                <li><b style="font-weight: bold;">Fully shipped</b> = All products on the order have shipped</li>
+                <li><b style="font-weight: bold;">Not invoiced</b> = No invoice has been generated for the order</li>
+                <li><b style="font-weight: bold;">Partial invoiced</b> = Some products on the order have been invoiced</li>
+                <li><b style="font-weight: bold;">Fully invoiced</b> = All products on the order have been invoiced</li>
+            </ul>
+        </label>
+    </div>
+    <hr>
+    <div class="row_title"><span>Cumulative Status</span></div><br><br>
+    <div class="homePage"><label>Overall status of the entire order taking the first sequential status among the combined item statuses.( e.g. order could have some products shipped and some still in production the overall cumulative status would be production)</label></div>
+    <div class="homePage">
+        <label>
+            <ul style="list-style: disc inside; margin-left: 20px;">
+                <li><b style="font-weight: bold;">Admin (header)</b> = There are products on the order in admin status</li>
+                <li><b style="font-weight: bold;">Production (header)</b> = There are products on the order in production status</li>
+                <li><b style="font-weight: bold;">Consolidation (header)</b> = There are products on the order in consolidation status</li>
+                <li><b style="font-weight: bold;">Shipped (header)</b> = All the products on the order have been shipped</li>
+                <li><b style="font-weight: bold;">Delivered (header)</b> = All the products on the order have been delivered and HP has received a POD date from the carrier signifying that the customer has received their products - if no POD is sent to HP the order will stay in shipped status</li>
+            </ul>
+        </label>
+    </div>
+</div>
+    

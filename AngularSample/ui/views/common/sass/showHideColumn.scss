@@ -1,0 +1,130 @@
+$floatL:left;
+$floatR:right;
+$blue:#0196D6;
+$black:#000;
+$white:#fff;
+$grey:#999;
+$lightgrey:#ccc;
+
+
+/*--------- drop down ------------*/
+
+.ossAddRemoveClm, .ossDisplayResultOpt {
+  height: auto;
+  float: $floatL;
+  margin-bottom: 10px;
+}
+
+.dropDownBtnMainDiv {
+  position: relative;
+  margin-right: 20px;
+  float: $floatL;
+}
+
+.showhideclmDiv {
+  top: -17px;
+  width: 230px;
+  height: 30px;
+  display: inline-block;
+  background-color: $blue;
+  padding: 6px 12px 12px 12px;
+  &:hover {
+    cursor: pointer;
+  }
+  a {
+    color: $grey !important;
+    &:hover, &.active {
+      color: $black !important;
+      font-weight: bold;
+    }
+  }
+}
+
+.tableOne td {
+  text-align: left;
+}
+
+.showhideclmDiv span.dropDownImg {
+  background: url("../images/s-21px-hpe.png") no-repeat 0 -1610px;
+  width: 17px;
+  height: 17px;
+  float: $floatR;
+  margin: 2px 4px 0 0;
+}
+
+.fontH4, .fontH5 {
+  font-size: 15px;
+  line-height: 12px;
+}
+
+.fontH4.btnTitle {
+  font-weight: bold;
+  margin-right: 10px;
+  color: $white;
+}
+
+.fontH7 {
+  &.btnTxt {
+    color: $white;
+  }
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.clmDropDownMain {
+  width: 500px;
+  height: auto;
+  background-color: $white;
+  border: 2px solid $lightgrey;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  -webkit-box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
+  box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
+  ul li {
+    float: $floatL;
+    width: 165px;
+    height: 25px;
+    border-bottom: 1px solid $lightgrey;
+    line-height: 27px;
+    label {
+      display: inline;
+      color: $black;
+    }
+  }
+}
+
+.ossDisplayResultOpt .clmDropDownMain {
+  width: 220px !important;
+  ul li {
+    width: 216px !important;
+  }
+}
+
+.dropDownHeader {
+  width: 100%;
+  height: 27px;
+  padding: 7px 5px 5px;
+  background-color: $blue;
+}
+
+.dropDownHeaderTxt {
+  display: inline;
+  font-weight: bold;
+  color: $white;
+}
+
+.popCloseIcon {
+  background: url("../images/s-21px-hpe.png") no-repeat 0 -1058px;
+  width: 22px;
+  height: 22px;
+  float: $floatR;
+  margin-top: -5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/*--------- drop down ------------*/

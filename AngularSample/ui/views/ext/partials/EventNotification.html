@@ -1,0 +1,31 @@
+
+<div id="mainDiv" ng-controller="eventBasedController">
+    <div id="EContainer">
+        <div id="Eheader">
+            <span class="EheaderTxtPadding">Notification</span>
+        </div>
+        <div id="EBISubheader"><span class="textLftPadding">Event Notification Options</span></div>
+        <div id="EBITxtRow">
+            <span class="EeventSubheaderTxt" ng-hide="enabled">Event notifcation will be enabled after you save the setting Below</span>
+            <span class="EeventSubheaderTxt" ng-show="enabled" style="margin-left: 134px; margin-right: 15px;">Event Notification is currently enabled</span>
+            <a class="slim button secondary btn_label" ng-show="enabled" ng-click="disableEventNotification();">Disable Event Notification</a>
+            <br>
+            <span class="sendnotifTxt">Send Notifications when changes occur</span>
+        </div>
+        <div class="row-fluid"> 
+            <div class="row-fluid"> 
+                <div class="tab nav-tabs">
+                    <li ng-class="{active:'event' == activeevent}"> 
+                        <a href ng-click="getClass('event');">Switch To Event Based Information</a> 
+                    </li>
+                    <li ng-class="{active:'daily' == activedaily}"> 
+                        <a href ng-click="getClass('daily');">Switch to Sending Daily Information</a> 
+                    </li>    
+                </div> 
+            </div> 
+            <div class="row-fluid"> 
+                <ng-include src="templateUrl"/>
+            </div> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="modal-header">
+        <a type="button" class="close" ng-click="close()" aria-hidden="true"><b ng-click="$modalCancel()">X</b></a>
+        <h3>{{queryTableName}}</h3>
+</div>
+<div class="modal-body">
+    
+    <!--<ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b>-->
+    {{totalRows}} rows in table {{queryTable}}
+</div>
+<div class="modal-footer">
+    <a class="slim button searchBTN primary btn_label" ng-click="$modalCancel()">Close</a>
+    
+    <!--<button class="btn btn-warning" ng-click="$modalSuccess()">Cancel</button>-->
+</div>
+        
+<!--<div style="overflow:auto;">
+    <table ng-show="showQueryTable">
+        <thead><tr querytableheaders></tr></thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item[tableColumnVals[1]]}}</td>
+                <td>{{item.new_billing_block_text}}</td>
+                <td><div class="relative-styled-select">
+                        <div class="relative-dd_border"></div>
+                        <select ng-model="category">
+                            <option ng-repeat="(key,val) in predefined_values" value="{{key}}" ng-selected="key == item.block_category"> {{val}}</option>
+                        </select>
+                    </div>
+                </td>
+                <td>{{item.new_internal_text}}</td>
+                <td>{{item.new_external_text}}</td>
+                <td>{{item.new_record_state}}</td>
+                <td>{{item.new_sapsystem}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>-->

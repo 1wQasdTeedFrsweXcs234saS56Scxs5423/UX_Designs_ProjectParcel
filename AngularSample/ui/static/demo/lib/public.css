@@ -1,0 +1,35 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,
+img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,
+tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,
+summary,time,mark,audio,video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}
+html{line-height:1;font-size:62.5%}
+body{font-family:"Verdana"}
+div,input,select,textarea,button,ul,li{outline:none}
+table{border-collapse:collapse;border-spacing:0}
+caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
+ol,ul{list-style:none}
+q,blockquote{quotes:none}
+q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}
+a img{border:none}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}
+.logo{margin-top:15px;padding-bottom:10px}
+.logo img{border:0px;float:left;margin-right:20px}
+.logo span{color:#57bae8;font-size:2.4rem;font-size:24px;margin-top:25px;float:left}
+.login{margin-top:25px;color:#999;font-size:1.2rem;font-size:14px;text-align:right}
+.login a{color:#999;text-decoration:underline}.login a:hover{color:#57bae8}
+.top_right input{width:85%;border:1px solid #dedede;margin-top:22px;margin-right:10px;float:right;height:26px}
+.top_right input:hover{border:1px solid #9dddfe}
+.top_right img{float:right;margin-top:28px;cursor:pointer}
+.nav{margin-top:20px}.nav img{float:right;margin-right:5px}
+.nav span{float:right;margin-top:5px;font-weight:100;font-size:1.4rem;font-size:14px}
+.nav .current{color:#57bae8}
+.nav li{float:left;color:#999;pading-left:10px;padding-right:10px;font-size:1.8rem;font-size:16px}
+.nav li a{color:#999}
+.nav li a:hover{color:#57bae8}
+#menu_nv{margin-top:80px;}
+#menu_nv ul{margin:0;padding:0;position:absolute;visibility:hidden;border:1px solid #ccc;background:#fff;z-index:1}
+#menu_nv ul li{float:left;display:inline;clear:both;width:100%;padding-left:5px}
+#menu_nv ul li a{height:30px;line-height:24px;font-size:1.2rem;font-size:12px;display:block}
+#menu_nv ul li a:hover{color:#fff}
+#menu_nv ul li:hover{background:#57bae8}
+.footer{text-align:center;color:#666;font-size:1.2rem;font-size:12px;margin-top:30px;padding-bottom:20px}

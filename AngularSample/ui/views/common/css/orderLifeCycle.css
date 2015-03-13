@@ -1,0 +1,274 @@
+body{
+	margin:0;
+	padding:0;
+	font-family:"HP Simplified", "HP Simplified Light", "HP Simplified W01 Bold";
+}
+#orderlifeMainDiv{
+	width:100%;
+	height:100%;
+    margin-top: -30px;
+}
+#OFContainer{
+	width:95%;
+	height:auto;
+	margin:auto;
+	/*border:1px solid #f2f2f2;*/
+
+}
+.row{
+	clear:both;
+}
+.detailBoxPadding{
+	padding-bottom:10px;
+}
+.blueTxt{
+	color:#007dba;
+}
+.lghtGrayBg{
+	background:#f2f2f2;
+	padding-bottom:30px;
+    margin-top: -14px !important;
+}
+.orderMinImgMargin{
+	margin-top:17px;
+}
+.orderDetMinImgMargin{
+	margin-top:9px;
+}
+.flLeft{
+	float:left;
+}
+.orderDetailscls{
+    margin: 5px 2px 2px 24px;
+}
+.innerrow{
+	/*width:97%;*/
+	margin:auto;
+	clear:both;
+}
+.refreshBtn{
+	font-size: 14px;
+	font-weight:bold;
+	color:black;
+	text-align:right;
+	line-height:50px;
+}
+.orderTxt{
+	font-size:17px;
+	font-weight:bold;
+	color:black;
+	text-align:right;
+	line-height:50px;
+}
+.orderDetailTxt{
+	font-size:17px;
+	font-weight:bold;
+	color:black;
+	text-align:right;
+	line-height:33px;
+	padding:0px 5px 0px 5px;
+}
+.orderNumbercls{
+    margin: 18px 2px 2px -30px;
+}
+.calendarBg{
+	height:100px;
+}
+.calendarDesign{
+	width:78px;
+	height:100px;
+	float:left;
+	background:url(../images/calendarDesignWithBlue.png) no-repeat;
+}
+.calendarOrderDesign{
+	width:90px;
+	height:100px;
+	float:left;
+	background:url(../images/calendarDesignWithBlueMedium.png) no-repeat;
+}
+.calendarDesignLast{
+	width:78px;
+	height:100px;
+	float:left;
+	background:url(../images/calendarDesign.png) no-repeat;
+}
+.calendarHeading{
+	width:70px;
+	height:50px;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 0px 0px 4px;
+}
+.calendarDate{
+	font-size:14px;
+	font-weight:bold;
+	padding-left:4px;
+	color:#5a5a5a;
+	line-height:25px;
+}
+
+.calendarYear{
+	font-size:14px;
+	padding-left:4px;
+	color:#5a5a5a;
+	line-height:15px;
+}
+.detailTab{
+	height:36px;
+	padding-top:40px;
+	clear:both;
+}
+
+.deliveryGroupDiv{
+    /*min-height: 250px;*/
+	width:96%; 
+	height: auto;
+	background: #f2f2f2;
+	/*border: 1px solid #e5e8e8;*/
+    border: 1px solid white;
+	clear: both;
+	margin: auto;
+	margin-bottom: 10px;
+	padding: 10px 0px 20px 0px;
+}
+.whiteBg{
+	/*background:white;*/
+	padding:1px 0px 10px 0px;
+    /*margin-top: -20px;*/
+    margin-left: 1px;
+}
+
+.Detailinnerrow{
+	width:65%;
+	margin-left:24px;
+	clear:both;
+}
+.DetailItemInnerrow{
+	width:96%;
+	height:auto;
+	margin-left:0px;
+	clear:both;
+}
+
+.deliverySubHeading{
+	font-size:15px;
+	/*padding:10px;*/
+	color:#5a5a5a;
+	line-height:25px;
+}
+.deliveryItemBoxTxt{
+	font-size: 13px;
+	padding:10px;
+	color:#5a5a5a;
+	line-height:40px;
+}
+
+.deliveryTable{
+	width:102%;
+	height:92px;
+	/*border:1px solid #d9d9d9;*/
+}
+.deliveryTableRow{
+	width:100%;
+	height:45px;
+	background:white;
+}
+.deliveryHeading{
+	width:100px;
+	height:45px;
+	background:#5a5a5a;
+	float:left;
+}
+.deliveryTxt1{
+	font-size: 13px;
+	font-weight:bold;
+	color:white;
+	padding:10px;
+	line-height:45px;
+
+}
+.deliveryTxt2{
+    width: 135px;
+	font-size: 13px;
+	color:#5a5a5a;
+	line-height:16px;
+	margin:7px;
+}
+.lineheight{
+	line-height:25px;
+}
+.middleRowBg{
+	background:#f2f2f2;
+}
+
+
+.deliveryCol1{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.deliveryCol2{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.deliveryCol3{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.deliveryCol4{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.deliveryCol8{
+	width:100px;
+	height:45px;
+	float:left;
+}
+.deliveryCol6{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.deliveryCol7{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.deliveryCol5{
+	width:120px;
+	height:45px;
+	border-right:1px solid #d9d9d9;
+	float:left;
+}
+.itemBox1{
+	width:415px;
+	height:79px;
+	background:white;
+	border:1px solid #e5e8e8;
+	float:left;
+}
+.itemBox2{
+	width:415px;
+	height:79px;
+	background:white;
+	border:1px solid #e5e8e8;
+	float:right;
+}
+.tabSetCls{background-color:white;}
+.marginTopCls{margin-top: -20px;}
+.innerrow .delGroupsCls{
+    border: 1px solid white;
+    background: #f2f2f2;
+}
+.cursorCls{cursor:pointer;}
+.shipmentNoCls{font-weight:bold;}
+.marginCls{margin-left:25px;}

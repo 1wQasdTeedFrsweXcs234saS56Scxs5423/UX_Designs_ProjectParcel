@@ -1,0 +1,96 @@
+/* Inputs */
+.form-input, .form-input-disabled, .form-input-error {
+  display: inline-block;
+  font-family: "HPSimplified",Arial;
+  height: 32px;
+  line-height: 22px;
+  _height: 36px;
+  padding: 0 8px;
+  font-size: 16px;
+  color: black;
+  background: white;
+  border: 2px solid #5a5a5a;
+  vertical-align: top;
+  /*NOTE: do not set middle in this container (IE bugs will be)*/ }
+
+.form-textarea {
+  display: inline-block;
+  font-family: "HPSimplified",Arial;
+  height: 32px;
+  line-height: 22px;
+  _height: 36px;
+  padding: 0 8px;
+  font-size: 16px;
+  color: black;
+  background: white;
+  border: 2px solid #5a5a5a;
+  vertical-align: top;
+  /*NOTE: do not set middle in this container (IE bugs will be)*/
+  height: 66px;
+  font-family: "HPSimplified",Arial;
+  padding: 10px;
+  border: 2px #5a5a5a solid;
+  overflow-y: visible;
+  height: 90px; }
+  .form-textarea.disabled, .form-textarea.error {
+    display: inline-block;
+    font-family: "HPSimplified",Arial;
+    height: 32px;
+    line-height: 22px;
+    _height: 36px;
+    padding: 0 8px;
+    font-size: 16px;
+    color: black;
+    background: white;
+    border: 2px solid #5a5a5a;
+    vertical-align: top;
+    /*NOTE: do not set middle in this container (IE bugs will be)*/ }
+  .form-textarea.disabled, .form-textarea.error {
+    height: 66px;
+    font-family: "HPSimplified",Arial;
+    padding: 10px;
+    border: 2px #5a5a5a solid;
+    overflow-y: visible; }
+
+.pre-active {
+  color: #767676;
+  border-color: #cccccc; }
+
+.form-input:hover, .form-textarea:hover, .form-input:focus, .form-textarea:focus {
+  color: black;
+  border-color: #5a5a5a !important; }
+
+.form-input-disabled, .form-textarea.disabled {
+  color: #b3b3b3;
+  background: #e5e5e5;
+  border-color: #cccccc; }
+
+.form-input-error, .form-textarea.error {
+  border-color: red;
+  color: red; }
+
+/* Slim Inputs */
+.input-slim {
+  font-size: 14px;
+  height: 22px;
+  _height: 26px;
+  line-height: 18px;
+  padding: 0 8px; }
+
+.form-textarea.resizeoff {
+  resize: none; }
+.form-textarea.scroll-y {
+  overflow-y: scroll; }
+.form-textarea.auto-resize {
+  overflow: hidden; }
+
+.form-error {
+  background: none repeat scroll 0 0 red;
+  margin: 20px 0 20px;
+  padding: 20px 20px 10px; }
+  .form-error li {
+    color: red;
+    padding-bottom: 10px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold; }

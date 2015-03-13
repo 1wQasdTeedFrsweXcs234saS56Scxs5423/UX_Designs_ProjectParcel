@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html ng-app lang="en" class="js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="./lib/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" type="text/css" href="./lib/public.css">
+    <link rel="stylesheet" type="text/css" href="./css/util.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
+</head>
+<body style="zoom:1;">
+
+<div id="Coming" onclick="closeTable('Coming')">
+  <div class="customer_row"><div class="pic"><img src="./images/icon_coming.png"></div><div class="txt">COMING SOON</div></div>
+</div>
+
+<!--<div ng-include src="'partials/header.html'"></div>-->
+
+<div class="row">
+    <div class="eight columns logo">
+        <img src="./images/logo.png" alt="hp">
+        <span style="color:black!important;">Customer Transaction Viewer</span><br>
+        <ul id="menu_nv" class="nav" style="width:100%!important;">
+			<li><a href="./home.html" class="current">Home</a> &nbsp;|</li>
+			<li><a href="http://d2t0020g.austin.hp.com:8580/ncis_sb3/demo/home">Order Management</a> &nbsp;|</li>
+			<li><a href="#" onclick="showTable('Coming');">User Maintenance</a> &nbsp;</li>
+        </ul>
+    </div>
+	<div class="four columns">
+		<div class="offset-by-eight" style="margin-top:50px;">
+			<a href="#"><img src="./images/settings.gif"></a>
+			<a href="#"><img src="./images/support.gif"></a>
+		</div>
+	<div class="login">Welcome, Cerda Barbara [<a href="./home.htm">Preferences</a>]</div>
+	</div><hr>
+</div>
+
+<div class="row paneltop">
+    <div class="eight columns">
+		<div class="factory_index">
+            <div class="bluebg">
+                <div class="paneltxt">
+                    <b>Track your order</b><br>
+                    	Welcome to the HP Customer Transaction Viewer ! You can view either Recent Orders/Contracts
+                    	and can do simple Search w.r.to either Orders/Contracts for specific search criteria,
+                    	and also can generate Reports.
+                </div>
+            </div>
+		</div>
+
+    </div>
+	<div class="four columns">
+		<div class="orangebtn panelbtn">
+			<div class="txt">Recent Orders</div>
+			<div class="panelinput">
+				<select>
+					<option value="7">Last 7 Days</option>
+					<option value="14">Past 2 Weeks</option>
+					<option value="21">Past 3 Weeks</option>
+					<option value="30">Past 1 Month</option>
+				</select>
+				<div class="bottomtxt-rw">
+                    <a href="orderSummary.html"><img src="images/right.png"></a>
+                    <span>view</span>
+				</div>
+			</div>
+		</div>
+		<div class="greenbtn panelbtn">
+			<div class="txt">Recent Contracts</div>
+			<div class="panelinput">
+				<select>
+					<option value="7">Last 7 Days</option>
+					<option value="14">Past 2 Weeks</option>
+					<option value="21">Past 3 Weeks</option>
+					<option value="30">Past 1 Month</option>
+				</select><br>
+                <div class="bottomtxt-rw">
+                    <a href="contractSummary.html"><img src="images/right.png"></a>
+                    <span>view</span>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row paneltop">
+	<div class="four columns" style="margin-top:-8px;margin-bottom:10px;">
+		<div class="bluebtn panelbtn" style="height:252px;">
+			<div class="txt">Search Orders</div>
+			<form><div class="eleven columns centered" style="margin-top:10px;">
+			<div class="row"><div class="six columns">
+				<select style="height:24px;">
+					<option value="PO">PO#</option>
+					<option value="OR" selected="">HP Order#</option>
+					<option value="SH">Shipment#</option>
+				</select></div><div class="six columns">
+				<input type="text" placeholder="Enter Value.." style="height:24px;" id="orderNo">
+			</div></div>
+
+			<div class="row"><div class="two columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;">Status</label></div>
+			<div class="four columns"><select style="height:24px;">
+					<option value="">Select...</option>
+					<option value="O">Open</option>
+					<option value="S">Shipped</option>
+					<option value="P">Production</option>
+					<option value="D">Delivered</option>
+				</select></div>
+			<div class="two columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;">Type</label></div>
+			<div class="four columns"><select style="height:24px;">
+					<option value="" selected="">Select...</option>
+					<option value="trade">Trade</option>
+					<option value="lease">Lease</option>
+					<option value="debit">Debit</option>
+					<option value="srq">SRQ</option>
+					<option value="trade_lease">Trade &amp; Lease</option>
+					<option value="trade_lease_srq">Trade &amp; Lease &amp; SRQ</option>
+					<option value="internal">Internal</option>
+					<option value="demo">Demo</option>
+					<option value="resale">Resale</option>
+					<option value="return">Return</option>
+					<option value="credit">Credit</option>
+					<option value="statistical">Statistical</option>
+					<option value="contract">Contract</option>
+					<option value="carepack">Care Pack</option>
+					<option value="no_charge">No Charge Order</option></select>
+			</div></div>
+			<div class="row" style="margin-top:5px;"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-64px;">Customer:</label></div>
+			<div class="six columns">
+				<input type="text" placeholder="Enter Id/Name.." style="height:24px;">
+			</div></div>
+			<div class="row"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-10px;">OrderDate(From):</label></div>
+			<div class="six columns">
+				<input type="text" style="height:24px;" id="orderFromDp">
+			</div></div>
+			<div class="row"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-28px;">OrderDate(To):</label></div>
+			<div class="six columns">
+				<input type="text" style="height:24px;" id="orderToDp">
+			</div></div>
+            <div class="bottomtxt"><a href="orderSummary.html"><img src="images/right.png"></a>
+            <!--<a class="searchOrderLink" href="#"><img src="images/right.png"></a>-->
+            <span>Search</span></div>
+			</div></form>
+		</div>
+	</div>
+	<div class="four columns" style="margin-top:-8px;margin-bottom:10px;">
+		<div class="greybluebtn panelbtn" style="height:252px;margin-left:0px;">
+			<div class="txt">Search Contracts</div>
+			<form><div class="eleven columns centered" style="margin-top:10px;">
+			<div class="row"><div class="six columns">
+				<select style="height:24px;">
+					<option value="PO">PO#</option>
+					<option value="OR">HP Order#</option>
+					<option value="SH">Contract#</option>
+				</select></div><div class="six columns">
+				<input type="text" placeholder="Enter Value.." style="height:24px;">
+			</div></div>
+			<div class="row"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-18px;">Contract Status:</label></div>
+			<div class="six columns">
+				<select style="height:24px;">
+					<option value="">Select...</option>
+					<option value="O">Open</option>
+					<option value="I">In Progress</option>
+					<option value="C">Closed</option>
+				</select>
+			</div></div>
+			<div class="row" style="margin-top:5px;"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-64px;">Customer:</label></div>
+			<div class="six columns">
+				<input type="text" placeholder="Enter Id/Name.." style="height:24px;">
+			</div></div>
+			<div class="row"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-10px;">OrderDate(From):</label></div>
+			<div class="six columns">
+				<input type="text" style="height:24px;" id="contractFromDp">
+			</div></div>
+			<div class="row"><div class="six columns">
+			<label style="height:24px;font-size:14px;color:#fff;margin-top:5px;margin-left:-28px;">OrderDate(To):</label></div>
+			<div class="six columns">
+				<input type="text" style="height:24px;" id="contractToDp">
+			</div></div>
+            <div class="bottomtxt"> <a href="contractSummary.html"><img src="images/right.png"></a>
+            <span>Search</span></div>
+			</div></form>
+		</div>
+	</div>
+	<div class="four columns" style="margin-top:-8px;margin-bottom:10px;">
+		<div class="bluebtn panelbtn" style="height:252px;margin-left:1px;">
+			<div class="txt">My Reports</div>
+			<a href="viewReports.html"><img src="./images/reports.jpg" style="margin-top:10px;" /></a>
+			<form><div class="eleven columns centered">
+            <div class="bottomtxt-report"><a href="viewReports.html"><img src="images/right.png"></a>
+            <span>View</span></div>
+			</div></form>
+		</div>
+	</div>
+</div>
+
+<!--<div ng-include src="'partials/footer.html'"></div>-->
+
+<div class="row footer"><hr>
+    <div class="twelve columns">
+        Powered by HP Order Status Tracking System | @ 2013 Hewlett-Packard Development Company, L.P
+    </div>
+</div>
+
+<script type="text/javascript" src="./lib/angular.min.js"></script>
+<script type="text/javascript" src="./lib/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="./lib/jquery-ui-1.8.16.custom.min.js"></script>
+
+<script type="text/javascript" src="./js/common.js"></script>
+
+<script>
+	jQuery(function() {
+		jQuery("#orderFromDp").datepicker();
+		jQuery("#orderToDp").datepicker();
+		jQuery("#contractsFromDp").datepicker();
+		jQuery("#contractsToDp").datepicker();
+		jQuery(".searchOrderLink").bind("click", function() {
+			var orderNo = jQuery("#orderNo").val();
+			localStorage.setItem("orderNo", orderNo );
+			jQuery(location).attr("href", "orderDetail.html?orderNo="+orderNo);
+		});
+	});
+</script>
+
+</body></html>

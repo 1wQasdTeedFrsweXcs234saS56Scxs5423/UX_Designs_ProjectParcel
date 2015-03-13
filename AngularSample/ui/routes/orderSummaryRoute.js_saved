@@ -1,0 +1,108 @@
+/*----------------------------------------------------------------------------
+|
+|   route handler for   /ossui/v1/ordersummary
+|
+|
+|
+|   written by Jochen Loewer
+|   April 2013
+|
+\---------------------------------------------------------------------------*/
+
+
+module.exports.init = function(app) {
+
+
+    app.get('/ossui/v1/ordersummary', app.role('badRole'), function(req,res) {
+
+
+      var binds  = [];
+      var bindNo = 1;
+      var where  = "";
+      var and    = "";
+      
+      if (req.query.cust_po_no) {
+          binds.push( req.query.cust_po_no );
+          where += and + " backlog_ship.customer_po_no = :"+bindNo++;
+          and = " and "
+      }
+      
+      if (req.query.hp_order_no) {
+          binds.push( req.query.hp_order_no + '%' );
+          where += and + "backlog_ship.order_no like :"+bindNo++;
+          and = " and "
+      }
+      
+      if (req.query.shipmentno) {
+          binds.push( req.query.shipmentno + '%' );
+          where += and + "backlog_ship.shipment_no like :"+bindNo++;
+          and = " and "
+      }
+      
+      if (req.query.status) {
+          binds.push( req.query.status );
+          where += and + "backlog_ship.status = :"+bindNo++;
+          and = " and "
+      }
+      
+      if (req.query.podatefrom) {
+          binds.push( req.query.podatefrom );
+          where += and + "backlog_ship.purch_order_date >= :"+bindNo++;
+          and = " and "
+      }
+      
+      if (req.query.podateto) {
+          binds.push( req.query.podateto );
+          where += and + "backlog_ship.purch_order_date <= :"+bindNo++;
+          and = " and "
+      }
+      
+      if (req.query.invoiceno) {
+          binds.push( req.query.invoiceno + '%' );
+          where += and + "backlog_ship.invoice_no like :"+bindNo++;
+          and = " and "
+      }
+      
+      console.log(binds);
+      console.log(where);
+
+      global.OSSDB( function(db) {
+
+          db.execute("select backlog_hdr.purchase_order_no,    \
+                             backlog_hdr.order_no,             \
+                             backlog_hdr.order_type_descr,     \
+                             backlog_ship.status,              \
+                             backlog_ship.quote_no,            \
+                             backlog_ship.purch_order_date,    \
+                             backlog_ship.pod_at,              \
+                             backlog_ship.shipped_at,          \
+                             backlog_ship.sched_delv_date,     \
+                             backlog_ship.sched_ship_date,     \
+                             backlog_ship.shipment_no,         \
+                             backlog_hdr.quote_creation_date,  \
+                             backlog_hdr.last_update,          \
+                             backlog_hdr.hp_receive_date,      \
+                             backlog_hdr.order_load_date,      \
+                             backlog_hdr.clean_order_date,     \
+                             backlog_hdr.order_close_date      \
+                        from backlog_ship, backlog_hdr         \
+                       where backlog_hdr.legacy_order_no = backlog_ship.legacy_order_no  \
+                         and ("+where+")                       \
+          ", binds, 
+          function(err, summary) {
+
+              if (err) {
+                  console.log(err);
+                  res.json( { error: err } , 500);
+                  
+              } else {
+              
+                  console.log(summary);
+                  res.json( { rows: summary } );
+              }    
+          });    
+      });
+      
+   });      
+}
+

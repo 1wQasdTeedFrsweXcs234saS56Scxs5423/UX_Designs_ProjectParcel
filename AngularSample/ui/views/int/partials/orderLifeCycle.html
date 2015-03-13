@@ -1,0 +1,83 @@
+<div id="orderlifeMainDiv" ng-controller="orderLifeCycleCtrl">
+<div id="OFContainer">
+<div class="ossRow">
+  <!--<img src="images/tab.jpg" width="970" height="36"> </div>-->
+ <!-- <div class="ossRow refreshBtn">Refresh <img src="../common/images/refreshImg.jpg" width="12" height="14"></div>-->
+  <div class="ossRow lghtGrayBg" style="margin-top: 30px !important;">
+    <div class="innerrow">
+        <div class="flLeft "><!--<img class="orderMinImgMargin" src="../common/images/orderMin.jpg">--></div>
+        <div class="flLeft">&nbsp;&nbsp;<span class="orderTxt">HP Order Number&nbsp;:&nbsp; </span>&nbsp;<span class="orderTxt blueTxt">{{hpOrderNo}}</span></div>
+    </div>
+    <div class="innerrow">
+        <div class="calendarDesign">
+            <div class="calendarHeading">Quote Creation Date</div>
+            <div class="calendarDate">{{headerInformation.quote_creation_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.quote_creation_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Web Creation Date</div>
+            <div class="calendarDate">{{headerInformation.web_order_creation_dt|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.web_order_creation_dt|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Purchase Order Date</div>
+            <div class="calendarDate">{{headerInformation.purch_order_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.purch_order_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">HP Receive Date</div>
+            <div class="calendarDate">{{headerInformation.hp_receive_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.hp_receive_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Fraud Approval Date</div>
+            <div class="calendarDate">{{headerInformation.fraud_approved_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.fraud_approved_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Payment Receive Date</div>
+            <div class="calendarDate">{{headerInformation.payment_receive_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.payment_receive_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Order Load Date</div>
+            <div class="calendarDate">{{headerInformation.order_load_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.order_load_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Credit Approval Date</div>
+            <div class="calendarDate">{{headerInformation.credit_approval_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.credit_approval_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Clean Order Date</div>
+            <div class="calendarDate">{{headerInformation.clean_order_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.clean_order_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Clean Header Date</div>
+            <div class="calendarDate">{{headerInformation.clean_hdr_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.clean_hdr_date|date:'MMM yyyy'}}</div>  
+        </div>
+        <div class="calendarDesign">
+            <div class="calendarHeading">Compl Landed Date</div>
+            <div class="calendarDate">{{headerInformation.compl_landed_date|date:'dd'}}</div>
+            <div class="calendarYear">{{headerInformation.compl_landed_date|date:'MMM yyyy'}}</div>  
+        </div>
+    </div>
+    <div class="calendarDesign">
+        <div class="calendarHeading">Order Closed Date</div>
+        <div class="calendarDate">{{headerInformation.order_close_date|date:'dd'}}</div>
+        <div class="calendarYear">{{headerInformation.order_close_date|date:'MMM yyyy'}}</div>  
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="generals"><span></span><div class="div_input"></div></div>
+</div>
+    <div>    
+    <tabset>
+            <tab title="Details"   template-url="partials/orderLifeCycleDetails.html"></tab>
+            <!--<tab title="Timelines" template-url="partials/serialAssetInfo.html"></tab>  -->
+    </tabset>
+    </div>  

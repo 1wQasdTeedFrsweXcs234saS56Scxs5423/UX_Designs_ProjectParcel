@@ -1,0 +1,315 @@
+/* line 6, ../sass/orderDetail.scss */
+.collExp {
+  text-align: right;
+  font-size: 12px;
+  color: #57bae8; }
+
+/* line 9, ../sass/orderDetail.scss */
+.generals .refine_search_inp {
+  border: 1px solid #cccccc; }
+
+/* line 12, ../sass/orderDetail.scss */
+.search_btn {
+  font-size: 14px;
+  margin-left: 127px; }
+
+/*
+
+.detail_number{ color: $blue; float: $floatL; width: 205px; padding-left: 10px; 
+
+	dt { font-family: Arial, Helvetica, sans-serif; line-height: 20px; font-size: 14px; }
+
+	dd { font-family: Impact; font-size: 30px; line-height: 36px; }
+
+}
+
+
+
+.detail_form {
+
+	.status { clear: both; overflow: hidden; padding-top: 25px; padding-bottom: 35px; padding-left: 10px; 
+
+		dt { font-family: Impact; font-size: 36px; color: $blue; padding-right: 35px; float: $floatL; }
+
+		dd { float: right; width: 130px; height: 43px; float: $floatL; display: block; font-size: 18px; font-family: Arial, Helvetica, sans-serif; line-height: 43px; text-align: center; padding-left: 5px; padding-right: 5px; }
+
+		.statuson{ background-image: url(../images/ocsv_icon10.png); background-repeat: no-repeat; color: $white; }
+
+		.statusoff{ background-image: url(../images/ocsv_icon11.png); background-repeat: no-repeat; color: $grey; }
+
+	}
+
+}*/
+/* line 29, ../sass/orderDetail.scss */
+.table_details td {
+  width: 180px !important; }
+
+/* line 30, ../sass/orderDetail.scss */
+.goto_page {
+  margin-left: 20px;
+  height: 30px; }
+
+/* line 31, ../sass/orderDetail.scss */
+.click_go {
+  background: #57bae8;
+  padding: 6px 8px;
+  margin-top: -11px;
+  color: white;
+  cursor: pointer; }
+
+/* line 32, ../sass/orderDetail.scss */
+.margin_top0 {
+  margin-top: 0px; }
+
+/* line 33, ../sass/orderDetail.scss */
+.margin_top10 {
+  margin-top: 10px; }
+
+/* line 34, ../sass/orderDetail.scss */
+.margin_top30 {
+  margin-top: 30px; }
+
+/* line 35, ../sass/orderDetail.scss */
+.margin_top40 {
+  margin-top: 40px; }
+
+/* line 36, ../sass/orderDetail.scss */
+.margin_left0 {
+  margin-left: 0px; }
+
+/* line 37, ../sass/orderDetail.scss */
+.margin_left10 {
+  /*margin-left: 10px !important;
+
+  padding-top: 6px;*/
+  white-space: normal; }
+
+/* line 38, ../sass/orderDetail.scss */
+.margin_left20 {
+  margin-left: 20px; }
+
+/* line 40, ../sass/orderDetail.scss */
+#quote_right {
+  float: right; }
+
+/* line 41, ../sass/orderDetail.scss */
+#status_type {
+  clear: both;
+  margin-top: -30px;
+  width: 95%; }
+
+/* line 42, ../sass/orderDetail.scss */
+/* line 43, ../sass/orderDetail.scss */
+/* line 44, ../sass/orderDetail.scss */
+#pagetitle {
+  color: black !important; }
+
+.div_input .commentstextarea {
+  color: black;
+  font-size: 11px;
+  float: left;
+  padding-bottom: 5px;
+  text-align: left;
+  resize: none;
+  width: 270px;
+  margin-left: 10px; }
+
+#lineItemListMain {
+  position: relative; }
+
+.row .paginationcss {
+  margin-left: 2px;
+  width: 982px; }
+
+.prodpopunorlist {
+  list-style: none outside none; }
+
+.proddetlist {
+  display: block;
+  height: 30px;
+  line-height: 30px; }
+  .proddetlist span {
+    text-align: right;
+    padding-left: 8px;
+    padding-right: 5px; }
+
+div.orderdetailrow {
+  margin-left: 2px !important; }
+
+.orderdetailsship {
+  margin-left: 2px !important;
+  width: 972px !important; }
+
+.orderdetailsold {
+  margin-top: 128px; }
+
+.ordershipflage {
+  margin-left: 183px;
+  width: 972px; }
+
+.ordernotfound {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-top: 15px;
+  color: red;
+  background: none repeat scroll 0 0 #f7d7d7; }
+
+.orderdetilrefine {
+  white-space: nowrap; }
+
+.orderdetailerror {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-left: 1px;
+  margin-top: 24px;
+  color: red;
+  background: none repeat scroll 0 0 #f7d7d7;
+  height: 40px;
+  padding: 14px; }
+
+.orederlineelem {
+  margin-left: 2px !important;
+  width: 972px !important; }
+
+.orderdetaitable {
+  width: 972px !important;
+  margin-left: 3px !important; }
+
+.orderauto {
+  height: auto; }
+
+.orderdetailresult {
+  overflow: auto;
+  height: 384px; }
+
+.orderdetailmaintable {
+  overflow: auto; }
+
+.ordertrresult {
+  white-space: nowrap;
+  border: 1px solid #999999;
+  color: black; }
+
+.orderdetilrefine {
+  white-space: nowrap; }
+
+.inquotedetails {
+  width: 40%; }
+
+.ordernot {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-top: 15px;
+  color: red;
+  background: none repeat scroll 0 0 #f7d7d7;
+  padding: 10px; }
+
+.holdorder {
+  width: 100%; }
+
+.blockholdorder {
+  color: #000000;
+  height: 20px;
+  width: 100%;
+  text-align: left; }
+
+.intquoter {
+  margin-left: 5px;
+  width: 120px; }
+
+.orderinttab {
+  height: 384px; }
+  
+  .txtblack{
+  color:#000000;
+  }
+ #holdval{
+  margin-top: 4px;
+  }
+.btnOrderHistoryCls{
+margin-top:-20px;
+}
+.orderheaderCls {
+  width: 30% !important;
+}
+
+.deliveryCls {
+  position: relative; }
+  .deliveryCls span {
+    clear: both;
+    width: 95px;
+    text-align: right;
+    color: #999;
+    margin: 4px 5px 3px 0;
+    font-size: 1.2rem;
+    font-size: 13px;
+    float: left; }
+  .deliveryCls b {
+    font-weight: bold; }
+  .deliveryCls strong {
+    font-family: "simsun";
+    color: #57bae8; }
+  .deliveryCls .div_input {
+    width: 55%;
+    text-align: left;
+    float: left;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    color: #000;
+    font-size: 13px; }
+.serialassetshippederror {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-left: 1px;
+  margin-top: -10px;
+  margin-bottom: -5px;
+  color: red;
+  background: none repeat scroll 0 0 #f7d7d7;
+  height: 40px;
+  padding: 14px; }
+.serialassetopenerror {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-left: 1px;
+  margin-top: -4px;
+  margin-bottom: 5px;
+  color: red;
+  background: none repeat scroll 0 0 #f7d7d7;
+  height: 40px;
+  padding: 14px; }
+
+.orderHeader{
+     width: 1375px;
+}
+.columnsfloat{
+  float: left !important;
+}
+.innerrow .delGroupsCls{
+    border: 1px solid white;
+    background: #f2f2f2;
+}
+.cursorCls{cursor:pointer;}
+.shipmentNoCls{font-weight:bold;}
+.marginCls{margin-left:25px;}
+.txtAlignCls{
+float:right;
+text-align: left;
+}
+.delveryCodesValCls{
+color:black;word-break: break-word;white-space: pre-wrap;}
+.generals .div_inputsaddress{
+min-width: 250px;
+text-align: left;
+float: left;
+padding-bottom: 0px;
+margin-top: 2px;
+color: #000;
+font-size: 14px;
+
+}
+.

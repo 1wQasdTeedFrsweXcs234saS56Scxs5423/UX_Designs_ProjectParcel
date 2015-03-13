@@ -1,0 +1,104 @@
+<div ng-controller="lookupByCbnController">
+   <div class="twelve columns">
+      <div id="containerpage"  ng-hide="noDatafoundFlage">
+          
+           <div id="HPDetailpage">
+                <div class="HPOrderTxtpage">CBN to be looked up:</div> 
+                <input id="txtfiedlpage" name="" type="text" ng-model="entryid"/>
+               
+
+                <div><a class="slim button searchBTN primary btn_label"style="margin-top:4px;" href ng-click="searchById(entryid)">Look Up</a> </div>
+				</div>
+                
+				
+            <div style="clear:both; padding-bottom:-17px"></div>
+            
+         <div style="background-color:#EDEDED;height: 21px; font-size:15px; border-bottom: 1.5px solid white" ng-hide="noData" ng-show="dataisthere"> 
+         <span>
+         <img src="../common/images/buttletdownArrow.png" style="float:left;" ng-show="image1"  ng-model="uparrow" ng-click="showHideImage('uparrow')"></img>
+          <img src="../common/images/buttletArrowsidepng.png" style="float:left;" ng-hide="image2" ng-model="downarrow" ng-click="showHideImage('downarrow')"></img>
+          <h3 style="color:#2ba6cb;">Ship To</h3>
+          </span>
+         </div>
+         
+		
+            <table id="tableOne" ng-show="image1" width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                <thead><tr class="tableHeader font_black ossCols"  ng-hide="noData" ng-show="dataisthere" ></tr></thead>
+                    <tr ng-show="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                    <tr id="autoFilter" ng-hide="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                        <tbody>
+                            <tr ng-repeat="item in items_shipto | filter:search | filter:query | orderBy:predicate:reverse">
+                                <td  ng-show="{{columnNames[0].id}}" ng-class="sortedTD_{{columnNames[0].id}}"><a href="#" style="text-decoration:underline;color:black;"  ng-click="fetchBycbnId(item.id)">{{item.id}}</a></td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L4}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L3}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L2}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.name}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.system}}</td>
+                            </tr>
+                        </tbody>
+            </table>
+        
+         
+           <div style="background-color:#EDEDED;height: 21px; font-size:15px; border-bottom: 1.5px solid white" ng-hide="noData" ng-show="dataisthere"> 
+         <span>
+         <img src="../common/images/buttletdownArrow.png" style="float:left;" ng-show="image3"  ng-model="uparrow" ng-click="showHideImage('uparrow2')"></img>
+          <img src="../common/images/buttletArrowsidepng.png" style="float:left;" ng-hide="image4" ng-model="downarrow" ng-click="showHideImage('downarrow2')"></img>
+          <h3 style="color:#2ba6cb;">Invoice To</h3>
+          </span>
+         </div>
+		<table id="tableOne" ng-show="image3"  width="100%" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                <thead><tr class="tableHeader font_black ossCols"  ng-hide="noData" ng-show="dataisthere"></tr></thead>
+                    <tr ng-show="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                    <tr id="autoFilter" ng-hide="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                        <tbody>
+                            <tr ng-repeat="item in items | filter:search | filter:query | orderBy:predicate:reverse">
+                                <td  ng-show="{{columnNames[0].id}}" ng-class="sortedTD_{{columnNames[0].id}}"><a href="#" style="text-decoration:underline"  ng-click="fetchBycbnId(item.id)">{{item.id}}</a></td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L4}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L3}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L2}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.name}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.system}}</td>
+                            </tr>
+                        </tbody>
+            </table>
+         
+              
+
+           
+           <div style="background-color:#EDEDED;height: 21px; font-size:15px; border-bottom: 1.5px solid white" ng-hide="noData" ng-show="dataisthere"> 
+         <span>
+         <img src="../common/images/buttletdownArrow.png" style="float:left;" ng-show="image5"  ng-model="uparrow" ng-click="showHideImage('uparrow3')"></img>
+          <img src="../common/images/buttletArrowsidepng.png" style="float:left;" ng-hide="image6" ng-model="downarrow" ng-click="showHideImage('downarrow4')"></img>
+          <h3 style="color:#2ba6cb;">Sold To</h3>
+          </span>
+         </div>
+           
+		
+            <table id="tableOne" width="100%" ng-show="image5" cellspacing="1" cellpadding="0" border="0" class="hpTbl">
+                <thead><tr class="tableHeader font_black ossCols"  ng-hide="noData" ng-show="dataisthere" ></tr></thead>
+                    <tr ng-show="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                    <tr id="autoFilter" ng-hide="autofilterflag" class="font_black table_details ossAutoFilterTextBoxes"></tr>
+                        <tbody>
+                            <tr ng-repeat="item in items_invoiceto | filter:search | filter:query | orderBy:predicate:reverse">
+                                <td  ng-show="{{columnNames[0].id}}" ng-class="sortedTD_{{columnNames[0].id}}"><a href="#" style="text-decoration:underline" ng-click="fetchBycbnId(item.id)">{{item.id}}</a></td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L4}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L3}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.L2}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.name}}</td>
+                                <td  ng-class="sortedTD_{{columnNames[1].id}}">{{item.system}}</td>
+                            </tr>
+                        </tbody>
+            </table>
+        
+        
+          
+             
+            </div>
+        
+</div>
+
+</div>
+
+<div class="twelve columns orderdetailerror"  ng-show="noDatafoundFlage">{{errormsg}}</div> 
+
+<div id="loader"><img src="../common/images/i-pre-lg-hpe.gif"></div><div id="overlay"></div>

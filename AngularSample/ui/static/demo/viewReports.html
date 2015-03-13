@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app lang="en" class="js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <title>View Reports</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="./lib/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/jquery-ui-1.8.16.custom.css">
+    <link rel="stylesheet" type="text/css" href="./lib/public.css">
+	<link rel="stylesheet" type="text/css" href="./css/viewReports.css">
+    <link rel="stylesheet" type="text/css" href="./css/util.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+</head>
+<body style="zoom:1;">
+
+<div id="Coming" onclick="closeTable('Coming')">
+  <div class="customer_row"><div class="pic"><img src="./images/icon_coming.png"></div><div class="txt">COMING SOON</div></div>
+</div>
+
+<div class="row">
+    <div class="eight columns logo">
+        <img src="./images/logo.png" alt="hp">
+        <span style="color:black!important;">Customer Transaction Viewer</span><br>
+        <ul id="menu_nv" class="nav" style="width:100%!important;">
+                <li><a href="./home.html" class="current">Home</a> &nbsp;|</li>
+                <li><a href="http://d2t0020g.austin.hp.com:8580/ncis_sb3/demo/home">Order Management</a> &nbsp;|</li>
+                <li><a href="#" onclick="showTable('Coming');">User Maintenance</a> &nbsp;</li>
+        </ul>
+    </div>
+	<div class="four columns">
+		<div class="offset-by-eight" style="margin-top:40px;">
+			<a href="#"><img src="./images/settings.gif"></a>
+			<a href="#"><img src="./images/support.gif"></a>
+		</div>
+	<div class="login">Welcome, Cerda Barbara [<a href="./home.html">Preferences</a>]</div>
+	</div><hr>
+</div>
+
+<div ng-init = "expandOrCollapsePanelNames=['lineItemList']"></div>
+
+<div ng-controller="expandOrCollapseCtrl">
+<div class="row" >
+	<div ng-click="expandOrCollapse('lineItemList')">
+		<div class="twelve columns row_title">
+			<img ng-src="{{expandOrCollapseImg['lineItemList']}}" alt="line_Item_List">
+			<span><b>My Reports</b></span>
+		</div>
+	</div><hr>
+	<div ng-init='columnNames = ["name"]'></div>
+	<div ng-init="search.name = '';"></div>
+		<div ng-show="lineItemList"><div ng-controller="viewReportsController">
+		<div style="float:right;margin-top:5px!important;">
+		<span style="font-size: 12px;">Customer :</span>
+		<select ng-model="search.name" style="width:150px;">
+			<option ng-repeat="customer in customers" value="{{customer.id}}">{{customer.name}}</option>
+		</select></div><br><br><br>
+		<div id="reportsdiv">
+				<div class=row>
+					<div ng-repeat="item in items | filter:search">
+						<div class="four columns panel-view" style="margin-bottom:15px;">
+							<div class="list_fonts">
+								<img src="./images/list_tb.png" style="">
+								<span style="margin-left:8px;">{{item.name}}<hr></span><br>
+								Frequency:<span style="margin-left:34px;">{{item.frequency}}</span><br>
+								Last Run Time: <span>{{item.last_run_time}}</span>
+								<hr style="margin-top:20px;margin-bottom:10px;">
+							</div>
+							<div style="padding-left:85px;">
+								<a href="http://g1t0205g.austin.hp.com:1442/ng-ui/reports/{{item.xl_fl_nm}}" id="excel_button"
+									title="excel download" target="_parent"><img src="./images/excel.png"/></a>
+								<a href="http://g1t0205g.austin.hp.com:1442/ng-ui/reports/{{item.csv_fl_nm}}" id="csv_button" target="_blank"
+									title="csv download"><img src="./images/csv-icon.png"/></a>
+								<a class="htmlReportLink" href="#" id='{{item.id}}' name="{{item.name}}">
+									<img src="./images/html.png"/></a>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		<br>
+	</div>
+</div></div>
+</div>
+
+<div class="row footer"><hr>
+    <div class="twelve columns">
+        Powered by HP Order Status Tracking System | @ 2013 Hewlett-Packard Development Company, L.P
+    </div>
+</div>
+
+
+<script type="text/javascript" src="./lib/angular.min.js"></script>
+<script type="text/javascript" src="./lib/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="./lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/viewReports.js"></script>
+
+<script>
+jQuery(function() {
+	jQuery(".htmlReportLink").bind("click", function() {
+		var reportId = jQuery(this).attr("id");
+		var reportName = jQuery(this).attr("name");
+		localStorage.setItem("reportId", reportId );
+		localStorage.setItem("reportName", reportName );
+		jQuery(location).attr("href", "reportGrid.html?reportId="+reportId);
+	});
+});
+</script>
+
+</body></html>
