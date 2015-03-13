@@ -1,0 +1,471 @@
+.browsehappy {
+    margin: .2em 0;
+    background: #ccc;
+    color: #000;
+    padding: .2em 0
+}
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell
+    }
+}
+table.table>thead>tr>th, .table>thead>tr>td, table.table>tbody>tr>th, table.table>tbody>tr>td, table.table>tfoot>tr>th, table.table>tfoot>tr>td {
+    vertical-align: middle;
+    padding: 20px
+}
+.as-table {
+    display: table;
+    width: 100%;
+    overflow-x: scroll;
+    min-resolution: 1140px
+}
+.as-table-row {
+    display: table-row
+}
+.as-table-row>div {
+    display: table-cell
+}
+body {
+    background-color: #f4f4f4
+}
+div.bg-white {
+    background-color: #fff
+}
+div.bg-white, div.custom-border-all {
+    border: 1px solid #e7e7e7
+}
+div.custom-border-top {
+    border-top: 1px solid #e7e7e7
+}
+div.custom-border-right {
+    border-right: 1px solid #e7e7e7
+}
+div.custom-border-bottom {
+    border-bottom: 1px solid #e7e7e7
+}
+div.custom-border-left {
+    border-left: 1px solid #e7e7e7
+}
+div.margin-top-20 {
+    margin-top: 20px
+}
+div.no-padding-side {
+    padding: 0
+}
+.position-absolute {
+    position: absolute
+}
+.position-relative {
+    position: relative
+}
+.sprite {
+    background-image: url(../assets/images/spritesheet.png);
+    background-repeat: no-repeat;
+    display: inline-block
+}
+.sprite-bell-icon {
+    width: 24px;
+    height: 24px;
+    background-position: -5px -5px
+}
+.sprite-briefcase-icon {
+    width: 18px;
+    height: 14px;
+    background-position: -39px -5px
+}
+.sprite-cisco-logo-white {
+    width: 49px;
+    height: 26px;
+    background-position: -67px -5px
+}
+.sprite-complete {
+    width: 16px;
+    height: 16px;
+    background-position: -126px -5px;
+    line-height: 18px
+}
+.sprite-design-articulation {
+    width: 28px;
+    height: 28px;
+    background-position: -126px -31px
+}
+.sprite-design-review {
+    width: 28px;
+    height: 28px;
+    background-position: -5px -69px
+}
+.sprite-github {
+    width: 30px;
+    height: 30px;
+    background-position: -43px -69px
+}
+.sprite-gmail {
+    width: 30px;
+    height: 30px;
+    background-position: -83px -69px
+}
+.sprite-html-5-icon {
+    width: 28px;
+    height: 28px;
+    background-position: -123px -69px
+}
+.sprite-illustrator-icon {
+    width: 28px;
+    height: 28px;
+    background-position: -5px -107px
+}
+.sprite-incomplete {
+    width: 16px;
+    height: 16px;
+    background-position: -152px -5px
+}
+.sprite-indesign-icon {
+    width: 28px;
+    height: 28px;
+    background-position: -123px -107px
+}
+.sprite-information-architecture {
+    width: 28px;
+    height: 28px;
+    background-position: -5px -145px
+}
+.sprite-java {
+    width: 28px;
+    height: 28px;
+    background-position: -43px -145px
+}
+.sprite-linked-in-icon {
+    width: 16px;
+    height: 16px;
+    background-position: -39px -31px
+}
+.sprite-linkedin {
+    width: 30px;
+    height: 30px;
+    background-position: -178px -5px
+}
+.sprite-mail-icon {
+    width: 16px;
+    height: 13px;
+    background-position: -164px -45px
+}
+.sprite-map-pointer-icon {
+    width: 16px;
+    height: 16px;
+    background-position: -190px -45px
+}
+.sprite-notification-bg {
+    width: 24px;
+    height: 24px;
+    background-position: -161px -71px
+}
+.sprite-phone-icon {
+    width: 16px;
+    height: 16px;
+    background-position: -195px -71px
+}
+.sprite-photoshop-icon {
+    width: 28px;
+    height: 28px;
+    background-position: -161px -105px
+}
+.sprite-settings-icon {
+    width: 24px;
+    height: 24px;
+    background-position: -81px -143px
+}
+.sprite-stackoverflow {
+    width: 30px;
+    height: 30px;
+    background-position: -161px -143px
+}
+.sprite-tumblr {
+    width: 30px;
+    height: 30px;
+    background-position: -5px -183px
+}
+.sprite-twitter {
+    width: 30px;
+    height: 30px;
+    background-position: -45px -183px
+}
+.navbar {
+    margin-bottom: 0
+}
+.navbar .navbar-nav.navbar-right>li>a {
+    color: #fff
+}
+.navbar .navbar-left>li>a {
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: lighter;
+    color: #fff;
+    cursor: default;
+    top: 4px
+}
+.navbar .navbar-left>li>a:hover {
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: lighter;
+    color: #fff;
+    cursor: default
+}
+.navbar .navbar-right>li>a {
+    padding-left: 0
+}
+.navbar .navbar-right>li>a .sprite-notification-bg {
+    top: 12px;
+    right: 5px;
+    text-align: center;
+    padding-top: 2px;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000
+}
+.sb-my-profile {
+    background-color: #39a5e3;
+    margin-bottom: 20px
+}
+.sb-my-profile .profile-container {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+.sb-my-profile .profile-container .profile-image img {
+    float: right
+}
+.sb-my-profile .profile-container .profile-description {
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: lighter;
+    color: #fff
+}
+.sb-my-profile .profile-container .profile-description .profile-name {
+    padding-bottom: 5px;
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: lighter;
+    color: #fff
+}
+.sb-my-profile .profile-container .profile-description .profile-designation {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff
+}
+.sb-assessment-request {
+    padding: 30px
+}
+.sb-assessment-request .assessmentRequest-heading {
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: lighter;
+    color: #222;
+    margin-bottom: 25px
+}
+.sb-assessment-request .assesment-table-heading {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    padding: 15px 10px
+}
+.sb-assessment-request .assesment-table-column {
+    padding: 20px 10px 30px;
+    height: 150px
+}
+.sb-assessment-request .assesment-table-column .assessmentRequest-name {
+    display: block;
+    font-family: Arial;
+    font-size: 14px;
+    color: #39a5e3;
+    padding-bottom: 5px
+}
+.sb-assessment-request .assesment-table-column .assessmentRequest-description {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: lighter;
+    color: #000
+}
+.sb-assessment-request .assesment-table-column .assessmentRequest-status {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    text-transform: capitalize
+}
+.sb-assessment-request .assesment-table-column .assessmentRequest-date {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000
+}
+.sb-assessment-request .assesment-table-column .assessmentRequest-indicator {
+    top: 1px
+}
+.sb-top-rated-skills {
+    padding: 30px
+}
+.sb-top-rated-skills .topRatedSkills-heading {
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: lighter;
+    color: #222;
+    margin-bottom: 25px
+}
+.sb-top-rated-skills .topRatedSkills-table-heading {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    padding: 15px;
+    margin-top: 20px
+}
+.sb-top-rated-skills .topRatedSkills-table-column {
+    padding: 20px 10px;
+    height: 70px
+}
+.sb-top-rated-skills .topRatedSkills-table-column .topRatedSkills-skill {
+    line-height: 2;
+    font-family: Arial;
+    font-size: 14px;
+    color: #000
+}
+.sb-top-rated-skills .topRatedSkills-table-column .topRatedSkills-level {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #000
+}
+.sb-top-rated-skills .topRatedSkills-table-column slider {
+    bottom: 50%
+}
+.sb-custom-table .custom-table-column {
+    padding: 20px
+}
+.footer {
+    margin-top: 30px;
+    background-color: #222;
+    line-height: 45px;
+    font-family: Arial;
+    font-size: 14px;
+    color: #a7a7a7
+}
+.footer .sprite-cisco-logo-white {
+    top: 10px;
+    right: 0
+}
+slider {
+    display: inline-block;
+    position: relative;
+    height: 8px;
+    width: 500px
+}
+slider span.bar {
+    height: 50%;
+    z-index: 0;
+    background: #eee;
+    left: 0;
+    top: 25%;
+    cursor: pointer
+}
+slider span.bar.selection {
+    background: #39a5e3;
+    opacity: 1
+}
+slider span.bar.unselected {
+    width: auto;
+    background: #ccc
+}
+slider span.bubble {
+    font-size: .7em;
+    line-height: 1.4em;
+    font-family: sans-serif;
+    text-align: center;
+    text-shadow: none;
+    top: -1.3em;
+    cursor: pointer
+}
+slider span.bubble.selection, slider span.bubble.limit {
+    top: 25%
+}
+::-ms-tooltip {
+    display: none
+}
+#slider-container {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none
+}
+#slider-container input, span.pointer.low {
+    display: none!important
+}
+span.bar.unselected.low {
+    background: #0a0!important
+}
+span.bar.full {
+    border-radius: 1em/1em
+}
+slider span.bubble {
+    display: none!important
+}
+#animate-container {
+    position: relative;
+    min-height: 1200px
+}
+#animate-views {
+    width: auto
+}
+#animate-views.ng-enter, #animate-views.ng-leave {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    -webkit-transition: .5s all ease;
+    margin-top: 237px
+}
+#animate-views.ng-enter {
+    transition-delay: .5s all ease;
+    -moz-transition-delay: .5s all ease;
+    -webkit-transition-delay: .5s all ease;
+    -webkit-animation: slideInRight .5s both ease;
+    animation: slideInRight .5s both ease
+}
+#animate-views.ng-leave {
+    -webkit-animation: slideOutLeft .5s both ease;
+    animation: slideOutLeft .5s both ease
+}
+@keyframes slideOutLeft {
+    to {
+        -webkit-transform: translateX(-200%);
+        transform: translateX(-200%)
+    }
+}
+@-webkit-keyframes slideOutLeft {
+    to {
+        -webkit-transform: translateX(-200%)
+    }
+}
+@keyframes slideInRight {
+    from {
+        -webkit-transform: translateX(200%);
+        transform: translateX(200%)
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+}
+@-webkit-keyframes slideInRight {
+    from {
+        -webkit-transform: translateX(200%)
+    }
+    to {
+        -webkit-transform: translateX(0)
+    }
+}

@@ -1,0 +1,27 @@
+<div>
+	<p class="topRatedSkills-heading">{{topRatedSkills.mainHeading}}</p>
+	<button type="button" class="btn btn-primary pull-left">Add Skill</button>
+	<div class="clearfix"></div>
+	<div class="col-xs-6 topRatedSkills-table-heading custom-border-bottom">Skill</div>
+	<div class="col-xs-6 topRatedSkills-table-heading custom-border-bottom custom-border-left">Proficiency</div>
+	<div class="as-table" ng-repeat="data in topRatedSkills.data">
+		<div class="as-table-row col-xs-12 no-padding-side topRatedSkills-table-row">
+			<div class="col-xs-6 as-table-column topRatedSkills-table-column position-relative">
+				<em class="sprite {{data.image}} position-absolute"></em>
+				<span class="topRatedSkills-skill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{data.skill}}</span>
+			</div>
+			<div class="col-xs-6 as-table-column topRatedSkills-table-column custom-border-left position-relative">
+				<slider floor='0' ceiling='10' step='1' precision='1' ng-model='sliderValue.low' ng-model-range='data.rating' style="width: 150px;" class="position-absolute"></slider>
+				<span class="topRatedSkills-level pull-right">{{data.level}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-xs-12 no-side-padding margin-top-20">
+		<div class="pull-right">
+			<button type="button" class="btn btn-primary">Edit</button>
+			<button type="button" class="btn btn-primary">View All Skills</button>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>

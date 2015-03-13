@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" ng-app="skillBuilder">
+  <head>
+    <meta charset="utf-8">
+    <title>skillBuilder</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    
+    <!-- build:css({.tmp,src}) styles/vendor.css -->
+    <link rel="stylesheet" href="app/vendor.css">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/fontawesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+
+    <!-- build:css({.tmp,src}) styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="app/app.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <div ng-include="'components/navbar/navbar.html'"></div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding-side">
+        <div ng-controller="MyProfileCtrl">
+            <sb-my-profile class="sb-my-profile"></sb-my-profile>
+        </div>
+    </div>
+    <div id="animate-container">
+        <div id="animate-views" ui-view></div>
+    </div>
+    <div class="clearfix"></div>
+    <div ng-include="'components/footer/footer.html'"></div>
+
+    <div class="visible-lg"><h1>lg</h1></div>
+    <div class="visible-md"><h1>md</h1></div>
+    <div class="visible-sm"><h1>sm</h1></div>
+    <div class="visible-xs"><h1>xs</h1></div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <script src="app/index.js"></script>
+    <script src="components/topRatedSkills/topRatedSkills.controller.js"></script>
+    <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/myProfile/myProfile.controller.js"></script>
+    <script src="components/footer/footer.controller.js"></script>
+    <script src="components/customTable/customTable.controller.js"></script>
+    <script src="components/assessmentRequest/assessmentRequest.controller.js"></script>
+    <script src="components/aboutMe/aboutMe.controller.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/assessment/assessment.controller.js"></script>
+    <script src="app/index.service.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+</html>

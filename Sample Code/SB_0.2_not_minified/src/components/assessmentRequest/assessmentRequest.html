@@ -1,0 +1,26 @@
+<div>
+	<p class="assessmentRequest-heading">{{assessmentRequest.mainHeading}}</p>
+	<div class="col-xs-4 assesment-table-heading custom-border-bottom">Name</div>
+	<div class="col-xs-4 assesment-table-heading custom-border-bottom custom-border-right custom-border-left">Status</div>
+	<div class="col-xs-4 assesment-table-heading custom-border-bottom">Target Date</div>
+	<div class="as-table" ng-repeat="data in assessmentRequest.data">
+		<div class="as-table-row col-xs-12 no-padding-side">
+			<div class="col-xs-4 as-table-column assesment-table-column">
+				<span class="assessmentRequest-name"><a href="#/assessment/{{data.id}}/single">{{data.name}}</a></span>
+				<span class="assessmentRequest-description">{{data.shortDescription}}</span>
+			</div>
+			<div class="col-xs-4 as-table-column assesment-table-column custom-border-right custom-border-left">
+				<div class="position-relative"><em class="sprite sprite-{{data.status}} position-absolute assessmentRequest-indicator"></em></div>
+				<span class="assessmentRequest-status">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{data.status}}</span>
+			</div>
+			<div class="col-xs-4 as-table-column assesment-table-column">
+				<span class="assessmentRequest-date">{{data.date |  date : 'MMM d, y'}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-xs-12 no-side-padding margin-top-20">
+		<button type="button" class="btn btn-primary pull-right">View All</button>
+	</div>
+	<div class="clearfix"></div>
+</div>
